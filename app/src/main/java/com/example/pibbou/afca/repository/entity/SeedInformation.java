@@ -9,5 +9,5 @@ import java.util.List;
 public class SeedInformation {
     String name;
     String website;
-    List<Event> events;
+    List<EventSeed> events;
 }
