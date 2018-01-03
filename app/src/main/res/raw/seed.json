@@ -1,0 +1,18 @@
+{
+  "name": "Je suis un test",
+  "website": "Notre super website",
+  "events": [
+    {
+      "name": "Event A",
+      "place": 1
+    },
+    {
+      "name": "Event B",
+      "place": 2
+    },
+    {
+      "name": "Event C",
+      "place": 2
+    }
+  ]
+}

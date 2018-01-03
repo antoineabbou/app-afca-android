@@ -1,7 +1,8 @@
-package com.example.pibbou.afca
+package com.example.pibbou.afca.ui.list
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.pibbou.afca.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -9,4 +10,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
 }
