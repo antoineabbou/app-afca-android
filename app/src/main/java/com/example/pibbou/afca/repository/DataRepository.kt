@@ -20,7 +20,7 @@ import com.google.gson.GsonBuilder
  */
 class DataRepository constructor(contextArg: Context) {
 
-    var context: Context
+    private var context: Context
     private var places: ArrayList<Place> = ArrayList()
     private var categories: ArrayList<Category> = ArrayList()
     private var events: ArrayList<Event> = ArrayList()
@@ -33,11 +33,10 @@ class DataRepository constructor(contextArg: Context) {
     }
 
 
-
     /**
      *  Load all datas
      */
-    fun loadDatas(){
+    fun deserializeDatas(){
         deserializePlaces()
         deserializeCategories()
         deserializeEvents()
@@ -52,7 +51,7 @@ class DataRepository constructor(contextArg: Context) {
 
     // Places
     private fun deserializePlaces() {
-        val jsonDatas = getStringFromJson(R.raw.places, context)
+        val jsonDatas = jsonToString(R.raw.places, context)
 
         val gson = Gson()
         val jsonPlaces = gson.fromJson(jsonDatas, Array<Place>::class.java)
@@ -66,7 +65,7 @@ class DataRepository constructor(contextArg: Context) {
 
     // Categories
     private fun deserializeCategories() {
-        val jsonDatas = getStringFromJson(R.raw.categories, context)
+        val jsonDatas = jsonToString(R.raw.categories, context)
 
         val gson = Gson()
         val jsonCategories = gson.fromJson(jsonDatas, Array<Category>::class.java)
@@ -81,7 +80,7 @@ class DataRepository constructor(contextArg: Context) {
 
     // Events
     private fun deserializeEvents() {
-        val jsonDatas = getStringFromJson(R.raw.events, context)
+        val jsonDatas = jsonToString(R.raw.events, context)
 
         val gsonBuilder = GsonBuilder()
         val gson = gsonBuilder.setDateFormat("yyyy-MM-dd HH:mm:SS").create()
@@ -104,7 +103,7 @@ class DataRepository constructor(contextArg: Context) {
     /**
      * Json to string
      */
-    private fun getStringFromJson(path: Int?, context: Context): String {
+    private fun jsonToString(path: Int?, context: Context): String {
 
         // Instance StringBuilder
         val stringBuilder = StringBuilder()
@@ -168,6 +167,16 @@ class DataRepository constructor(contextArg: Context) {
 
         if (result.isNotEmpty()) {
             return result.first()
+        }
+
+        return null
+    }
+
+    // Return all events
+    fun getEvents(): ArrayList<Event>? {
+
+        if (events.isNotEmpty()) {
+            return events
         }
 
         return null

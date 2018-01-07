@@ -1,6 +1,7 @@
 package com.example.pibbou.afca
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import com.example.pibbou.afca.repository.DataRepository
 import com.google.gson.JsonElement
@@ -9,26 +10,20 @@ import com.google.gson.JsonObject
 
 
 
-
-
-
-
 /**
  * Created by arnaudpinot on 02/01/2018.
  */
+
 class App : Application() {
 
-    private var dataManager: DataRepository? = null
-
     // Singleton instance
-    private var sInstance: App? = null
+    var dataManager: DataRepository? = null
+        private set // https://stackoverflow.com/questions/44755945/how-to-assign-new-value-if-you-setting-the-setter-private-in-kotlin
 
-    // Getter to access Singleton instance (https://stackoverflow.com/questions/29295364/android-static-application-getinstance)
-    fun getInstance(): App? {
-        return sInstance
+    // https://stackoverflow.com/questions/21818905/get-application-context-from-non-activity-singleton-class
+    fun getContext(): Context {
+        return this.getApplicationContext()
     }
-
-
 
 
     //////////////
@@ -40,11 +35,25 @@ class App : Application() {
         // Setup singleton instance
         sInstance = this
 
-        Log.d("Init", "Je load mon Data Repository dans mon App")
-
         // Load datas
-        val dataManager = DataRepository(this.getApplicationContext())
-        dataManager.loadDatas()
+        this.dataManager = DataRepository(this.getContext())
+        this.dataManager!!.deserializeDatas()
+        Log.d("Init", "Je load mon Data Repository dans mon App")
     }
 
+
+    companion object {
+        var sInstance: App? = null
+    }
+
+
+    //////////////
+    // Methods
+    /////////////
+
+    fun getDataRepository(): DataRepository? {
+        return this.dataManager
+    }
 }
+
+

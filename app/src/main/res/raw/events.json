@@ -52,5 +52,50 @@
     "categoryId": 5,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
+  },
+  {
+    "id": 7,
+    "name": "Salon des nouvelles écritures",
+    "excerpt": "Et projections (boucle de 20min) ou démos en continu",
+    "placeId": 5,
+    "categoryId": 4,
+    "startingDate": "2018-04-04 10:00:00",
+    "endingDate": "2018-04-04 13:30:00"
+  },
+  {
+    "id": 8,
+    "name": "Regards croisés sur la Fête 2018",
+    "excerpt": "",
+    "placeId": 3,
+    "categoryId": 3,
+    "startingDate": "2018-04-04 10:00:00",
+    "endingDate": "2018-04-04 13:30:00"
+  },
+  {
+    "id": 9,
+    "name": "Les courts n°5",
+    "excerpt": "",
+    "placeId": 1,
+    "categoryId": 3,
+    "startingDate": "2018-04-04 10:00:00",
+    "endingDate": "2018-04-04 13:30:00"
+  },
+  {
+    "id": 10,
+    "name": "Ateliers tout public",
+    "excerpt": "",
+    "placeId": 3,
+    "categoryId": 5,
+    "startingDate": "2018-04-04 10:00:00",
+    "endingDate": "2018-04-04 13:30:00"
+  },
+  {
+    "id": 11,
+    "name": "Croc Blanc",
+    "excerpt": "",
+    "placeId": 1,
+    "categoryId": 5,
+    "startingDate": "2018-04-04 10:00:00",
+    "endingDate": "2018-04-04 13:30:00"
   }
 ]
