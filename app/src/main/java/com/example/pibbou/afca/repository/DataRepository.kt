@@ -3,11 +3,15 @@ package com.example.pibbou.afca.repository
 import android.content.Context
 import android.util.Log
 import com.example.pibbou.afca.R
-import com.example.pibbou.afca.repository.entity.SeedInformation
+import com.example.pibbou.afca.repository.entity.Category
+import com.example.pibbou.afca.repository.entity.Event
+import com.example.pibbou.afca.repository.entity.Place
 import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
+import com.google.gson.GsonBuilder
+
 
 
 /**
@@ -17,6 +21,9 @@ import java.io.InputStreamReader
 class DataRepository constructor(contextArg: Context) {
 
     var context: Context
+    private var places: ArrayList<Place> = ArrayList()
+    private var categories: ArrayList<Category> = ArrayList()
+    private var events: ArrayList<Event> = ArrayList()
 
     /**
      * Initialization
@@ -25,52 +32,144 @@ class DataRepository constructor(contextArg: Context) {
         context = contextArg
     }
 
+
+
     /**
      *  Load all datas
      */
     fun loadDatas(){
-        deserializeDatas()
+        deserializePlaces()
+        deserializeCategories()
+        deserializeEvents()
+        Log.d("GSON deserialize", "END")
     }
+
+
 
     /**
      *  GSON deserialize
      */
-    private fun deserializeDatas() {
-        val jsonDatas = getStringFromJson(R.raw.seed, context)
+
+    // Places
+    private fun deserializePlaces() {
+        val jsonDatas = getStringFromJson(R.raw.places, context)
 
         val gson = Gson()
+        val jsonPlaces = gson.fromJson(jsonDatas, Array<Place>::class.java)
 
-        val SeedInformation = gson.fromJson(jsonDatas, SeedInformation::class.java)
+        for(place in jsonPlaces){
+            places.add(place)
+        }
 
-        Log.d("init", jsonDatas)
+        Log.d("GSON deserialize", jsonDatas)
     }
+
+    // Categories
+    private fun deserializeCategories() {
+        val jsonDatas = getStringFromJson(R.raw.categories, context)
+
+        val gson = Gson()
+        val jsonCategories = gson.fromJson(jsonDatas, Array<Category>::class.java)
+
+        for(category in jsonCategories){
+            categories.add(category)
+        }
+
+        Log.d("GSON deserialize", jsonDatas)
+    }
+
+
+    // Events
+    private fun deserializeEvents() {
+        val jsonDatas = getStringFromJson(R.raw.events, context)
+
+        val gsonBuilder = GsonBuilder()
+        val gson = gsonBuilder.setDateFormat("yyyy-MM-dd HH:mm:SS").create()
+        val jsonEvents = gson.fromJson(jsonDatas, Array<Event>::class.java)
+
+        for(event in jsonEvents){
+            val placeId = event.placeId!!
+            val categoryId = event.categoryId!!
+            event.place = this@DataRepository.findPlaceById(placeId)
+            event.category = this@DataRepository.findCategoryById(categoryId)
+            events.add(event)
+        }
+        
+        Log.d("GSON deserialize", jsonDatas)
+    }
+
+
 
 
     /**
      * Json to string
      */
-    fun getStringFromJson(path: Int?, context: Context): String {
-        val sb = StringBuilder()
-        var br: BufferedReader? = null
+    private fun getStringFromJson(path: Int?, context: Context): String {
+
+        // Instance StringBuilder
+        val stringBuilder = StringBuilder()
+        // Instance BufferedReader
+        var bufferReader: BufferedReader? = null
+
+        // Try to inject json
         try {
-            br = BufferedReader(InputStreamReader(context.resources.openRawResource(path!!)))
+            // Inject raw json file in BufferedReader thanks to InputStreamReader
+            bufferReader = BufferedReader(InputStreamReader(context.resources.openRawResource(path!!)))
+
+            // While it can possible to readLine
             while (true) {
-                val temp = br.readLine() ?: break
-                sb.append(temp)
+                val temp = bufferReader.readLine() ?: break
+                // Inject in string builder
+                stringBuilder.append(temp)
             }
+
+        // If it's not possible print the error
         } catch (e: IOException) {
             e.printStackTrace()
+
+        // If it's done
         } finally {
+
+            // Check if bufferReader isn't null then close it
             try {
-                if (br != null) {
-                    br.close() // stop reading
+                if (bufferReader != null) {
+                    bufferReader.close()
                 }
+            // else catch error
             } catch (e: IOException) {
                 e.printStackTrace()
             }
 
         }
 
-        return sb.toString()
+        // Return stringBuilder to string
+        return stringBuilder.toString()
+    }
+
+
+    /**
+     * Methods
+     */
+
+    // Function to save places into each events
+    private fun findPlaceById(id:Int): Place? {
+        val result = places.filter { it.id == id }
+
+        if (result.isNotEmpty()) {
+            return result.first()
+        }
+
+        return null
+    }
+
+    // Function to save category into each events
+    private fun findCategoryById(id:Int): Category? {
+        val result = categories.filter { it.id == id }
+
+        if (result.isNotEmpty()) {
+            return result.first()
+        }
+
+        return null
     }
 }
