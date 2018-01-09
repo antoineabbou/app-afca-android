@@ -1,5 +1,6 @@
 package com.example.pibbou.afca.ui.list
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.pibbou.afca.R
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.repository.entity.Category
+import kotlinx.android.synthetic.main.list_category.*
 
 
 class MainActivity : AppCompatActivity() {

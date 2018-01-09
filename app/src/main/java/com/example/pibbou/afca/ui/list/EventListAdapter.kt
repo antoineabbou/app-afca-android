@@ -1,14 +1,17 @@
 package com.example.pibbou.afca.ui.list
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.entity.Event
+import kotlinx.android.synthetic.main.list_category.*
 import java.util.ArrayList
 
 
@@ -18,6 +21,21 @@ import java.util.ArrayList
 
 
 class EventListAdapter(private val mContext: Context, private val eventList: ArrayList<Event>?) : RecyclerView.Adapter<EventListAdapter.SingleItemRowHolder>() {
+
+    private val mOnClickListener: View.OnClickListener
+
+    init {
+        // Inspired by Jetbrains Kotlin Examples
+        // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
+        mOnClickListener = View.OnClickListener { v ->
+            val item = v.tag as Event
+            // Toast.makeText(mContext, item.name, Toast.LENGTH_SHORT).show()
+
+            val I = Intent(mContext, DetailActivity::class.java)
+                    .putExtra("id", item.id)
+            mContext.startActivity(I)
+        }
+    }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): SingleItemRowHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_event_card, null)
@@ -30,7 +48,15 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         val singleEvent = eventList!!.get(i)
         // Set text to card title
         holder.eventCardTitle.setText(singleEvent.name)
+
+        // Inspired by Jetbrains Kotlin Examples
+        // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
+        with (holder.itemView) {
+            tag = singleEvent
+            setOnClickListener(mOnClickListener)
+        }
     }
+
 
     // Get Item Count - need because of Interface
     override fun getItemCount(): Int {
