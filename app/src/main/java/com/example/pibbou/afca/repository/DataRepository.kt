@@ -136,7 +136,7 @@ class DataRepository constructor(contextArg: Context) {
         return json
     }
 
-    
+
 
     /**
      * Methods

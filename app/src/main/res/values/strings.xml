@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Afca</string>
+    <string name="app_name">Festival d\'animation PIBOU</string>
+
+    <string-array name="sort_day">
+        <item>Jour 1</item>
+        <item>Jour 2</item>
+        <item>Jour 3</item>
+    </string-array>
 </resources>
