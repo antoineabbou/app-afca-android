@@ -8,13 +8,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.repository.entity.Category
-import android.widget.AdapterView
 import com.example.pibbou.afca.R.id.spinner
 import android.R.array
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.*
 import com.example.pibbou.afca.repository.entity.Event
-import android.widget.Toast
 import android.widget.AdapterView.OnItemSelectedListener
 
 
@@ -22,7 +19,16 @@ import android.widget.AdapterView.OnItemSelectedListener
 
 class MainActivity : AppCompatActivity() {
 
-    private var eventsByDay: ArrayList<Event>? = null
+    // Prepare categories used by events
+    private var activeCategories: ArrayList<Category>?  = ArrayList()
+    // Prepare categories used by events
+    private var filteredCategories: List<Category>? = ArrayList()
+    // Prepare eventsByDay array
+    private var eventsByDay: ArrayList<Event>? = ArrayList()
+
+    private var recycler_view_category_list: RecyclerView? = null
+    private var categoriesAdapter: CategoryListAdapter? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +40,30 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun setupEventsList() {
-        // Prepare categories used by events
-        var activeCategories: ArrayList<Category> = ArrayList()
+        // TODO: REMOVE THIS METHOD IN SETUPEVENTSLIST
+        setupEventDatas()
+
+        // Get recyclerview View
+        recycler_view_category_list = findViewById<View>(R.id.recycler_view_category_list) as RecyclerView
+
+        // Set fixed size
+        recycler_view_category_list!!.setHasFixedSize(true)
+
+        // Prepare adapter
+        categoriesAdapter = CategoryListAdapter(this, eventsByDay, filteredCategories)
+
+        recycler_view_category_list!!.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        // Set adapter
+        recycler_view_category_list!!.adapter = categoriesAdapter
+    }
+
+    private fun setupEventDatas() {
+
+        // TODO: https://stackoverflow.com/questions/31367599/how-to-update-recyclerview-adapter-data - UPDATE ADAPTER
+
+        activeCategories!!.clear()
+
         // Get datarepo
         val dataRepository = App.sInstance!!.getDataRepository()
         // Thanks to datarepo get all events
@@ -44,25 +72,13 @@ class MainActivity : AppCompatActivity() {
         // For each event get category and push it to an array
         for(event in eventsByDay!!){
             val category = event.category!!
-            activeCategories.add(category)
+            activeCategories!!.add(category)
         }
 
         // Remove duplicate categories
-        val filteredCategories = activeCategories.distinct()
+        filteredCategories = activeCategories!!.distinct()
 
-        // Get recyclerview View
-        val recycler_view_category_list = findViewById<View>(R.id.recycler_view_category_list) as RecyclerView
-
-        // Set fixed size
-        recycler_view_category_list.setHasFixedSize(true)
-
-        // Prepare adapter
-        val adapter = CategoryListAdapter(this, eventsByDay, filteredCategories)
-
-        recycler_view_category_list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
-        // Set adapter
-        recycler_view_category_list.adapter = adapter
+        //categoriesAdapter!!.notifyDataSetChanged()
     }
 
 
@@ -86,6 +102,7 @@ class MainActivity : AppCompatActivity() {
                 if (item != null) {
                     Toast.makeText(this@MainActivity, item.toString(),
                             Toast.LENGTH_SHORT).show()
+                    setupEventDatas()
                 }
                 /*Toast.makeText(this@MainActivity, "Selected",
                         Toast.LENGTH_SHORT).show()
