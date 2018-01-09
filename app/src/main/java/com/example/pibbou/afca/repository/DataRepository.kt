@@ -99,52 +99,44 @@ class DataRepository constructor(contextArg: Context) {
 
 
 
-
     /**
      * Json to string
      */
-    private fun jsonToString(path: Int?, context: Context): String {
+    // https://stackoverflow.com/questions/13814503/reading-a-json-file-in-android
+    private fun jsonToString(path: Int?, context: Context): String? {
+        // Var to return
+        var json: String? = null
 
-        // Instance StringBuilder
-        val stringBuilder = StringBuilder()
-        // Instance BufferedReader
-        var bufferReader: BufferedReader? = null
-
-        // Try to inject json
         try {
-            // Inject raw json file in BufferedReader thanks to InputStreamReader
-            bufferReader = BufferedReader(InputStreamReader(context.resources.openRawResource(path!!)))
+            // Get file from ressources
+            val jsonFile = context.resources.openRawResource(path!!)
 
-            // While it can possible to readLine
-            while (true) {
-                val temp = bufferReader.readLine() ?: break
-                // Inject in string builder
-                stringBuilder.append(temp)
-            }
+            // Returns an estimate of the number of bytes that can be read from this input stream
+            val size = jsonFile.available()
 
-        // If it's not possible print the error
-        } catch (e: IOException) {
-            e.printStackTrace()
+            // Creates a new array of the specified size, with all elements initialized to zero.
+            val buffer = ByteArray(size)
 
-        // If it's done
-        } finally {
+            // Read
+            jsonFile.read(buffer)
 
-            // Check if bufferReader isn't null then close it
-            try {
-                if (bufferReader != null) {
-                    bufferReader.close()
-                }
-            // else catch error
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
+            // Then close
+            jsonFile.close()
 
+            // Finally String the buffer
+            json = String(buffer)
+
+            // Catch error
+        } catch (ex: IOException) {
+            ex.printStackTrace()
+            return null
         }
 
-        // Return stringBuilder to string
-        return stringBuilder.toString()
+        // Return json in String type
+        return json
     }
 
+    
 
     /**
      * Methods
