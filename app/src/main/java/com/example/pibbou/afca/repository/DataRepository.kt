@@ -144,7 +144,7 @@ class DataRepository constructor(contextArg: Context) {
 
     // Function to save places into each events
     private fun findPlaceById(id:Int): Place? {
-        val result = places.filter { it.id == id }
+        val result = places.filter { it.id == id + 1 }
 
         if (result.isNotEmpty()) {
             return result.first()
@@ -169,6 +169,19 @@ class DataRepository constructor(contextArg: Context) {
 
         if (events.isNotEmpty()) {
             return events
+        }
+
+        return null
+    }
+
+
+    // Return events by day
+    fun getEventsByDay(day:Int): ArrayList<Event>? {
+
+        val result = events.filter { it.day == day + 1 }
+
+        if (result.isNotEmpty()) {
+            return ArrayList(result)
         }
 
         return null

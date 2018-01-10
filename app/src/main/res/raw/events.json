@@ -5,6 +5,7 @@
     "excerpt": "Petite enfance 3 ans",
     "placeId": 2,
     "categoryId": 3,
+    "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
   },
@@ -14,6 +15,7 @@
     "excerpt": "Et projections (boucle de 20min) ou démos en continu",
     "placeId": 5,
     "categoryId": 4,
+    "day": 2,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
   },
@@ -23,6 +25,7 @@
     "excerpt": "",
     "placeId": 3,
     "categoryId": 3,
+    "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
   },
@@ -32,6 +35,7 @@
     "excerpt": "",
     "placeId": 1,
     "categoryId": 3,
+    "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
   },
@@ -41,6 +45,7 @@
     "excerpt": "",
     "placeId": 3,
     "categoryId": 5,
+    "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
   },
@@ -50,6 +55,7 @@
     "excerpt": "",
     "placeId": 1,
     "categoryId": 5,
+    "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
   },
@@ -59,6 +65,7 @@
     "excerpt": "Et projections (boucle de 20min) ou démos en continu",
     "placeId": 5,
     "categoryId": 4,
+    "day": 2,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
   },
@@ -68,6 +75,7 @@
     "excerpt": "",
     "placeId": 3,
     "categoryId": 3,
+    "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
   },
@@ -77,6 +85,7 @@
     "excerpt": "",
     "placeId": 1,
     "categoryId": 3,
+    "day": 2,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
   },
@@ -86,6 +95,7 @@
     "excerpt": "",
     "placeId": 3,
     "categoryId": 5,
+    "day": 2,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
   },
@@ -95,6 +105,7 @@
     "excerpt": "",
     "placeId": 1,
     "categoryId": 5,
+    "day": 3,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00"
   }

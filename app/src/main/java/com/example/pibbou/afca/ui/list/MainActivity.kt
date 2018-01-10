@@ -19,12 +19,8 @@ import android.widget.AdapterView.OnItemSelectedListener
 
 class MainActivity : AppCompatActivity() {
 
-    // Prepare categories used by events
-    private var activeCategories: ArrayList<Category>?  = ArrayList()
-    // Prepare categories used by events
-    private var filteredCategories: List<Category>? = ArrayList()
     // Prepare eventsByDay array
-    private var eventsByDay: ArrayList<Event>? = ArrayList()
+    private var events: ArrayList<Event>? = ArrayList()
 
     private var recycler_view_category_list: RecyclerView? = null
     private var categoriesAdapter: CategoryListAdapter? = null
@@ -41,7 +37,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupEventsList() {
         // TODO: REMOVE THIS METHOD IN SETUPEVENTSLIST
-        setupEventDatas()
 
         // Get recyclerview View
         recycler_view_category_list = findViewById<View>(R.id.recycler_view_category_list) as RecyclerView
@@ -50,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         recycler_view_category_list!!.setHasFixedSize(true)
 
         // Prepare adapter
-        categoriesAdapter = CategoryListAdapter(this, eventsByDay, filteredCategories)
+        categoriesAdapter = CategoryListAdapter(this, events)
 
         recycler_view_category_list!!.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
@@ -58,27 +53,22 @@ class MainActivity : AppCompatActivity() {
         recycler_view_category_list!!.adapter = categoriesAdapter
     }
 
-    private fun setupEventDatas() {
+
+    private fun setupEventDatas(day: Int) {
 
         // TODO: https://stackoverflow.com/questions/31367599/how-to-update-recyclerview-adapter-data - UPDATE ADAPTER
 
-        activeCategories!!.clear()
+        events!!.clear()
 
         // Get datarepo
         val dataRepository = App.sInstance!!.getDataRepository()
         // Thanks to datarepo get all events
-        eventsByDay = dataRepository!!.getEvents()
+        val eventsByDay = dataRepository!!.getEventsByDay(day)
 
-        // For each event get category and push it to an array
         for(event in eventsByDay!!){
-            val category = event.category!!
-            activeCategories!!.add(category)
+            events!!.add(event)
         }
-
-        // Remove duplicate categories
-        filteredCategories = activeCategories!!.distinct()
-
-        //categoriesAdapter!!.notifyDataSetChanged()
+        categoriesAdapter!!.notifyDataSetChanged()
     }
 
 
@@ -102,11 +92,9 @@ class MainActivity : AppCompatActivity() {
                 if (item != null) {
                     Toast.makeText(this@MainActivity, item.toString(),
                             Toast.LENGTH_SHORT).show()
-                    setupEventDatas()
+                    // Setup DATAS
+                    setupEventDatas(position)
                 }
-                /*Toast.makeText(this@MainActivity, "Selected",
-                        Toast.LENGTH_SHORT).show()
-*/
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>) {
@@ -115,22 +103,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        /*spinner.onItemSelectedListener
-
-        spinner.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(adapterView: AdapterView<*>, view: View, position: Int, l: Long) {
-                if (position == 0) {
-                    //                    sortByName();
-                } else {
-                    //                    sortByPrice();
-                }
-                laptopsAdapter.notifyDataSetChanged()
-            }
-
-            override fun onNothingSelected(adapterView: AdapterView<*>) {
-
-            }
-        })*/
     }
 
 }

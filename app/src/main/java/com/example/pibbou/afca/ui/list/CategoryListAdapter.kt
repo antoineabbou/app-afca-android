@@ -17,20 +17,24 @@ import java.util.ArrayList
  * Created by arnaudpinot on 07/01/2018.
  */
 
-class CategoryListAdapter(private val mContext: Context, private val eventList: ArrayList<Event>?, private val categoryList: List<Category>?) : RecyclerView.Adapter<CategoryListAdapter.ItemRowHolder>() {
+class CategoryListAdapter(private val mContext: Context, private val eventList: ArrayList<Event>?) : RecyclerView.Adapter<CategoryListAdapter.ItemRowHolder>() {
+
+    // Prepare categories used by events
+    private var activeCategories: ArrayList<Category>?  = ArrayList()
+    // Prepare categories used by events
+    private var filteredCategories: List<Category>? = ArrayList()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ItemRowHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_category, null)
         return ItemRowHolder(v)
     }
 
-
     override fun onBindViewHolder(itemRowHolder: ItemRowHolder, i: Int) {
 
         // Get section name (category name)
-        val sectionName = categoryList!![i].name
+        val sectionName = filteredCategories!![i].name
         // Get category ID to compare later
-        val categoryId = categoryList[i].id
+        val categoryId = filteredCategories!![i].id
         // Prepare array to store events by category
         val eventsByCategory : ArrayList<Event> = ArrayList()
 
@@ -61,7 +65,18 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
 
     // Get Item Count - need because of Interface
     override fun getItemCount(): Int {
-        return categoryList?.size ?: 0
+        activeCategories!!.clear()
+
+        // For each event get category and push it to an array
+        for(event in eventList!!){
+            val category = event.category!!
+            activeCategories!!.add(category)
+        }
+
+        // Remove duplicate categories
+        filteredCategories = activeCategories!!.distinct()
+
+        return filteredCategories?.size ?: 0
     }
 
 
