@@ -20,5 +20,7 @@ class DetailActivity : AppCompatActivity() {
 
         val title: TextView = findViewById(R.id.eventTitle)
         val excerpt : TextView = findViewById(R.id.eventExcerpt)
+
+
     }
 }
