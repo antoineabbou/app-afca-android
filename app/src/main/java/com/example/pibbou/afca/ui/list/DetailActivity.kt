@@ -4,7 +4,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
+import com.example.pibbou.afca.repository.DataRepository
+import com.example.pibbou.afca.repository.entity.Category
+import com.example.pibbou.afca.repository.entity.Place
 
 /**
  * Created by antoineabbou on 08/01/2018.
@@ -18,8 +22,15 @@ class DetailActivity : AppCompatActivity() {
         val intent = intent
         val id = intent.getIntExtra("id", 0)
 
-        val title: TextView = findViewById(R.id.eventTitle)
-        val excerpt : TextView = findViewById(R.id.eventExcerpt)
+        val dataRepository = App.sInstance!!.getDataRepository()
+        // Thanks to datarepo get all events
+        val place = dataRepository!!.findPlaceById(id)
+
+        val placeName = place?.name
+
+        val placeText: TextView = findViewById(R.id.eventTitle)
+
+        placeText.setText(placeName);
 
 
     }
