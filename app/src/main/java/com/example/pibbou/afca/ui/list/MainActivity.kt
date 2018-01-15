@@ -1,10 +1,14 @@
 package com.example.pibbou.afca.ui.list
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.TabLayout
+import android.support.v4.view.ViewPager
 import com.example.pibbou.afca.R
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.Toolbar
 import android.view.View
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.repository.entity.Category
@@ -13,8 +17,7 @@ import android.R.array
 import android.widget.*
 import com.example.pibbou.afca.repository.entity.Event
 import android.widget.AdapterView.OnItemSelectedListener
-
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,14 +28,22 @@ class MainActivity : AppCompatActivity() {
     private var recycler_view_category_list: RecyclerView? = null
     private var categoriesAdapter: CategoryListAdapter? = null
 
+    internal lateinit var viewpageradapter:ViewPagerAdapter //Declare PagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        viewpageradapter= ViewPagerAdapter(supportFragmentManager)
+
+        this.viewPager.adapter=viewpageradapter  //Binding PagerAdapter with ViewPager
+        this.tab_layout.setupWithViewPager(this.viewPager) //Binding ViewPager with TabLayout
+
         setupEventsList()
         setupDay()
+
     }
+
 
 
     private fun setupEventsList() {
@@ -104,5 +115,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 
 }
