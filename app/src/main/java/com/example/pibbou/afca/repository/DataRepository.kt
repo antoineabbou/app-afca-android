@@ -151,7 +151,7 @@ class DataRepository constructor(contextArg: Context) {
      */
 
     // Function to save places into each events
-    private fun findPlaceById(id:Int): Place? {
+    fun findPlaceById(id:Int): Place? {
         val result = places.filter { it.id == id }
 
         if (result.isNotEmpty()) {
@@ -162,7 +162,7 @@ class DataRepository constructor(contextArg: Context) {
     }
 
     // Function to save category into each events
-    private fun findCategoryById(id:Int): Category? {
+    fun findCategoryById(id:Int): Category? {
         val result = categories.filter { it.id == id }
 
         if (result.isNotEmpty()) {
@@ -177,6 +177,16 @@ class DataRepository constructor(contextArg: Context) {
 
         if (events.isNotEmpty()) {
             return events
+        }
+
+        return null
+    }
+
+    fun findEventById(id:Int): Event? {
+        val result = events.filter { it.id == id }
+
+        if (result.isNotEmpty()) {
+            return result.first()
         }
 
         return null
