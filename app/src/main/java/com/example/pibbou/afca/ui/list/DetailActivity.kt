@@ -17,43 +17,63 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+
+        // get id on click
         val intent = intent
         val id = intent.getIntExtra("id", 0)
 
-        val excerpt : TextView = findViewById(R.id.eventExcerpt)
+        // data repository call
         val dataRepository = App.sInstance!!.getDataRepository()
 
 
         /*****/
 
+        // Find the event, the place and the category in the list
         val event = dataRepository!!.findEventById(id)
+        val place = dataRepository!!.findPlaceById(id)
+        val category = dataRepository!!.findCategoryById(id)
 
+
+        // Loading datas : Title, excerpt, start, end, place and category
+
+
+        // EVENT
+
+        // Title
         val eventTitle: TextView = findViewById(R.id.eventTitle)
         eventTitle.setText(event?.name)
 
+
+        // Excerpt
         val eventExcerpt: TextView = findViewById(R.id.eventExcerpt)
         eventExcerpt.setText(event?.excerpt)
 
 
+        // Start
         val eventStart: TextView = findViewById(R.id.eventStart)
         val dateStart = event!!.startingDate
-        val sdf_start = SimpleDateFormat("MMM MM dd, yyyy h:mm a")
+        val sdf_start = SimpleDateFormat("MMM MM dd, yyyy h:mm a") // Adapting format
         val dateStringStart = sdf_start.format(dateStart)
         eventStart.setText(dateStringStart)
 
 
+        // End
         val eventEnd: TextView = findViewById(R.id.eventEnd)
         val dateEnd = event!!.endingDate
-        val sdf_end = SimpleDateFormat("MMM MM dd, yyyy h:mm a")
+        val sdf_end = SimpleDateFormat("MMM MM dd, yyyy h:mm a") // Adapting format
         val dateStringEnd = sdf_end.format(dateEnd)
         eventEnd.setText(dateStringEnd)
 
-        // Thanks to datarepo get all events
-        val place = dataRepository!!.findPlaceById(id)
+
+        // PLACE
+
+
         val placeText: TextView = findViewById(R.id.placeText)
         placeText.setText(place?.name)
 
-        val category = dataRepository!!.findCategoryById(id)
+
+        // CATEGORY
+
         val categoryText: TextView = findViewById(R.id.categoryTitle)
         categoryText.setText(category?.name)
 
