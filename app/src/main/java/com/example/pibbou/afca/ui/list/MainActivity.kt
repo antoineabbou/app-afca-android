@@ -6,13 +6,10 @@ import com.example.pibbou.afca.R
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.example.pibbou.afca.App
-import com.example.pibbou.afca.repository.entity.Category
-import com.example.pibbou.afca.R.id.spinner
-import android.R.array
 import android.widget.*
 import com.example.pibbou.afca.repository.entity.Event
 import android.widget.AdapterView.OnItemSelectedListener
+import com.example.pibbou.afca.repository.DataStore
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -37,13 +34,12 @@ class MainActivity : AppCompatActivity() {
 
         viewpageradapter= ViewPagerAdapter(supportFragmentManager)
 
-        this.viewPager.adapter=viewpageradapter  //Binding PagerAdapter with ViewPager
+        this.viewPager.adapter = viewpageradapter  //Binding PagerAdapter with ViewPager
         this.tab_layout.setupWithViewPager(this.viewPager) //Binding ViewPager with TabLayout
         setupTabIcons() // Put icons inside tab layout --> Need real ones
 
         setupEventsList()
         setupDay()
-
     }
 
 
@@ -58,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         recycler_view_category_list!!.setHasFixedSize(true)
 
         // Prepare adapter
-        categoriesAdapter = CategoryListAdapter(this, events)
+        categoriesAdapter = CategoryListAdapter(this, DataStore.currentEvents)
 
         recycler_view_category_list!!.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
@@ -67,19 +63,18 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     private fun setupEventDatas(day: Int) {
 
         // TODO: https://stackoverflow.com/questions/31367599/how-to-update-recyclerview-adapter-data - UPDATE ADAPTER
 
-        events!!.clear()
+        DataStore.currentEvents!!.clear()
 
-        // Get datarepo
-        val dataRepository = App.sInstance!!.getDataRepository()
         // Thanks to datarepo get all events
-        val eventsByDay = dataRepository!!.getEventsByDay(day)
+        var eventsByDay = DataStore.repository!!.getEventsByDay(day)
 
         for(event in eventsByDay!!){
-            events!!.add(event)
+            DataStore.currentEvents!!.add(event)
         }
         categoriesAdapter!!.notifyDataSetChanged()
     }
