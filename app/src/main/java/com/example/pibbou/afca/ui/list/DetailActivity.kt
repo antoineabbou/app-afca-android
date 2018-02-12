@@ -2,7 +2,6 @@ package com.example.pibbou.afca.ui.list
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
@@ -71,8 +70,6 @@ class DetailActivity : AppCompatActivity() {
         val placeText: TextView = findViewById(R.id.placeText)
         placeText.setText(place?.name)
 
-
-        // CATEGORY
 
         val categoryText: TextView = findViewById(R.id.categoryTitle)
         categoryText.setText(category?.name)

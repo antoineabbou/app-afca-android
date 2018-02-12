@@ -26,14 +26,14 @@ class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        var title: String? = null
-        if (position == 0) {
-            title = "First"
-        } else if (position == 1) {
-            title = "Second"
-        } else if (position == 2) {
-            title = "Third"
-        }
-        return title
+        // var title: String? = null
+        // if (position == 0) {
+        //    title = "First"
+        //} else if (position == 1) {
+        //    title = "Second"
+        //} else if (position == 2) {
+        //    title = "Third"
+        //}
+        return null
     }
 }
