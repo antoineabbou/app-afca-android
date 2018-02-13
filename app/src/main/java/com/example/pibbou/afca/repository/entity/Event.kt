@@ -16,6 +16,7 @@ class Event {
     internal var categoryId: Int? = null
     internal var category: Category? = null
     internal var day: Int? = null
+    internal var public: Int? = null
     internal var startingDate: Date? = null
     internal var endingDate: Date? = null
 }

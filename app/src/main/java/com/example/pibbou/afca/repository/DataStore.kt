@@ -1,5 +1,6 @@
 package com.example.pibbou.afca.repository
 
+import android.util.Log
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.list.CategoryListAdapter
@@ -13,6 +14,7 @@ object DataStore {
 
     var events: ArrayList<Event>? = repository!!.getEvents()
     var currentEvents: ArrayList<Event>? = ArrayList()
+    var currentFilters: ArrayList<Int?>? = ArrayList()
 
     var day:Int = 0
 
@@ -33,5 +35,24 @@ object DataStore {
         }
 
         categoriesAdapter!!.notifyDataSetChanged()
+    }
+
+   fun setFilter() {
+
+        val numbers: MutableList<Int> = mutableListOf()
+
+
+        for(event in currentEvents!!){
+            numbers.add(event.public!!)
+        }
+
+        numbers!!.distinct()
+
+       val filters: List<Int> = numbers
+
+        for(event in filters){
+           currentFilters!!.add(event)
+           Log.i("YI", event.toString())
+        }
     }
 }

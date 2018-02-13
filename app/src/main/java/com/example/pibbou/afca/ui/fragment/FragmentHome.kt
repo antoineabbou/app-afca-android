@@ -18,17 +18,23 @@ import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.list.CategoryListAdapter
+import com.example.pibbou.afca.ui.list.FilterListAdapter
 
 
 class FragmentHome : Fragment() {
 
-    /*var tv_name: TextView? = null
-    var rel_main: RelativeLayout? = null*/
     private var view1: View? = null
+
     // Prepare eventsByDay array
     private var events: ArrayList<Event>? = ArrayList()
 
     private var recycler_view_category_list: RecyclerView? = null
+
+    private var recycler_view_filter_list: RecyclerView? = null
+
+    private var filterAdapter: FilterListAdapter? = null
+
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         view1  = inflater!!.inflate(R.layout.fragment_home, container, false)
@@ -40,6 +46,7 @@ class FragmentHome : Fragment() {
 
         setupEventsList()
         setupDay()
+        setupFilterList()
 
         return view1
     }
@@ -63,6 +70,25 @@ class FragmentHome : Fragment() {
     }
 
 
+    private fun setupFilterList() {
+        // TODO: REMOVE THIS METHOD IN SETUPEVENTSLIST
+
+        // Get recyclerview View
+        recycler_view_filter_list = view1!!.findViewById<View>(R.id.recycler_view_filter_list) as RecyclerView
+
+        // Set fixed size
+        recycler_view_filter_list!!.setHasFixedSize(true)
+
+        // Prepare adapter
+        filterAdapter = FilterListAdapter(this.context, DataStore.currentFilters)
+
+        recycler_view_filter_list!!.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        recycler_view_filter_list!!.isNestedScrollingEnabled = false
+        // Set adapter
+        recycler_view_filter_list!!.adapter = filterAdapter
+    }
+
+
     private fun setupDay() {
 
         val adapter = ArrayAdapter.createFromResource(
@@ -83,6 +109,7 @@ class FragmentHome : Fragment() {
                 if (item != null) {
                     DataStore.day = position
                     DataStore.updateEventDatas(position)
+                    DataStore.setFilter()
                 }
             }
 
