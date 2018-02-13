@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         viewpageradapter= ViewPagerAdapter(supportFragmentManager)
 
-        this.viewPager.adapter=viewpageradapter  //Binding PagerAdapter with ViewPager
+        this.viewPager.adapter = viewpageradapter  //Binding PagerAdapter with ViewPager
         this.tab_layout.setupWithViewPager(this.viewPager) //Binding ViewPager with TabLayout
         setupTabIcons() // Put icons inside tab layout --> Need real ones
     }
@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         tab_layout.getTabAt(0)?.setIcon(tabIcons[0])
         tab_layout.getTabAt(1)?.setIcon(tabIcons[1])
         tab_layout.getTabAt(2)?.setIcon(tabIcons[2])
-
     }
 
 
