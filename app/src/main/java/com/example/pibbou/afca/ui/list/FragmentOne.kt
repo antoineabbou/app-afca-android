@@ -14,11 +14,9 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
-import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
+import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.entity.Event
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class FragmentOne : Fragment() {
@@ -57,7 +55,7 @@ class FragmentOne : Fragment() {
         recycler_view_category_list!!.setHasFixedSize(true)
 
         // Prepare adapter
-        categoriesAdapter = CategoryListAdapter(this.context, events)
+        categoriesAdapter = CategoryListAdapter(this.context, DataStore.currentEvents)
 
         recycler_view_category_list!!.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
@@ -66,22 +64,22 @@ class FragmentOne : Fragment() {
     }
 
 
+
     private fun setupEventDatas(day: Int) {
 
         // TODO: https://stackoverflow.com/questions/31367599/how-to-update-recyclerview-adapter-data - UPDATE ADAPTER
 
-        events!!.clear()
+        DataStore.currentEvents!!.clear()
 
-        // Get datarepo
-        val dataRepository = App.sInstance!!.getDataRepository()
         // Thanks to datarepo get all events
-        val eventsByDay = dataRepository!!.getEventsByDay(day)
+        var eventsByDay = DataStore.repository!!.getEventsByDay(day)
 
         for(event in eventsByDay!!){
-            events!!.add(event)
+            DataStore.currentEvents!!.add(event)
         }
         categoriesAdapter!!.notifyDataSetChanged()
     }
+
 
 
     private fun setupDay() {
