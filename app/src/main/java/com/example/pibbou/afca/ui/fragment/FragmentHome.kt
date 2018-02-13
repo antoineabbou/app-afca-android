@@ -1,4 +1,4 @@
-package com.example.pibbou.afca.ui.list
+package com.example.pibbou.afca.ui.fragment
 
 /**
  * Created by antoineabbou on 11/01/2018.
@@ -17,9 +17,10 @@ import android.widget.Spinner
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.entity.Event
+import com.example.pibbou.afca.ui.list.CategoryListAdapter
 
 
-class FragmentOne : Fragment() {
+class FragmentHome : Fragment() {
 
     /*var tv_name: TextView? = null
     var rel_main: RelativeLayout? = null*/
@@ -31,7 +32,7 @@ class FragmentOne : Fragment() {
     private var categoriesAdapter: CategoryListAdapter? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        view1  = inflater!!.inflate(R.layout.fragment_one, container, false)
+        view1  = inflater!!.inflate(R.layout.fragment_home, container, false)
 
         /*rel_main=view?.findViewById<RelativeLayout>(R.id.rel_main) as RelativeLayout
         rel_main?.setBackgroundColor(Color.CYAN)

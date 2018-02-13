@@ -1,4 +1,4 @@
-package com.example.pibbou.afca.ui.list
+package com.example.pibbou.afca.ui.fragment
 
 /**
  * Created by antoineabbou on 11/01/2018.
@@ -12,11 +12,11 @@ class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment? {
         var fragment: Fragment? = null
         if (position == 0) {
-            fragment = FragmentOne()
+            fragment = FragmentHome()
         } else if (position == 1) {
-            fragment = FragmentTwo()
+            fragment = FragmentInformation()
         } else if (position == 2) {
-            fragment = FragmentThree()
+            fragment = FragmentProfile()
         }
         return fragment
     }

@@ -1,14 +1,15 @@
-package com.example.pibbou.afca.ui.list
+package com.example.pibbou.afca.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.pibbou.afca.R
+import com.example.pibbou.afca.ui.fragment.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    internal lateinit var viewpageradapter:ViewPagerAdapter //Declare PagerAdapter
+    internal lateinit var viewpageradapter: ViewPagerAdapter //Declare PagerAdapter
     private val tabIcons = Array(3) {
         R.drawable.home
         R.drawable.home

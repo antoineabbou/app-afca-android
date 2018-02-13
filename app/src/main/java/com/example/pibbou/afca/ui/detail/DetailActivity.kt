@@ -1,4 +1,4 @@
-package com.example.pibbou.afca.ui.list
+package com.example.pibbou.afca.ui.detail
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

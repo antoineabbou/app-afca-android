@@ -8,10 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.entity.Event
-import kotlinx.android.synthetic.main.list_category.*
+import com.example.pibbou.afca.ui.detail.DetailActivity
 import java.util.ArrayList
 
 
