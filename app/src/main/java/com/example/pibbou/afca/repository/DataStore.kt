@@ -59,8 +59,6 @@ object DataStore {
             numbers!!.add(event.public!!)
         }
 
-       numbers!!.add(0) // set All filter
-
        numbersFiltered = numbers!!.distinct()
 
 
