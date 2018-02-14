@@ -19,7 +19,7 @@ import java.util.ArrayList
 class FilterListAdapter(
 
         private val mContext: Context,
-        private val filterList: ArrayList<Int?>?
+        private val filterList: List<Int?>?
 
 ) : RecyclerView.Adapter<FilterListAdapter.FilterItemRowHolder>() {
 

@@ -32,8 +32,6 @@ class FragmentHome : Fragment() {
 
     private var recycler_view_filter_list: RecyclerView? = null
 
-    private var filterAdapter: FilterListAdapter? = null
-
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -80,12 +78,12 @@ class FragmentHome : Fragment() {
         recycler_view_filter_list!!.setHasFixedSize(true)
 
         // Prepare adapter
-        filterAdapter = FilterListAdapter(this.context, DataStore.currentFilters)
+        DataStore.filterAdapter = FilterListAdapter(this.context, DataStore.currentFilters)
 
         recycler_view_filter_list!!.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         recycler_view_filter_list!!.isNestedScrollingEnabled = false
         // Set adapter
-        recycler_view_filter_list!!.adapter = filterAdapter
+        recycler_view_filter_list!!.adapter = DataStore.filterAdapter
     }
 
 
