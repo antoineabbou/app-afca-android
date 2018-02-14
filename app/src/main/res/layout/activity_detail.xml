@@ -67,4 +67,16 @@
         android:text="En savoir plus"
         app:layout_constraintTop_toBottomOf="@+id/categoryTitle"
         tools:layout_editor_absoluteX="16dp" />
+
+
+    <Button
+        android:id="@+id/buttonFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Ajouter aux favoris"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:layout_editor_absoluteX="16dp" />
+
+
 </android.support.constraint.ConstraintLayout>

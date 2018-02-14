@@ -6,18 +6,30 @@ import android.widget.TextView
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
 import java.text.SimpleDateFormat
+import android.view.View
+import android.widget.Button
+import android.graphics.Color
+import com.github.johnpersano.supertoasts.library.Style
+import com.github.johnpersano.supertoasts.library.SuperActivityToast
+import com.github.johnpersano.supertoasts.library.utils.PaletteUtils
+import com.example.pibbou.afca.repository.FavoriteManager
 
 /**
  * Created by antoineabbou on 08/01/2018.
  */
 class DetailActivity : AppCompatActivity() {
 
+    val favoriteManager = FavoriteManager()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        setDatas()
 
-        // get id on click
+    }
+
+    fun setDatas() {
         val intent = intent
         val id = intent.getIntExtra("id", 0)
 
@@ -74,5 +86,29 @@ class DetailActivity : AppCompatActivity() {
         val categoryText: TextView = findViewById(R.id.categoryTitle)
         categoryText.setText(category?.name)
 
+
+        val button = findViewById<Button>(R.id.buttonFav)
+        button.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View) {
+                SuperActivityToast.create(this@DetailActivity, Style.TYPE_BUTTON)
+                    // .setButtonText("MASQUER")
+                    .setProgressBarColor(Color.WHITE)
+                    .setText("Evenement ajouté aux favoris")
+                    .setDuration(Style.DURATION_VERY_SHORT)
+                    .setFrame(Style.FRAME_LOLLIPOP)
+                    .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_PURPLE))
+                    // .setOnButtonClickListener("good_tag_name", null, onButtonClickListener)
+                    .setAnimations(Style.ANIMATIONS_POP).show()
+
+
+                // addToFavorite()
+
+                favoriteManager.addFavorite(applicationContext, event)
+
+                //favoriteManager.getFavorites(applicationContext)
+            }
+
+
+        })
     }
 }
