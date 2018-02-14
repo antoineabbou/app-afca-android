@@ -106,7 +106,7 @@ class FragmentHome : Fragment() {
                 val item = adapterView.getItemAtPosition(position)
                 if (item != null) {
                     DataStore.day = position
-                    DataStore.updateEventDatas(position)
+                    DataStore.updateEventDatas(position, 0)
                     DataStore.setFilter()
                 }
             }

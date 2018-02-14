@@ -8,7 +8,7 @@
     "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
-    "public": 2
+    "public": 3
   },
   {
     "id": 2,
@@ -19,7 +19,7 @@
     "day": 2,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
-    "public": 1
+    "public": 2
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
-    "public": 2
+    "public": 3
   },
   {
     "id": 4,
@@ -41,7 +41,7 @@
     "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
-    "public": 0
+    "public": 3
   },
   {
     "id": 5,
@@ -52,7 +52,7 @@
     "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
-    "public": 0
+    "public": 3
   },
   {
     "id": 6,
@@ -63,7 +63,7 @@
     "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
-    "public": 0
+    "public": 3
   },
   {
     "id": 7,
@@ -74,7 +74,7 @@
     "day": 2,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
-    "public": 1
+    "public": 2
   },
   {
     "id": 8,
@@ -85,7 +85,7 @@
     "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
-    "public": 0
+    "public": 3
   },
   {
     "id": 9,
@@ -96,7 +96,7 @@
     "day": 2,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
-    "public": 1
+    "public": 2
   },
   {
     "id": 10,
@@ -107,7 +107,7 @@
     "day": 2,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
-    "public": 0
+    "public": 3
   },
   {
     "id": 11,
@@ -118,6 +118,6 @@
     "day": 3,
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
-    "public": 2
+    "public": 3
   }
 ]

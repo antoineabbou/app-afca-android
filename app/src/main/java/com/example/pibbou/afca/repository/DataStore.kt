@@ -22,17 +22,25 @@ object DataStore {
     var categoriesAdapter: CategoryListAdapter? = null
     var filterAdapter: FilterListAdapter? = null
 
-    fun updateEventDatas(day: Int) {
+    fun updateEventDatas(day: Int, public: Int) {
 
         // TODO: https://stackoverflow.com/questions/31367599/how-to-update-recyclerview-adapter-data - UPDATE ADAPTER
 
         currentEvents!!.clear()
 
         // Thanks to datarepo get all events
-        val eventsByDay = repository!!.getEventsByDay(day)
+        val eventsByDay = repository!!.getEventsByDay(day)!!.toList()
+        var test : List<Event>
 
-        for(event in eventsByDay!!){
+        if (public != 0) {
+            test = eventsByDay!!.filter { it.public == public }
+        } else {
+            test = eventsByDay
+        }
+
+        for(event in test!!){
             currentEvents!!.add(event)
+            Log.i("JOSMAN", event.name)
         }
 
         categoriesAdapter!!.notifyDataSetChanged()
@@ -41,6 +49,8 @@ object DataStore {
 
    fun setFilter() {
 
+       currentFilters!!.clear()
+
         var numbers: MutableList<Int> = mutableListOf<Int>()
         var numbersFiltered: List<Int>
 
@@ -48,6 +58,8 @@ object DataStore {
         for(event in currentEvents!!){
             numbers!!.add(event.public!!)
         }
+
+       numbers!!.add(0) // set All filter
 
        numbersFiltered = numbers!!.distinct()
 
