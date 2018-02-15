@@ -18,18 +18,21 @@ import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.list.CategoryListAdapter
+import com.example.pibbou.afca.ui.list.FilterListAdapter
 
 
 class FragmentHome : Fragment() {
 
-    /*var tv_name: TextView? = null
-    var rel_main: RelativeLayout? = null*/
     private var view1: View? = null
+
     // Prepare eventsByDay array
     private var events: ArrayList<Event>? = ArrayList()
 
     private var recycler_view_category_list: RecyclerView? = null
-    private var categoriesAdapter: CategoryListAdapter? = null
+
+    private var recycler_view_filter_list: RecyclerView? = null
+
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         view1  = inflater!!.inflate(R.layout.fragment_home, container, false)
@@ -39,9 +42,9 @@ class FragmentHome : Fragment() {
         tv_name = view?.findViewById<TextView>(R.id.tv_name) as TextView
         tv_name?.text = "Hello"*/
 
-
         setupEventsList()
         setupDay()
+        setupFilterList()
 
         return view1
     }
@@ -56,31 +59,32 @@ class FragmentHome : Fragment() {
         recycler_view_category_list!!.setHasFixedSize(true)
 
         // Prepare adapter
-        categoriesAdapter = CategoryListAdapter(this.context, DataStore.currentEvents)
+        DataStore.categoriesAdapter = CategoryListAdapter(this.context, DataStore.currentEvents)
 
         recycler_view_category_list!!.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
         // Set adapter
-        recycler_view_category_list!!.adapter = categoriesAdapter
+        recycler_view_category_list!!.adapter = DataStore.categoriesAdapter
     }
 
 
+    private fun setupFilterList() {
+        // TODO: REMOVE THIS METHOD IN SETUPEVENTSLIST
 
-    private fun setupEventDatas(day: Int) {
+        // Get recyclerview View
+        recycler_view_filter_list = view1!!.findViewById<View>(R.id.recycler_view_filter_list) as RecyclerView
 
-        // TODO: https://stackoverflow.com/questions/31367599/how-to-update-recyclerview-adapter-data - UPDATE ADAPTER
+        // Set fixed size
+        recycler_view_filter_list!!.setHasFixedSize(true)
 
-        DataStore.currentEvents!!.clear()
+        // Prepare adapter
+        DataStore.filterAdapter = FilterListAdapter(this.context, DataStore.currentFilters)
 
-        // Thanks to datarepo get all events
-        var eventsByDay = DataStore.repository!!.getEventsByDay(day)
-
-        for(event in eventsByDay!!){
-            DataStore.currentEvents!!.add(event)
-        }
-        categoriesAdapter!!.notifyDataSetChanged()
+        recycler_view_filter_list!!.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        recycler_view_filter_list!!.isNestedScrollingEnabled = false
+        // Set adapter
+        recycler_view_filter_list!!.adapter = DataStore.filterAdapter
     }
-
 
 
     private fun setupDay() {
@@ -101,10 +105,9 @@ class FragmentHome : Fragment() {
 
                 val item = adapterView.getItemAtPosition(position)
                 if (item != null) {
-                    /*Toast.makeText(this@MainActivity, item.toString(),
-                            Toast.LENGTH_SHORT).show()*/
-                    // Setup DATAS
-                    setupEventDatas(position)
+                    DataStore.day = position
+                    DataStore.updateEventDatas(position, 0)
+                    DataStore.setFilter()
                 }
             }
 
