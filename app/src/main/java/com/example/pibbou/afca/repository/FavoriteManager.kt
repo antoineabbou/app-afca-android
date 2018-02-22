@@ -53,9 +53,24 @@ class FavoriteManager {
     fun removeFavorite(context: Context, event: Event) {
         var favorites: MutableList<Event>? = getFavorites(context)
         if (favorites != null) {
-            favorites.remove(event)
-            saveFavorites(context, favorites)
+
+            var selectedFavorite = favorites.filter {
+                it.id === event.id
+            }
+
+            var isInList = selectedFavorite.count() > 0
+
+            /*var isInList = favorites.filter {
+                it.id === event.id
+            }.count() > 0
+*/
+            if(isInList == true) {
+                favorites.remove(selectedFavorite.first())
+                saveFavorites(context, favorites)
+            }
         }
+
+
     }
 
     fun getFavorites(context: Context): ArrayList<Event>? {
