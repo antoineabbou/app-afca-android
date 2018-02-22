@@ -51,7 +51,7 @@ class FavoriteManager {
     }
 
     fun removeFavorite(context: Context, event: Event) {
-        val favorites = getFavorites(context)
+        var favorites: MutableList<Event>? = getFavorites(context)
         if (favorites != null) {
             favorites.remove(event)
             saveFavorites(context, favorites)
