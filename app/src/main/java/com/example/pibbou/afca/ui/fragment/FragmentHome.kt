@@ -23,24 +23,19 @@ import com.example.pibbou.afca.ui.list.FilterListAdapter
 
 class FragmentHome : Fragment() {
 
-    private var view1: View? = null
+    private lateinit var view1: View
 
     // Prepare eventsByDay array
     private var events: ArrayList<Event>? = ArrayList()
 
-    private var recycler_view_category_list: RecyclerView? = null
+    private lateinit var recycler_view_category_list: RecyclerView
 
-    private var recycler_view_filter_list: RecyclerView? = null
+    private lateinit var recycler_view_filter_list: RecyclerView
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         view1  = inflater!!.inflate(R.layout.fragment_home, container, false)
-
-        /*rel_main=view?.findViewById<RelativeLayout>(R.id.rel_main) as RelativeLayout
-        rel_main?.setBackgroundColor(Color.CYAN)
-        tv_name = view?.findViewById<TextView>(R.id.tv_name) as TextView
-        tv_name?.text = "Hello"*/
 
         setupEventsList()
         setupDay()
@@ -50,40 +45,38 @@ class FragmentHome : Fragment() {
     }
 
     private fun setupEventsList() {
-        // TODO: REMOVE THIS METHOD IN SETUPEVENTSLIST
 
         // Get recyclerview View
-        recycler_view_category_list = view1!!.findViewById<View>(R.id.recycler_view_category_list) as RecyclerView
+        recycler_view_category_list = view1.findViewById<View>(R.id.recycler_view_category_list) as RecyclerView
 
         // Set fixed size
-        recycler_view_category_list!!.setHasFixedSize(true)
+        recycler_view_category_list.setHasFixedSize(true)
 
         // Prepare adapter
         DataStore.categoriesAdapter = CategoryListAdapter(this.context, DataStore.currentEvents)
 
-        recycler_view_category_list!!.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        recycler_view_category_list.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
         // Set adapter
-        recycler_view_category_list!!.adapter = DataStore.categoriesAdapter
+        recycler_view_category_list.adapter = DataStore.categoriesAdapter
     }
 
 
     private fun setupFilterList() {
-        // TODO: REMOVE THIS METHOD IN SETUPEVENTSLIST
 
         // Get recyclerview View
-        recycler_view_filter_list = view1!!.findViewById<View>(R.id.recycler_view_filter_list) as RecyclerView
+        recycler_view_filter_list = view1.findViewById<View>(R.id.recycler_view_filter_list) as RecyclerView
 
         // Set fixed size
-        recycler_view_filter_list!!.setHasFixedSize(true)
+        recycler_view_filter_list.setHasFixedSize(true)
 
         // Prepare adapter
         DataStore.filterAdapter = FilterListAdapter(this.context, DataStore.currentFilters)
 
-        recycler_view_filter_list!!.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
-        recycler_view_filter_list!!.isNestedScrollingEnabled = false
+        recycler_view_filter_list.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        recycler_view_filter_list.isNestedScrollingEnabled = false
         // Set adapter
-        recycler_view_filter_list!!.adapter = DataStore.filterAdapter
+        recycler_view_filter_list.adapter = DataStore.filterAdapter
     }
 
 
@@ -95,7 +88,7 @@ class FragmentHome : Fragment() {
                 android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        val spinner = view1!!.findViewById<View>(R.id.spinner) as Spinner
+        val spinner = view1.findViewById<View>(R.id.spinner) as Spinner
 
         spinner.adapter = adapter
 

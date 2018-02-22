@@ -21,8 +21,7 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
 
     // Prepare categories used by events
     private var activeCategories: ArrayList<Category>?  = ArrayList()
-    // Prepare categories used by events
-    private var filteredCategories: List<Category>? = ArrayList()
+    private lateinit var filteredCategories: List<Category>
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ItemRowHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_category, null)
@@ -32,9 +31,9 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
     override fun onBindViewHolder(itemRowHolder: ItemRowHolder, i: Int) {
 
         // Get section name (category name)
-        val sectionName = filteredCategories!![i].name
+        val sectionName = filteredCategories[i].name
         // Get category ID to compare later
-        val categoryId = filteredCategories!![i].id
+        val categoryId = filteredCategories[i].id
         // Prepare array to store events by category
         val eventsByCategory : ArrayList<Event> = ArrayList()
 
@@ -65,18 +64,18 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
 
     // Get Item Count - need because of Interface
     override fun getItemCount(): Int {
-        activeCategories!!.clear()
+        activeCategories?.clear()
 
         // For each event get category and push it to an array
         for(event in eventList!!){
             val category = event.category!!
-            activeCategories!!.add(category)
+            activeCategories?.add(category)
         }
 
         // Remove duplicate categories
         filteredCategories = activeCategories!!.distinct()
 
-        return filteredCategories?.size ?: 0
+        return filteredCategories.size
     }
 
 

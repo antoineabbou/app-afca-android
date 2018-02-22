@@ -28,7 +28,6 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
         mOnClickListener = View.OnClickListener { v ->
             val item = v.tag as Event
-            // Toast.makeText(mContext, item.name, Toast.LENGTH_SHORT).show()
 
             val I = Intent(mContext, DetailActivity::class.java)
                     .putExtra("id", item.id)
@@ -44,9 +43,9 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
     override fun onBindViewHolder(holder: SingleItemRowHolder, i: Int) {
         // Get singleEvent
-        val singleEvent = eventList!!.get(i)
+        val singleEvent = eventList?.get(i)
         // Set text to card title
-        holder.eventCardTitle.setText(singleEvent.name)
+        holder.eventCardTitle.setText(singleEvent?.name)
 
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt

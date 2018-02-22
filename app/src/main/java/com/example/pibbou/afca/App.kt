@@ -43,7 +43,7 @@ class App : Application() {
 
 
     companion object {
-        var sInstance: App? = null
+        lateinit var sInstance: App
     }
 
 

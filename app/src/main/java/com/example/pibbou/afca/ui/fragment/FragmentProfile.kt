@@ -17,11 +17,11 @@ import com.example.pibbou.afca.ui.list.FavoriteListAdapter
 
 class FragmentProfile : Fragment() {
 
-    private var view1: View? = null
+    private lateinit var view1: View
 
     // Prepare eventsByDay array
-    private var recycler_view_favorite_list: RecyclerView? = null
-    private var favoriteAdapter: FavoriteListAdapter? = null
+    private lateinit var recycler_view_favorite_list: RecyclerView
+    private lateinit var favoriteAdapter: FavoriteListAdapter
     private val favoriteManager = FavoriteManager()
 
 
@@ -34,21 +34,20 @@ class FragmentProfile : Fragment() {
         return view1
     }
 
+
     private fun setupFavoriteList() {
         // Get recyclerview View
-        recycler_view_favorite_list = view1!!.findViewById<View>(R.id.recycler_view_favorite_list) as RecyclerView
+        recycler_view_favorite_list = view1.findViewById<View>(R.id.recycler_view_favorite_list) as RecyclerView
 
         // Set fixed size
-        recycler_view_favorite_list!!.setHasFixedSize(true)
-
-        //var test = favoriteManager
+        recycler_view_favorite_list.setHasFixedSize(true)
 
         // Prepare adapter
-        favoriteAdapter = FavoriteListAdapter(favoriteManager?.getFavorites(context))
+        favoriteAdapter = FavoriteListAdapter(favoriteManager.getFavorites(context))
 
-        recycler_view_favorite_list!!.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        recycler_view_favorite_list.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
         // Set adapter
-        recycler_view_favorite_list!!.adapter = favoriteAdapter
+        recycler_view_favorite_list.adapter = favoriteAdapter
     }
 }
