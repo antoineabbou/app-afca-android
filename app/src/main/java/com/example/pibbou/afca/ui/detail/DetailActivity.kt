@@ -35,7 +35,6 @@ class DetailActivity : AppCompatActivity() {
 
     init {
         onCheckedChanged = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-
             val event = buttonView.tag as Event
             showToast(event)
         }

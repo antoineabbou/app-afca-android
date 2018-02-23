@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ToggleButton
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.detail.DetailActivity
@@ -68,6 +69,7 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
         var eventCardTitle: TextView
         var eventCardImage: ImageView
+        var eventCardFavorite: ToggleButton
 
         init {
             // Get card title view
@@ -77,6 +79,8 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
             Picasso.with(mContext)
                 .load("http://www.festival-film-animation.fr/images/photo1_La_Grande_histoire_dun_petit_trait.jpeg")
                 .into(eventCardImage)
+
+            this.eventCardFavorite = view.findViewById(R.id.button_favorite)
         }
     }
 }
