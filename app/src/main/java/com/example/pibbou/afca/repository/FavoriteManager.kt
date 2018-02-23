@@ -33,23 +33,17 @@ class FavoriteManager {
 
     fun addFavorite(context: Context, event: Event) {
         var favorites: MutableList<Event>? = getFavorites(context)
-        var isInList: Boolean = false
 
         if (favorites == null ) {
             favorites = ArrayList<Event>()
         }
 
-        for (item in favorites) {
-            if (item.id == event.id) {
-                Log.i("Info", "Il y a deja ça dans la liste")
-                isInList = true
-            } else {
-                Log.i("Info:", "C'est un nouvel élément")
-                isInList = false
-            }
-        }
 
-        if(!isInList) {
+        var isInList = favorites.filter {
+            it.id === event.id
+        }.count() > 0
+
+        if(isInList == false) {
             favorites!!.add(event)
             saveFavorites(context, favorites)
         }
@@ -57,11 +51,26 @@ class FavoriteManager {
     }
 
     fun removeFavorite(context: Context, event: Event) {
-        val favorites = getFavorites(context)
+        var favorites: MutableList<Event>? = getFavorites(context)
         if (favorites != null) {
-            favorites.remove(event)
-            saveFavorites(context, favorites)
+
+            var selectedFavorite = favorites.filter {
+                it.id === event.id
+            }
+
+            var isInList = selectedFavorite.count() > 0
+
+            /*var isInList = favorites.filter {
+                it.id === event.id
+            }.count() > 0
+*/
+            if(isInList == true) {
+                favorites.remove(selectedFavorite.first())
+                saveFavorites(context, favorites)
+            }
         }
+
+
     }
 
     fun getFavorites(context: Context): ArrayList<Event>? {
@@ -87,7 +96,6 @@ class FavoriteManager {
         /*settings.edit().clear().apply()
         settings.edit().commit()*/
 
-        Log.i("INFO", favorites.toString())
         return favorites
     }
 }

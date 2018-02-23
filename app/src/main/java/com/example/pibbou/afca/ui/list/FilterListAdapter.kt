@@ -27,7 +27,7 @@ class FilterListAdapter(private val mContext: Context, private val filterList: L
             val item = buttonView.tag
 
             if (isChecked) {
-                removeIsCheched(item.toString().toInt())
+                removeIsChecked(item.toString().toInt())
                 DataStore.updateEventDatas(DataStore.day, item.toString().toInt())
             } else {
                 DataStore.updateEventDatas(DataStore.day, 0)
@@ -37,7 +37,7 @@ class FilterListAdapter(private val mContext: Context, private val filterList: L
     }
 
 
-    fun removeIsCheched(ignoreInt: Int) {
+    fun removeIsChecked(ignoreInt: Int) {
 
         for (button in buttonsArr) {
 
@@ -45,6 +45,7 @@ class FilterListAdapter(private val mContext: Context, private val filterList: L
                 button.isChecked = false
             }
         }
+
     }
 
 
