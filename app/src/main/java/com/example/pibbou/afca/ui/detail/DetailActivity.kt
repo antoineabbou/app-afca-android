@@ -18,6 +18,8 @@ import android.R.id.edit
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import android.widget.CompoundButton
+import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.entity.Event
 import java.util.ArrayList
 
@@ -28,6 +30,16 @@ import java.util.ArrayList
 class DetailActivity : AppCompatActivity() {
 
     val favoriteManager = FavoriteManager()
+    var isInList: Boolean = false
+    private val onCheckedChanged: CompoundButton.OnCheckedChangeListener
+
+    init {
+        onCheckedChanged = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+
+            val event = buttonView.tag as Event
+            showToast(event)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +50,6 @@ class DetailActivity : AppCompatActivity() {
 
         // data repository call
         val dataRepository = App.sInstance!!.getDataRepository()
-
 
         /*****/
 
@@ -57,10 +68,9 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
+
     fun checkList(context: Context, event: Event) {
         val toggle = findViewById<ToggleButton>(R.id.buttonFav)
-        toggle.setTextOn("Supprimer des favoris")
-        toggle.setTextOff("Ajouter aux favoris")
 
         var favorites: MutableList<Event>? = favoriteManager.getFavorites(context)
 
@@ -69,66 +79,66 @@ class DetailActivity : AppCompatActivity() {
         }
 
 
-        var isInList = favorites.filter {
+        isInList = favorites.filter {
             it.id === event.id
         }.count() > 0
 
-        if(isInList == false) {
-            toggle.setText("Ajouter aux favoris")
-            toggle.setOnClickListener(object : View.OnClickListener {
-                override fun onClick(v: View) {
-                    SuperActivityToast.create(this@DetailActivity, Style.TYPE_BUTTON)
-                            // .setButtonText("MASQUER")
-                            .setProgressBarColor(Color.WHITE)
-                            .setText("Evenement ajouté aux favoris")
-                            .setDuration(Style.DURATION_VERY_SHORT)
-                            .setFrame(Style.FRAME_LOLLIPOP)
-                            .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_BLUE))
-                            // .setOnButtonClickListener("good_tag_name", null, onButtonClickListener)
-                            .setAnimations(Style.ANIMATIONS_POP).show()
+
+        setButton(toggle, event)
+    }
 
 
-                    // addToFavorite()
 
-                    if (event != null) {
-                        favoriteManager.addFavorite(applicationContext, event)
-                    }
+    fun showToast(event: Event) {
 
-                    //favoriteManager.getFavorites(applicationContext)
-                }
+        val toast = SuperActivityToast.create(this@DetailActivity, Style.TYPE_BUTTON)
 
+        if (isInList) {
+            favoriteManager.removeFavorite(applicationContext, event)
+            isInList = false
+            toast.setText("Evenement supprimé des favoris")
+            toast.setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED))
 
-            })
         } else {
-            toggle.setText("Supprimer des favoris")
-            toggle.setOnClickListener(object : View.OnClickListener {
-                override fun onClick(v: View) {
-
-                    SuperActivityToast.create(this@DetailActivity, Style.TYPE_BUTTON)
-                        // .setButtonText("MASQUER")
-                        .setProgressBarColor(Color.WHITE)
-                        .setText("Evenement supprimé des favoris")
-                        .setDuration(Style.DURATION_VERY_SHORT)
-                        .setFrame(Style.FRAME_LOLLIPOP)
-                        .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED))
-                        // .setOnButtonClickListener("good_tag_name", null, onButtonClickListener)
-                        .setAnimations(Style.ANIMATIONS_POP).show()
-
-                    // addToFavorite()
-
-                    if (event != null) {
-                        favoriteManager.removeFavorite(applicationContext, event)
-                    }
-
-
-                    //favoriteManager.getFavorites(applicationContext)
-                }
-
-
-            })
+            favoriteManager.addFavorite(applicationContext, event)
+            isInList = true
+            toast.setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_BLUE))
+            toast.setText("Evenement ajouté favoris")
         }
 
+
+        toast
+            .setProgressBarColor(Color.WHITE)
+            .setDuration(Style.DURATION_VERY_SHORT)
+            .setFrame(Style.FRAME_LOLLIPOP)
+            .setAnimations(Style.ANIMATIONS_POP).show()
     }
+
+
+
+    fun setButton(toggle:ToggleButton, event: Event) {
+
+        if(isInList == false) {
+
+            // Init
+            toggle.setText("Ajouter aux favoris")
+            toggle.isChecked = false
+
+
+        } else {
+
+            // Init
+            toggle.setText("Supprimer des favoris")
+            toggle.isChecked = true
+
+        }
+
+        with (toggle) {
+            tag = event
+            setOnCheckedChangeListener(onCheckedChanged)
+        }
+    }
+
 
     fun setDatas() {
         val intent = intent
