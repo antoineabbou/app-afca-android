@@ -35,5 +35,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     // gson dependency
     compile 'com.google.code.gson:gson:2.8.2'
+    // Toast
     compile 'com.github.johnpersano:supertoasts:2.0'
+    // Picasso
+    compile "com.squareup.picasso:picasso:2.5.2"
+
 }

@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.detail.DetailActivity
+import com.squareup.picasso.Picasso
 import java.util.ArrayList
 
 
@@ -72,6 +73,9 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
             this.eventCardTitle = view.findViewById(R.id.eventCardTitle)
             // Get card Image view
             this.eventCardImage = view.findViewById(R.id.eventCardImage)
+            Picasso.with(mContext)
+                .load("http://www.festival-film-animation.fr/images/photo1_La_Grande_histoire_dun_petit_trait.jpeg")
+                .into(eventCardImage)
         }
     }
 }
