@@ -12,7 +12,6 @@ import com.example.pibbou.afca.ui.list.FilterListAdapter
 object DataStore {
     val repository = App.sInstance.getDataRepository()
 
-    var events: ArrayList<Event>? = repository?.getEvents()
     var currentEvents: ArrayList<Event>? = ArrayList()
     var currentFilters: MutableList<Int> = mutableListOf<Int>()
 
@@ -23,8 +22,6 @@ object DataStore {
 
 
     fun updateEventDatas(day: Int, public: Int) {
-
-        // TODO: https://stackoverflow.com/questions/31367599/how-to-update-recyclerview-adapter-data - UPDATE ADAPTER
 
         currentEvents?.clear()
 

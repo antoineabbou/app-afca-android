@@ -73,6 +73,7 @@ class FilterListAdapter(private val mContext: Context, private val filterList: L
         holder.filterButton.setText(filterTitle)
         holder.filterButton.setTextOff(filterTitle)
         holder.filterButton.setTextOn(filterTitle)
+        holder.filterButton.isChecked = false
 
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
