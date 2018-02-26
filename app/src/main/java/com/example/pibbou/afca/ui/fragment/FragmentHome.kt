@@ -4,24 +4,38 @@ package com.example.pibbou.afca.ui.fragment
  * Created by antoineabbou on 11/01/2018.
  */
 
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
+import android.support.annotation.MainThread
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.*
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.DataStore
+import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.list.CategoryListAdapter
 import com.example.pibbou.afca.ui.list.FilterListAdapter
+import kotlinx.android.synthetic.main.fragment_layout.*
 
 
 class FragmentHome : Fragment() {
+
+
+    // Testing implementation of favorites
+    private var onCheckedChanged: CompoundButton.OnCheckedChangeListener? = null
+
+    init {
+
+    }
+    
+    // End of testing
 
     private var view1: View? = null
 
@@ -31,6 +45,10 @@ class FragmentHome : Fragment() {
     private var recycler_view_category_list: RecyclerView? = null
 
     private var recycler_view_filter_list: RecyclerView? = null
+
+    private var recycler_view_event_list: RecyclerView? = null
+
+    private lateinit var toggle : ToggleButton
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -45,6 +63,7 @@ class FragmentHome : Fragment() {
         setupEventsList()
         setupDay()
         setupFilterList()
+
 
         return view1
     }
@@ -118,4 +137,8 @@ class FragmentHome : Fragment() {
         }
 
     }
+
+    // TODO Implement methods of EventListAdapter here --> Get Favorites, then replace all
+    // TODO Clean favorites --> All reset
+    // TODO Single item --> Clear or add Favorite
 }

@@ -2,16 +2,23 @@ package com.example.pibbou.afca.ui.list
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import com.example.pibbou.afca.R
+import com.example.pibbou.afca.repository.DataStore
+import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.detail.DetailActivity
+import com.github.johnpersano.supertoasts.library.Style
+import com.github.johnpersano.supertoasts.library.SuperActivityToast
+import com.github.johnpersano.supertoasts.library.utils.PaletteUtils
 import com.squareup.picasso.Picasso
 import java.util.ArrayList
 
@@ -25,6 +32,12 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
     private val mOnClickListener: View.OnClickListener
 
+    val favoriteManager = FavoriteManager()
+    var isInList: Boolean = false
+    private val onCheckedChanged: CompoundButton.OnCheckedChangeListener
+    var favorites: MutableList<Event>? = favoriteManager.getFavorites(mContext)
+
+
     init {
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
@@ -36,6 +49,42 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
                     .putExtra("id", item.id)
             mContext.startActivity(I)
         }
+
+        onCheckedChanged = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            val event = buttonView.tag as Event
+            showToast(event)
+        }
+    }
+
+
+    fun showToast(event: Event) {
+
+        if (isInList) {
+            favoriteManager.removeFavorite(mContext, event)
+            isInList = false
+        } else {
+            favoriteManager.addFavorite(mContext, event)
+            isInList = true
+        }
+
+    }
+
+    fun setButton(toggle:ToggleButton, event: Event) {
+
+        if(isInList == false) {
+            // Init
+            toggle.isChecked = false
+        } else {
+            // Init
+            toggle.isChecked = true
+
+        }
+
+        with (toggle) {
+            tag = event
+            setOnCheckedChangeListener(onCheckedChanged)
+        }
+
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): SingleItemRowHolder {
@@ -49,6 +98,17 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         val singleEvent = eventList!!.get(i)
         // Set text to card title
         holder.eventCardTitle.setText(singleEvent.name)
+
+        if (favorites == null ) {
+            favorites = ArrayList<Event>()
+        }
+
+        isInList = favorites!!.filter {
+            it.id === singleEvent.id
+        }.count() > 0
+
+        setButton(holder.eventCardFavorite, singleEvent)
+
 
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
@@ -71,6 +131,7 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         var eventCardImage: ImageView
         var eventCardFavorite: ToggleButton
 
+
         init {
             // Get card title view
             this.eventCardTitle = view.findViewById(R.id.eventCardTitle)
@@ -81,6 +142,7 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
                 .into(eventCardImage)
 
             this.eventCardFavorite = view.findViewById(R.id.button_favorite)
+
         }
     }
 }
