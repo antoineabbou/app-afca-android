@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,6 +68,8 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
             isInList = true
         }
 
+        Log.i("isinlist", isInList.toString())
+
     }
 
     fun setButton(toggle:ToggleButton, event: Event) {
@@ -107,8 +110,6 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
             it.id === singleEvent.id
         }.count() > 0
 
-        setButton(holder.eventCardFavorite, singleEvent)
-
 
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
@@ -116,6 +117,11 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
             tag = singleEvent
             setOnClickListener(mOnClickListener)
         }
+
+        setButton(holder.eventCardFavorite, singleEvent)
+
+        Log.i("info", "setting it")
+
     }
 
 
@@ -131,7 +137,6 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         var eventCardImage: ImageView
         var eventCardFavorite: ToggleButton
 
-
         init {
             // Get card title view
             this.eventCardTitle = view.findViewById(R.id.eventCardTitle)
@@ -142,7 +147,6 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
                 .into(eventCardImage)
 
             this.eventCardFavorite = view.findViewById(R.id.button_favorite)
-
         }
     }
 }
