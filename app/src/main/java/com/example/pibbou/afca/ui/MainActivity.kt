@@ -41,11 +41,7 @@ class MainActivity : AppCompatActivity() {
 
     public override fun onResume() {
         super.onResume()
-
-        favoriteManager.getFavorites(applicationContext)
-        Log.i("onresume", favoriteManager.getFavorites(applicationContext).toString())
-        Log.i("favo", favoriteManager.getFavorites(applicationContext).toString())
-
+        
         this@MainActivity.runOnUiThread(java.lang.Runnable {
             eventlistadapter.notifyDataSetChanged()
             Log.i("something", "yaaaaaaaaa")
@@ -53,12 +49,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    public override fun onRestart() {
-        super.onRestart()
-        favoriteManager.getFavorites(applicationContext)
-        Log.i("onrestart", "true")
-
-    }
 
 
 
