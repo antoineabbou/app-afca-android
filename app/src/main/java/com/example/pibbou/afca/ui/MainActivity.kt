@@ -28,29 +28,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         favoriteManager.getFavorites(applicationContext)
 
-
         viewpageradapter= ViewPagerAdapter(supportFragmentManager)
-        eventlistadapter = EventListAdapter(applicationContext, DataStore.events)
 
         this.viewPager.adapter = viewpageradapter  //Binding PagerAdapter with ViewPager
         this.tab_layout.setupWithViewPager(this.viewPager) //Binding ViewPager with TabLayout
         setupTabIcons() // Put icons inside tab layout --> Need real ones
     }
-
-
-
-    public override fun onResume() {
-        super.onResume()
-        
-        this@MainActivity.runOnUiThread(java.lang.Runnable {
-            eventlistadapter.notifyDataSetChanged()
-            Log.i("something", "yaaaaaaaaa")
-        })
-
-    }
-
-
-
 
     private fun setupTabIcons() {
         tab_layout.getTabAt(0)?.setIcon(tabIcons[0])

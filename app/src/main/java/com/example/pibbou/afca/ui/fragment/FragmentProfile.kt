@@ -44,7 +44,7 @@ class FragmentProfile : Fragment() {
         //var test = favoriteManager
 
         // Prepare adapter
-        favoriteAdapter = FavoriteListAdapter(favoriteManager?.getFavorites(context))
+        favoriteAdapter = FavoriteListAdapter(context, favoriteManager?.getFavorites(context))
 
         recycler_view_favorite_list!!.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
