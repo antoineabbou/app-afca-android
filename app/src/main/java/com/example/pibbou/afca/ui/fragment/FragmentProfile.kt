@@ -15,8 +15,6 @@ import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.ui.list.FavoriteListAdapter
 import java.util.*
-import jdk.nashorn.internal.objects.NativeDate.getTime
-
 
 
 
