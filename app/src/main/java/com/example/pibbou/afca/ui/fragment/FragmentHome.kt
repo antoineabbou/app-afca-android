@@ -40,8 +40,6 @@ class FragmentHome : Fragment() {
     private var view1: View? = null
 
     // Prepare eventsByDay array
-    private var events: ArrayList<Event>? = ArrayList()
-
     private var recycler_view_category_list: RecyclerView? = null
 
     private var recycler_view_filter_list: RecyclerView? = null
