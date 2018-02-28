@@ -9,6 +9,9 @@ import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.ui.fragment.ViewPagerAdapter
 import com.example.pibbou.afca.ui.list.EventListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import android.content.Intent
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,9 +29,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         favoriteManager.getFavorites(applicationContext)
 
         viewpageradapter= ViewPagerAdapter(supportFragmentManager)
+
+
 
         this.viewPager.adapter = viewpageradapter  //Binding PagerAdapter with ViewPager
         this.tab_layout.setupWithViewPager(this.viewPager) //Binding ViewPager with TabLayout
