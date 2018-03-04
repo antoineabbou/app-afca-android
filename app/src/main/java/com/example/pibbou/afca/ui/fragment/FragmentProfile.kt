@@ -10,8 +10,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
-import com.example.pibbou.afca.repository.FavoriteManager
+import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.ui.list.FavoriteListAdapter
 
 
@@ -22,13 +23,12 @@ class FragmentProfile : Fragment() {
     // Prepare eventsByDay array
     private var recycler_view_favorite_list: RecyclerView? = null
     private var favoriteAdapter: FavoriteListAdapter? = null
-    private val favoriteManager = FavoriteManager()
-
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         view1  = inflater!!.inflate(R.layout.fragment_profile, container, false)
 
+        // Setup List
         setupFavoriteList()
 
         return view1
@@ -41,10 +41,8 @@ class FragmentProfile : Fragment() {
         // Set fixed size
         recycler_view_favorite_list!!.setHasFixedSize(true)
 
-        //var test = favoriteManager
-
         // Prepare adapter
-        favoriteAdapter = FavoriteListAdapter(context, favoriteManager?.getFavorites(context))
+        favoriteAdapter = FavoriteListAdapter(context, DataStore.currentFavorites)
 
         recycler_view_favorite_list!!.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 

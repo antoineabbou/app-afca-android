@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
 
     internal lateinit var viewpageradapter: ViewPagerAdapter //Declare PagerAdapter
     internal lateinit var eventlistadapter: EventListAdapter
-    var favoriteManager = FavoriteManager()
 
     private val tabIcons = Array(3) {
         R.drawable.home
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        favoriteManager.getFavorites(applicationContext)
 
         viewpageradapter= ViewPagerAdapter(supportFragmentManager)
 

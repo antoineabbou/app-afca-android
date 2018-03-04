@@ -13,14 +13,15 @@ import com.example.pibbou.afca.ui.list.FilterListAdapter
 object DataStore {
     val repository = App.sInstance!!.getDataRepository()
 
-    var events: ArrayList<Event>? = repository!!.getEvents()
     var currentEvents: ArrayList<Event>? = ArrayList()
     var currentFilters: MutableList<Int> = mutableListOf<Int>()
+    var currentFavorites: ArrayList<Event>? = ArrayList()
 
     var day:Int = 0
 
     var categoriesAdapter: CategoryListAdapter? = null
     var filterAdapter: FilterListAdapter? = null
+
 
     fun updateEventDatas(day: Int, public: Int) {
 
@@ -46,13 +47,12 @@ object DataStore {
         categoriesAdapter!!.notifyDataSetChanged()
     }
 
-
-   fun setFilter() {
+    fun setFilter() {
 
        currentFilters!!.clear()
 
-        var numbers: MutableList<Int> = mutableListOf<Int>()
-        var numbersFiltered: List<Int>
+        val numbers: MutableList<Int> = mutableListOf<Int>()
+        val numbersFiltered: List<Int>
 
 
         for(event in currentEvents!!){
