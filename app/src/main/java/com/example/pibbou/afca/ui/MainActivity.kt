@@ -49,7 +49,4 @@ class MainActivity : AppCompatActivity() {
         tab_layout.getTabAt(1)?.setIcon(tabIcons[1])
         tab_layout.getTabAt(2)?.setIcon(tabIcons[2])
     }
-
-
-
 }

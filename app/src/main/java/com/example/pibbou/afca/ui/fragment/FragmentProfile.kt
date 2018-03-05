@@ -47,6 +47,10 @@ class FragmentProfile : Fragment() {
         return view1
     }
 
+    override fun onResume() {
+        super.onResume()
+        favoriteAdapter?.notifyDataSetChanged()
+    }
 
     private fun setupFavoriteList() {
         // Get recyclerview View
@@ -77,10 +81,5 @@ class FragmentProfile : Fragment() {
         val yourDatabaseSavedDate = "2015-10-09 09:00:00.000000000"
         val date = Date()
         currentTime = Calendar.getInstance().getTime()
-
-
     }
-
-
-
 }
