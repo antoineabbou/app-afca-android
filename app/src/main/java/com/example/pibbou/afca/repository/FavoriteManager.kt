@@ -46,6 +46,8 @@ class FavoriteManager {
         if(isInList == false) {
             favorites!!.add(event)
             saveFavorites(context, favorites)
+
+            DataStore.updateEventDatas(DataStore.day, 0)
         }
 
     }
@@ -60,13 +62,12 @@ class FavoriteManager {
 
             var isInList = selectedFavorite.count() > 0
 
-            /*var isInList = favorites.filter {
-                it.id === event.id
-            }.count() > 0
-*/
             if(isInList == true) {
                 favorites.remove(selectedFavorite.first())
                 saveFavorites(context, favorites)
+
+                DataStore.updateEventDatas(DataStore.day, 0)
+
             }
         }
 

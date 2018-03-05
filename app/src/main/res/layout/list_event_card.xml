@@ -36,6 +36,18 @@
             android:textSize="12sp" />
 
 
+        <ToggleButton
+            android:id="@+id/button_favorite"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/button_favorite"
+            android:checked="false"
+            android:text=""
+            android:textOff=""
+            android:textOn="" />
+
+
+
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
