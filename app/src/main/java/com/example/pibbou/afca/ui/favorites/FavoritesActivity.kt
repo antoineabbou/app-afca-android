@@ -1,16 +1,21 @@
 package com.example.pibbou.afca.ui.favorites
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.pibbou.afca.R
+import com.example.pibbou.afca.ui.BaseActivity
 
-class FavoritesActivity : AppCompatActivity() {
+class FavoritesActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_favorites)
+    }
 
-        val intent = intent
-        val id = intent.getIntExtra("id", 0)
+    override fun provideParentLayoutId(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun setParentLayout(): View {
+        return findViewById<View>(R.id.parentPanel) as View
     }
 }

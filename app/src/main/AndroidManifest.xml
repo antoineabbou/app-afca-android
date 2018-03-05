@@ -31,7 +31,9 @@
         </activity>
         <activity android:name=".ui.detail.DetailActivity" />
         <activity android:name=".ui.infos.InformationsActivity" />
-        <activity android:name=".ui.favorites.FavoritesActivity"></activity>
+        <activity android:name=".ui.favorites.FavoritesActivity" />
+        <activity android:name=".ui.Base" />
+        <activity android:name=".ui.BaseActivity"></activity>
     </application>
 
 </manifest>

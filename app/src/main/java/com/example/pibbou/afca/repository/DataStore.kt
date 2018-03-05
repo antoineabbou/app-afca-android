@@ -14,9 +14,8 @@ object DataStore {
 
     var currentEvents: ArrayList<Event>? = ArrayList()
     var currentFilters: MutableList<Int> = mutableListOf<Int>()
-    var currentFavorites: ArrayList<Event>? = ArrayList()
-
-    var day:Int = 0
+    var intentPosition: Int = 0
+    var day: Int = 0
 
     lateinit var categoriesAdapter: CategoryListAdapter
     lateinit var filterAdapter: FilterListAdapter

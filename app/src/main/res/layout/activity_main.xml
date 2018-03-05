@@ -3,7 +3,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     tools:context="com.example.pibbou.afca.ui.MainActivity">
 
@@ -30,15 +30,15 @@
             app:tabSelectedTextColor="@color/colorAccent"
             app:tabIndicatorColor="#1c1c1d"/>
 
-        <include layout="@layout/nav_bar"/>
-
     </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Envoyer une notification "
+        android:text="Envoyer une notification"
         android:id="@+id/button"/>
+
+    <include layout="@layout/activity_base"/>
 
 </android.support.constraint.ConstraintLayout>
 

@@ -12,25 +12,20 @@ import android.view.View
 import com.example.pibbou.afca.repository.NotificationManager
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     internal lateinit var viewpageradapter: ViewPagerAdapter //Declare PagerAdapter
-    internal lateinit var eventlistadapter: EventListAdapter
-
-    var favoriteManager = FavoriteManager()
 
     private val tabIcons: IntArray = intArrayOf(R.drawable.home, R.drawable.heart_trait, R.drawable.heart_fill)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        var notificationManager = NotificationManager(applicationContext)
+        val notificationManager = NotificationManager(applicationContext)
 
         viewpageradapter= ViewPagerAdapter(supportFragmentManager)
 
         Log.i("Info", tabIcons.toString())
-
-
 
         this.viewPager.adapter = viewpageradapter  //Binding PagerAdapter with ViewPager
         this.tab_layout.setupWithViewPager(this.viewPager) //Binding ViewPager with TabLayout
@@ -44,9 +39,18 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener(clickListener)
     }
 
+
     private fun setupTabIcons() {
         tab_layout.getTabAt(0)?.setIcon(tabIcons[0])
         tab_layout.getTabAt(1)?.setIcon(tabIcons[1])
         tab_layout.getTabAt(2)?.setIcon(tabIcons[2])
+    }
+
+    override fun provideParentLayoutId(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun setParentLayout(): View {
+        return findViewById<View>(R.id.parentPanel) as View
     }
 }
