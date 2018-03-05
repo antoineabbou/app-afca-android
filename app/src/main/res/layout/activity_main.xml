@@ -23,5 +23,11 @@
         app:tabIndicatorColor="#1c1c1d"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Envoyer une notification "
+        android:id="@+id/button"/>
+
 
 </LinearLayout>

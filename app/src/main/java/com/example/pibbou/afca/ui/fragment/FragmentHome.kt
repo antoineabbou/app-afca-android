@@ -30,8 +30,6 @@ class FragmentHome : Fragment() {
     private lateinit var view1: View
 
     // Prepare eventsByDay array
-    private var events: ArrayList<Event>? = ArrayList()
-
     private lateinit var recycler_view_category_list: RecyclerView
 
     private lateinit var recycler_view_filter_list: RecyclerView
