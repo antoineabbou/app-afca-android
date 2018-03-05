@@ -11,7 +11,9 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
+import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
+import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.detail.DetailActivity
@@ -28,9 +30,9 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
     private val bOnClickListener: View.OnClickListener
 
 
-    val favoriteManager = FavoriteManager()
+    // Favorite manager call
+    val favoriteManager = App.sInstance!!.getFavoriteManager()
     var isInList: Boolean = false
-    var favorites: MutableList<Event>? = favoriteManager.getFavorites(mContext)
 
 
     init {
@@ -48,7 +50,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         bOnClickListener = View.OnClickListener { b ->
             Log.i("info", "i am clicking")
             val event = b.tag as Event
-            favoriteManager.removeFavorite(mContext, event)
+            favoriteManager?.removeFavorite(mContext, event)
             notifyDataSetChanged()
         }
     }
@@ -81,12 +83,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
 
 
         // Set text to card title
-
-        if (favorites == null ) {
-            favorites = ArrayList<Event>()
-        }
-
-        isInList = favorites!!.filter {
+        isInList = DataStore.currentFavorites!!.filter {
             it.id === singleFav?.id
         }.count() > 0
 

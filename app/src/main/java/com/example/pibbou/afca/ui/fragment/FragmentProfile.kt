@@ -11,9 +11,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.repository.NotificationManager
+import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.ui.list.FavoriteListAdapter
 import java.util.*
 
@@ -24,19 +26,18 @@ class FragmentProfile : Fragment() {
     private lateinit var view1: View
 
     // Prepare eventsByDay array
-    private lateinit var recycler_view_favorite_list: RecyclerView
-    private lateinit var favoriteAdapter: FavoriteListAdapter
-    private val favoriteManager = FavoriteManager()
 
+    private lateinit var recycler_view_favorite_list: RecyclerView
+    private var favoriteAdapter: FavoriteListAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         view1  = inflater!!.inflate(R.layout.fragment_profile, container, false)
 
+        // Setup List
         setupFavoriteList()
 
         var notificationManager = NotificationManager(context)
-
 
         doIt()
 
@@ -51,8 +52,9 @@ class FragmentProfile : Fragment() {
         // Set fixed size
         recycler_view_favorite_list.setHasFixedSize(true)
 
+
         // Prepare adapter
-        favoriteAdapter = FavoriteListAdapter(context, favoriteManager?.getFavorites(context))
+        favoriteAdapter = FavoriteListAdapter(context, DataStore.currentFavorites)
 
         recycler_view_favorite_list.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 

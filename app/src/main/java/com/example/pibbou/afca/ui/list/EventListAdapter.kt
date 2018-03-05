@@ -12,6 +12,7 @@ import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
+import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.FavoriteManager
@@ -33,10 +34,11 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
     private val mOnClickListener: View.OnClickListener
 
-    val favoriteManager = FavoriteManager()
+    // Favorite manager call
+    val favoriteManager = App.sInstance.getFavoriteManager()
+
     var isInList: Boolean = false
     private val onCheckedChanged: CompoundButton.OnCheckedChangeListener
-    var favorites: MutableList<Event>? = favoriteManager.getFavorites(mContext)
 
 
     init {
@@ -60,10 +62,10 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
     fun showToast(event: Event) {
 
         if (isInList) {
-            favoriteManager.removeFavorite(mContext, event)
+            favoriteManager?.removeFavorite(mContext, event)
             isInList = false
         } else {
-            favoriteManager.addFavorite(mContext, event)
+            favoriteManager?.addFavorite(mContext, event)
             isInList = true
         }
 
@@ -101,11 +103,7 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         // Set text to card title
         holder.eventCardTitle.setText(singleEvent?.name)
 
-        if (favorites == null ) {
-            favorites = ArrayList<Event>()
-        }
-
-        isInList = favorites!!.filter {
+        isInList = DataStore.currentFavorites!!.filter {
             it.id === singleEvent?.id
         }.count() > 0
 

@@ -5,14 +5,15 @@ import android.content.SharedPreferences
 import android.util.Log
 import com.example.pibbou.afca.repository.entity.Event
 import com.google.gson.Gson
-import java.util.ArrayList
 
 /**
  * Created by aabbou on 14/02/2018.
  */
 class FavoriteManager {
+
     val PREFS_NAME = "PRODUCT_APP"
     val FAVORITES = "Product_Favorite"
+    var currentFavorites = ArrayList<Event>()
 
     fun saveFavorites(context: Context, favorites: List<Event>) {
         val settings: SharedPreferences
@@ -31,52 +32,45 @@ class FavoriteManager {
 
     }
 
+
     fun addFavorite(context: Context, event: Event) {
-        var favorites: MutableList<Event>? = getFavorites(context)
+        //var favorites: MutableList<Event>? = getFavorites(context)
 
-        if (favorites == null ) {
-            favorites = ArrayList<Event>()
-        }
-
-
-        var isInList = favorites.filter {
+        var isInList = currentFavorites.filter {
             it.id === event.id
         }.count() > 0
 
         if(isInList == false) {
-            favorites!!.add(event)
-            saveFavorites(context, favorites)
+            currentFavorites!!.add(event)
+            saveFavorites(context, currentFavorites)
 
             DataStore.updateEventDatas(DataStore.day, 0)
         }
 
     }
 
+
     fun removeFavorite(context: Context, event: Event) {
-        var favorites: MutableList<Event>? = getFavorites(context)
-        if (favorites != null) {
+        //var favorites: MutableList<Event>? = getFavorites(context)
 
-            var selectedFavorite = favorites.filter {
-                it.id === event.id
-            }
-
-            var isInList = selectedFavorite.count() > 0
-
-            if(isInList == true) {
-                favorites.remove(selectedFavorite.first())
-                saveFavorites(context, favorites)
-
-                DataStore.updateEventDatas(DataStore.day, 0)
-
-            }
+        var selectedFavorite = currentFavorites.filter {
+            it.id === event.id
         }
 
+        var isInList = selectedFavorite.count() > 0
 
+        if(isInList == true) {
+            currentFavorites.remove(selectedFavorite.first())
+            saveFavorites(context, currentFavorites)
+
+            DataStore.updateEventDatas(DataStore.day, 0)
+        }
     }
 
-    fun getFavorites(context: Context): ArrayList<Event>? {
+
+    fun setFavorites(context: Context): ArrayList<Event>? {
         val settings: SharedPreferences
-        var favorites: List<Event>
+        val favorites: List<Event>
 
         settings = context.getSharedPreferences(PREFS_NAME,
                 Context.MODE_PRIVATE)
@@ -88,15 +82,20 @@ class FavoriteManager {
                     Array<Event>::class.java)
 
             favorites = favoriteItems.toList()
-            favorites = ArrayList<Event>(favorites)
 
         } else {
             return null
         }
 
+        for(favorite in favorites){
+            currentFavorites.add(favorite)
+        }
+
         /*settings.edit().clear().apply()
         settings.edit().commit()*/
 
-        return favorites
+        DataStore.currentFavorites = currentFavorites
+
+        return currentFavorites
     }
 }

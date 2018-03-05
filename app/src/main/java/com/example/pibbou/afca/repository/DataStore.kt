@@ -14,6 +14,7 @@ object DataStore {
 
     var currentEvents: ArrayList<Event>? = ArrayList()
     var currentFilters: MutableList<Int> = mutableListOf<Int>()
+    var currentFavorites: ArrayList<Event>? = ArrayList()
 
     var day:Int = 0
 
@@ -42,8 +43,7 @@ object DataStore {
         categoriesAdapter.notifyDataSetChanged()
     }
 
-
-   fun setFilter() {
+    fun setFilter() {
 
        currentFilters.clear()
 

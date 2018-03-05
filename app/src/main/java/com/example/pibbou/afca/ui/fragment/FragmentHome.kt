@@ -22,8 +22,6 @@ import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.list.CategoryListAdapter
 import com.example.pibbou.afca.ui.list.FilterListAdapter
-import kotlinx.android.synthetic.main.fragment_layout.*
-
 
 class FragmentHome : Fragment() {
 
@@ -33,10 +31,6 @@ class FragmentHome : Fragment() {
     private lateinit var recycler_view_category_list: RecyclerView
 
     private lateinit var recycler_view_filter_list: RecyclerView
-
-    private var recycler_view_event_list: RecyclerView? = null
-
-    private lateinit var toggle : ToggleButton
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

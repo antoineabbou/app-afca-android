@@ -26,9 +26,6 @@ class MainActivity : AppCompatActivity() {
 
         var notificationManager = NotificationManager(applicationContext)
 
-
-        favoriteManager.getFavorites(applicationContext)
-
         viewpageradapter= ViewPagerAdapter(supportFragmentManager)
 
         Log.i("Info", tabIcons.toString())

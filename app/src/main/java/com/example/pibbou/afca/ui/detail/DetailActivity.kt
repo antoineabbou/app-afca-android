@@ -29,9 +29,12 @@ import java.util.ArrayList
  */
 class DetailActivity : AppCompatActivity() {
 
-    val favoriteManager = FavoriteManager()
     var isInList: Boolean = false
+
     private val onCheckedChanged: CompoundButton.OnCheckedChangeListener
+
+    // Favorite manager call
+    val favoriteManager = App.sInstance!!.getFavoriteManager()
 
     init {
         onCheckedChanged = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
@@ -71,16 +74,9 @@ class DetailActivity : AppCompatActivity() {
     fun checkList(context: Context, event: Event) {
         val toggle = findViewById<ToggleButton>(R.id.buttonFav)
 
-        var favorites: MutableList<Event>? = favoriteManager.getFavorites(context)
-
-        if (favorites == null ) {
-            favorites = ArrayList<Event>()
-        }
-
-
-        isInList = favorites.filter {
+        isInList = DataStore.currentFavorites?.filter {
             it.id === event.id
-        }.count() > 0
+        }!!.count() > 0
 
 
         setButton(toggle, event)
@@ -93,13 +89,13 @@ class DetailActivity : AppCompatActivity() {
         val toast = SuperActivityToast.create(this@DetailActivity, Style.TYPE_BUTTON)
 
         if (isInList) {
-            favoriteManager.removeFavorite(applicationContext, event)
+            favoriteManager?.removeFavorite(applicationContext, event)
             isInList = false
             toast.setText("Evenement supprimé des favoris")
             toast.setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED))
 
         } else {
-            favoriteManager.addFavorite(applicationContext, event)
+            favoriteManager?.addFavorite(applicationContext, event)
             isInList = true
             toast.setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_BLUE))
             toast.setText("Evenement ajouté favoris")
