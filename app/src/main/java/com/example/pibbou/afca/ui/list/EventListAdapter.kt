@@ -54,23 +54,23 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
         onCheckedChanged = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             val event = buttonView.tag as Event
-            showToast(event)
+            Log.i("checked", isChecked.toString())
+            showToast(event, isChecked)
         }
     }
 
 
-    fun showToast(event: Event) {
+    fun showToast(event: Event, isChecked: Boolean) {
 
-        if (isInList) {
+        if (!isChecked) {
             favoriteManager?.removeFavorite(mContext, event)
+            Log.i("strin", "remove")
             isInList = false
         } else {
             favoriteManager?.addFavorite(mContext, event)
+            Log.i("strin", "addw")
             isInList = true
         }
-
-        Log.i("isinlist", isInList.toString())
-
     }
 
     fun setButton(toggle:ToggleButton, event: Event?) {
@@ -103,7 +103,7 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         // Set text to card title
         holder.eventCardTitle.setText(singleEvent?.name)
 
-        isInList = DataStore.currentFavorites!!.filter {
+        isInList = favoriteManager?.currentFavorites!!.filter {
             it.id === singleEvent?.id
         }.count() > 0
 

@@ -74,9 +74,9 @@ class DetailActivity : AppCompatActivity() {
     fun checkList(context: Context, event: Event) {
         val toggle = findViewById<ToggleButton>(R.id.buttonFav)
 
-        isInList = DataStore.currentFavorites?.filter {
+        isInList = favoriteManager?.currentFavorites!!.filter {
             it.id === event.id
-        }!!.count() > 0
+        }.count() > 0
 
 
         setButton(toggle, event)
@@ -168,7 +168,7 @@ class DetailActivity : AppCompatActivity() {
 
         // Start
         val eventStart: TextView = findViewById(R.id.eventStart)
-        val dateStart = event!!.startingDate
+        val dateStart = event?.startingDate
         val sdf_start = SimpleDateFormat("MMM MM dd, yyyy h:mm a") // Adapting format
         val dateStringStart = sdf_start.format(dateStart)
         eventStart.setText(dateStringStart)
@@ -176,7 +176,7 @@ class DetailActivity : AppCompatActivity() {
 
         // End
         val eventEnd: TextView = findViewById(R.id.eventEnd)
-        val dateEnd = event!!.endingDate
+        val dateEnd = event?.endingDate
         val sdf_end = SimpleDateFormat("MMM MM dd, yyyy h:mm a") // Adapting format
         val dateStringEnd = sdf_end.format(dateEnd)
         eventEnd.setText(dateStringEnd)

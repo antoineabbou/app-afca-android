@@ -34,24 +34,22 @@ class FavoriteManager {
 
 
     fun addFavorite(context: Context, event: Event) {
-        //var favorites: MutableList<Event>? = getFavorites(context)
 
         var isInList = currentFavorites.filter {
             it.id === event.id
         }.count() > 0
 
         if(isInList == false) {
-            currentFavorites!!.add(event)
+            currentFavorites.add(event)
             saveFavorites(context, currentFavorites)
 
-            DataStore.updateEventDatas(DataStore.day, 0)
+            //DataStore.updateEventDatas(DataStore.day, 0)
         }
 
     }
 
 
     fun removeFavorite(context: Context, event: Event) {
-        //var favorites: MutableList<Event>? = getFavorites(context)
 
         var selectedFavorite = currentFavorites.filter {
             it.id === event.id
@@ -63,7 +61,7 @@ class FavoriteManager {
             currentFavorites.remove(selectedFavorite.first())
             saveFavorites(context, currentFavorites)
 
-            DataStore.updateEventDatas(DataStore.day, 0)
+            //DataStore.updateEventDatas(DataStore.day, 0)
         }
     }
 
@@ -93,8 +91,6 @@ class FavoriteManager {
 
         /*settings.edit().clear().apply()
         settings.edit().commit()*/
-
-        DataStore.currentFavorites = currentFavorites
 
         return currentFavorites
     }

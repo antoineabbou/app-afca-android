@@ -83,7 +83,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
 
 
         // Set text to card title
-        isInList = DataStore.currentFavorites!!.filter {
+        isInList = favoriteManager?.currentFavorites!!.filter {
             it.id === singleFav?.id
         }.count() > 0
 

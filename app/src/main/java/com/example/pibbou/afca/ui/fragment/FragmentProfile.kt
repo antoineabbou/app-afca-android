@@ -30,6 +30,9 @@ class FragmentProfile : Fragment() {
     private lateinit var recycler_view_favorite_list: RecyclerView
     private var favoriteAdapter: FavoriteListAdapter? = null
 
+    // Favorite manager call
+    val favoriteManager = App.sInstance.getFavoriteManager()
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         view1  = inflater!!.inflate(R.layout.fragment_profile, container, false)
@@ -54,7 +57,7 @@ class FragmentProfile : Fragment() {
 
 
         // Prepare adapter
-        favoriteAdapter = FavoriteListAdapter(context, DataStore.currentFavorites)
+        favoriteAdapter = FavoriteListAdapter(context, favoriteManager?.currentFavorites)
 
         recycler_view_favorite_list.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
