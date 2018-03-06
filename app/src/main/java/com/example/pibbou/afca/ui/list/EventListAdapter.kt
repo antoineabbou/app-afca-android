@@ -29,13 +29,13 @@ import java.util.ArrayList
  * Created by arnaudpinot on 07/01/2018.
  */
 
-
 class EventListAdapter(private val mContext: Context, private val eventList: ArrayList<Event>?) : RecyclerView.Adapter<EventListAdapter.SingleItemRowHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 
     // Favorite manager call
     val favoriteManager = App.sInstance.getFavoriteManager()
+
 
     var isInList: Boolean = false
     private val onCheckedChanged: CompoundButton.OnCheckedChangeListener

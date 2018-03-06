@@ -18,6 +18,10 @@ import com.example.pibbou.afca.ui.list.CategoryListAdapter
 import com.example.pibbou.afca.ui.list.FilterListAdapter
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
+import android.widget.Toast
+import android.support.v4.view.ViewPager.OnPageChangeListener
+
+
 
 
 class MainActivity : BaseActivity() {
@@ -27,11 +31,13 @@ class MainActivity : BaseActivity() {
     // Prepare eventsByDay array
     private lateinit var recycler_view_category_list: RecyclerView
     private lateinit var recycler_view_filter_list: RecyclerView
+    private lateinit var mainPager: ViewPager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val mainPager = findViewById<View>(R.id.mainPager) as ViewPager
+        mainPager = findViewById<View>(R.id.mainPager) as ViewPager
         adapterViewPager = DayPagerAdapter(supportFragmentManager)
         mainPager.adapter = adapterViewPager
 
@@ -48,30 +54,11 @@ class MainActivity : BaseActivity() {
         button.setOnClickListener(clickListener)
 
 
-        //////////////
-        // Setup
-        /*this.setupEventsList()
-        this.setupDay()*/
-
         this.setupFilterList()
+
+        this.setPagerEvents()
     }
 
-    private fun setupEventsList() {
-
-        // Get recyclerview View
-        recycler_view_category_list = findViewById<View>(R.id.recycler_view_category_list) as RecyclerView
-
-        // Set fixed size
-        recycler_view_category_list.setHasFixedSize(true)
-
-        // Prepare adapter
-        DataStore.categoriesAdapter = CategoryListAdapter(applicationContext, DataStore.currentEvents)
-
-        recycler_view_category_list.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-
-        // Set adapter
-        recycler_view_category_list.adapter = DataStore.categoriesAdapter
-    }
 
     private fun setupFilterList() {
 
@@ -91,37 +78,24 @@ class MainActivity : BaseActivity() {
 
     }
 
-    private fun setupDay() {
+    private fun setPagerEvents() {
+        // Attach the page change listener inside the activity
+        mainPager.addOnPageChangeListener(object : OnPageChangeListener {
 
-        val adapter = ArrayAdapter.createFromResource(
-                applicationContext,
-                R.array.sort_day,
-                android.R.layout.simple_spinner_item)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        val spinner = findViewById<View>(R.id.spinner) as Spinner
-
-        spinner.adapter = adapter
-
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onItemSelected(adapterView: AdapterView<*>, view: View?, position: Int, id: Long) {
-
-                val item = adapterView.getItemAtPosition(position)
-                if (item != null) {
-                    DataStore.day = position
-                    DataStore.updateEventDatas(position, 0)
-                    DataStore.setFilter()
-                }
+            // This method will be invoked when a new page becomes selected.
+            override fun onPageSelected(position: Int) {
+                Toast.makeText(this@MainActivity,
+                        "Selected page position: " + position, Toast.LENGTH_SHORT).show()
             }
+            // This method will be invoked when the current page is scrolled
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
-            override fun onNothingSelected(adapterView: AdapterView<*>) {
-                // TODO Auto-generated method stub
-
-            }
-        }
-
+            // Called when the scroll state changes:
+            // SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING, SCROLL_STATE_SETTLING
+            override fun onPageScrollStateChanged(state: Int) {}
+        })
     }
+
 
     override fun provideParentLayoutId(): Int {
         return R.layout.activity_main
@@ -130,4 +104,5 @@ class MainActivity : BaseActivity() {
     override fun setParentLayout(): View {
         return findViewById<View>(R.id.parentPanel) as View
     }
+
 }
