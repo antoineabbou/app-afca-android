@@ -1,6 +1,8 @@
 package com.example.pibbou.afca.ui.main
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.example.pibbou.afca.R
@@ -14,9 +16,13 @@ import com.example.pibbou.afca.repository.NotificationManager
 import com.example.pibbou.afca.ui.base.BaseActivity
 import com.example.pibbou.afca.ui.list.CategoryListAdapter
 import com.example.pibbou.afca.ui.list.FilterListAdapter
+import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.view.ViewPager
 
 
 class MainActivity : BaseActivity() {
+
+    var adapterViewPager: FragmentPagerAdapter? = null
 
     // Prepare eventsByDay array
     private lateinit var recycler_view_category_list: RecyclerView
@@ -24,6 +30,10 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val mainPager = findViewById<View>(R.id.mainPager) as ViewPager
+        adapterViewPager = DayPagerAdapter(supportFragmentManager)
+        mainPager.adapter = adapterViewPager
 
         ///////////////
         // Notification
@@ -38,8 +48,9 @@ class MainActivity : BaseActivity() {
 
         //////////////
         // Setup
-        this.setupEventsList()
-        this.setupDay()
+        /*this.setupEventsList()
+        this.setupDay()*/
+
         this.setupFilterList()
     }
 
@@ -60,7 +71,6 @@ class MainActivity : BaseActivity() {
         recycler_view_category_list.adapter = DataStore.categoriesAdapter
     }
 
-
     private fun setupFilterList() {
 
         // Get recyclerview View
@@ -76,8 +86,8 @@ class MainActivity : BaseActivity() {
         recycler_view_filter_list.isNestedScrollingEnabled = false
         // Set adapter
         recycler_view_filter_list.adapter = DataStore.filterAdapter
-    }
 
+    }
 
     private fun setupDay() {
 
