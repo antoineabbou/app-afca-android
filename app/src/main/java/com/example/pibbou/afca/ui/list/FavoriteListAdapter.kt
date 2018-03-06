@@ -86,7 +86,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             it.id === singleFav?.id
         }.count() > 0
 
-        if (singleFav != null) compareToDeviceTime(singleFav)
+        // if (singleFav != null) compareToDeviceTime(singleFav)
 
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
@@ -121,48 +121,5 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         }
     }
 
-    private fun compareToDeviceTime(favorite: Event) {
 
-        var currentTime: Date
-        var datePlusFiveMinutes: Date
-
-        Timer().scheduleAtFixedRate(object : TimerTask() {
-            override fun run() {
-                currentTime = Calendar.getInstance().getTime()
-
-                datePlusFiveMinutes = Date(System.currentTimeMillis() + 5 * 60 * 1000)
-
-                val duration = printDifference(currentTime, favorite.startingDate!!)
-
-                // If date is between current - 5min and current + 5 min, send notification
-                if (favorite.startingDate!!.before (datePlusFiveMinutes) && favorite.startingDate!!.after (currentTime)) {
-                    notificationManager.showNotification(mContext, "Un évenement près de chez vous dans " + duration + " minutes :" , favorite.name.toString(), favorite)
-
-                }
-            }
-        }, 0, 100000)
-
-        currentTime = Calendar.getInstance().getTime()
-
-    }
-
-
-    fun printDifference(startDate: Date, endDate: Date): Long {
-        //milliseconds
-        var different = endDate.time - startDate.time
-
-        println("startDate : " + startDate)
-        println("endDate : " + endDate)
-        println("different : " + different)
-
-        val secondsInMilli: Long = 1000
-        val minutesInMilli = secondsInMilli * 60
-        val hoursInMilli = minutesInMilli * 60
-
-        different = different % hoursInMilli
-        val elapsedMinutes = (different / minutesInMilli) + 1
-
-
-        return elapsedMinutes
-    }
 }

@@ -13,7 +13,7 @@ import com.example.pibbou.afca.ui.detail.DetailActivity
 /**
  * Created by antoineabbou on 05/03/2018.
  */
-class NotificationManager (context: Context) {
+ class NotificationManager (context: Context) {
 
     val mNotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     val CHANNEL_ID = "com.example.pibbou.afca.ui"

@@ -87,7 +87,26 @@ class FavoriteManager {
 
         /*settings.edit().clear().apply()
         settings.edit().commit()*/
-
         return currentFavorites
+    }
+
+    fun getFavorites(context: Context): List<Event>? {
+        val settings: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val favorites: List<Event>
+
+        if (settings.contains(FAVORITES)) {
+            val jsonFavorites = settings.getString(FAVORITES, null)
+            val gson = Gson()
+            val favoriteItems = gson.fromJson<Array<Event>>(jsonFavorites,
+                    Array<Event>::class.java)
+
+            favorites = favoriteItems.toList()
+        }
+
+        else {
+            return null
+        }
+
+        return favorites
     }
 }

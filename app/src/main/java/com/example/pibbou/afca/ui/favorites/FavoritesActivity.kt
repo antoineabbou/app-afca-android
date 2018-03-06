@@ -3,11 +3,16 @@ package com.example.pibbou.afca.ui.favorites
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.ui.base.BaseActivity
 import com.example.pibbou.afca.ui.list.FavoriteListAdapter
+import android.widget.CompoundButton
+import android.widget.ToggleButton
+
+
 
 class FavoritesActivity : BaseActivity() {
 
@@ -18,11 +23,21 @@ class FavoritesActivity : BaseActivity() {
     // Favorite manager call
     val favoriteManager = App.sInstance.getFavoriteManager()
 
+    // Notification autorisation
+    var notificationAutho: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Setup List
         this.setupFavoriteList()
+
+        val toggle = findViewById<ToggleButton>(R.id.notification_button) as ToggleButton
+
+        toggle.setOnCheckedChangeListener { buttonView, isChecked ->
+            notificationAutho = isChecked
+            Log.i("state", notificationAutho.toString())
+        }
     }
 
     override fun onResume() {
