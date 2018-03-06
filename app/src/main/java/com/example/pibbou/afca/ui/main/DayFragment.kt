@@ -35,7 +35,7 @@ class DayFragment : android.support.v4.app.Fragment() {
         day = getArguments().getInt("someInt", 0)
 
         // Get Events By Day
-        eventsByDay = DataStore.repository!!.getEventsByDay(day)
+        eventsByDay = repository!!.getEventsByDay(day)
     }
 
     // Inflate the view for the fragment based on layout XML
