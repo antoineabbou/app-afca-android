@@ -10,15 +10,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.ToggleButton
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
-import com.example.pibbou.afca.repository.DataStore
-import com.example.pibbou.afca.repository.FavoriteManager
+import com.example.pibbou.afca.repository.NotificationManager
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.detail.DetailActivity
 import com.squareup.picasso.Picasso
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Created by arnaudpinot on 07/01/2018.
@@ -33,6 +31,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
     // Favorite manager call
     val favoriteManager = App.sInstance!!.getFavoriteManager()
     var isInList: Boolean = false
+    val notificationManager = NotificationManager(mContext)
 
 
     init {
@@ -87,6 +86,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             it.id === singleFav?.id
         }.count() > 0
 
+        if (singleFav != null) compareToDeviceTime(singleFav)
 
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
@@ -119,5 +119,50 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             this.favCardTitle = view.findViewById(R.id.favCardTitle)
             this.favCardButton = view.findViewById(R.id.button_favorite)
         }
+    }
+
+    private fun compareToDeviceTime(favorite: Event) {
+
+        var currentTime: Date
+        var datePlusFiveMinutes: Date
+
+        Timer().scheduleAtFixedRate(object : TimerTask() {
+            override fun run() {
+                currentTime = Calendar.getInstance().getTime()
+
+                datePlusFiveMinutes = Date(System.currentTimeMillis() + 5 * 60 * 1000)
+
+                val duration = printDifference(currentTime, favorite.startingDate!!)
+
+                // If date is between current - 5min and current + 5 min, send notification
+                if (favorite.startingDate!!.before (datePlusFiveMinutes) && favorite.startingDate!!.after (currentTime)) {
+                    notificationManager.showNotification(mContext, "Un évenement près de chez vous dans " + duration + " minutes :" , favorite.name.toString(), favorite)
+
+                }
+            }
+        }, 0, 100000)
+
+        currentTime = Calendar.getInstance().getTime()
+
+    }
+
+
+    fun printDifference(startDate: Date, endDate: Date): Long {
+        //milliseconds
+        var different = endDate.time - startDate.time
+
+        println("startDate : " + startDate)
+        println("endDate : " + endDate)
+        println("different : " + different)
+
+        val secondsInMilli: Long = 1000
+        val minutesInMilli = secondsInMilli * 60
+        val hoursInMilli = minutesInMilli * 60
+
+        different = different % hoursInMilli
+        val elapsedMinutes = (different / minutesInMilli) + 1
+
+
+        return elapsedMinutes
     }
 }

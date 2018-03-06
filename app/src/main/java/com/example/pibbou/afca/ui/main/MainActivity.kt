@@ -48,18 +48,6 @@ class MainActivity : BaseActivity() {
 
         getEventsAndSetFilters(mainPager.getCurrentItem())
 
-        ///////////////
-        // Notification
-        val notificationManager = NotificationManager(applicationContext)
-
-        val clickListener = View.OnClickListener {view ->
-            when (view.getId()) {
-                R.id.button -> notificationManager.showNotification(applicationContext,"test", "test")
-            }
-        }
-        button.setOnClickListener(clickListener)
-
-
         this.setupFilterList()
 
         this.setPagerEvents()
