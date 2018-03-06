@@ -20,8 +20,8 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.widget.Toast
 import android.support.v4.view.ViewPager.OnPageChangeListener
-
-
+import com.example.pibbou.afca.App
+import com.example.pibbou.afca.repository.entity.Event
 
 
 class MainActivity : BaseActivity() {
@@ -32,15 +32,21 @@ class MainActivity : BaseActivity() {
     private lateinit var recycler_view_category_list: RecyclerView
     private lateinit var recycler_view_filter_list: RecyclerView
     private lateinit var mainPager: ViewPager
-
+    private var filterAdapter: FilterListAdapter? = null
+    private var currentFilters: MutableList<Int> = mutableListOf<Int>()
+    private val repository = App.sInstance.getDataRepository()
+    private var eventsByDay : ArrayList<Event>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val context = this
+
         mainPager = findViewById<View>(R.id.mainPager) as ViewPager
-        adapterViewPager = DayPagerAdapter(supportFragmentManager)
+        adapterViewPager = DayPagerAdapter(supportFragmentManager, context)
         mainPager.adapter = adapterViewPager
 
+        getEventsAndSetFilters(mainPager.getCurrentItem())
 
         ///////////////
         // Notification
@@ -69,12 +75,12 @@ class MainActivity : BaseActivity() {
         recycler_view_filter_list.setHasFixedSize(true)
 
         // Prepare adapter
-        DataStore.filterAdapter = FilterListAdapter(applicationContext, DataStore.currentFilters)
+        filterAdapter = FilterListAdapter(applicationContext, currentFilters)
 
         recycler_view_filter_list.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
         recycler_view_filter_list.isNestedScrollingEnabled = false
         // Set adapter
-        recycler_view_filter_list.adapter = DataStore.filterAdapter
+        recycler_view_filter_list.adapter = filterAdapter
 
     }
 
@@ -83,9 +89,14 @@ class MainActivity : BaseActivity() {
         mainPager.addOnPageChangeListener(object : OnPageChangeListener {
 
             // This method will be invoked when a new page becomes selected.
-            override fun onPageSelected(position: Int) {
+            override fun onPageSelected(day: Int) {
+
                 Toast.makeText(this@MainActivity,
-                        "Selected page position: " + position, Toast.LENGTH_SHORT).show()
+                        "Selected page position: " + day, Toast.LENGTH_SHORT).show()
+
+                // Get Events By Day
+                getEventsAndSetFilters(day)
+
             }
             // This method will be invoked when the current page is scrolled
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
@@ -96,6 +107,29 @@ class MainActivity : BaseActivity() {
         })
     }
 
+    private fun getEventsAndSetFilters(day: Int) {
+        // Get Events By Day
+        eventsByDay = repository!!.getEventsByDay(day)
+        setFilters(eventsByDay)
+    }
+
+    private fun setFilters(eventsByDay: ArrayList<Event>?) {
+        currentFilters.clear()
+
+        val numbers: MutableList<Int> = mutableListOf<Int>()
+        val numbersFiltered: List<Int>
+
+        for(event in eventsByDay!!){
+            numbers.add(event.public!!)
+        }
+        numbersFiltered = numbers.distinct()
+
+        for(event in numbersFiltered){
+            currentFilters.add(event)
+        }
+
+        filterAdapter?.notifyDataSetChanged()
+    }
 
     override fun provideParentLayoutId(): Int {
         return R.layout.activity_main
