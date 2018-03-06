@@ -3,16 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-    android:background="?android:selectableItemBackground"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="0dp">
 
     <ToggleButton
         android:id="@+id/filterButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:checked="false" />
-
 
 
 </LinearLayout>

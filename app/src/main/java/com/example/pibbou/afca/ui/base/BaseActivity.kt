@@ -1,4 +1,4 @@
-package com.example.pibbou.afca.ui
+package com.example.pibbou.afca.ui.base
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.content.Intent
 import android.widget.Button
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.DataStore
+import com.example.pibbou.afca.ui.MainActivity
 import com.example.pibbou.afca.ui.favorites.FavoritesActivity
 import com.example.pibbou.afca.ui.infos.InformationsActivity
 

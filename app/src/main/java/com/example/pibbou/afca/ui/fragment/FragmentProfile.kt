@@ -26,7 +26,6 @@ class FragmentProfile : Fragment() {
     private lateinit var view1: View
 
     // Prepare eventsByDay array
-
     private lateinit var recycler_view_favorite_list: RecyclerView
     private var favoriteAdapter: FavoriteListAdapter? = null
 

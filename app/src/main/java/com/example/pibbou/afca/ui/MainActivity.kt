@@ -1,35 +1,33 @@
 package com.example.pibbou.afca.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.example.pibbou.afca.R
-import com.example.pibbou.afca.repository.FavoriteManager
-import com.example.pibbou.afca.ui.fragment.ViewPagerAdapter
-import com.example.pibbou.afca.ui.list.EventListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.NotificationManager
+import com.example.pibbou.afca.ui.base.BaseActivity
+import com.example.pibbou.afca.ui.list.CategoryListAdapter
+import com.example.pibbou.afca.ui.list.FilterListAdapter
 
 
 class MainActivity : BaseActivity() {
 
-    internal lateinit var viewpageradapter: ViewPagerAdapter //Declare PagerAdapter
-
-    private val tabIcons: IntArray = intArrayOf(R.drawable.home, R.drawable.heart_trait, R.drawable.heart_fill)
+    // Prepare eventsByDay array
+    private lateinit var recycler_view_category_list: RecyclerView
+    private lateinit var recycler_view_filter_list: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        ///////////////
+        // Notification
         val notificationManager = NotificationManager(applicationContext)
-
-        viewpageradapter= ViewPagerAdapter(supportFragmentManager)
-
-        Log.i("Info", tabIcons.toString())
-
-        this.viewPager.adapter = viewpageradapter  //Binding PagerAdapter with ViewPager
-        this.tab_layout.setupWithViewPager(this.viewPager) //Binding ViewPager with TabLayout
-        setupTabIcons() // Put icons inside tab layout --> Need real ones
 
         val clickListener = View.OnClickListener {view ->
             when (view.getId()) {
@@ -37,13 +35,80 @@ class MainActivity : BaseActivity() {
             }
         }
         button.setOnClickListener(clickListener)
+
+        //////////////
+        // Setup
+        this.setupEventsList()
+        this.setupDay()
+        this.setupFilterList()
+    }
+
+    private fun setupEventsList() {
+
+        // Get recyclerview View
+        recycler_view_category_list = findViewById<View>(R.id.recycler_view_category_list) as RecyclerView
+
+        // Set fixed size
+        recycler_view_category_list.setHasFixedSize(true)
+
+        // Prepare adapter
+        DataStore.categoriesAdapter = CategoryListAdapter(applicationContext, DataStore.currentEvents)
+
+        recycler_view_category_list.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+        // Set adapter
+        recycler_view_category_list.adapter = DataStore.categoriesAdapter
     }
 
 
-    private fun setupTabIcons() {
-        tab_layout.getTabAt(0)?.setIcon(tabIcons[0])
-        tab_layout.getTabAt(1)?.setIcon(tabIcons[1])
-        tab_layout.getTabAt(2)?.setIcon(tabIcons[2])
+    private fun setupFilterList() {
+
+        // Get recyclerview View
+        recycler_view_filter_list = findViewById<View>(R.id.recycler_view_filter_list) as RecyclerView
+
+        // Set fixed size
+        recycler_view_filter_list.setHasFixedSize(true)
+
+        // Prepare adapter
+        DataStore.filterAdapter = FilterListAdapter(applicationContext, DataStore.currentFilters)
+
+        recycler_view_filter_list.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+        recycler_view_filter_list.isNestedScrollingEnabled = false
+        // Set adapter
+        recycler_view_filter_list.adapter = DataStore.filterAdapter
+    }
+
+
+    private fun setupDay() {
+
+        val adapter = ArrayAdapter.createFromResource(
+                applicationContext,
+                R.array.sort_day,
+                android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        val spinner = findViewById<View>(R.id.spinner) as Spinner
+
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(adapterView: AdapterView<*>, view: View?, position: Int, id: Long) {
+
+                val item = adapterView.getItemAtPosition(position)
+                if (item != null) {
+                    DataStore.day = position
+                    DataStore.updateEventDatas(position, 0)
+                    DataStore.setFilter()
+                }
+            }
+
+            override fun onNothingSelected(adapterView: AdapterView<*>) {
+                // TODO Auto-generated method stub
+
+            }
+        }
+
     }
 
     override fun provideParentLayoutId(): Int {
