@@ -1,4 +1,4 @@
-package com.example.pibbou.afca.ui
+package com.example.pibbou.afca.ui.main
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager

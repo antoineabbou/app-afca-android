@@ -7,7 +7,7 @@ import android.content.Intent
 import android.widget.Button
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.DataStore
-import com.example.pibbou.afca.ui.MainActivity
+import com.example.pibbou.afca.ui.main.MainActivity
 import com.example.pibbou.afca.ui.favorites.FavoritesActivity
 import com.example.pibbou.afca.ui.infos.InformationsActivity
 

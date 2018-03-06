@@ -1,10 +1,11 @@
-package com.example.pibbou.afca.ui
+package com.example.pibbou.afca.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import com.example.pibbou.afca.R
+import com.example.pibbou.afca.ui.main.MainActivity
 
 /**
  * Created by antoine on 28/02/2018.

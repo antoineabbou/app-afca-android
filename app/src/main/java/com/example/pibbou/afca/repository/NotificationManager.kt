@@ -7,7 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v4.app.NotificationCompat
 import com.example.pibbou.afca.R
-import com.example.pibbou.afca.ui.MainActivity
+import com.example.pibbou.afca.ui.main.MainActivity
 
 /**
  * Created by antoineabbou on 05/03/2018.
