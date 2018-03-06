@@ -35,6 +35,7 @@ class MainActivity : BaseActivity() {
         adapterViewPager = DayPagerAdapter(supportFragmentManager)
         mainPager.adapter = adapterViewPager
 
+
         ///////////////
         // Notification
         val notificationManager = NotificationManager(applicationContext)
@@ -45,6 +46,7 @@ class MainActivity : BaseActivity() {
             }
         }
         button.setOnClickListener(clickListener)
+
 
         //////////////
         // Setup

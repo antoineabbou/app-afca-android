@@ -42,8 +42,6 @@ class FavoriteManager {
         if(isInList == false) {
             currentFavorites.add(event)
             saveFavorites(context, currentFavorites)
-
-            //DataStore.updateEventDatas(DataStore.day, 0)
         }
 
     }
@@ -60,8 +58,6 @@ class FavoriteManager {
         if(isInList == true) {
             currentFavorites.remove(selectedFavorite.first())
             saveFavorites(context, currentFavorites)
-
-            //DataStore.updateEventDatas(DataStore.day, 0)
         }
     }
 
