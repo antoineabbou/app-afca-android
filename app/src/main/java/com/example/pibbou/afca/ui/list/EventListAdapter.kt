@@ -103,6 +103,10 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         // Set text to card title
         holder.eventCardTitle.setText(singleEvent?.name)
 
+        Picasso.with(mContext)
+            .load(singleEvent?.image)
+            .into(holder.eventCardImage)
+
         isInList = favoriteManager?.currentFavorites!!.filter {
             it.id === singleEvent?.id
         }.count() > 0
@@ -139,9 +143,6 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
             this.eventCardTitle = view.findViewById(R.id.eventCardTitle)
             // Get card Image view
             this.eventCardImage = view.findViewById(R.id.eventCardImage)
-            Picasso.with(mContext)
-                .load("http://www.festival-film-animation.fr/images/photo1_La_Grande_histoire_dun_petit_trait.jpeg")
-                .into(eventCardImage)
 
             this.eventCardFavorite = view.findViewById(R.id.button_favorite)
         }

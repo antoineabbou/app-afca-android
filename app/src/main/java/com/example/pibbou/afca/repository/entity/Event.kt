@@ -19,4 +19,5 @@ class Event {
     internal var public: Int? = null
     internal var startingDate: Date? = null
     internal var endingDate: Date? = null
+    internal var image: String? = null
 }
