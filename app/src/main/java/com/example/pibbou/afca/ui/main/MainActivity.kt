@@ -20,6 +20,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.widget.Toast
 import android.support.v4.view.ViewPager.OnPageChangeListener
+import android.util.Log
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.repository.entity.Event
 
@@ -36,6 +37,8 @@ class MainActivity : BaseActivity() {
     private var currentFilters: MutableList<Int> = mutableListOf<Int>()
     private val repository = App.sInstance.getDataRepository()
     private var eventsByDay : ArrayList<Event>? = ArrayList()
+    private var currentPublic : Int = 0
+    private var activityAlreadyStarted : Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,11 +48,23 @@ class MainActivity : BaseActivity() {
         adapterViewPager = DayPagerAdapter(supportFragmentManager)
         mainPager.adapter = adapterViewPager
 
-        getEventsAndSetFilters(mainPager.getCurrentItem())
+        this.getEventsAndSetFilters(mainPager.getCurrentItem())
 
         this.setupFilterList()
 
         this.setPagerEvents()
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+
+        if (!activityAlreadyStarted) {
+            activityAlreadyStarted = true
+            return
+        }
+
+        this.updateEventDatas(currentPublic)
     }
 
 
@@ -98,6 +113,8 @@ class MainActivity : BaseActivity() {
         // Get Events By Day
         eventsByDay = repository!!.getEventsByDay(day)
         setFilters(eventsByDay)
+
+        Log.i("", "")
     }
 
     private fun setFilters(eventsByDay: ArrayList<Event>?) {
@@ -119,6 +136,8 @@ class MainActivity : BaseActivity() {
     }
 
     fun updateEventDatas(public: Int) {
+
+        currentPublic = public
 
         val fragment = adapterViewPager!!.getRegisteredFragment(mainPager.getCurrentItem()) as DayFragment
 

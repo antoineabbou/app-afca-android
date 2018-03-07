@@ -120,6 +120,4 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             this.favCardButton = view.findViewById(R.id.button_favorite)
         }
     }
-
-
 }

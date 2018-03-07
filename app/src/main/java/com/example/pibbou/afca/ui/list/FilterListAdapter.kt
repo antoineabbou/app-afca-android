@@ -65,7 +65,7 @@ class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) 
 
     override fun onBindViewHolder(holder: FilterItemRowHolder, i: Int) {
         // Get singleEvent
-        var publicInt = filterList!!.get(i)
+        val publicInt = filterList!!.get(i)
         var filterTitle = ""
 
         when (filterList.get(i)) {

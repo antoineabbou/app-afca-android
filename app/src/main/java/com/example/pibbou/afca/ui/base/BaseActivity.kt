@@ -30,6 +30,7 @@ abstract class BaseActivity : AppCompatActivity() {
             val button = findViewById<View>(R.id.navBarProg) as Button
             button.setOnClickListener(View.OnClickListener {
                 val i = Intent(this@BaseActivity, MainActivity::class.java)
+                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(i)
                 DataStore.intentPosition = 0
             })
@@ -43,6 +44,7 @@ abstract class BaseActivity : AppCompatActivity() {
             val button = findViewById<View>(R.id.navBarInfos) as Button
             button.setOnClickListener(View.OnClickListener {
                 val i = Intent(this@BaseActivity, InformationsActivity::class.java)
+                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(i)
                 DataStore.intentPosition = 1
             })
@@ -56,6 +58,7 @@ abstract class BaseActivity : AppCompatActivity() {
             val button = findViewById<View>(R.id.navBarFavs) as Button
             button.setOnClickListener(View.OnClickListener {
                 val i = Intent(this@BaseActivity, FavoritesActivity::class.java)
+                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(i)
                 DataStore.intentPosition = 2
             })
