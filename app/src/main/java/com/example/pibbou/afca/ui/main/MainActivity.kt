@@ -35,15 +35,15 @@ class MainActivity : BaseActivity() {
     private var filterAdapter: FilterListAdapter? = null
     private var currentFilters: MutableList<Int> = mutableListOf<Int>()
     private val repository = App.sInstance.getDataRepository()
-    private var eventsByDay : ArrayList<Event>? = ArrayList()
+    private var currentEvents : ArrayList<Event>? = ArrayList()
+    private var filteredEvents : ArrayList<Event>? = ArrayList()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val context = this
-
         mainPager = findViewById<View>(R.id.mainPager) as ViewPager
-        adapterViewPager = DayPagerAdapter(supportFragmentManager, context)
+        adapterViewPager = DayPagerAdapter(supportFragmentManager)
         mainPager.adapter = adapterViewPager
 
         getEventsAndSetFilters(mainPager.getCurrentItem())
@@ -80,7 +80,7 @@ class MainActivity : BaseActivity() {
             override fun onPageSelected(day: Int) {
 
                 Toast.makeText(this@MainActivity,
-                        "Selected page position: " + day, Toast.LENGTH_SHORT).show()
+                        "Selected page position: " + mainPager.getCurrentItem(), Toast.LENGTH_SHORT).show()
 
                 // Get Events By Day
                 getEventsAndSetFilters(day)
@@ -97,8 +97,13 @@ class MainActivity : BaseActivity() {
 
     private fun getEventsAndSetFilters(day: Int) {
         // Get Events By Day
-        eventsByDay = repository!!.getEventsByDay(day)
-        setFilters(eventsByDay)
+        currentEvents = repository!!.getEventsByDay(day)
+
+        if (filteredEvents!!.isEmpty()) {
+            filteredEvents = currentEvents
+        }
+
+        setFilters(currentEvents)
     }
 
     private fun setFilters(eventsByDay: ArrayList<Event>?) {
@@ -117,6 +122,24 @@ class MainActivity : BaseActivity() {
         }
 
         filterAdapter?.notifyDataSetChanged()
+    }
+
+    fun updateEventDatas(public: Int) {
+
+        filteredEvents?.clear()
+
+        val eventsByDay = currentEvents
+        val eventList : List<Event>
+
+        if (public != 0) {
+            eventList = eventsByDay!!.filter { it.public == public }
+        } else {
+            eventList = eventsByDay as List<Event>
+        }
+
+        for(event in eventList){
+            filteredEvents?.add(event)
+        }
     }
 
     override fun provideParentLayoutId(): Int {

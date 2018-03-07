@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter
 /**
  * Created by arnaudpinot on 06/03/2018.
  */
-class DayPagerAdapter(fragmentManager: FragmentManager, context: Activity) : FragmentPagerAdapter(fragmentManager) {
+class DayPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
 
     // Returns total number of pages
     override fun getCount(): Int {

@@ -9,6 +9,7 @@ import android.widget.CompoundButton
 import android.widget.ToggleButton
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.DataStore
+import com.example.pibbou.afca.ui.main.MainActivity
 import org.w3c.dom.Text
 
 
@@ -28,9 +29,13 @@ class FilterListAdapter(private val mContext: Context, private val filterList: L
 
             if (isChecked) {
                 removeIsChecked(item.toString().toInt())
-                DataStore.updateEventDatas(DataStore.day, item.toString().toInt())
+                if (mContext is MainActivity) {
+                    (mContext as MainActivity).updateEventDatas(item.toString().toInt())
+                }
             } else {
-                DataStore.updateEventDatas(DataStore.day, 0)
+                if (mContext is MainActivity) {
+                    (mContext as MainActivity).updateEventDatas(0)
+                }
             }
 
         }
