@@ -41,8 +41,6 @@ class FragmentProfile : Fragment() {
 
         var notificationManager = NotificationManager(context)
 
-        doIt()
-
         return view1
     }
 
@@ -68,17 +66,4 @@ class FragmentProfile : Fragment() {
         recycler_view_favorite_list.adapter = favoriteAdapter
     }
 
-    private fun doIt() {
-        var currentTime: Date
-        Timer().scheduleAtFixedRate(object : TimerTask() {
-            override fun run() {
-                currentTime = Calendar.getInstance().getTime();
-                Log.i("tag", currentTime.toString())
-            }
-        }, 0, 2000)
-
-        val yourDatabaseSavedDate = "2015-10-09 09:00:00.000000000"
-        val date = Date()
-        currentTime = Calendar.getInstance().getTime()
-    }
 }
