@@ -16,12 +16,15 @@ import org.w3c.dom.Text
 /**
  * Created by apinot on 12/02/2018.
  */
-class FilterListAdapter(private val mContext: Context, private val filterList: List<Int?>?) : RecyclerView.Adapter<FilterListAdapter.FilterItemRowHolder>() {
+class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) : RecyclerView.Adapter<FilterListAdapter.FilterItemRowHolder>() {
 
+    private var context: Context
     private val onCheckedChanged: CompoundButton.OnCheckedChangeListener
     private var buttonsArr: MutableList<ToggleButton> = mutableListOf<ToggleButton>()
 
+
     init {
+        context = mContext
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
         onCheckedChanged = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
@@ -29,15 +32,14 @@ class FilterListAdapter(private val mContext: Context, private val filterList: L
 
             if (isChecked) {
                 removeIsChecked(item.toString().toInt())
-                if (mContext is MainActivity) {
-                    (mContext as MainActivity).updateEventDatas(item.toString().toInt())
+                if (context is MainActivity) {
+                    (context as MainActivity).updateEventDatas(item.toString().toInt())
                 }
             } else {
-                if (mContext is MainActivity) {
-                    (mContext as MainActivity).updateEventDatas(0)
+                if (context is MainActivity) {
+                    (context as MainActivity).updateEventDatas(0)
                 }
             }
-
         }
     }
 
@@ -57,6 +59,7 @@ class FilterListAdapter(private val mContext: Context, private val filterList: L
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): FilterItemRowHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_filter, null)
         return FilterItemRowHolder(v)
+
     }
 
 

@@ -26,7 +26,7 @@ import com.example.pibbou.afca.repository.entity.Event
 
 class MainActivity : BaseActivity() {
 
-    var adapterViewPager: FragmentPagerAdapter? = null
+    private var adapterViewPager: SmartFragmentStatePagerAdapter? = null
 
     // Prepare eventsByDay array
     private lateinit var recycler_view_category_list: RecyclerView
@@ -35,8 +35,7 @@ class MainActivity : BaseActivity() {
     private var filterAdapter: FilterListAdapter? = null
     private var currentFilters: MutableList<Int> = mutableListOf<Int>()
     private val repository = App.sInstance.getDataRepository()
-    private var currentEvents : ArrayList<Event>? = ArrayList()
-    private var filteredEvents : ArrayList<Event>? = ArrayList()
+    private var eventsByDay : ArrayList<Event>? = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,9 +62,9 @@ class MainActivity : BaseActivity() {
         recycler_view_filter_list.setHasFixedSize(true)
 
         // Prepare adapter
-        filterAdapter = FilterListAdapter(applicationContext, currentFilters)
+        filterAdapter = FilterListAdapter(this, currentFilters)
 
-        recycler_view_filter_list.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+        recycler_view_filter_list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recycler_view_filter_list.isNestedScrollingEnabled = false
         // Set adapter
         recycler_view_filter_list.adapter = filterAdapter
@@ -97,13 +96,8 @@ class MainActivity : BaseActivity() {
 
     private fun getEventsAndSetFilters(day: Int) {
         // Get Events By Day
-        currentEvents = repository!!.getEventsByDay(day)
-
-        if (filteredEvents!!.isEmpty()) {
-            filteredEvents = currentEvents
-        }
-
-        setFilters(currentEvents)
+        eventsByDay = repository!!.getEventsByDay(day)
+        setFilters(eventsByDay)
     }
 
     private fun setFilters(eventsByDay: ArrayList<Event>?) {
@@ -126,9 +120,11 @@ class MainActivity : BaseActivity() {
 
     fun updateEventDatas(public: Int) {
 
-        filteredEvents?.clear()
+        val fragment = adapterViewPager!!.getRegisteredFragment(mainPager.getCurrentItem()) as DayFragment
 
-        val eventsByDay = currentEvents
+        fragment.eventsByDay?.clear()
+
+        val eventsByDay = eventsByDay
         val eventList : List<Event>
 
         if (public != 0) {
@@ -138,8 +134,10 @@ class MainActivity : BaseActivity() {
         }
 
         for(event in eventList){
-            filteredEvents?.add(event)
+            fragment.eventsByDay?.add(event)
         }
+
+        fragment.categoriesAdapter.notifyDataSetChanged()
     }
 
     override fun provideParentLayoutId(): Int {

@@ -22,10 +22,11 @@ class DayFragment : android.support.v4.app.Fragment() {
     // Store instance variables
     private var day: Int = 0
     private val repository = App.sInstance.getDataRepository()
-    private var eventsByDay : ArrayList<Event>? = ArrayList()
     private lateinit var view1: View
     private lateinit var recycler_view_category_list: RecyclerView
-    private lateinit var categoriesAdapter: CategoryListAdapter
+
+    lateinit var categoriesAdapter: CategoryListAdapter
+    var eventsByDay : ArrayList<Event>? = ArrayList()
 
     // Store instance variables based on arguments passed
     override fun onCreate(savedInstanceState: Bundle?) {
