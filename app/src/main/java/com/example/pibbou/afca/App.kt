@@ -8,6 +8,7 @@ import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.main.MainActivity
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -21,13 +22,13 @@ class App : Application() {
     var favoritesManager: FavoriteManager? = null
     var notificationManager: com.example.pibbou.afca.repository.NotificationManager? = null
 
+
     private set // https://stackoverflow.com/questions/44755945/how-to-assign-new-value-if-you-setting-the-setter-private-in-kotlin
 
     // https://stackoverflow.com/questions/21818905/get-application-context-from-non-activity-singleton-class
     fun getContext(): Context {
         return this.getApplicationContext()
     }
-
 
     //////////////
     // On Create
@@ -54,6 +55,9 @@ class App : Application() {
                 compareToDeviceTime(favorite)
             }
         }*/
+        val favoritesList = this.favoritesManager?.getFavorites(this.getContext())
+        Log.i("favoritesList", favoritesList.toString())
+        compareToDeviceTime(favoritesList as ArrayList<Event>)
 
     }
 
@@ -75,29 +79,39 @@ class App : Application() {
         return this.favoritesManager
     }
 
-    private fun compareToDeviceTime(favorite: Event) {
+
+    private fun compareToDeviceTime(favoritesList: ArrayList<Event>) {
 
         var currentTime: Date
         var datePlusFiveMinutes: Date
+        var notified: Boolean? = null
+        Log.i("Hello", "pre world")
 
-        Timer().scheduleAtFixedRate(object : TimerTask() {
-            override fun run() {
-                currentTime = Calendar.getInstance().time
 
-                datePlusFiveMinutes = Date(System.currentTimeMillis() + 5 * 60 * 1000)
+        if (favoritesList.size > 0) {
+            for (favorite in favoritesList) {
+                Timer().scheduleAtFixedRate(object : TimerTask() {
+                    override fun run() {
+                        currentTime = Calendar.getInstance().time
 
-                val duration = printDifference(currentTime, favorite.startingDate!!)
+                        datePlusFiveMinutes = Date(System.currentTimeMillis() + 5 * 60 * 1000)
 
-                // If date is between current - 5min and current + 5 min, send notification
-                if (favorite.startingDate!!.before (datePlusFiveMinutes) && favorite.startingDate!!.after (currentTime)) {
-                    notificationManager?.showNotification(getContext(), "Un évenement près de chez vous dans $duration minutes :", favorite.name.toString(), favorite)
+                        val duration = printDifference(currentTime, favorite.startingDate!!)
 
-                }
+                        Log.i("favorite start date", favorite.startingDate.toString())
+                        Log.i("currentTime", currentTime.toString())
+
+                        // If date is between current - 5min and current + 5 min, send notification
+                        if (favorite.startingDate!!.before(datePlusFiveMinutes) && favorite.startingDate!!.after(currentTime) && notified === null) {
+                            Log.i("Hello", "world")
+                            notificationManager?.showNotification(getContext(), "Un évenement près de chez vous dans $duration minutes :", favorite.name.toString(), favorite)
+                            notified = true
+                        }
+                    }
+                }, 0, 10000)
             }
-        }, 0, 10000)
-
-        currentTime = Calendar.getInstance().getTime()
-
+            currentTime = Calendar.getInstance().getTime()
+        }
     }
 
 
