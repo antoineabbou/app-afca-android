@@ -22,6 +22,7 @@ import android.support.v4.view.ViewPager
 import android.widget.Toast
 import android.support.v4.view.ViewPager.OnPageChangeListener
 import android.transition.Fade
+import android.transition.Slide
 import android.util.Log
 import android.view.Window
 import com.example.pibbou.afca.App
@@ -48,7 +49,6 @@ class MainActivity : BaseActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        this.setupWindowAnimations()
         super.onCreate(savedInstanceState)
 
         mainPager = findViewById<View>(R.id.mainPager) as ViewPager
@@ -59,18 +59,21 @@ class MainActivity : BaseActivity() {
         this.setupFilterList()
         this.setPagerEvents()
 
+        this.setupWindowAnimations()
     }
 
 
     private fun setupWindowAnimations() {
         // Check if we're running on Android 5.0 or higher
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
             val fade = Fade()
             fade.duration = 1000
             // set an exit transition
             window.enterTransition = fade
-            window.exitTransition = fade
+
+            val slide = Slide()
+            slide.duration = 1000
+            window.returnTransition = slide
         } else {
             return
         }
