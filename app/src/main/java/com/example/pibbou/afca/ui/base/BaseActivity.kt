@@ -1,9 +1,11 @@
 package com.example.pibbou.afca.ui.base
 
+import android.app.ActivityOptions
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.content.Intent
+import android.os.Build
 import android.widget.Button
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.DataStore
@@ -29,10 +31,21 @@ abstract class BaseActivity : AppCompatActivity() {
         if (DataStore.intentPosition != position) {
             val button = findViewById<View>(R.id.navBarProg) as Button
             button.setOnClickListener(View.OnClickListener {
-                val i = Intent(this@BaseActivity, MainActivity::class.java)
-                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                startActivity(i)
+
+                // Check if we're running on Android 5.0 or higher
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    val options = ActivityOptions.makeSceneTransitionAnimation(this)
+                    val i = Intent(this@BaseActivity, MainActivity::class.java)
+                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(Intent(this@BaseActivity, MainActivity::class.java), options.toBundle())
+                } else {
+                    val i = Intent(this@BaseActivity, MainActivity::class.java)
+                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(i)
+                }
+
                 DataStore.intentPosition = 0
+
             })
         }
     }

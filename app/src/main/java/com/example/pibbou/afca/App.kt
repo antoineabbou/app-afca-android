@@ -21,11 +21,10 @@ class App : Application() {
     var favoritesManager: FavoriteManager? = null
     var notificationManager: com.example.pibbou.afca.repository.NotificationManager? = null
 
-    private set // https://stackoverflow.com/questions/44755945/how-to-assign-new-value-if-you-setting-the-setter-private-in-kotlin
 
     // https://stackoverflow.com/questions/21818905/get-application-context-from-non-activity-singleton-class
     fun getContext(): Context {
-        return this.getApplicationContext()
+        return this.applicationContext
     }
 
 

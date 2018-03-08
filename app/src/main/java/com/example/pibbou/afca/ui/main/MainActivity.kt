@@ -1,5 +1,6 @@
 package com.example.pibbou.afca.ui.main
 
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -20,9 +21,14 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.widget.Toast
 import android.support.v4.view.ViewPager.OnPageChangeListener
+import android.transition.Fade
 import android.util.Log
+import android.view.Window
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.repository.entity.Event
+import android.view.Window.FEATURE_CONTENT_TRANSITIONS
+
+
 
 
 class MainActivity : BaseActivity() {
@@ -42,6 +48,7 @@ class MainActivity : BaseActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        this.setupWindowAnimations()
         super.onCreate(savedInstanceState)
 
         mainPager = findViewById<View>(R.id.mainPager) as ViewPager
@@ -49,10 +56,24 @@ class MainActivity : BaseActivity() {
         mainPager.adapter = adapterViewPager
 
         this.getEventsAndSetFilters(mainPager.getCurrentItem())
-
         this.setupFilterList()
-
         this.setPagerEvents()
+
+    }
+
+
+    private fun setupWindowAnimations() {
+        // Check if we're running on Android 5.0 or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+            val fade = Fade()
+            fade.duration = 1000
+            // set an exit transition
+            window.enterTransition = fade
+            window.exitTransition = fade
+        } else {
+            return
+        }
     }
 
 

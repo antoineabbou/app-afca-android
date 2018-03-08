@@ -1,0 +1,11 @@
+<resources>
+    <!-- extend the base theme to add styles available only with API level 21+ -->
+    <style name="AppTheme" parent="BaseAppTheme">
+        <!-- enable window content transitions -->
+        <item name="android:windowActivityTransitions">true</item>
+
+        <!-- specify enter and exit transitions -->
+        <item name="android:windowEnterTransition">@transition/fade</item>
+        <item name="android:windowExitTransition">@transition/fade</item>
+    </style>
+</resources>
