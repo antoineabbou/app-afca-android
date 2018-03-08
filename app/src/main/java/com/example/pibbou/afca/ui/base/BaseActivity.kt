@@ -20,60 +20,34 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(provideParentLayoutId())
 
-        this.setProgramButton()
-        this.setInformationsButton()
-        this.setFavoritesButton()
+        val programButton = findViewById<View>(R.id.navBarProg) as Button
+        val programIntent = Intent(this@BaseActivity, MainActivity::class.java)
+        setButtonProgram(programIntent, 0, programButton)
+
+        val infoButton = findViewById<View>(R.id.navBarInfos) as Button
+        val infoIntent = Intent(this@BaseActivity, InformationsActivity::class.java)
+        setButtonProgram(infoIntent, 1, infoButton)
+
+        val favoriteButton = findViewById<View>(R.id.navBarFavs) as Button
+        val favoriteIntent = Intent(this@BaseActivity, FavoritesActivity::class.java)
+        setButtonProgram(favoriteIntent, 2, favoriteButton)
     }
 
-    fun setProgramButton() {
-        val position = 0
+    fun setButtonProgram(i: Intent, position: Int, button: Button) {
 
         if (DataStore.intentPosition != position) {
-            val button = findViewById<View>(R.id.navBarProg) as Button
             button.setOnClickListener(View.OnClickListener {
-
                 // Check if we're running on Android 5.0 or higher
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     val options = ActivityOptions.makeSceneTransitionAnimation(this)
-                    val i = Intent(this@BaseActivity, MainActivity::class.java)
                     i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    startActivity(Intent(this@BaseActivity, MainActivity::class.java), options.toBundle())
+                    startActivity(i, options.toBundle())
                 } else {
-                    val i = Intent(this@BaseActivity, MainActivity::class.java)
                     i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                     startActivity(i)
                 }
 
-                DataStore.intentPosition = 0
-
-            })
-        }
-    }
-
-    fun setInformationsButton() {
-        val position = 1
-
-        if (DataStore.intentPosition != position) {
-            val button = findViewById<View>(R.id.navBarInfos) as Button
-            button.setOnClickListener(View.OnClickListener {
-                val i = Intent(this@BaseActivity, InformationsActivity::class.java)
-                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                startActivity(i)
-                DataStore.intentPosition = 1
-            })
-        }
-    }
-
-    fun setFavoritesButton() {
-        val position = 2
-
-        if (DataStore.intentPosition != position) {
-            val button = findViewById<View>(R.id.navBarFavs) as Button
-            button.setOnClickListener(View.OnClickListener {
-                val i = Intent(this@BaseActivity, FavoritesActivity::class.java)
-                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                startActivity(i)
-                DataStore.intentPosition = 2
+                DataStore.intentPosition = position
             })
         }
     }

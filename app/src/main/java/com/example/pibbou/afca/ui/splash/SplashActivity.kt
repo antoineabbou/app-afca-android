@@ -27,14 +27,17 @@ class SplashActivity : AppCompatActivity() {
     internal val mRunnable: Runnable = Runnable {
         if (!isFinishing) {
 
-            // Check if we're running on Android 5.0 or higher
+            /*// Check if we're running on Android 5.0 or higher
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 val options = ActivityOptions.makeSceneTransitionAnimation(this)
                 startActivity(Intent(mContext, MainActivity::class.java), options.toBundle())
             } else {
                 val intent = Intent(mContext, MainActivity::class.java)
                 startActivity(intent)
-            }
+            }*/
+
+            val intent = Intent(mContext, MainActivity::class.java)
+            startActivity(intent)
 
             finish()
         }

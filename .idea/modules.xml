@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/03_app-afca-android.iml" filepath="$PROJECT_DIR$/03_app-afca-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AFCA.iml" filepath="$PROJECT_DIR$/AFCA.iml" />
       <module fileurl="file://$PROJECT_DIR$/Afca.iml" filepath="$PROJECT_DIR$/Afca.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app-afca-android.iml" filepath="$PROJECT_DIR$/app-afca-android.iml" />
     </modules>

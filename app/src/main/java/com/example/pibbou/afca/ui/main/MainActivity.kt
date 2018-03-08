@@ -70,10 +70,7 @@ class MainActivity : BaseActivity() {
             fade.duration = 1000
             // set an exit transition
             window.enterTransition = fade
-
-            val slide = Slide()
-            slide.duration = 1000
-            window.returnTransition = slide
+            window.returnTransition = fade
         } else {
             return
         }
