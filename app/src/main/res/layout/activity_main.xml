@@ -90,6 +90,18 @@
             android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/affich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Envoyer une notification"
+        app:layout_constraintBottom_toTopOf="@+id/base"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"

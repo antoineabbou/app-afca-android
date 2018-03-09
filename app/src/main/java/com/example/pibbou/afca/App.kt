@@ -57,7 +57,7 @@ class App : Application() {
         }*/
         val favoritesList = this.favoritesManager?.getFavorites(this.getContext())
         Log.i("favoritesList", favoritesList.toString())
-        compareToDeviceTime(favoritesList as ArrayList<Event>)
+        // compareToDeviceTime(favoritesList as ArrayList<Event>)
 
     }
 
@@ -77,55 +77,6 @@ class App : Application() {
 
     fun getFavoriteManager(): FavoriteManager? {
         return this.favoritesManager
-    }
-
-
-    private fun compareToDeviceTime(favoritesList: ArrayList<Event>) {
-
-        var currentTime: Date
-        var datePlusFiveMinutes: Date
-        var notified: Boolean? = null
-        Log.i("Hello", "pre world")
-
-
-        if (favoritesList.size > 0) {
-            for (favorite in favoritesList) {
-                Timer().scheduleAtFixedRate(object : TimerTask() {
-                    override fun run() {
-                        currentTime = Calendar.getInstance().time
-
-                        datePlusFiveMinutes = Date(System.currentTimeMillis() + 5 * 60 * 1000)
-
-                        val duration = printDifference(currentTime, favorite.startingDate!!)
-
-                        Log.i("favorite start date", favorite.startingDate.toString())
-                        Log.i("currentTime", currentTime.toString())
-
-                        // If date is between current - 5min and current + 5 min, send notification
-                        if (favorite.startingDate!!.before(datePlusFiveMinutes) && favorite.startingDate!!.after(currentTime) && notified === null) {
-                            Log.i("Hello", "world")
-                            notificationManager?.showNotification(getContext(), "Un évenement près de chez vous dans $duration minutes :", favorite.name.toString(), favorite)
-                            notified = true
-                        }
-                    }
-                }, 0, 10000)
-            }
-            currentTime = Calendar.getInstance().getTime()
-        }
-    }
-
-
-    private fun printDifference(startDate: Date, endDate: Date): Long {
-        var different = endDate.time - startDate.time
-
-        // Time constants
-        val secondsInMilli: Long = 1000
-        val minutesInMilli = secondsInMilli * 60
-        val hoursInMilli = minutesInMilli * 60
-
-        different %= hoursInMilli
-
-        return (different / minutesInMilli) + 1
     }
 
 }

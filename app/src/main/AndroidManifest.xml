@@ -35,7 +35,7 @@
         <activity android:name=".ui.Base" />
         <activity android:name=".ui.base.BaseActivity"></activity>
 
-        <service android:name=".NotificationListener"
+        <service android:name=".services.IntentServiceExample"
             android:label="NotificationListener"
             android:process=":notifications"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
@@ -43,7 +43,6 @@
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
         </service>
-
     </application>
 
 </manifest>
