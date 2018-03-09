@@ -1,8 +1,11 @@
 package com.example.pibbou.afca.ui.favorites
 
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.transition.Fade
+import android.transition.Slide
 import android.util.Log
 import android.view.View
 import com.example.pibbou.afca.App
@@ -28,6 +31,7 @@ class FavoritesActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.setupWindowAnimations()
 
         // Setup List
         this.setupFavoriteList()
@@ -38,7 +42,23 @@ class FavoritesActivity : BaseActivity() {
             notificationAutho = isChecked
             Log.i("state", notificationAutho.toString())
         }
+
     }
+
+    private fun setupWindowAnimations() {
+        // Check if we're running on Android 5.0 or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val fade = Fade()
+            fade.duration = 500
+            // set an exit transition
+            window.enterTransition = fade
+            window.exitTransition = fade
+            window.returnTransition = fade
+        } else {
+            return
+        }
+    }
+
 
     override fun onResume() {
         super.onResume()

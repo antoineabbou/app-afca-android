@@ -67,9 +67,10 @@ class MainActivity : BaseActivity() {
         // Check if we're running on Android 5.0 or higher
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val fade = Fade()
-            fade.duration = 1000
+            fade.duration = 500
             // set an exit transition
             window.enterTransition = fade
+            window.exitTransition = fade
             window.returnTransition = fade
         } else {
             return
