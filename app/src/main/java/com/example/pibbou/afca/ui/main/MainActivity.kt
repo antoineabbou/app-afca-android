@@ -29,10 +29,7 @@ class MainActivity : BaseActivity() {
     private var eventsByDay : ArrayList<Event>? = ArrayList()
     private var currentPublic : Int = 0
     private var activityAlreadyStarted : Boolean = false
-
-    private var mBouton: Button? = null
-
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

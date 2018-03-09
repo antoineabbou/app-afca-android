@@ -1,9 +1,16 @@
 package com.example.pibbou.afca.ui.infos
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
+import com.example.pibbou.afca.repository.DataRepository
+import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.ui.base.BaseActivity
+import com.example.pibbou.afca.ui.list.FavoriteListAdapter
+import com.example.pibbou.afca.ui.list.PriceListAdapter
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -13,6 +20,12 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
+    private lateinit var recycler_view_price_list: RecyclerView
+    private var priceAdapter: PriceListAdapter? = null
+    private val repository = App.sInstance.getDataRepository()
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,6 +33,8 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
         val mapFragment: SupportMapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        setupPriceList()
     }
 
     override fun provideParentLayoutId(): Int {
@@ -37,5 +52,21 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         googleMap.addMarker(MarkerOptions().position(sydney)
                 .title("Marker in Sydney"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+    }
+
+    private fun setupPriceList() {
+        // Get recyclerview View
+        recycler_view_price_list = findViewById<View>(R.id.recycler_view_price_list) as RecyclerView
+
+        // Set fixed size
+        recycler_view_price_list.setHasFixedSize(true)
+
+        // Prepare adapter
+        priceAdapter = PriceListAdapter(applicationContext, repository!!.getPrices())
+
+        recycler_view_price_list.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+        // Set adapter
+        recycler_view_price_list.adapter = priceAdapter
     }
 }

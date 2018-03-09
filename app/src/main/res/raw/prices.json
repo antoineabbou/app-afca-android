@@ -2,21 +2,25 @@
   {
     "id": 1,
     "name": "Unique",
-    "price": "6€"
+    "price": "6€",
+    "condition": ""
   },
   {
     "id": 2,
-    "name": "Ciné TNB Piccoli",
-    "price": "6€"
+    "name": "Ciné concert",
+    "price": "8€",
+    "condition": ""
   },
   {
     "id": 3,
-    "name": "Espace rencontre TNB",
-    "price": "6€"
+    "name": "Carte sortir et groupe",
+    "price": "3€",
+    "condition": "à partir de 10 personnes"
   },
   {
     "id": 4,
-    "name": "Bar TNB",
-    "price": "6€"
+    "name": "Carte fidélité",
+    "price": "25€",
+    "condition": "5 places"
   }
 ]

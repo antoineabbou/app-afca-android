@@ -8,4 +8,6 @@ class Price {
     internal var id: Int? = null
     internal var name: String? = null
     internal var price: String? = null
+    internal var condition: String? = null
+
 }

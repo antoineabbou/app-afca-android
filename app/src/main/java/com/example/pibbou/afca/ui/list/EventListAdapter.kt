@@ -14,13 +14,8 @@ import android.widget.TextView
 import android.widget.ToggleButton
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
-import com.example.pibbou.afca.repository.DataStore
-import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.detail.DetailActivity
-import com.github.johnpersano.supertoasts.library.Style
-import com.github.johnpersano.supertoasts.library.SuperActivityToast
-import com.github.johnpersano.supertoasts.library.utils.PaletteUtils
 import com.squareup.picasso.Picasso
 import java.util.ArrayList
 
