@@ -17,6 +17,10 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import android.content.Intent
+import android.net.Uri
+import android.widget.Button
+
 
 class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
@@ -33,6 +37,14 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
         val mapFragment: SupportMapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+
+        val button = findViewById<Button>(R.id.more)
+        button.setOnClickListener(View.OnClickListener { v ->
+            val uri = Uri.parse("http://www.festival-film-animation.fr/")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        })
 
         setupPriceList()
     }

@@ -9,7 +9,8 @@
     "startingDate": "2018-03-09 10:15:00",
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
-    "image": "http://www.festival-film-animation.fr/images/photo1_LHOMME_AUX_OISEAUX.jpeg"
+    "image": "http://www.festival-film-animation.fr/images/photo1_LHOMME_AUX_OISEAUX.jpeg",
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
   },
   {
     "id": 2,
@@ -21,7 +22,8 @@
     "startingDate": "2018-03-09 00:04:00",
     "endingDate": "2018-04-04 13:30:00",
     "public": 2,
-    "image": "http://www.festival-film-animation.fr/images/photo1_POISSON.png"
+    "image": "http://www.festival-film-animation.fr/images/photo1_POISSON.png",
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
   },
   {
     "id": 3,
@@ -33,7 +35,8 @@
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
-    "image": "http://www.festival-film-animation.fr/images/photo1_Comme_un_%C3%A9l%C3%A9phant_dans_un_magasin_de_porcelaine.jpeg"
+    "image": "http://www.festival-film-animation.fr/images/photo1_Comme_un_%C3%A9l%C3%A9phant_dans_un_magasin_de_porcelaine.jpeg",
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
   },
   {
     "id": 4,
@@ -45,7 +48,8 @@
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
-    "image": "http://www.festival-film-animation.fr/images/photo1_LE_CHAT.jpeg"
+    "image": "http://www.festival-film-animation.fr/images/photo1_LE_CHAT.jpeg",
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
   },
   {
     "id": 5,
@@ -57,7 +61,8 @@
     "startingDate": "2018-03-08 12:15:00",
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
-    "image": "http://www.festival-film-animation.fr/images/photo1_LImbecqu%C3%A9.jpeg"
+    "image": "http://www.festival-film-animation.fr/images/photo1_LImbecqu%C3%A9.jpeg",
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
   },
   {
     "id": 6,
@@ -69,7 +74,8 @@
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
-    "image": "http://www.festival-film-animation.fr/images/photo1_LALLIANCE.jpeg"
+    "image": "http://www.festival-film-animation.fr/images/photo1_LALLIANCE.jpeg",
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
   },
   {
     "id": 7,
@@ -81,7 +87,8 @@
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
     "public": 2,
-    "image": "http://www.festival-film-animation.fr/images/photo1_D%C3%A9luge_%C3%A0_Sous-Bois-Les-Bains.png"
+    "image": "http://www.festival-film-animation.fr/images/photo1_D%C3%A9luge_%C3%A0_Sous-Bois-Les-Bains.png",
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
   },
   {
     "id": 8,
@@ -93,7 +100,8 @@
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
-    "image": "http://www.festival-film-animation.fr/images/photo1_PETIT_ASTRE.jpeg"
+    "image": "http://www.festival-film-animation.fr/images/photo1_PETIT_ASTRE.jpeg",
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
   },
   {
     "id": 9,
@@ -105,7 +113,8 @@
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
     "public": 2,
-    "image": "http://www.festival-film-animation.fr/images/photo2_FAERING.png"
+    "image": "http://www.festival-film-animation.fr/images/photo2_FAERING.png",
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
   },
   {
     "id": 10,
@@ -117,7 +126,8 @@
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
-    "image": "http://www.festival-film-animation.fr/images/voyagers-768x432.jpg"
+    "image": "http://www.festival-film-animation.fr/images/voyagers-768x432.jpg",
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
   },
   {
     "id": 11,
@@ -129,6 +139,7 @@
     "startingDate": "2018-04-04 10:00:00",
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
-    "image": "http://www.festival-film-animation.fr/images/photo2_Un_air_de_murmure.jpeg"
+    "image": "http://www.festival-film-animation.fr/images/photo2_Un_air_de_murmure.jpeg",
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
   }
 ]

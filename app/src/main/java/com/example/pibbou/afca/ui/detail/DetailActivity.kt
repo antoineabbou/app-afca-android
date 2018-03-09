@@ -16,7 +16,9 @@ import com.github.johnpersano.supertoasts.library.utils.PaletteUtils
 import com.example.pibbou.afca.repository.FavoriteManager
 import android.R.id.edit
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.util.Log
 import android.widget.CompoundButton
 import com.example.pibbou.afca.repository.DataStore
@@ -191,6 +193,15 @@ class DetailActivity : AppCompatActivity() {
 
         val categoryText: TextView = findViewById(R.id.categoryTitle)
         categoryText.setText(category?.name)
+
+        // BUTTON
+
+        val button: Button = findViewById(R.id.button)
+        button.setOnClickListener({ v ->
+            val uri = Uri.parse(event?.link)
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        })
 
 
         // val toggle = findViewById<ToggleButton>(R.id.buttonFav)

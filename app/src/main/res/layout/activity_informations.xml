@@ -44,6 +44,12 @@
         tools:layout_editor_absoluteX="8dp"
         tools:ignore="MissingConstraints" />
 
+    <Button
+        android:id="@+id/more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="En savoir plus" />
+
     <include
         android:id="@+id/include"
         layout="@layout/activity_base" />
