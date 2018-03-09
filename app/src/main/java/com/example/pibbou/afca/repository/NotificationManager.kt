@@ -41,4 +41,6 @@ import com.example.pibbou.afca.ui.detail.DetailActivity
         mBuilder.setContentIntent(pi)
         mNotificationManager.notify(0, mBuilder.build())
     }
+
+
 }

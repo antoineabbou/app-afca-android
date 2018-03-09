@@ -1,28 +1,18 @@
 package com.example.pibbou.afca.ui.main
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.example.pibbou.afca.R
-import kotlinx.android.synthetic.main.activity_main.*
 import android.view.View
-import com.example.pibbou.afca.repository.DataStore
-import com.example.pibbou.afca.repository.NotificationManager
 import com.example.pibbou.afca.ui.base.BaseActivity
-import com.example.pibbou.afca.ui.list.CategoryListAdapter
 import com.example.pibbou.afca.ui.list.FilterListAdapter
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v4.view.ViewPager.OnPageChangeListener
 import android.util.Log
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.repository.entity.Event
-import android.content.Intent
 import android.widget.*
-import android.widget.TextView
-import com.example.pibbou.afca.services.IntentServiceExample
 
 
 class MainActivity : BaseActivity() {
@@ -42,12 +32,6 @@ class MainActivity : BaseActivity() {
 
     private var mBouton: Button? = null
 
-    private var mCompteur = 0
-
-    val EXTRA_COMPTEUR = "com.example.pibbou.afca.services.compteur"
-
-    private val mAffichageCompteur: TextView? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,12 +45,6 @@ class MainActivity : BaseActivity() {
         this.setupFilterList()
 
         this.setPagerEvents()
-
-        mBouton = findViewById<Button>(R.id.button) as Button
-        mBouton!!.setOnClickListener({
-            val intent = Intent(this, IntentServiceExample::class.java)
-            startService(intent)
-        })
     }
 
 

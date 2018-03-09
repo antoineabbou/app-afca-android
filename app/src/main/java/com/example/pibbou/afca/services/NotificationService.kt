@@ -1,22 +1,18 @@
 package com.example.pibbou.afca.services
 
-import android.app.NotificationManager
 import android.app.Service
 import android.content.Intent
 import android.os.*
-import android.util.Log
-import android.widget.Toast
 import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.repository.entity.Event
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 /**
  * Created by antoine on 08/03/2018.
  */
 
-class IntentServiceExample : Service() {
+class NotificationService : Service() {
     // private var mServiceLooper: Looper? = null
     private var mServiceHandler: ServiceHandler? = null
     private var favoriteManager: FavoriteManager = FavoriteManager()
@@ -57,8 +53,6 @@ class IntentServiceExample : Service() {
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-        Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show()
-
         // For each start request, send a message to start a job and deliver the
         // start ID so we know which request we're stopping when we finish the job
         val msg = mServiceHandler!!.obtainMessage()
@@ -75,7 +69,6 @@ class IntentServiceExample : Service() {
     }
 
     override fun onDestroy() {
-        Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show()
     }
 
     private fun compareToDeviceTime() {
@@ -90,20 +83,14 @@ class IntentServiceExample : Service() {
                 var notified: Boolean? = null
                 Timer().scheduleAtFixedRate(object : TimerTask() {
                     override fun run() {
-                        Log.i("test", "test")
                         currentTime = Calendar.getInstance().time
 
                         datePlusFiveMinutes = Date(System.currentTimeMillis() + 5 * 60 * 1000)
 
                         val duration = printDifference(currentTime, favorite.startingDate!!)
 
-                        Log.i("favorite start date", favorite.startingDate.toString())
-                        Log.i("currentTime", currentTime.toString())
-                        Log.i("notified", notified.toString())
-
-                        // If date is between current - 5min and current + 5 min, send notification
+                        // If date is before + 5 min, send notification
                         if (favorite.startingDate!!.before(datePlusFiveMinutes) && favorite.startingDate!!.after(currentTime) && notified === null) {
-                            Log.i("Hello", "world")
                             notificationManager?.showNotification(applicationContext, "Un évenement près de chez vous dans $duration minutes :", favorite.name.toString(), favorite)
                             notified = true
                         }
