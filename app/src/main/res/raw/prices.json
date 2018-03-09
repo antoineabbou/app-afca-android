@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Unique",
+    "price": "6€"
+  },
+  {
+    "id": 2,
+    "name": "Ciné TNB Piccoli",
+    "price": "6€"
+  },
+  {
+    "id": 3,
+    "name": "Espace rencontre TNB",
+    "price": "6€"
+  },
+  {
+    "id": 4,
+    "name": "Bar TNB",
+    "price": "6€"
+  }
+]
