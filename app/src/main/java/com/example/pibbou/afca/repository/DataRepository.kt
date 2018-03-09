@@ -198,6 +198,13 @@ class DataRepository constructor(contextArg: Context) {
         return null
     }
 
+    fun getPlaces(): ArrayList<Place>? {
+        if(places.isNotEmpty()) {
+            return places
+        }
+        return null
+    }
+
     // Return events by day
     fun getEventsByDay(day:Int): ArrayList<Event>? {
 

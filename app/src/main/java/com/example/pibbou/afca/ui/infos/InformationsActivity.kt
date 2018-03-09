@@ -39,7 +39,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
 
-        val button = findViewById<Button>(R.id.more)
+        val button = findViewById<Button>(R.id.more) as Button
         button.setOnClickListener(View.OnClickListener { v ->
             val uri = Uri.parse("http://www.festival-film-animation.fr/")
             val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -60,10 +60,23 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         // Add a marker in Sydney, Australia,
         // and move the map's camera to the same location.
-        val sydney = LatLng(-33.852, 151.211)
-        googleMap.addMarker(MarkerOptions().position(sydney)
-                .title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val home = LatLng(48.115186, -1.682684)
+
+        val places = repository?.getPlaces()
+
+        for (place in places!!) {
+            val lat = place.lat
+            val long = place.long
+            val latlng = LatLng(lat!!, long!!)
+            googleMap.addMarker(MarkerOptions().position(latlng)
+                    .title(place.name))
+        }
+
+        googleMap.addMarker(MarkerOptions().position(home)
+                .title("Marker in home"))
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(home))
+        googleMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) );
     }
 
     private fun setupPriceList() {
