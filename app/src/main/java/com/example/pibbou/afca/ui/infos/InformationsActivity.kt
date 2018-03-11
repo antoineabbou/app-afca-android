@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.transition.Fade
 import android.transition.Slide
+import android.transition.TransitionInflater
 import android.view.View
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.ui.base.BaseActivity
@@ -18,8 +19,9 @@ class InformationsActivity : BaseActivity() {
     private fun setupWindowAnimations() {
         // Check if we're running on Android 5.0 or higher
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val fade = Fade()
+            val fade = TransitionInflater.from(this).inflateTransition(R.transition.fade)
             fade.duration = 500
+            fade.excludeTarget(R.id.navBar, true)
             // set an exit transition
             window.enterTransition = fade
             window.exitTransition = fade
