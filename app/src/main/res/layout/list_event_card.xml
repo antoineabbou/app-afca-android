@@ -12,7 +12,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,8 +20,8 @@
 
         <ToggleButton
             android:id="@+id/button_favorite"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:layout_centerInParent="true"
             android:background="@drawable/button_fav"
             android:checked="false"
