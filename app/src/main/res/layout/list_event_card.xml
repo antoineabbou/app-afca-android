@@ -41,7 +41,7 @@
             android:id="@+id/button_favorite"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:background="@drawable/button_favorite"
+            android:background="@drawable/button_fav"
             android:checked="false"
             android:text=""
             android:textOff=""

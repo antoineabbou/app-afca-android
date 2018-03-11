@@ -16,6 +16,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.support.constraint.ConstraintLayout
 import android.util.Log
 import android.widget.*
 import com.example.pibbou.afca.repository.DataStore
@@ -59,8 +60,9 @@ class DetailActivity : AppCompatActivity() {
         // Find the event, the place and the category in the list
         val event = dataRepository!!.findEventById(id)
         val toggle = findViewById<ToggleButton>(R.id.buttonFav)
-        toggle.setTextOn("S")
-        toggle.setTextOff("A")
+        toggle.setText(null)
+        toggle.setTextOn(null)
+        toggle.setTextOff(null)
 
         setDatas()
 
@@ -116,14 +118,12 @@ class DetailActivity : AppCompatActivity() {
         if(isInList == false) {
 
             // Init
-            toggle.setText("Ajouter aux favoris")
             toggle.isChecked = false
 
 
         } else {
 
             // Init
-            toggle.setText("Supprimer des favoris")
             toggle.isChecked = true
 
         }
@@ -158,6 +158,12 @@ class DetailActivity : AppCompatActivity() {
         ////////////// EVENT
         ////////////////////
         ////////////////////
+
+        val container: ConstraintLayout = findViewById(R.id.constraintLayout)
+
+        if (category != null) {
+            container.setBackgroundColor(Color.parseColor(category.color))
+        }
 
         // Title
         val eventTitle: TextView = findViewById(R.id.eventTitle)

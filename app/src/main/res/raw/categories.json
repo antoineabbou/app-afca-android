@@ -2,41 +2,41 @@
   {
     "id": 1,
     "name": "Séance spéciale",
-    "color": "#00FFFF"
+    "color": "#E94A27"
   },
   {
     "id": 2,
     "name": "Volet professionnel",
-    "color": "#00FFFF"
+    "color": "#FCB349"
   },
   {
     "id": 3,
     "name": "Séance scolaire",
-    "color": "#00FFFF"
+    "color": "#FCB349"
   },
   {
     "id": 4,
     "name": "Compétition et sélections",
-    "color": "#00FFFF"
+    "color": "#667EBE"
   },
   {
     "id": 5,
     "name": "Long métrage et rencontres",
-    "color": "#00FFFF"
+    "color": "#E94A27"
   },
   {
     "id": 6,
     "name": "Atelier secret Fab",
-    "color": "#00FFFF"
+    "color": "#FCB349"
   },
   {
     "id": 7,
     "name": "Salon des nouvelles écritures",
-    "color": "#00FFFF"
+    "color": "#FCB349"
   },
   {
     "id": 8,
     "name": "Unknown",
-    "color": "#00FFFF"
+    "color": "#667EBE"
   }
 ]
