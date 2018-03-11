@@ -2,14 +2,11 @@ package com.example.pibbou.afca.ui.detail
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
 import java.text.SimpleDateFormat
 import android.view.View
-import android.widget.Button
 import android.graphics.Color
-import android.widget.ToggleButton
 import com.github.johnpersano.supertoasts.library.Style
 import com.github.johnpersano.supertoasts.library.SuperActivityToast
 import com.github.johnpersano.supertoasts.library.utils.PaletteUtils
@@ -20,9 +17,11 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import android.widget.CompoundButton
+import android.widget.*
 import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.entity.Event
+import com.squareup.picasso.Picasso
+import java.text.DateFormat
 import java.util.ArrayList
 
 
@@ -59,10 +58,9 @@ class DetailActivity : AppCompatActivity() {
 
         // Find the event, the place and the category in the list
         val event = dataRepository!!.findEventById(id)
-        val preferences = getPreferences(Context.MODE_PRIVATE)
         val toggle = findViewById<ToggleButton>(R.id.buttonFav)
-        toggle.setTextOn("Supprimer des favoris")
-        toggle.setTextOff("Ajouter aux favoris")
+        toggle.setTextOn("S")
+        toggle.setTextOff("A")
 
         setDatas()
 
@@ -155,8 +153,11 @@ class DetailActivity : AppCompatActivity() {
 
         // Loading datas : Title, excerpt, start, end, place and category
 
-
-        // EVENT
+        ////////////////////
+        ////////////////////
+        ////////////// EVENT
+        ////////////////////
+        ////////////////////
 
         // Title
         val eventTitle: TextView = findViewById(R.id.eventTitle)
@@ -168,20 +169,23 @@ class DetailActivity : AppCompatActivity() {
         eventExcerpt.setText(event?.excerpt)
 
 
-        // Start
+        // Date
         val eventStart: TextView = findViewById(R.id.eventStart)
-        val dateStart = event?.startingDate
-        val sdf_start = SimpleDateFormat("MMM MM dd, yyyy h:mm a") // Adapting format
-        val dateStringStart = sdf_start.format(dateStart)
-        eventStart.setText(dateStringStart)
+        val dayOfTheWeek = android.text.format.DateFormat.format("EEEE", event?.startingDate) as String // Thursday
+        val day =  android.text.format.DateFormat.format("dd", event?.startingDate) as String // 20
+        val monthString =  android.text.format.DateFormat.format("MMM", event?.startingDate) as String // Jun
+        eventStart.setText(getString(R.string.dateEvent, dayOfTheWeek, day, monthString))
 
+        val eventHour: TextView = findViewById(R.id.hour)
+        val hour = android.text.format.DateFormat.format("HH:mm", event?.startingDate) as String
+        eventHour.setText(hour)
 
-        // End
-        val eventEnd: TextView = findViewById(R.id.eventEnd)
-        val dateEnd = event?.endingDate
-        val sdf_end = SimpleDateFormat("MMM MM dd, yyyy h:mm a") // Adapting format
-        val dateStringEnd = sdf_end.format(dateEnd)
-        eventEnd.setText(dateStringEnd)
+        // Author
+        val author: TextView = findViewById(R.id.author)
+        author.setText(event?.author)
+
+        val duration: TextView = findViewById(R.id.duration)
+        duration.setText(event?.duration)
 
 
         // PLACE
@@ -202,6 +206,13 @@ class DetailActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
         })
+
+        val image: ImageView = findViewById(R.id.eventImage)
+        image.setScaleType(ImageView.ScaleType.FIT_XY)
+
+        Picasso.with(applicationContext)
+                .load(event?.image)
+                .into(image)
 
 
         // val toggle = findViewById<ToggleButton>(R.id.buttonFav)

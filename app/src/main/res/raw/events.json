@@ -10,7 +10,9 @@
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
     "image": "http://www.festival-film-animation.fr/images/photo1_LHOMME_AUX_OISEAUX.jpeg",
-    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
+    "author": "Wes Anderson",
+    "duration": "3 min"
   },
   {
     "id": 2,
@@ -23,7 +25,9 @@
     "endingDate": "2018-04-04 13:30:00",
     "public": 2,
     "image": "http://www.festival-film-animation.fr/images/photo1_POISSON.png",
-    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
+    "author": "Wes Anderson",
+    "duration": "3 min"
   },
   {
     "id": 3,
@@ -36,7 +40,9 @@
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
     "image": "http://www.festival-film-animation.fr/images/photo1_Comme_un_%C3%A9l%C3%A9phant_dans_un_magasin_de_porcelaine.jpeg",
-    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
+    "author": "Wes Anderson",
+    "duration": "3 min"
   },
   {
     "id": 4,
@@ -49,7 +55,9 @@
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
     "image": "http://www.festival-film-animation.fr/images/photo1_LE_CHAT.jpeg",
-    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
+    "author": "Wes Anderson",
+    "duration": "3 min"
   },
   {
     "id": 5,
@@ -62,7 +70,9 @@
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
     "image": "http://www.festival-film-animation.fr/images/photo1_LImbecqu%C3%A9.jpeg",
-    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
+    "author": "Wes Anderson",
+    "duration": "3 min"
   },
   {
     "id": 6,
@@ -75,7 +85,9 @@
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
     "image": "http://www.festival-film-animation.fr/images/photo1_LALLIANCE.jpeg",
-    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
+    "author": "Wes Anderson",
+    "duration": "3 min"
   },
   {
     "id": 7,
@@ -88,7 +100,9 @@
     "endingDate": "2018-04-04 13:30:00",
     "public": 2,
     "image": "http://www.festival-film-animation.fr/images/photo1_D%C3%A9luge_%C3%A0_Sous-Bois-Les-Bains.png",
-    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
+    "author": "Wes Anderson",
+    "duration": "3 min"
   },
   {
     "id": 8,
@@ -101,7 +115,9 @@
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
     "image": "http://www.festival-film-animation.fr/images/photo1_PETIT_ASTRE.jpeg",
-    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
+    "author": "Wes Anderson",
+    "duration": "3 min"
   },
   {
     "id": 9,
@@ -114,7 +130,9 @@
     "endingDate": "2018-04-04 13:30:00",
     "public": 2,
     "image": "http://www.festival-film-animation.fr/images/photo2_FAERING.png",
-    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
+    "author": "Wes Anderson",
+    "duration": "3 min"
   },
   {
     "id": 10,
@@ -127,7 +145,9 @@
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
     "image": "http://www.festival-film-animation.fr/images/voyagers-768x432.jpg",
-    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
+    "author": "Wes Anderson",
+    "duration": "3 min"
   },
   {
     "id": 11,
@@ -140,6 +160,8 @@
     "endingDate": "2018-04-04 13:30:00",
     "public": 3,
     "image": "http://www.festival-film-animation.fr/images/photo2_Un_air_de_murmure.jpeg",
-    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html"
+    "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
+    "author": "Wes Anderson",
+    "duration": "3 min"
   }
 ]

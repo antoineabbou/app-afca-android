@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Festival d\'animation PIBOU</string>
 
     <string-array name="sort_day">
@@ -6,4 +6,8 @@
         <item>Jour 2</item>
         <item>Jour 3</item>
     </string-array>
+
+    <string name="dateEvent">
+        <xliff:g id="dayoftheweek" example="Lundi">%s</xliff:g> <xliff:g id="dayofthemonth" example="5">%s</xliff:g> <xliff:g id="month" example="Avril">%s</xliff:g>
+    </string>
 </resources>

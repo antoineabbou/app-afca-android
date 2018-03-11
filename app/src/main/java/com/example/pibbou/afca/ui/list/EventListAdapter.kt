@@ -102,6 +102,8 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
             .load(singleEvent?.image)
             .into(holder.eventCardImage)
 
+        holder.eventCardImage.setScaleType(ImageView.ScaleType.FIT_XY)
+
         isInList = favoriteManager?.currentFavorites!!.filter {
             it.id === singleEvent?.id
         }.count() > 0

@@ -21,4 +21,6 @@ class Event {
     internal var endingDate: Date? = null
     internal var image: String? = null
     internal var link: String? = null
+    internal var author: String? = null
+    internal var duration: String? = null
 }
