@@ -8,6 +8,30 @@
     android:orientation="vertical"
     android:padding="0dp">
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ToggleButton
+            android:id="@+id/button_favorite"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/button_fav"
+            android:checked="false"
+            android:text=""
+            android:textOff=""
+            android:textOn="" />
+
+    </LinearLayout>
+
     <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/cardView"
@@ -89,24 +113,5 @@
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        >
-
-        <ToggleButton
-            android:id="@+id/button_favorite"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_centerInParent="true"
-            android:background="@drawable/button_fav"
-            android:checked="false"
-            android:text=""
-            android:textOff=""
-            android:textOn=""
-            />
-
-    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
