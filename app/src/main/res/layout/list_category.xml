@@ -6,20 +6,16 @@
     android:layout_height="wrap_content"
 
     android:background="?android:selectableItemBackground"
-    android:orientation="vertical"
-    android:padding="5dp">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
-        android:padding="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="5dp">
-
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/categoryTitle"
@@ -38,13 +34,11 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_event_list"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_gravity="center_vertical"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
