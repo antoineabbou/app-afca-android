@@ -97,6 +97,9 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         val singleEvent = eventList?.get(i)
         // Set text to card title
         holder.eventCardTitle.setText(singleEvent?.name)
+        // holder.eventCardAuthor.setText(singleEvent?.author)
+
+
 
         Picasso.with(mContext)
             .load(singleEvent?.image)
@@ -133,6 +136,9 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
         var eventCardTitle: TextView
         var eventCardImage: ImageView
+        /*var eventCardAuthor: TextView
+        var eventCardHour: TextView
+        var eventCardPlace: TextView*/
         var eventCardFavorite: ToggleButton
 
         init {
@@ -140,6 +146,12 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
             this.eventCardTitle = view.findViewById(R.id.eventCardTitle)
             // Get card Image view
             this.eventCardImage = view.findViewById(R.id.eventCardImage)
+
+            /*this.eventCardAuthor = view.findViewById(R.id.eventCardAuthor)
+
+            this.eventCardHour = view.findViewById(R.id.eventCardHour)
+
+            this.eventCardPlace = view.findViewById(R.id.eventCardPlace)*/
 
             this.eventCardFavorite = view.findViewById(R.id.button_favorite)
         }
