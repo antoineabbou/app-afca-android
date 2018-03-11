@@ -18,6 +18,7 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout
 import android.view.LayoutInflater
 import android.widget.*
 import android.graphics.Point
+import android.support.constraint.ConstraintLayout
 import kotlinx.android.synthetic.main.custom_tab.view.*
 
 
@@ -56,10 +57,17 @@ class MainActivity : BaseActivity() {
         viewPagerTab.setCustomTabView { container, position, adapter ->
 
             val view = inflater.inflate(R.layout.custom_tab, container,
-                    false) as TextView
+                    false) as ConstraintLayout
 
-            view.custom_tab_text.minimumWidth = width / 2
-            view.custom_tab_text.text = mainPager.adapter.getPageTitle(position)
+            view.custom_tab_day.minimumWidth = width / 2
+            view.custom_tab_day.text = mainPager.adapter.getPageTitle(position)
+
+            when (position) {
+                0 -> view.custom_tab_date.text = "Mercredi 04 Avril"
+                1 -> view.custom_tab_date.text = "Jeudi 05 Avril"
+                2 -> view.custom_tab_date.text = "Vendredi 06 Avril"
+                3 -> view.custom_tab_date.text = "Samedi 07 Avril"
+            }
 
             view
         }

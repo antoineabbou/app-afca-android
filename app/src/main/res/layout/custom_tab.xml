@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/custom_tab_text"
+    android:id="@+id/custom_tab_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/selectableItemBackground"
-    android:gravity="center"
-    android:paddingLeft="2dp"
-    android:paddingRight="2dp"
-    android:textColor="#500433"
-    android:textSize="14sp">
+    tools:context="com.example.pibbou.afca.ui.main.MainActivity">
 
-</TextView>
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/custom_tab_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="Day"
+        android:textColor="#ffffff"
+        android:textSize="14sp"></TextView>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/custom_tab_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="Date"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/custom_tab_day"></TextView>
+
+</android.support.constraint.ConstraintLayout>
