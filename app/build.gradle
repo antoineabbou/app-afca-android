@@ -41,4 +41,6 @@ dependencies {
     compile "com.squareup.picasso:picasso:2.5.2"
     // Notification
     compile "com.android.support:support-compat:26.1.0"
+    // Smart Tablayout
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
 }

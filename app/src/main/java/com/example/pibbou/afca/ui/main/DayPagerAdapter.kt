@@ -34,7 +34,7 @@ class DayPagerAdapter(fragmentManager: FragmentManager) : SmartFragmentStatePage
 
     // Returns the page title for the top indicator
     override fun getPageTitle(position: Int): CharSequence {
-        return "Page " + position
+        return "Jour " + position
     }
 
     companion object {

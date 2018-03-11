@@ -9,9 +9,6 @@ import android.support.v7.widget.RecyclerView
 import com.example.pibbou.afca.R
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.NotificationManager
 import com.example.pibbou.afca.ui.base.BaseActivity
@@ -19,7 +16,6 @@ import com.example.pibbou.afca.ui.list.CategoryListAdapter
 import com.example.pibbou.afca.ui.list.FilterListAdapter
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
-import android.widget.Toast
 import android.support.v4.view.ViewPager.OnPageChangeListener
 import android.transition.Fade
 import android.transition.Slide
@@ -29,8 +25,16 @@ import android.view.Window
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.repository.entity.Event
 import android.view.Window.FEATURE_CONTENT_TRANSITIONS
-
-
+import com.ogaclejapan.smarttablayout.SmartTabLayout
+import android.support.v4.view.PagerAdapter
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.*
+import kotlinx.android.synthetic.main.custom_tab.*
+import android.R.attr.x
+import android.graphics.Point
+import android.view.Display
+import kotlinx.android.synthetic.main.custom_tab.view.*
 
 
 class MainActivity : BaseActivity() {
@@ -55,6 +59,39 @@ class MainActivity : BaseActivity() {
         mainPager = findViewById<View>(R.id.mainPager) as ViewPager
         adapterViewPager = DayPagerAdapter(supportFragmentManager)
         mainPager.adapter = adapterViewPager
+
+        val viewPagerTab = findViewById<View>(R.id.viewpagertab) as SmartTabLayout
+
+
+        //val tabText =  findViewById<View>(R.id.custom_tab_text)
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        val width = size.x
+        //tabText.minimumWidth = width
+
+        val inflater = LayoutInflater.from(viewPagerTab.context)
+        viewPagerTab.setCustomTabView { container, position, adapter ->
+
+            val view = inflater.inflate(R.layout.custom_tab, container,
+                    false) as TextView
+
+            view.custom_tab_text.minimumWidth = width / 2
+            view.custom_tab_text.text = mainPager.adapter.getPageTitle(position)
+
+            /*when (position) {
+                0 -> view.custom_tab_text.minimumWidth = width / 2
+                1 -> view.custom_tab_text.minimumWidth = width / 2
+                2 -> view.custom_tab_text.minimumWidth = width / 2
+                3 -> view.custom_tab_text.minimumWidth = width / 2
+                else -> throw IllegalStateException("Invalid position: " + position)
+            }*/
+
+            view
+        }
+
+        viewPagerTab.setViewPager(mainPager)
+
 
         this.getEventsAndSetFilters(mainPager.getCurrentItem())
         this.setupFilterList()

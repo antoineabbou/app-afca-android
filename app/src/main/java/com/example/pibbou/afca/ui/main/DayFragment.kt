@@ -33,7 +33,7 @@ class DayFragment : android.support.v4.app.Fragment() {
         super.onCreate(savedInstanceState)
 
         // Get day
-        day = getArguments().getInt("someInt", 0)
+        day = getArguments().getInt("day", 0)
 
         // Get Events By Day
         eventsByDay = repository!!.getEventsByDay(day)
@@ -74,7 +74,7 @@ class DayFragment : android.support.v4.app.Fragment() {
         fun newInstance(day: Int): DayFragment? {
             val fragmentFirst = DayFragment()
             val args = Bundle()
-            args.putInt("someInt", day)
+            args.putInt("day", day)
             fragmentFirst.setArguments(args)
             return fragmentFirst
         }
