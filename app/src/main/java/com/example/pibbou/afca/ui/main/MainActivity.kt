@@ -2,38 +2,22 @@ package com.example.pibbou.afca.ui.main
 
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.example.pibbou.afca.R
-import kotlinx.android.synthetic.main.activity_main.*
 import android.view.View
-import com.example.pibbou.afca.repository.DataStore
-import com.example.pibbou.afca.repository.NotificationManager
 import com.example.pibbou.afca.ui.base.BaseActivity
-import com.example.pibbou.afca.ui.list.CategoryListAdapter
 import com.example.pibbou.afca.ui.list.FilterListAdapter
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v4.view.ViewPager.OnPageChangeListener
-import android.transition.Fade
-import android.transition.Slide
 import android.transition.TransitionInflater
 import android.util.Log
-import android.view.Window
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.repository.entity.Event
-import android.view.Window.FEATURE_CONTENT_TRANSITIONS
 import com.ogaclejapan.smarttablayout.SmartTabLayout
-import android.support.v4.view.PagerAdapter
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.*
-import kotlinx.android.synthetic.main.custom_tab.*
-import android.R.attr.x
 import android.graphics.Point
-import android.view.Display
 import kotlinx.android.synthetic.main.custom_tab.view.*
 
 
@@ -42,7 +26,6 @@ class MainActivity : BaseActivity() {
     private var adapterViewPager: SmartFragmentStatePagerAdapter? = null
 
     // Prepare eventsByDay array
-    private lateinit var recycler_view_category_list: RecyclerView
     private lateinit var recycler_view_filter_list: RecyclerView
     private lateinit var mainPager: ViewPager
     private var filterAdapter: FilterListAdapter? = null
@@ -62,13 +45,12 @@ class MainActivity : BaseActivity() {
 
         val viewPagerTab = findViewById<View>(R.id.viewpagertab) as SmartTabLayout
 
-
-        //val tabText =  findViewById<View>(R.id.custom_tab_text)
+        // Get event size
         val display = windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
         val width = size.x
-        //tabText.minimumWidth = width
+
 
         val inflater = LayoutInflater.from(viewPagerTab.context)
         viewPagerTab.setCustomTabView { container, position, adapter ->
@@ -79,18 +61,12 @@ class MainActivity : BaseActivity() {
             view.custom_tab_text.minimumWidth = width / 2
             view.custom_tab_text.text = mainPager.adapter.getPageTitle(position)
 
-            /*when (position) {
-                0 -> view.custom_tab_text.minimumWidth = width / 2
-                1 -> view.custom_tab_text.minimumWidth = width / 2
-                2 -> view.custom_tab_text.minimumWidth = width / 2
-                3 -> view.custom_tab_text.minimumWidth = width / 2
-                else -> throw IllegalStateException("Invalid position: " + position)
-            }*/
-
             view
         }
 
         viewPagerTab.setViewPager(mainPager)
+
+        viewPagerTab.setOnTouchListener(View.OnTouchListener { view, motionEvent ->  true})
 
 
         this.getEventsAndSetFilters(mainPager.getCurrentItem())
@@ -147,6 +123,7 @@ class MainActivity : BaseActivity() {
 
     }
 
+
     private fun setPagerEvents() {
         // Attach the page change listener inside the activity
         mainPager.addOnPageChangeListener(object : OnPageChangeListener {
@@ -170,13 +147,13 @@ class MainActivity : BaseActivity() {
         })
     }
 
+
     private fun getEventsAndSetFilters(day: Int) {
         // Get Events By Day
         eventsByDay = repository!!.getEventsByDay(day)
         setFilters(eventsByDay)
-
-        Log.i("", "")
     }
+
 
     private fun setFilters(eventsByDay: ArrayList<Event>?) {
         currentFilters.clear()
@@ -195,6 +172,7 @@ class MainActivity : BaseActivity() {
 
         filterAdapter?.notifyDataSetChanged()
     }
+
 
     fun updateEventDatas(public: Int) {
 
@@ -220,12 +198,13 @@ class MainActivity : BaseActivity() {
         fragment.categoriesAdapter.notifyDataSetChanged()
     }
 
+
     override fun provideParentLayoutId(): Int {
         return R.layout.activity_main
     }
 
+
     override fun setParentLayout(): View {
         return findViewById<View>(R.id.parentPanel) as View
     }
-
 }
