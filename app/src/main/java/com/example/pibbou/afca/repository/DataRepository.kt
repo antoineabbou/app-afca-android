@@ -6,10 +6,9 @@ import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.entity.Category
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.repository.entity.Place
+import com.example.pibbou.afca.repository.entity.Price
 import com.google.gson.Gson
-import java.io.BufferedReader
 import java.io.IOException
-import java.io.InputStreamReader
 import com.google.gson.GsonBuilder
 
 
@@ -24,6 +23,7 @@ class DataRepository constructor(contextArg: Context) {
     private var places: ArrayList<Place> = ArrayList()
     private var categories: ArrayList<Category> = ArrayList()
     private var events: ArrayList<Event> = ArrayList()
+    private var prices: ArrayList<Price> = ArrayList()
 
     /**
      * Initialization
@@ -40,6 +40,7 @@ class DataRepository constructor(contextArg: Context) {
         deserializePlaces()
         deserializeCategories()
         deserializeEvents()
+        deserializePrices()
         Log.d("GSON deserialize", "END")
     }
 
@@ -94,6 +95,20 @@ class DataRepository constructor(contextArg: Context) {
             events.add(event)
         }
         
+        Log.d("GSON deserialize", jsonDatas)
+    }
+
+    // Events
+    private fun deserializePrices() {
+        val jsonDatas = jsonToString(R.raw.prices, context)
+
+        val gson = Gson()
+        val jsonPrices = gson.fromJson(jsonDatas, Array<Price>::class.java)
+
+        for(price in jsonPrices){
+            prices.add(price)
+        }
+
         Log.d("GSON deserialize", jsonDatas)
     }
 
@@ -173,6 +188,20 @@ class DataRepository constructor(contextArg: Context) {
             return events
         }
 
+        return null
+    }
+
+    fun getPrices(): ArrayList<Price>? {
+        if(prices.isNotEmpty()) {
+            return prices
+        }
+        return null
+    }
+
+    fun getPlaces(): ArrayList<Place>? {
+        if(places.isNotEmpty()) {
+            return places
+        }
         return null
     }
 

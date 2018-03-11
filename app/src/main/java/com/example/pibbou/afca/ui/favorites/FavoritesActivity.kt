@@ -1,6 +1,7 @@
 package com.example.pibbou.afca.ui.favorites
 
 import android.os.Build
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -15,7 +16,7 @@ import com.example.pibbou.afca.ui.base.BaseActivity
 import com.example.pibbou.afca.ui.list.FavoriteListAdapter
 import android.widget.CompoundButton
 import android.widget.ToggleButton
-
+import com.example.pibbou.afca.services.NotificationService
 
 
 class FavoritesActivity : BaseActivity() {
@@ -38,10 +39,18 @@ class FavoritesActivity : BaseActivity() {
         this.setupFavoriteList()
 
         val toggle = findViewById<ToggleButton>(R.id.notification_button) as ToggleButton
+        val intent = Intent(this, NotificationService::class.java)
 
         toggle.setOnCheckedChangeListener { buttonView, isChecked ->
             notificationAutho = isChecked
             Log.i("state", notificationAutho.toString())
+            if (isChecked === true) {
+                Log.i("btncheck", "true")
+                startService(intent)
+            } else if (isChecked === false){
+                // Log.i("btncheck", "false")
+                // stopService(intent)
+            }
         }
 
     }

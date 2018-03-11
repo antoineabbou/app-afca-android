@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Unique",
+    "price": "6€",
+    "condition": ""
+  },
+  {
+    "id": 2,
+    "name": "Ciné concert",
+    "price": "8€",
+    "condition": ""
+  },
+  {
+    "id": 3,
+    "name": "Carte sortir et groupe",
+    "price": "3€",
+    "condition": "à partir de 10 personnes"
+  },
+  {
+    "id": 4,
+    "name": "Carte fidélité",
+    "price": "25€",
+    "condition": "5 places"
+  }
+]

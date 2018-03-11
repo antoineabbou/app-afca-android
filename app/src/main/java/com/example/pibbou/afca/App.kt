@@ -8,6 +8,7 @@ import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.main.MainActivity
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -21,12 +22,10 @@ class App : Application() {
     var favoritesManager: FavoriteManager? = null
     var notificationManager: com.example.pibbou.afca.repository.NotificationManager? = null
 
-
     // https://stackoverflow.com/questions/21818905/get-application-context-from-non-activity-singleton-class
     fun getContext(): Context {
         return this.applicationContext
     }
-
 
     //////////////
     // On Create
@@ -53,6 +52,9 @@ class App : Application() {
                 compareToDeviceTime(favorite)
             }
         }*/
+        val favoritesList = this.favoritesManager?.getFavorites(this.getContext())
+        Log.i("favoritesList", favoritesList.toString())
+        // compareToDeviceTime(favoritesList as ArrayList<Event>)
 
     }
 
@@ -72,45 +74,6 @@ class App : Application() {
 
     fun getFavoriteManager(): FavoriteManager? {
         return this.favoritesManager
-    }
-
-    private fun compareToDeviceTime(favorite: Event) {
-
-        var currentTime: Date
-        var datePlusFiveMinutes: Date
-
-        Timer().scheduleAtFixedRate(object : TimerTask() {
-            override fun run() {
-                currentTime = Calendar.getInstance().time
-
-                datePlusFiveMinutes = Date(System.currentTimeMillis() + 5 * 60 * 1000)
-
-                val duration = printDifference(currentTime, favorite.startingDate!!)
-
-                // If date is between current - 5min and current + 5 min, send notification
-                if (favorite.startingDate!!.before (datePlusFiveMinutes) && favorite.startingDate!!.after (currentTime)) {
-                    notificationManager?.showNotification(getContext(), "Un évenement près de chez vous dans $duration minutes :", favorite.name.toString(), favorite)
-
-                }
-            }
-        }, 0, 10000)
-
-        currentTime = Calendar.getInstance().getTime()
-
-    }
-
-
-    private fun printDifference(startDate: Date, endDate: Date): Long {
-        var different = endDate.time - startDate.time
-
-        // Time constants
-        val secondsInMilli: Long = 1000
-        val minutesInMilli = secondsInMilli * 60
-        val hoursInMilli = minutesInMilli * 60
-
-        different %= hoursInMilli
-
-        return (different / minutesInMilli) + 1
     }
 
 }

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.transition.Fade
 import android.view.Window
 import com.example.pibbou.afca.App
+import android.view.WindowManager
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.ui.main.MainActivity
 import android.app.ActivityOptions
@@ -44,7 +45,6 @@ class SplashActivity : AppCompatActivity() {
 
         //Navigate with delay
         mDelayHandler!!.postDelayed(mRunnable, SPLASH_DELAY)
-
     }
 
     public override fun onDestroy() {

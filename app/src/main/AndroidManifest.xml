@@ -12,6 +12,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!--
+             The API key for Google Maps-based APIs.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA5fQeAB1X98XYtB-cw15M4A8hIzkSX5A4" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
         <activity
             android:name=".ui.splash.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -27,6 +41,15 @@
         <activity android:name=".ui.detail.DetailActivity" />
         <activity android:name=".ui.infos.InformationsActivity" />
         <activity android:name=".ui.favorites.FavoritesActivity" />
+        <activity android:name=".ui.base.BaseActivity"/>
+        <service android:name=".services.NotificationService"
+            android:label="NotificationListener"
+            android:process=":notifications"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

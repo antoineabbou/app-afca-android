@@ -10,6 +10,7 @@ android {
         applicationId "com.example.pibbou.afca"
         minSdkVersion 16
         targetSdkVersion 26
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -23,7 +24,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
@@ -38,9 +39,12 @@ dependencies {
     // Toast
     compile 'com.github.johnpersano:supertoasts:2.0'
     // Picasso
-    compile "com.squareup.picasso:picasso:2.5.2"
+    compile 'com.squareup.picasso:picasso:2.5.2'
     // Notification
     compile "com.android.support:support-compat:26.1.0"
     // Smart Tablayout
     compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
+    // Map
+    implementation 'com.google.android.gms:play-services:11.8.0'
+    compile 'com.android.support:multidex:1.0.1'
 }

@@ -53,7 +53,7 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
         // Set fixed size to recycler_view_event_list
         itemRowHolder.recycler_view_event_list.setHasFixedSize(true)
         // Set to Horizontal
-        itemRowHolder.recycler_view_event_list.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+        itemRowHolder.recycler_view_event_list.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
         itemRowHolder.recycler_view_event_list.isNestedScrollingEnabled = false
 
         // Set adapter

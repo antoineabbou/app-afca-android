@@ -10,4 +10,9 @@
 
     <!-- declare the theme name that's actually applied in the manifest file -->
     <style name="AppTheme" parent="BaseAppTheme" />
+
+    <style name="WhiteText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
 </resources>

@@ -14,13 +14,8 @@ import android.widget.TextView
 import android.widget.ToggleButton
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
-import com.example.pibbou.afca.repository.DataStore
-import com.example.pibbou.afca.repository.FavoriteManager
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.detail.DetailActivity
-import com.github.johnpersano.supertoasts.library.Style
-import com.github.johnpersano.supertoasts.library.SuperActivityToast
-import com.github.johnpersano.supertoasts.library.utils.PaletteUtils
 import com.squareup.picasso.Picasso
 import java.util.ArrayList
 
@@ -102,10 +97,15 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         val singleEvent = eventList?.get(i)
         // Set text to card title
         holder.eventCardTitle.setText(singleEvent?.name)
+        // holder.eventCardAuthor.setText(singleEvent?.author)
+
+
 
         Picasso.with(mContext)
             .load(singleEvent?.image)
             .into(holder.eventCardImage)
+
+        holder.eventCardImage.setScaleType(ImageView.ScaleType.FIT_XY)
 
         isInList = favoriteManager?.currentFavorites!!.filter {
             it.id === singleEvent?.id
@@ -136,6 +136,9 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
         var eventCardTitle: TextView
         var eventCardImage: ImageView
+        /*var eventCardAuthor: TextView
+        var eventCardHour: TextView
+        var eventCardPlace: TextView*/
         var eventCardFavorite: ToggleButton
 
         init {
@@ -143,6 +146,12 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
             this.eventCardTitle = view.findViewById(R.id.eventCardTitle)
             // Get card Image view
             this.eventCardImage = view.findViewById(R.id.eventCardImage)
+
+            /*this.eventCardAuthor = view.findViewById(R.id.eventCardAuthor)
+
+            this.eventCardHour = view.findViewById(R.id.eventCardHour)
+
+            this.eventCardPlace = view.findViewById(R.id.eventCardPlace)*/
 
             this.eventCardFavorite = view.findViewById(R.id.button_favorite)
         }

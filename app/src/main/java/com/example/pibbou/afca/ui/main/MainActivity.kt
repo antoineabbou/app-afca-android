@@ -20,6 +20,7 @@ import android.widget.*
 import android.graphics.Point
 import android.support.constraint.ConstraintLayout
 import kotlinx.android.synthetic.main.custom_tab.view.*
+import android.widget.*
 
 
 class MainActivity : BaseActivity() {
@@ -35,8 +36,7 @@ class MainActivity : BaseActivity() {
     private var eventsByDay : ArrayList<Event>? = ArrayList()
     private var currentPublic : Int = 0
     private var activityAlreadyStarted : Boolean = false
-
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
