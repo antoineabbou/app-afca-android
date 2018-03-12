@@ -198,6 +198,7 @@ class DetailActivity : AppCompatActivity() {
 
         val categoryText: TextView = findViewById(R.id.categoryTitle)
         categoryText.setText(category?.name?.toUpperCase())
+        categoryText.setTextColor(Color.parseColor(category?.color))
 
         // BUTTON
 
