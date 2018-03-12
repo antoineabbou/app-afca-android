@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
 
@@ -38,6 +39,12 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val w = window // in Activity's onCreate() for instance
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        }
+
         this.setupWindowAnimations()
         this.setNavBarActive()
     }

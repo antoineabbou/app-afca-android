@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="95dp">
+        android:layout_height="110dp">
 
         <ImageView
             android:layout_width="match_parent"
@@ -28,7 +28,6 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:scaleType="fitEnd"
             android:layout_alignParentBottom="true"
             android:src="@drawable/wave" />
@@ -40,16 +39,18 @@
         android:id="@+id/viewpagertab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:stl_clickable="true"
         app:stl_customTabTextLayoutId="@layout/custom_tab"
+        app:stl_dividerColor="#0040c4ff"
         app:stl_indicatorAlwaysInCenter="true"
         app:stl_indicatorInterpolation="linear"
         app:stl_indicatorThickness="0dp"
-        app:stl_underlineThickness="0dp"
-        app:stl_dividerColor="#0040c4ff"/>
+        app:stl_underlineThickness="0dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_filter_list"
@@ -61,6 +62,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:scrollbars="none"
+        android:elevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

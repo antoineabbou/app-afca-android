@@ -10,6 +10,7 @@ import android.transition.Slide
 import android.transition.TransitionInflater
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.ui.base.BaseActivity
@@ -34,6 +35,12 @@ class FavoritesActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val w = window // in Activity's onCreate() for instance
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        }
+
         this.setupWindowAnimations()
 
         // Setup List

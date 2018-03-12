@@ -16,8 +16,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.os.Build
 import android.support.constraint.ConstraintLayout
 import android.util.Log
+import android.view.WindowManager
 import android.widget.*
 import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.entity.Event
@@ -47,6 +49,12 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val w = window // in Activity's onCreate() for instance
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        }
+
         setContentView(R.layout.activity_detail)
 
         val intent = intent

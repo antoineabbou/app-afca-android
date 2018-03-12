@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.content.Intent
 import android.os.Build
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
 import com.example.pibbou.afca.R
@@ -19,6 +20,12 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val w = window // in Activity's onCreate() for instance
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        }
+        
         setContentView(provideParentLayoutId())
 
         val programButton = findViewById<View>(R.id.navBarProg) as ImageButton

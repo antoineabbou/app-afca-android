@@ -11,7 +11,6 @@ import com.example.pibbou.afca.ui.list.FilterListAdapter
 import android.support.v4.view.ViewPager
 import android.support.v4.view.ViewPager.OnPageChangeListener
 import android.transition.TransitionInflater
-import android.util.Log
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.repository.entity.Event
 import com.ogaclejapan.smarttablayout.SmartTabLayout
@@ -20,8 +19,9 @@ import android.widget.*
 import android.graphics.Point
 import android.support.constraint.ConstraintLayout
 import kotlinx.android.synthetic.main.custom_tab.view.*
-import android.widget.*
-import java.text.FieldPosition
+import android.view.WindowManager
+
+
 
 
 class MainActivity : BaseActivity() {
@@ -42,6 +42,11 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val w = window // in Activity's onCreate() for instance
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        }
 
         // Create view pager
         mainPager = findViewById<View>(R.id.mainPager) as ViewPager
