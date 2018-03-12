@@ -25,7 +25,7 @@ abstract class BaseActivity : AppCompatActivity() {
             val w = window // in Activity's onCreate() for instance
             w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         }
-        
+
         setContentView(provideParentLayoutId())
 
         val programButton = findViewById<View>(R.id.navBarProg) as ImageButton
