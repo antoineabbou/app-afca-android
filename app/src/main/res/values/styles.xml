@@ -20,4 +20,9 @@
         <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
+    <style name="GreyText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#8C8C8C</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
 </resources>
