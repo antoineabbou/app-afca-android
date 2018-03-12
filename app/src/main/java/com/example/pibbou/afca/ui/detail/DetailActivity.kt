@@ -201,11 +201,11 @@ class DetailActivity : AppCompatActivity() {
 
 
         val placeText: TextView = findViewById(R.id.placeText)
-        placeText.setText(place?.name)
+        placeText.setText(event?.place?.name)
 
 
         val categoryText: TextView = findViewById(R.id.categoryTitle)
-        categoryText.setText(category?.name?.toUpperCase())
+        categoryText.setText(event?.category?.name?.toUpperCase())
         categoryText.setTextColor(Color.parseColor(category?.color))
 
         // BUTTON
