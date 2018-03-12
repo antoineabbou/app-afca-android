@@ -7,28 +7,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="#ffffff"
+    android:paddingVertical="16dp">
 
-    <Button
+
+    <ImageButton
         android:id="@+id/navBarProg"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="Infos"/>
+        android:background="#ffffff"
+        android:src="@drawable/button_programme" />
 
-    <Button
+    <ImageButton
         android:id="@+id/navBarInfos"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="Infos" />
+        android:background="#ffffff"
+        android:src="@drawable/button_information" />
 
-    <Button
+    <ImageButton
         android:id="@+id/navBarFavs"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="Favs" />
+        android:background="#ffffff"
+        android:src="@drawable/button_heart" />
 </LinearLayout>
 
 

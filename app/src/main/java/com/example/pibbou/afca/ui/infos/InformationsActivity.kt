@@ -23,7 +23,9 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 
 
 class InformationsActivity : BaseActivity(), OnMapReadyCallback {
@@ -37,6 +39,12 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setupWindowAnimations()
+
+        val button = findViewById<View>(R.id.navBarInfos) as ImageButton
+        button.isSelected = true
+
+        Log.i("button", button.toString())
+        Log.i("button", button.isSelected.toString())
     }
 
     private fun setupWindowAnimations() {

@@ -36,7 +36,7 @@ class MainActivity : BaseActivity() {
     private var eventsByDay : ArrayList<Event>? = ArrayList()
     private var currentPublic : Int = 0
     private var activityAlreadyStarted : Boolean = false
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -80,6 +80,9 @@ class MainActivity : BaseActivity() {
         this.getEventsAndSetFilters(mainPager.getCurrentItem())
         this.setupFilterList()
         this.setPagerEvents()
+
+
+
 
         this.setupWindowAnimations()
     }
