@@ -1,6 +1,9 @@
 package com.example.pibbou.afca.ui.list
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Typeface
+import android.os.Build
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +28,7 @@ class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) 
 
     init {
         context = mContext
+
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
         onCheckedChanged = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
@@ -35,10 +39,15 @@ class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) 
                 if (context is MainActivity) {
                     (context as MainActivity).updateEventDatas(item.toString().toInt())
                 }
+                buttonView.setTextColor(Color.parseColor("#1a1a1a"))
+                buttonView.setTypeface(null, Typeface.BOLD)
+
             } else {
                 if (context is MainActivity) {
                     (context as MainActivity).updateEventDatas(0)
                 }
+                buttonView.setTextColor(Color.parseColor("#999999"))
+                buttonView.setTypeface(null, Typeface.NORMAL)
             }
         }
     }
