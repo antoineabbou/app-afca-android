@@ -32,6 +32,8 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
     val favoriteManager = App.sInstance!!.getFavoriteManager()
     var isInList: Boolean = false
     val notificationManager = NotificationManager(mContext)
+    val dataRepository = App.sInstance!!.getDataRepository()
+
 
 
     init {
@@ -76,6 +78,15 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         // Set text to card title
 
         holder?.favCardTitle?.setText(singleFav?.name)
+
+        holder?.favCardAuthor?.setText(singleFav?.author)
+
+        val hour = android.text.format.DateFormat.format("HH:mm", singleFav?.startingDate) as String
+        holder?.favCardHour?.setText(hour)
+
+        val place = dataRepository!!.findPlaceById(singleFav?.id!!)
+        holder?.favCardPlace?.setText(place?.name)
+
         Picasso.with(mContext)
                 .load("http://www.festival-film-animation.fr/images/photo1_La_Grande_histoire_dun_petit_trait.jpeg")
                 .into(holder?.favCardImage)
@@ -112,12 +123,18 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         var favCardTitle: TextView
         var favCardImage: ImageView
         var favCardButton: Button
+        var favCardAuthor: TextView
+        var favCardHour: TextView
+        var favCardPlace: TextView
 
         init {
             // Get card title view
             this.favCardImage = view.findViewById(R.id.favCardImage)
             this.favCardTitle = view.findViewById(R.id.favCardTitle)
             this.favCardButton = view.findViewById(R.id.button_favorite)
+            this.favCardAuthor = view.findViewById(R.id.favCardAuthor)
+            this.favCardHour = view.findViewById(R.id.favCardHour)
+            this.favCardPlace = view.findViewById(R.id.favCardPlace)
         }
     }
 }

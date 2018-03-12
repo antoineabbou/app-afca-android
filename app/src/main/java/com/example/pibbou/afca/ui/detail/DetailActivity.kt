@@ -162,17 +162,12 @@ class DetailActivity : AppCompatActivity() {
         val container: ConstraintLayout = findViewById(R.id.constraintLayout)
 
         if (category != null) {
-            container.setBackgroundColor(Color.parseColor(category.color))
+            // container.setBackgroundColor(Color.parseColor(category.color))
         }
 
         // Title
         val eventTitle: TextView = findViewById(R.id.eventTitle)
-        eventTitle.setText(event?.name)
-
-
-        // Excerpt
-        val eventExcerpt: TextView = findViewById(R.id.eventExcerpt)
-        eventExcerpt.setText(event?.excerpt)
+        eventTitle.setText(event?.name?.toUpperCase())
 
 
         // Date
@@ -202,7 +197,7 @@ class DetailActivity : AppCompatActivity() {
 
 
         val categoryText: TextView = findViewById(R.id.categoryTitle)
-        categoryText.setText(category?.name)
+        categoryText.setText(category?.name?.toUpperCase())
 
         // BUTTON
 
