@@ -81,12 +81,14 @@ class MainActivity : BaseActivity() {
         this.setupFilterList()
         this.setPagerEvents()
 
-
-
-
         this.setupWindowAnimations()
+        this.setNavBarActive()
     }
 
+    private fun setNavBarActive() {
+        val button = findViewById<View>(R.id.navBarProg) as ImageButton
+        button.isSelected = true
+    }
 
     private fun setupWindowAnimations() {
         // Check if we're running on Android 5.0 or higher

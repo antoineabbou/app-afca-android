@@ -39,12 +39,12 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setupWindowAnimations()
+        this.setNavBarActive()
+    }
 
+    private fun setNavBarActive() {
         val button = findViewById<View>(R.id.navBarInfos) as ImageButton
         button.isSelected = true
-
-        Log.i("button", button.toString())
-        Log.i("button", button.isSelected.toString())
     }
 
     private fun setupWindowAnimations() {

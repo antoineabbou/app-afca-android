@@ -54,8 +54,12 @@ class FavoritesActivity : BaseActivity() {
             }
         }
 
+        this.setNavBarActive()
+    }
 
-
+    private fun setNavBarActive() {
+        val button = findViewById<View>(R.id.navBarFavs) as ImageButton
+        button.isSelected = true
     }
 
     private fun setupWindowAnimations() {
