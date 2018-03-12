@@ -202,6 +202,7 @@ class DetailActivity : AppCompatActivity() {
         // BUTTON
 
         val button: Button = findViewById(R.id.button)
+        button.setBackgroundColor(Color.parseColor(category?.color))
         button.setOnClickListener({ v ->
             val uri = Uri.parse(event?.link)
             val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -214,6 +215,10 @@ class DetailActivity : AppCompatActivity() {
         Picasso.with(applicationContext)
                 .load(event?.image)
                 .into(image)
+
+
+        val colorCategory: View = findViewById(R.id.color_category)
+        colorCategory.setBackgroundColor(Color.parseColor(category?.color))
 
 
         // val toggle = findViewById<ToggleButton>(R.id.buttonFav)
