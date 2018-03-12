@@ -170,17 +170,12 @@ class DetailActivity : AppCompatActivity() {
         val container: ConstraintLayout = findViewById(R.id.constraintLayout)
 
         if (category != null) {
-            container.setBackgroundColor(Color.parseColor(category.color))
+            // container.setBackgroundColor(Color.parseColor(category.color))
         }
 
         // Title
         val eventTitle: TextView = findViewById(R.id.eventTitle)
-        eventTitle.setText(event?.name)
-
-
-        // Excerpt
-        val eventExcerpt: TextView = findViewById(R.id.eventExcerpt)
-        eventExcerpt.setText(event?.excerpt)
+        eventTitle.setText(event?.name?.toUpperCase())
 
 
         // Date
@@ -210,11 +205,13 @@ class DetailActivity : AppCompatActivity() {
 
 
         val categoryText: TextView = findViewById(R.id.categoryTitle)
-        categoryText.setText(category?.name)
+        categoryText.setText(category?.name?.toUpperCase())
+        categoryText.setTextColor(Color.parseColor(category?.color))
 
         // BUTTON
 
         val button: Button = findViewById(R.id.button)
+        button.setBackgroundColor(Color.parseColor(category?.color))
         button.setOnClickListener({ v ->
             val uri = Uri.parse(event?.link)
             val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -227,6 +224,10 @@ class DetailActivity : AppCompatActivity() {
         Picasso.with(applicationContext)
                 .load(event?.image)
                 .into(image)
+
+
+        val colorCategory: View = findViewById(R.id.color_category)
+        colorCategory.setBackgroundColor(Color.parseColor(category?.color))
 
 
         // val toggle = findViewById<ToggleButton>(R.id.buttonFav)
