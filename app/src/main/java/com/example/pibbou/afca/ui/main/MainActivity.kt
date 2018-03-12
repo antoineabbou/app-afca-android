@@ -21,6 +21,7 @@ import android.graphics.Point
 import android.support.constraint.ConstraintLayout
 import kotlinx.android.synthetic.main.custom_tab.view.*
 import android.widget.*
+import java.text.FieldPosition
 
 
 class MainActivity : BaseActivity() {
@@ -30,6 +31,8 @@ class MainActivity : BaseActivity() {
     // Prepare eventsByDay array
     private lateinit var recycler_view_filter_list: RecyclerView
     private lateinit var mainPager: ViewPager
+    private lateinit var viewPagerTab: SmartTabLayout
+    private var currentTab : Int = -1
     private var filterAdapter: FilterListAdapter? = null
     private var currentFilters: MutableList<Int> = mutableListOf<Int>()
     private val repository = App.sInstance.getDataRepository()
@@ -40,25 +43,69 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Create view pager
         mainPager = findViewById<View>(R.id.mainPager) as ViewPager
+        // Add a manager adapter
         adapterViewPager = DayPagerAdapter(supportFragmentManager)
+        // Attach adapter to view pager
         mainPager.adapter = adapterViewPager
 
-        val viewPagerTab = findViewById<View>(R.id.viewpagertab) as SmartTabLayout
+        // Set viewpager tab
+        viewPagerTab = findViewById<View>(R.id.viewpagertab) as SmartTabLayout
+        // Custom styles tabbar
+        this.setCustomTabView(viewPagerTab)
+        // Disable swiper
+        viewPagerTab.setOnTouchListener(View.OnTouchListener { view, motionEvent ->  true})
+        // Prepare tab event on page change
+        viewPagerTab.setOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
+            override fun onPageSelected(position: Int) {
+                setCurrentTabView(viewPagerTab, position)
+            }
+        })
 
-        // Get event size
-        val display = windowManager.defaultDisplay
-        val size = Point()
-        display.getSize(size)
-        val width = size.x
+        // Set viewpager
+        viewPagerTab.setViewPager(mainPager)
 
+        // Set opacity 1 to current tab
+        this.setCurrentTabView(viewPagerTab, 0)
+        // Get events and set filters lists
+        this.getEventsAndSetFilters(mainPager.getCurrentItem())
+        // set filter lists
+        this.setupFilterList()
+        // set events lists
+        this.setPagerEvents()
 
+        // Play transitions
+        this.setupWindowAnimations()
+    }
+
+    private fun setCurrentTabView(viewPagerTab:SmartTabLayout, position: Int) {
+        val selectedTab = viewPagerTab.getTabAt(position)
+        val selectedTabView = selectedTab.findViewById<View>(R.id.custom_tab_layout)
+        selectedTabView.alpha = 1f
+
+        val oldSelectedTab = viewPagerTab.getTabAt(currentTab)
+        if (oldSelectedTab != null) {
+            val oldSelectedTabView = oldSelectedTab.findViewById<View>(R.id.custom_tab_layout)
+            oldSelectedTabView.alpha = .4f
+        }
+
+        currentTab = position
+    }
+
+    private fun setCustomTabView(viewPagerTab:SmartTabLayout) {
         val inflater = LayoutInflater.from(viewPagerTab.context)
         viewPagerTab.setCustomTabView { container, position, adapter ->
 
             val view = inflater.inflate(R.layout.custom_tab, container,
                     false) as ConstraintLayout
 
+            val display = windowManager.defaultDisplay
+            val size = Point()
+            display.getSize(size)
+            val width = size.x
+
+            view.custom_tab_layout.alpha = .4f
             view.custom_tab_day.minimumWidth = width / 2
             view.custom_tab_day.text = mainPager.adapter.getPageTitle(position)
 
@@ -71,17 +118,6 @@ class MainActivity : BaseActivity() {
 
             view
         }
-
-        viewPagerTab.setViewPager(mainPager)
-
-        viewPagerTab.setOnTouchListener(View.OnTouchListener { view, motionEvent ->  true})
-
-
-        this.getEventsAndSetFilters(mainPager.getCurrentItem())
-        this.setupFilterList()
-        this.setPagerEvents()
-
-        this.setupWindowAnimations()
     }
 
 
