@@ -48,7 +48,7 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
         val itemListDataAdapter = EventListAdapter(mContext, eventsByCategory)
 
         // Set Text for category Title
-        itemRowHolder.categoryTitle.setText(sectionName)
+        itemRowHolder.categoryTitle.setText(sectionName + " (" + eventsByCategory.count() + ")")
 
         // Set fixed size to recycler_view_event_list
         itemRowHolder.recycler_view_event_list.setHasFixedSize(true)

@@ -43,8 +43,6 @@ class DayFragment : android.support.v4.app.Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         view1 = inflater!!.inflate(R.layout.fragment_day, container, false)
-        val fragDay = view1.findViewById<View>(R.id.fragDay) as TextView
-        fragDay.text = day.toString()
 
         setupEventsList()
 
