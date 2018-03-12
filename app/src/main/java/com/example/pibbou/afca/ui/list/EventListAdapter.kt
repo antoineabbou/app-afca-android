@@ -8,10 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.ToggleButton
+import android.widget.*
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.entity.Event
@@ -96,14 +93,17 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
     override fun onBindViewHolder(holder: SingleItemRowHolder, i: Int) {
         // Get singleEvent
         val singleEvent = eventList?.get(i)
+
+        val place = dataRepository!!.findPlaceById(singleEvent?.id!!)
         // Set text to card title
         holder.eventCardTitle.setText(singleEvent?.name)
         holder.eventCardAuthor.setText(singleEvent?.author)
 
+
         val hour = android.text.format.DateFormat.format("HH:mm", singleEvent?.startingDate) as String
         holder.eventCardHour.setText(hour)
 
-        val place = dataRepository!!.findPlaceById(singleEvent?.id!!)
+
         holder.eventCardPlace.setText(place?.name)
 
 
@@ -125,7 +125,13 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
         setButton(holder.eventCardFavorite, singleEvent)
 
-        Log.i("info", "setting it")
+        val category = dataRepository!!.findCategoryById(singleEvent?.id!!)
+
+        Log.i("holderis", holder.cardViewBackground.toString())
+        Log.i("categorycolor", category?.color.toString())
+        /*holder.cardViewBackground.setBackgroundColor(Color.parseColor(category?.color))*/
+
+
 
     }
 
@@ -144,6 +150,7 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         var eventCardHour: TextView
         var eventCardPlace: TextView
         var eventCardFavorite: ToggleButton
+        var cardViewBackground: LinearLayout
 
         init {
             // Get card title view
@@ -158,6 +165,8 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
             this.eventCardPlace = view.findViewById(R.id.eventCardPlace)
 
             this.eventCardFavorite = view.findViewById(R.id.button_favorite)
+
+            this.cardViewBackground = view.findViewById(R.id.cardViewBackground)
         }
     }
 }
