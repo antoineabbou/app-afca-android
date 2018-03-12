@@ -39,7 +39,7 @@ class MainActivity : BaseActivity() {
     private var eventsByDay : ArrayList<Event>? = ArrayList()
     private var currentPublic : Int = 0
     private var activityAlreadyStarted : Boolean = false
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -77,6 +77,9 @@ class MainActivity : BaseActivity() {
 
         // Play transitions
         this.setupWindowAnimations()
+
+        // Navbar active
+        this.setNavBarActive()
     }
 
     private fun setCurrentTabView(viewPagerTab:SmartTabLayout, position: Int) {
@@ -120,6 +123,10 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    private fun setNavBarActive() {
+        val button = findViewById<View>(R.id.navBarProg) as ImageButton
+        button.isSelected = true
+    }
 
     private fun setupWindowAnimations() {
         // Check if we're running on Android 5.0 or higher

@@ -7,6 +7,7 @@ import android.view.View
 import android.content.Intent
 import android.os.Build
 import android.widget.Button
+import android.widget.ImageButton
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.ui.main.MainActivity
@@ -20,20 +21,20 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(provideParentLayoutId())
 
-        val programButton = findViewById<View>(R.id.navBarProg) as Button
+        val programButton = findViewById<View>(R.id.navBarProg) as ImageButton
         val programIntent = Intent(this@BaseActivity, MainActivity::class.java)
         setButtonProgram(programIntent, 0, programButton)
 
-        val infoButton = findViewById<View>(R.id.navBarInfos) as Button
+        val infoButton = findViewById<View>(R.id.navBarInfos) as ImageButton
         val infoIntent = Intent(this@BaseActivity, InformationsActivity::class.java)
         setButtonProgram(infoIntent, 1, infoButton)
 
-        val favoriteButton = findViewById<View>(R.id.navBarFavs) as Button
+        val favoriteButton = findViewById<View>(R.id.navBarFavs) as ImageButton
         val favoriteIntent = Intent(this@BaseActivity, FavoritesActivity::class.java)
         setButtonProgram(favoriteIntent, 2, favoriteButton)
     }
 
-    fun setButtonProgram(i: Intent, position: Int, button: Button) {
+    fun setButtonProgram(i: Intent, position: Int, button: ImageButton) {
 
         if (DataStore.intentPosition != position) {
             button.setOnClickListener(View.OnClickListener {
