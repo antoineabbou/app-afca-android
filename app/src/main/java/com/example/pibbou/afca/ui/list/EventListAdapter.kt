@@ -103,10 +103,9 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         val hour = android.text.format.DateFormat.format("HH:mm", singleEvent?.startingDate) as String
         holder.eventCardHour.setText(hour)
 
-        val place = dataRepository!!.findPlaceById(singleEvent?.id!!)
-        holder.eventCardPlace.setText(place?.name)
-
-
+        // Set place
+        holder.eventCardPlace.setText(singleEvent?.place?.name)
+        
         Picasso.with(mContext)
             .load(singleEvent?.image)
             .into(holder.eventCardImage)

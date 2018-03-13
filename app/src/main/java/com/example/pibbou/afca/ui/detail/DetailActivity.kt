@@ -155,7 +155,6 @@ class DetailActivity : AppCompatActivity() {
 
         // Find the event, the place and the category in the list
         val event = dataRepository!!.findEventById(id)
-        val place = dataRepository!!.findPlaceById(id)
         val category = dataRepository!!.findCategoryById(id)
 
 
@@ -198,20 +197,17 @@ class DetailActivity : AppCompatActivity() {
 
 
         // PLACE
-
-
         val placeText: TextView = findViewById(R.id.placeText)
         placeText.setText(event?.place?.name)
 
 
         val categoryText: TextView = findViewById(R.id.categoryTitle)
         categoryText.setText(event?.category?.name?.toUpperCase())
-        categoryText.setTextColor(Color.parseColor(category?.color))
+        categoryText.setTextColor(Color.parseColor(event?.category?.color))
 
         // BUTTON
-
         val button: Button = findViewById(R.id.button)
-        button.setBackgroundColor(Color.parseColor(category?.color))
+        button.setBackgroundColor(Color.parseColor(event?.category?.color))
         button.setOnClickListener({ v ->
             val uri = Uri.parse(event?.link)
             val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -227,7 +223,7 @@ class DetailActivity : AppCompatActivity() {
 
 
         val colorCategory: View = findViewById(R.id.color_category)
-        colorCategory.setBackgroundColor(Color.parseColor(category?.color))
+        colorCategory.setBackgroundColor(Color.parseColor(event?.category?.color))
 
 
         // val toggle = findViewById<ToggleButton>(R.id.buttonFav)
