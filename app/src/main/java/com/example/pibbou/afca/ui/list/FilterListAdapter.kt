@@ -39,7 +39,7 @@ class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) 
                 if (context is MainActivity) {
                     (context as MainActivity).updateEventDatas(item.toString().toInt())
                 }
-                buttonView.setTextColor(Color.parseColor("#000000"))
+                buttonView.setTextColor(Color.parseColor("#68DF9D"))
                 buttonView.setTypeface(null, Typeface.BOLD)
 
             } else {
