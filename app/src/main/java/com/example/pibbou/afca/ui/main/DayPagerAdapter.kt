@@ -27,6 +27,8 @@ class DayPagerAdapter(fragmentManager: FragmentManager) : SmartFragmentStatePage
             -> return DayFragment.newInstance(2)
             3
             -> return DayFragment.newInstance(3)
+            4
+            -> return DayFragment.newInstance(4)
             else -> return null
         }
     }
@@ -38,7 +40,7 @@ class DayPagerAdapter(fragmentManager: FragmentManager) : SmartFragmentStatePage
     }
 
     companion object {
-        private val NUM_ITEMS = 3
+        private val NUM_ITEMS = 5
     }
 
 }
