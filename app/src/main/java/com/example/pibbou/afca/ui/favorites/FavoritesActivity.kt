@@ -2,6 +2,8 @@ package com.example.pibbou.afca.ui.favorites
 
 import android.os.Build
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -53,11 +55,13 @@ class FavoritesActivity : BaseActivity() {
             notificationAutho = isChecked
             Log.i("state", notificationAutho.toString())
             if (isChecked === true) {
-                Log.i("btncheck", "true")
+                buttonView.setTextColor(Color.parseColor("#68DF9D"))
+                buttonView.setTypeface(null, Typeface.BOLD)
                 startService(intent)
             } else if (isChecked === false){
-                // Log.i("btncheck", "false")
-                // stopService(intent)
+                buttonView.setTextColor(Color.parseColor("#D8D8D8"))
+                buttonView.setTypeface(null, Typeface.NORMAL)
+                stopService(intent)
             }
         }
 
