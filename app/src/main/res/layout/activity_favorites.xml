@@ -61,15 +61,53 @@
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/fav_title"></TextView>
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout5">
+
+        <TextView
+            android:id="@+id/notification_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="RAPPEL D'EVENEMENTS :"
+            android:layout_alignParentLeft="true"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+
+        <ToggleButton
+            android:id="@+id/notification_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/notification_label"
+            android:checked="false"
+            android:text="ToggleButton"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/montserrat"
+            android:textColor="#D8D8D8"
+            android:textSize="14sp"
+            />
+
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_favorite_list"
         android:layout_width="368dp"
-        android:layout_height="497dp"
+        android:layout_height="430dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="8dp"
         android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout4"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="8dp" />
 
@@ -82,16 +120,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ToggleButton
-        android:id="@+id/notification_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:text="ToggleButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="8dp"
-        android:checked="false"/>
 
 </android.support.constraint.ConstraintLayout>
