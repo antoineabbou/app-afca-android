@@ -128,8 +128,8 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         val category = dataRepository!!.findCategoryById(singleEvent?.id!!)
 
         Log.i("holderis", holder.cardViewBackground.toString())
-        Log.i("categorycolor", category?.color.toString())
-        /*holder.cardViewBackground.setBackgroundColor(Color.parseColor(category?.color))*/
+        Log.i("categorycolor", singleEvent?.category?.color.toString())
+        holder.cardViewBackground.setBackgroundColor(Color.parseColor(singleEvent?.category?.color))
 
 
 

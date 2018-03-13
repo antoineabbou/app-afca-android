@@ -15,6 +15,7 @@ import android.R.id.edit
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.Image
 import android.net.Uri
 import android.os.Build
 import android.support.constraint.ConstraintLayout
@@ -50,10 +51,10 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             val w = window // in Activity's onCreate() for instance
             w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        }
+        }*/
 
         setContentView(R.layout.activity_detail)
 
@@ -206,12 +207,12 @@ class DetailActivity : AppCompatActivity() {
 
         val categoryText: TextView = findViewById(R.id.categoryTitle)
         categoryText.setText(event?.category?.name?.toUpperCase())
-        categoryText.setTextColor(Color.parseColor(category?.color))
+        categoryText.setTextColor(Color.parseColor(event?.category?.color))
 
         // BUTTON
 
         val button: Button = findViewById(R.id.button)
-        button.setBackgroundColor(Color.parseColor(category?.color))
+        button.setBackgroundColor(Color.parseColor(event?.category?.color))
         button.setOnClickListener({ v ->
             val uri = Uri.parse(event?.link)
             val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -227,9 +228,13 @@ class DetailActivity : AppCompatActivity() {
 
 
         val colorCategory: View = findViewById(R.id.color_category)
-        colorCategory.setBackgroundColor(Color.parseColor(category?.color))
+        colorCategory.setBackgroundColor(Color.parseColor(event?.category?.color))
 
 
+        val back: ImageButton = findViewById(R.id.back_button)
+        back.setOnClickListener {
+            finish()
+        }
         // val toggle = findViewById<ToggleButton>(R.id.buttonFav)
 
     }

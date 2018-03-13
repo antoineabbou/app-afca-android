@@ -2,6 +2,8 @@ package com.example.pibbou.afca.ui.list
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -77,6 +79,8 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         val singleFav = favoriteList?.get(position)
         // Set text to card title
 
+        holder?.favCardContainer?.setBackgroundColor(Color.parseColor(singleFav?.category?.color))
+
         holder?.favCardTitle?.setText(singleFav?.name)
 
         holder?.favCardAuthor?.setText(singleFav?.author)
@@ -88,7 +92,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         holder?.favCardPlace?.setText(place?.name)
 
         Picasso.with(mContext)
-                .load("http://www.festival-film-animation.fr/images/photo1_La_Grande_histoire_dun_petit_trait.jpeg")
+                .load(singleFav.image)
                 .into(holder?.favCardImage)
 
 
@@ -126,6 +130,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         var favCardAuthor: TextView
         var favCardHour: TextView
         var favCardPlace: TextView
+        var favCardContainer: ConstraintLayout
 
         init {
             // Get card title view
@@ -135,6 +140,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             this.favCardAuthor = view.findViewById(R.id.favCardAuthor)
             this.favCardHour = view.findViewById(R.id.favCardHour)
             this.favCardPlace = view.findViewById(R.id.favCardPlace)
+            this.favCardContainer = view.findViewById(R.id.favCardContainer)
         }
     }
 }
