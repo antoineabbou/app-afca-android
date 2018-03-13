@@ -122,6 +122,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat"
                     android:text="TextView"
                     android:textColor="#BBBBBB"
                     android:textSize="16sp"

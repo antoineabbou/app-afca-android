@@ -9,5 +9,6 @@ class Place {
     internal var name: String? = null
     internal var seats: Int? = null
     internal var lat: Double? = null
-    internal var long: Double? =null
+    internal var long: Double? = null
+    internal var address: String? = null
 }

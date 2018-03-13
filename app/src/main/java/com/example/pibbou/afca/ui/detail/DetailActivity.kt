@@ -25,6 +25,7 @@ import android.widget.*
 import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.entity.Event
 import com.squareup.picasso.Picasso
+import org.w3c.dom.Text
 import java.text.DateFormat
 import java.util.ArrayList
 
@@ -191,7 +192,12 @@ class DetailActivity : AppCompatActivity() {
 
         // Author
         val author: TextView = findViewById(R.id.author)
-        author.setText(event?.author)
+
+        if(event?.author.isNullOrEmpty()) {
+            author.setText("Auteur non communiqué")
+        } else {
+            author.setText(event?.author)
+        }
 
         val duration: TextView = findViewById(R.id.duration)
         duration.setText(event?.duration)
@@ -200,6 +206,9 @@ class DetailActivity : AppCompatActivity() {
         // PLACE
         val placeText: TextView = findViewById(R.id.placeText)
         placeText.setText(event?.place?.name)
+
+        val address: TextView = findViewById(R.id.address)
+        address.setText(event?.place?.address)
 
 
         val categoryText: TextView = findViewById(R.id.categoryTitle)

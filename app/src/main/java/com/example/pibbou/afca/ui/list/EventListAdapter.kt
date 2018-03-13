@@ -97,7 +97,11 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         val place = dataRepository!!.findPlaceById(singleEvent?.id!!)
         // Set text to card title
         holder.eventCardTitle.setText(singleEvent?.name)
-        holder.eventCardAuthor.setText(singleEvent?.author)
+        if(singleEvent?.author.isNullOrEmpty()) {
+            holder.eventCardAuthor.setText("Auteur non communiqué")
+        } else {
+            holder.eventCardAuthor.setText(singleEvent?.author)
+        }
 
 
         val hour = android.text.format.DateFormat.format("HH:mm", singleEvent?.startingDate) as String

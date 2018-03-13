@@ -4,41 +4,47 @@
     "name": "TNB",
     "seats": -1,
     "lat": "48.108174" ,
-    "long": "-1.672548"
+    "long": "-1.672548",
+    "address": "1 Rue Saint-Hélier, 35040 Rennes"
   },
   {
     "id": 2,
     "name": "Arvor",
     "seats": -1,
     "lat": "48.116194" ,
-    "long": "-1.679045"
+    "long": "-1.679045",
+    "address": "29 Rue d'Antrain, 35700 Rennes"
   },
   {
     "id": 3,
     "name": "ESRA",
     "seats": -1,
     "lat": "48.129022",
-    "long": "-1.642040"
+    "long": "-1.642040",
+    "address": "1 Rue Xavier Grall, 35700 Rennes"
   },
   {
     "id": 4,
     "name": "Grand Logis",
     "seats": -1,
     "lat": "48.023495" ,
-    "long": "-1.744585"
+    "long": "-1.744585",
+    "address": "10 Avenue du Général de Gaulle, 35170 Bruz"
   },
   {
     "id": 5,
     "name": "Esplanade Charles de Gaulles",
     "seats": -1,
     "lat": "48.106712",
-    "long": "-1.676766"
+    "long": "-1.676766",
+    "address": "Esplanade Charles de Gaulle, 35000 Rennes"
   },
   {
     "id": 6,
     "name": "France 3 Bretagne",
     "seats": -1,
     "lat": "48.108728" ,
-    "long": "-1.673121"
+    "long": "-1.673121",
+    "address": "9 Avenue Jean Janvier, 35000 Rennes"
   }
 ]
