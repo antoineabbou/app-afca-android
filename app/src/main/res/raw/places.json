@@ -1,65 +1,44 @@
 [
   {
     "id": 1,
-    "name": "Ciné TNB Jouvet",
-    "seats": 400,
-    "lat": "48.109386" ,
-    "long": "-1.673009"
+    "name": "TNB",
+    "seats": -1,
+    "lat": "48.108174" ,
+    "long": "-1.672548"
   },
   {
     "id": 2,
-    "name": "Ciné TNB Piccoli",
-    "seats": 100,
-    "lat": "48.109386" ,
-    "long": "-1.673009"
+    "name": "Arvor",
+    "seats": -1,
+    "lat": "48.116194" ,
+    "long": "-1.679045"
   },
   {
     "id": 3,
-    "name": "Espace rencontre TNB",
-    "seats": 80,
-    "lat": "48.109386" ,
-    "long": "-1.673009"
+    "name": "ESRA",
+    "seats": -1,
+    "lat": "48.129022",
+    "long": "-1.642040"
   },
   {
     "id": 4,
-    "name": "Bar TNB",
+    "name": "Grand Logis",
     "seats": -1,
-    "lat": "48.109386" ,
-    "long": "-1.673009"
+    "lat": "48.023495" ,
+    "long": "-1.744585"
   },
   {
     "id": 5,
-    "name": "Hall bas TNB",
+    "name": "Esplanade Charles de Gaulles",
     "seats": -1,
-    "lat": "48.109386" ,
-    "long": "-1.673009"
+    "lat": "48.106712",
+    "long": "-1.676766"
   },
   {
     "id": 6,
-    "name": "Cube - RDC TNB",
+    "name": "France 3 Bretagne",
     "seats": -1,
-    "lat": "48.109386" ,
-    "long": "-1.673009"
-  },
-  {
-    "id": 7,
-    "name": "Arvor salle 2",
-    "seats": 152,
-    "lat": "48.116223",
-    "long": "-1.679088"
-  },
-  {
-    "id": 8,
-    "name": "Hall haut TNB",
-    "seats": -1,
-    "lat": "48.109386" ,
-    "long": "-1.673009"
-  },
-  {
-    "id": 9,
-    "name": "Rennes Les champs Libres",
-    "seats": -1,
-    "lat": "48.105412",
-    "long": "-1.674563"
+    "lat": "48.108728" ,
+    "long": "-1.673121"
   }
 ]
