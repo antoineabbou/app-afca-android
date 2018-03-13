@@ -22,11 +22,17 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import android.content.Intent
+import android.content.res.Resources
 import android.net.Uri
 import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
+import android.content.res.Resources.NotFoundException
+import com.example.pibbou.afca.ui.detail.DetailActivity
+import com.google.android.gms.maps.model.MapStyleOptions
+
+
 
 
 class InformationsActivity : BaseActivity(), OnMapReadyCallback {
@@ -99,6 +105,22 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         // Add a marker in Sydney, Australia,
         // and move the map's camera to the same location.
+
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            val success = googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.style_json))
+
+            if (!success) {
+                // TODO : Implement error
+            }
+        } catch (e: Resources.NotFoundException) {
+            // Log.e(DetailActivity.TAG, "Can't find style. Error: ", e)
+        }
+
+
         val home = LatLng(48.115186, -1.682684)
 
         val places = repository?.getPlaces()
@@ -133,4 +155,5 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         // Set adapter
         recycler_view_price_list.adapter = priceAdapter
     }
+
 }
