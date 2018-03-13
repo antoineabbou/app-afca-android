@@ -105,7 +105,7 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
         // Set place
         holder.eventCardPlace.setText(singleEvent?.place?.name)
-        
+
         Picasso.with(mContext)
             .load(singleEvent?.image)
             .into(holder.eventCardImage)

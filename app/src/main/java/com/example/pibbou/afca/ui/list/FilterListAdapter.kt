@@ -39,14 +39,14 @@ class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) 
                 if (context is MainActivity) {
                     (context as MainActivity).updateEventDatas(item.toString().toInt())
                 }
-                buttonView.setTextColor(Color.parseColor("#1a1a1a"))
+                buttonView.setTextColor(Color.parseColor("#000000"))
                 buttonView.setTypeface(null, Typeface.BOLD)
 
             } else {
                 if (context is MainActivity) {
                     (context as MainActivity).updateEventDatas(0)
                 }
-                buttonView.setTextColor(Color.parseColor("#999999"))
+                buttonView.setTextColor(Color.parseColor("#D8D8D8"))
                 buttonView.setTypeface(null, Typeface.NORMAL)
             }
         }
@@ -68,7 +68,6 @@ class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): FilterItemRowHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_filter, null)
         return FilterItemRowHolder(v)
-
     }
 
 
