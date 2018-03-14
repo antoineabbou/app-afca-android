@@ -9,7 +9,7 @@
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/scrollView4"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="@+id/base"
@@ -20,102 +20,738 @@
         <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="wrap_content"
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:descendantFocusability="blocksDescendants"
             tools:context="com.example.pibbou.afca.ui.infos.InformationsActivity">
 
-            <TextView
-                android:id="@+id/find_us"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/montserrat"
-                android:text="NOUS TROUVER"
-                android:textColor="@android:color/black"
-                android:textSize="32sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/view2"
-                android:layout_width="fill_parent"
-                android:layout_height="2dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:background="#FF909090"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-            <TextView
-                android:id="@+id/prices"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:fontFamily="@font/montserrat"
-                android:text="TARIFS"
-                android:textColor="@android:color/black"
-                android:textSize="32sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_view_price_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="8dp"
-                android:scrollbars="none"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.525"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/prices" />
-
-            <Button
-                android:id="@+id/more"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:background="@android:color/white"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="En savoir plus"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycler_view_price_list" />
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/constraintLayout2"
+                android:id="@+id/constraintLayoutMap"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="20dp"
+                android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/find_us">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:tools="http://schemas.android.com/tools"
                     android:id="@+id/map"
                     class="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="300dp"
                     android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     tools:context="com.example.pibbou.afca.ui.infos.InformationsActivity" />
 
             </android.support.constraint.ConstraintLayout>
+
+            <RelativeLayout
+                android:id="@+id/cityLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutMap">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <View
+                            android:id="@+id/circle"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/circle" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="4dp">
+
+                            <TextView
+                                android:id="@+id/city"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="TextView"
+                                android:textColor="#1a1a1a"
+                                android:textSize="16dp" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cityLayout">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="top">
+
+                        <ImageView
+                            android:id="@+id/clocl2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/marker_blue" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="16dp">
+
+                            <TextView
+                                android:id="@+id/eventStart"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="TextView"
+                                android:textColor="#1a1a1a"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/hour"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/eventStart"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/duration"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hour"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/bus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/duration"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="top">
+
+                        <ImageView
+                            android:id="@+id/clocl3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/marker_green" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="16dp">
+
+                            <TextView
+                                android:id="@+id/eventStart2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="TextView"
+                                android:textColor="#1a1a1a"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/hour2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/eventStart2"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/duration2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hour2"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+
+                            <TextView
+                                android:id="@+id/bus2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/duration2"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+
+                        </RelativeLayout>
+
+
+
+
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="top">
+
+                        <ImageView
+                            android:id="@+id/clocl4"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/marker_yellow" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="16dp">
+
+                            <TextView
+                                android:id="@+id/eventStart3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="TextView"
+                                android:textColor="#1a1a1a"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/hour3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/eventStart3"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/duration3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hour3"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+
+                            <TextView
+                                android:id="@+id/bus3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/duration3"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+
+                        </RelativeLayout>
+
+
+
+
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout4">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="top">
+
+                        <ImageView
+                            android:id="@+id/clocl5"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/marker_blue" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="16dp">
+
+                            <TextView
+                                android:id="@+id/eventStart4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="TextView"
+                                android:textColor="#1a1a1a"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/hour4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/eventStart4"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/duration4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hour4"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+
+                            <TextView
+                                android:id="@+id/bus4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/duration4"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+
+                        </RelativeLayout>
+
+
+
+
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="top">
+
+                        <ImageView
+                            android:id="@+id/clocl6"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/marker_green" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="16dp">
+
+                            <TextView
+                                android:id="@+id/eventStart5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="TextView"
+                                android:textColor="#1a1a1a"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/hour5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/eventStart5"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/duration5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hour5"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+
+                            <TextView
+                                android:id="@+id/bus5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/duration5"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+
+                        </RelativeLayout>
+
+
+
+
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:id="@+id/cityLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout6">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <View
+                            android:id="@+id/circle2"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/circle" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="4dp">
+
+                            <TextView
+                                android:id="@+id/city2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="TextView"
+                                android:textColor="#1a1a1a"
+                                android:textSize="16dp" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cityLayout2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="top">
+
+                        <ImageView
+                            android:id="@+id/clocl7"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/marker_yellow" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="16dp">
+
+                            <TextView
+                                android:id="@+id/eventStart7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="TextView"
+                                android:textColor="#1a1a1a"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/hour7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/eventStart7"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/duration7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hour7"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/bus7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/duration7"
+                                android:fontFamily="@font/montserrat"
+                                android:text="TextView"
+                                android:textColor="#BBBBBB"
+                                android:textSize="16dp" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout7">
+
+                <TextView
+                    android:id="@+id/remark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="TextView"
+                    android:textColor="#BBBBBB"
+                    android:textSize="16dp" />
+
+            </RelativeLayout>
+
+
+
+
+
+
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

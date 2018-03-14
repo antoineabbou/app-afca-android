@@ -84,14 +84,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
 
-        val button = findViewById<Button>(R.id.more) as Button
-        button.setOnClickListener(View.OnClickListener { v ->
-            val uri = Uri.parse("http://www.festival-film-animation.fr/")
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
-        })
-
-        setupPriceList()
+        // setupPriceList()
     }
 
     override fun provideParentLayoutId(): Int {
@@ -103,7 +96,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        // Add a marker in Sydney, Australia,
+        // Add a marker_blue in Sydney, Australia,
         // and move the map's camera to the same location.
 
         try {
@@ -140,7 +133,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         googleMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) );
     }
 
-    private fun setupPriceList() {
+    /*private fun setupPriceList() {
         // Get recyclerview View
         recycler_view_price_list = findViewById<View>(R.id.recycler_view_price_list) as RecyclerView
 
@@ -154,6 +147,6 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
         // Set adapter
         recycler_view_price_list.adapter = priceAdapter
-    }
+    }*/
 
 }
