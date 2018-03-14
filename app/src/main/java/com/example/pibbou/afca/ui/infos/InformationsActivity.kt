@@ -35,6 +35,7 @@ import android.graphics.drawable.Drawable
 import android.support.annotation.RequiresApi
 import android.widget.TextView
 import com.example.pibbou.afca.ui.detail.DetailActivity
+import com.github.aakira.expandablelayout.ExpandableLinearLayout
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MapStyleOptions
@@ -43,7 +44,7 @@ import com.google.android.gms.maps.model.MapStyleOptions
 
 class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
-    private lateinit var expandableLayoutPrice: ExpandableRelativeLayout
+    private lateinit var expandableLayoutPrice: ExpandableLinearLayout
     private lateinit var expandableLayoutMove: ExpandableRelativeLayout
     private lateinit var expandableLayoutEat: ExpandableRelativeLayout
     private lateinit var expandableLayoutPartners: ExpandableRelativeLayout
@@ -65,29 +66,31 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         this.setupWindowAnimations()
         this.setNavBarActive()
         this.setExpandable()
-        this.setUpInfosLocation()
+        //this.setUpInfosLocation()
+
+        this.setPrices()
     }
 
 
     private fun setExpandable() {
-        expandableLayoutPrice = findViewById<View>(R.id.expandableLayoutPrice) as ExpandableRelativeLayout
-        expandableLayoutMove = findViewById<View>(R.id.expandableLayoutMove) as ExpandableRelativeLayout
+        expandableLayoutPrice = findViewById<View>(R.id.expandableLayoutPrice) as ExpandableLinearLayout
+/*        expandableLayoutMove = findViewById<View>(R.id.expandableLayoutMove) as ExpandableRelativeLayout
         expandableLayoutEat = findViewById<View>(R.id.expandableLayoutEat) as ExpandableRelativeLayout
         expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableRelativeLayout
 
         expandableLayoutPrice.collapse()
         expandableLayoutMove.collapse()
         expandableLayoutEat.collapse()
-        expandableLayoutPartners.collapse()
+        expandableLayoutPartners.collapse()*/
 
     }
 
     fun expandablePrice(view: View) {
-        expandableLayoutPrice = findViewById<View>(R.id.expandableLayoutPrice) as ExpandableRelativeLayout
+        expandableLayoutPrice = findViewById<View>(R.id.expandableLayoutPrice) as ExpandableLinearLayout
         expandableLayoutPrice.toggle() // toggle expand and collapse
     }
 
-    fun expandableMove(view: View) {
+ /*   fun expandableMove(view: View) {
         expandableLayoutMove = findViewById<View>(R.id.expandableLayoutMove) as ExpandableRelativeLayout
         expandableLayoutMove.toggle() // toggle expand and collapse
     }
@@ -101,7 +104,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableRelativeLayout
         expandableLayoutPartners.toggle() // toggle expand and collapse
     }
-
+*/
 
 
     private fun setNavBarActive() {
@@ -186,6 +189,82 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
             i++
         }
+    }
+
+
+    private fun setPrices() {
+        //////////////
+        //////////////
+
+        val price_title: TextView = findViewById(R.id.price_title)
+        val content_price_title = "Tarifs tout public"
+        price_title.setText(content_price_title)
+
+        val price_title_2: TextView = findViewById(R.id.price_title_2)
+        val content_price_title_2 = "Tarifs scolaires et structures"
+        price_title_2.setText(content_price_title_2)
+
+        //////////////
+        //////////////
+
+        val price_type_1: TextView = findViewById(R.id.price_type_1)
+        val content_price_type_1 = "Unique"
+        price_type_1.setText(content_price_type_1)
+
+        val price_type_2: TextView = findViewById(R.id.price_type_2)
+        val content_price_type_2 = "Ciné concert"
+        price_type_2.setText(content_price_type_2)
+
+        val price_type_3: TextView = findViewById(R.id.price_type_3)
+        val content_price_type_3 = "Carte sortir et groupe *"
+        price_type_3.setText(content_price_type_3)
+
+        val price_type_4: TextView = findViewById(R.id.price_type_4)
+        val content_price_type_4 = "Carte fidélité"
+        price_type_4.setText(content_price_type_4)
+
+        val price_type_5: TextView = findViewById(R.id.price_type_5)
+        val content_price_type_5 = "Projection"
+        price_type_5.setText(content_price_type_5)
+
+        val price_type_6: TextView = findViewById(R.id.price_type_6)
+        val content_price_type_6 = "Atelier"
+        price_type_6.setText(content_price_type_6)
+
+
+        //////////////
+        //////////////
+
+        val price_number_1: TextView = findViewById(R.id.price_number_1)
+        val content_price_number_1 = "3€"
+        price_number_1.setText(content_price_number_1)
+
+        val price_number_2: TextView = findViewById(R.id.price_number_2)
+        val content_price_number_2 = "8€"
+        price_number_2.setText(content_price_number_2)
+
+        val price_number_3: TextView = findViewById(R.id.price_number_3)
+        val content_price_number_3 = "6€"
+        price_number_3.setText(content_price_number_3)
+
+        val price_number_4: TextView = findViewById(R.id.price_number_4)
+        val content_price_number_4 = "25€"
+        price_number_4.setText(content_price_number_4)
+
+        val price_number_5: TextView = findViewById(R.id.price_number_5)
+        val content_price_number_5 = "3€"
+        price_number_5.setText(content_price_number_5)
+
+        val price_number_6: TextView = findViewById(R.id.price_number_6)
+        val content_price_number_6 = "4€"
+        price_number_6.setText(content_price_number_6)
+
+        //////////////
+        //////////////
+
+        val remark_price: TextView = findViewById(R.id.remark_price)
+        val content_remark_price = "* À partir de 10 personnes"
+        remark_price.setText(content_remark_price)
     }
 
 

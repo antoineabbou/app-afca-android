@@ -1,0 +1,369 @@
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/prices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <View
+                    android:id="@+id/circle_6"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/circle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="4dp">
+
+                    <TextView
+                        android:id="@+id/price_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="TextView"
+                        android:textColor="#8D8D8D"
+                        android:textSize="13sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/defaultPrices"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prices">
+
+        <LinearLayout
+            android:id="@+id/line_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/layout_blue_bg"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <TextView
+                    android:id="@+id/price_number_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="3$"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:id="@+id/price_type_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="TextView"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/layout_green_bg"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <TextView
+                    android:id="@+id/price_number_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="3$"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:id="@+id/price_type_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="TextView"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line_1"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/layout_blue_bg"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/price_number_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="3$"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/price_type_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="TextView"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/layout_green_bg"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <TextView
+                    android:id="@+id/price_number_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="3$"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:id="@+id/price_type_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="TextView"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/remark_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line_2"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="TextView"
+            android:textColor="#616161"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/prices_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/defaultPrices">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <View
+                    android:id="@+id/circle_7"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/circle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="4dp">
+
+                    <TextView
+                        android:id="@+id/price_title_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="TextView"
+                        android:textColor="#8D8D8D"
+                        android:textSize="13sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/studentPrices"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prices_2">
+
+        <LinearLayout
+            android:id="@+id/line_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/layout_blue_bg"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <TextView
+                    android:id="@+id/price_number_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="3$"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:id="@+id/price_type_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="TextView"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/layout_green_bg"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <TextView
+                    android:id="@+id/price_number_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="3$"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:id="@+id/price_type_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="TextView"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

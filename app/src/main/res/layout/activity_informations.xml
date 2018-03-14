@@ -45,7 +45,7 @@
         android:text="Informations"
         android:textColor="#ffffff"
         android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/custom_tab_date"
@@ -59,16 +59,14 @@
         android:text="On vous explique tout"
         android:textColor="#ffffff"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/fav_title"/>
+        app:layout_constraintTop_toBottomOf="@+id/fav_title" />
 
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/scrollView4"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@id/base"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +81,8 @@
             android:layout_height="wrap_content"
             tools:context="com.example.pibbou.afca.ui.infos.InformationsActivity">
 
-            <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <android.support.constraint.ConstraintLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/constraintLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -150,6 +149,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
+
+                <!-- Prices -->
                 <Button
                     android:id="@+id/expandablePrice"
                     style="?android:attr/borderlessButtonStyle"
@@ -166,31 +167,36 @@
                     android:textColor="#000"
                     android:textSize="16sp" />
 
-                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                <com.github.aakira.expandablelayout.ExpandableLinearLayout
                     android:id="@+id/expandableLayoutPrice"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/expandablePrice"
+                    android:paddingBottom="20dp"
                     android:background="#F6F6F6"
-                    android:padding="16dp"
+                    android:orientation="vertical"
                     app:ael_duration="400"
                     app:ael_expanded="true"
                     app:ael_interpolator="accelerate"
                     app:ael_orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Android is an open source and Linux-based Operating System for mobile devices such as smartphones and tablet computers. Android was developed by the Open Handset Alliance, led by Google, and other companies. The first beta version of the Android Software Development Kit (SDK) was released by Google in 2007 where as the first commercial version, Android 1.0, was released in September 2008."
-                        android:textColor="#000" />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    <include
+                        android:id="@+id/infosPrices"
+                        layout="@layout/infos_prices"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"/>
 
-                <Button
+                </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+                <!-- Deplacement -->
+                <!--             <Button
                     android:id="@+id/expandableMove"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:layout_below="@+id/expandableLayoutMove"
+                    android:layout_marginTop="16dp"
                     android:background="#F6F6F6"
                     android:drawableRight="@drawable/arrow_expand"
                     android:fontFamily="@font/montserrat_bold"
@@ -198,7 +204,6 @@
                     android:onClick="expandableMove"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:layout_marginTop="16dp"
                     android:text="SE DÉPLACER"
                     android:textColor="#000"
                     android:textSize="16sp" />
@@ -228,6 +233,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:layout_below="@+id/expandableLayoutMove"
+                    android:layout_marginTop="16dp"
                     android:background="#F6F6F6"
                     android:drawableRight="@drawable/arrow_expand"
                     android:fontFamily="@font/montserrat_bold"
@@ -235,7 +241,6 @@
                     android:onClick="expandableEat"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:layout_marginTop="16dp"
                     android:text="SE RESTAURER"
                     android:textColor="#000"
                     android:textSize="16sp" />
@@ -265,6 +270,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:layout_below="@+id/expandableLayoutEat"
+                    android:layout_marginTop="16dp"
                     android:background="#F6F6F6"
                     android:drawableRight="@drawable/arrow_expand"
                     android:fontFamily="@font/montserrat_bold"
@@ -272,7 +278,6 @@
                     android:onClick="expandablePartners"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:layout_marginTop="16dp"
                     android:text="PARTENAIRES"
                     android:textColor="#000"
                     android:textSize="16sp" />
@@ -294,7 +299,7 @@
                         android:layout_height="wrap_content"
                         android:text="The Open Handset Alliance (OHA) was formed in November 2007. The OHA is a business alliance comprised of many of the largest and most successful mobile companies on the planet. Its members include chip makers, handset manufacturers, software developers, and service providers.The entire mobile supply chain is well represented."
                         android:textColor="#000" />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>-->
 
             </LinearLayout>
 
