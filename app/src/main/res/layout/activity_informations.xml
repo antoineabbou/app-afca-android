@@ -21,103 +21,153 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:descendantFocusability="blocksDescendants"
+            android:layout_height="match_parent"
             tools:context="com.example.pibbou.afca.ui.infos.InformationsActivity">
 
-            <TextView
-                android:id="@+id/find_us"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/montserrat"
-                android:text="NOUS TROUVER"
-                android:textColor="@android:color/black"
-                android:textSize="32sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/view2"
-                android:layout_width="fill_parent"
-                android:layout_height="2dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:background="#FF909090"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-            <TextView
-                android:id="@+id/prices"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:fontFamily="@font/montserrat"
-                android:text="TARIFS"
-                android:textColor="@android:color/black"
-                android:textSize="32sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_view_price_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="8dp"
-                android:scrollbars="none"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.525"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/prices" />
-
-            <Button
-                android:id="@+id/more"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:background="@android:color/white"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="En savoir plus"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycler_view_price_list" />
+                android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/constraintLayout2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/find_us">
+                <Button
+                    android:id="@+id/expandablePrice"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:background="#F6F6F6"
+                    android:drawableRight="@drawable/arrow_expand"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="left|center_vertical"
+                    android:onClick="expandablePrice"
+                    android:text="BILLETTERIE &amp; TARIFS"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    style="?android:attr/borderlessButtonStyle" />
 
-                <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:id="@+id/map"
-                    class="com.google.android.gms.maps.SupportMapFragment"
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/expandableLayoutPrice"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_marginBottom="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    tools:context="com.example.pibbou.afca.ui.infos.InformationsActivity" />
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/expandablePrice"
+                    android:background="#F6F6F6"
+                    android:padding="16dp"
+                    app:ael_duration="400"
+                    app:ael_expanded="true"
+                    app:ael_interpolator="accelerate"
+                    app:ael_orientation="vertical">
 
-            </android.support.constraint.ConstraintLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Android is an open source and Linux-based Operating System for mobile devices such as smartphones and tablet computers. Android was developed by the Open Handset Alliance, led by Google, and other companies. The first beta version of the Android Software Development Kit (SDK) was released by Google in 2007 where as the first commercial version, Android 1.0, was released in September 2008."
+                        android:textColor="#000" />
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                <Button
+                    android:id="@+id/expandableMove"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/expandableLayoutMove"
+                    android:gravity="left|center_vertical"
+                    android:background="#F6F6F6"
+                    android:drawableRight="@drawable/arrow_expand"
+                    android:onClick="expandableMove"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="SE DÉPLACER"
+                    android:textSize="16sp"
+                    android:textColor="#000"
+                    style="?android:attr/borderlessButtonStyle"/>
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/expandableLayoutMove"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/expandableMove"
+                    android:background="#F6F6F6"
+                    android:padding="16dp"
+                    app:ael_duration="400"
+                    app:ael_expanded="false"
+                    app:ael_interpolator="accelerate"
+                    app:ael_orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:text="Android Permission Model designed for preventing unauthorized access by third party application.Android applications must declare which permission they require after installation. At a time of android application installation android system display list of permissions which is required to install the current application. The user must decide to install an application or not." />
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                <Button
+                    android:id="@+id/expandableEat"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/expandableLayoutMove"
+                    android:gravity="left|center_vertical"
+                    android:background="#F6F6F6"
+                    android:drawableRight="@drawable/arrow_expand"
+                    android:onClick="expandableEat"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="SE RESTAURER"
+                    android:textSize="16sp"
+                    android:textColor="#000"
+                    style="?android:attr/borderlessButtonStyle"/>
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/expandableLayoutEat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/expandableEat"
+                    android:background="#F6F6F6"
+                    android:padding="16dp"
+                    app:ael_duration="400"
+                    app:ael_expanded="false"
+                    app:ael_interpolator="accelerate"
+                    app:ael_orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:text="With the help of android debug bridge we can communicate with an emulator or connected physical android device because Android Debug Bridge is a command line tool. Android Debug Bridge is also known as ADB. ADB architecture is like client-server architecture with three components." />
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+    @
+                <Button
+                    android:id="@+id/expandablePartners"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/expandableLayoutEat"
+                    android:gravity="left|center_vertical"
+                    android:background="#F6F6F6"
+                    android:drawableRight="@drawable/arrow_expand"
+                    android:onClick="expandablePartners"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="PARTENAIRES"
+                    android:textSize="16sp"
+                    android:textColor="#000"
+                    style="?android:attr/borderlessButtonStyle"/>
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/expandableLayoutPartners"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/expandablePartners"
+                    android:background="#F6F6F6"
+                    android:padding="16dp"
+                    app:ael_duration="400"
+                    app:ael_expanded="false"
+                    app:ael_interpolator="accelerate"
+                    app:ael_orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:text="The Open Handset Alliance (OHA) was formed in November 2007. The OHA is a business alliance comprised of many of the largest and most successful mobile companies on the planet. Its members include chip makers, handset manufacturers, software developers, and service providers.The entire mobile supply chain is well represented." />
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+            </LinearLayout>
 
         </android.support.constraint.ConstraintLayout>
+
     </ScrollView>
 
     <include

@@ -30,14 +30,19 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.content.res.Resources.NotFoundException
 import com.example.pibbou.afca.ui.detail.DetailActivity
+import com.github.aakira.expandablelayout.ExpandableRelativeLayout
 import com.google.android.gms.maps.model.MapStyleOptions
-
 
 
 
 class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
-    private lateinit var recycler_view_price_list: RecyclerView
+    private lateinit var expandableLayoutPrice: ExpandableRelativeLayout
+    private lateinit var expandableLayoutMove: ExpandableRelativeLayout
+    private lateinit var expandableLayoutEat: ExpandableRelativeLayout
+    private lateinit var expandableLayoutPartners: ExpandableRelativeLayout
+
+    //private lateinit var recycler_view_price_list: RecyclerView
     private var priceAdapter: PriceListAdapter? = null
     private val repository = App.sInstance.getDataRepository()
 
@@ -53,7 +58,44 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
         this.setupWindowAnimations()
         this.setNavBarActive()
+        this.setExpandable()
     }
+
+
+    private fun setExpandable() {
+        expandableLayoutPrice = findViewById<View>(R.id.expandableLayoutPrice) as ExpandableRelativeLayout
+        expandableLayoutMove = findViewById<View>(R.id.expandableLayoutMove) as ExpandableRelativeLayout
+        expandableLayoutEat = findViewById<View>(R.id.expandableLayoutEat) as ExpandableRelativeLayout
+        expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableRelativeLayout
+
+        expandableLayoutPrice.collapse()
+        expandableLayoutMove.collapse()
+        expandableLayoutEat.collapse()
+        expandableLayoutPartners.collapse()
+
+    }
+
+    fun expandablePrice(view: View) {
+        expandableLayoutPrice = findViewById<View>(R.id.expandableLayoutPrice) as ExpandableRelativeLayout
+        expandableLayoutPrice.toggle() // toggle expand and collapse
+    }
+
+    fun expandableMove(view: View) {
+        expandableLayoutMove = findViewById<View>(R.id.expandableLayoutMove) as ExpandableRelativeLayout
+        expandableLayoutMove.toggle() // toggle expand and collapse
+    }
+
+    fun expandableEat(view: View) {
+        expandableLayoutEat = findViewById<View>(R.id.expandableLayoutEat) as ExpandableRelativeLayout
+        expandableLayoutEat.toggle() // toggle expand and collapse
+    }
+
+    fun expandablePartners(view: View) {
+        expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableRelativeLayout
+        expandableLayoutPartners.toggle() // toggle expand and collapse
+    }
+
+
 
     private fun setNavBarActive() {
         val button = findViewById<View>(R.id.navBarInfos) as ImageButton
@@ -80,7 +122,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
         // setContentView(R.layout.activity_informations)
 
-        val mapFragment: SupportMapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+/*        val mapFragment: SupportMapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
 
@@ -89,7 +131,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
             val uri = Uri.parse("http://www.festival-film-animation.fr/")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
-        })
+        })*/
 
         setupPriceList()
     }
@@ -142,18 +184,21 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
     private fun setupPriceList() {
         // Get recyclerview View
-        recycler_view_price_list = findViewById<View>(R.id.recycler_view_price_list) as RecyclerView
+        //recycler_view_price_list = findViewById<View>(R.id.recycler_view_price_list) as RecyclerView
 
         // Set fixed size
-        recycler_view_price_list.setHasFixedSize(true)
+        //recycler_view_price_list.setHasFixedSize(true)
 
         // Prepare adapter
         priceAdapter = PriceListAdapter(applicationContext, repository!!.getPrices())
 
-        recycler_view_price_list.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        //recycler_view_price_list.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         // Set adapter
-        recycler_view_price_list.adapter = priceAdapter
+        //recycler_view_price_list.adapter = priceAdapter
     }
 
+
+
 }
+

@@ -44,6 +44,8 @@ dependencies {
     compile "com.android.support:support-compat:26.1.0"
     // Smart Tablayout
     compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
+    // Expandable Layout
+    compile 'com.github.aakira:expandable-layout:1.6.0@aar'
     // Map
     implementation 'com.google.android.gms:play-services:11.8.0'
     compile 'com.android.support:multidex:1.0.1'
