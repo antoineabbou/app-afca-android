@@ -339,10 +339,135 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         val content_copyright = "Application réalisée par l’école des Gobelins en partenariat avec l’AFCA"
         copyright.setText(content_copyright)
 
+        //////////////
+        //////////////
+
+        val opening_1: TextView = findViewById(R.id.opening_1)
+        val content_opening_1= "Ouvert les jeudis et vendredis de 12h à 14h le soir à partir de 18h."
+        opening_1.setText(content_opening_1)
+
+        //////////////
+        //////////////
+
+        val price_value_1: TextView = findViewById(R.id.price_value_1)
+        val content_price_value_1 = "4€"
+        price_value_1.setText(content_price_value_1)
+
+        val price_content_1: TextView = findViewById(R.id.price_content_1)
+        val content_price_content_1 = "Goûter (Tarif préférentiel)"
+        price_content_1.setText(content_price_content_1)
+
+        //////////////
+        //////////////
+
+        val days_1: TextView = findViewById(R.id.days_1)
+        val content_days_1 = "Le mercredi, samedi et dimanche"
+        days_1.setText(content_days_1)
+
+        val days_2: TextView = findViewById(R.id.days_2)
+        val content_days_2 = "Tous les soirs de 20h à 21h"
+        days_2.setText(content_days_2)
+
+        //////////////
+        //////////////
+
+        val price_value_2: TextView = findViewById(R.id.price_value_2)
+        val content_price_value_2 = "11.50€"
+        price_value_2.setText(content_price_value_2)
+
+        val price_content_2: TextView = findViewById(R.id.price_content_2)
+        val content_price_content_2 = "Happy Hour Gastronomique "
+        price_content_2.setText(content_price_content_2)
+
+        //////////////
+        //////////////
+
+
+        val list_price_item_1: TextView = findViewById(R.id.list_price_item_1)
+        val content_list_price_item_1 = "Ouverture de la billetterie 30 minutes avant le début de chaque séance pour toutes les salles."
+        list_price_item_1.setText(content_list_price_item_1)
+
+        val list_price_item_2: TextView = findViewById(R.id.list_price_item_2)
+        val content_list_price_item_2 = "Pour les séances du TNB uniquement, réservation à partir du 4 avril sur toute la durée du Festival."
+        list_price_item_2.setText(content_list_price_item_2)
+
+        val list_price_item_3: TextView = findViewById(R.id.list_price_item_3)
+        val content_list_price_item_3 = "Carte abonnée des salles partenaires (TNB, Arvor et Le Grand Logis) acceptée. "
+        list_price_item_3.setText(content_list_price_item_3)
+
+        //////////////
+        //////////////
+
+        val price_title: TextView = findViewById(R.id.price_title)
+        val content_price_title = "Tarifs tout public"
+        price_title.setText(content_price_title)
+
+        val price_title_2: TextView = findViewById(R.id.price_title_2)
+        val content_price_title_2 = "Tarifs scolaires et structures"
+        price_title_2.setText(content_price_title_2)
+
+        //////////////
+        //////////////
+
+        val price_type_1: TextView = findViewById(R.id.price_type_1)
+        val content_price_type_1 = "Unique"
+        price_type_1.setText(content_price_type_1)
+
+        val price_type_2: TextView = findViewById(R.id.price_type_2)
+        val content_price_type_2 = "Ciné concert"
+        price_type_2.setText(content_price_type_2)
+
+        val price_type_3: TextView = findViewById(R.id.price_type_3)
+        val content_price_type_3 = "Carte sortir et groupe *"
+        price_type_3.setText(content_price_type_3)
+
+        val price_type_4: TextView = findViewById(R.id.price_type_4)
+        val content_price_type_4 = "Carte fidélité"
+        price_type_4.setText(content_price_type_4)
+
+        val price_type_5: TextView = findViewById(R.id.price_type_5)
+        val content_price_type_5 = "Projection"
+        price_type_5.setText(content_price_type_5)
+
+        val price_type_6: TextView = findViewById(R.id.price_type_6)
+        val content_price_type_6 = "Atelier"
+        price_type_6.setText(content_price_type_6)
 
 
         //////////////
         //////////////
+
+        val price_number_1: TextView = findViewById(R.id.price_number_1)
+        val content_price_number_1 = "3€"
+        price_number_1.setText(content_price_number_1)
+
+        val price_number_2: TextView = findViewById(R.id.price_number_2)
+        val content_price_number_2 = "8€"
+        price_number_2.setText(content_price_number_2)
+
+        val price_number_3: TextView = findViewById(R.id.price_number_3)
+        val content_price_number_3 = "6€"
+        price_number_3.setText(content_price_number_3)
+
+        val price_number_4: TextView = findViewById(R.id.price_number_4)
+        val content_price_number_4 = "25€"
+        price_number_4.setText(content_price_number_4)
+
+        val price_number_5: TextView = findViewById(R.id.price_number_5)
+        val content_price_number_5 = "3€"
+        price_number_5.setText(content_price_number_5)
+
+        val price_number_6: TextView = findViewById(R.id.price_number_6)
+        val content_price_number_6 = "4€"
+        price_number_6.setText(content_price_number_6)
+
+        //////////////
+        //////////////
+
+        val remark_price: TextView = findViewById(R.id.remark_price)
+        val content_remark_price = "* À partir de 10 personnes"
+        remark_price.setText(content_remark_price)
+
 
 
 
