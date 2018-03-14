@@ -56,10 +56,11 @@
         android:gravity="center"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        android:text="Faîtes votre sélection"
+        android:text="Faites votre sélection"
         android:textColor="#ffffff"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/fav_title"></TextView>
+
 
     <RelativeLayout
         android:id="@+id/relativeLayout4"

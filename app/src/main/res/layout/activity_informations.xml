@@ -6,31 +6,153 @@
     android:layout_height="match_parent"
     tools:context="com.example.pibbou.afca.ui.infos.InformationsActivity">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/layout_fav" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha=".7"
+            android:background="#3C3C3C" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitEnd"
+            android:src="@drawable/wave" />
+
+    </RelativeLayout>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fav_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="Informations"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/custom_tab_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="On vous explique tout"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/fav_title"/>
+
+
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/scrollView4"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toBottomOf="@+id/base"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@id/base"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout5">
+
 
         <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             tools:context="com.example.pibbou.afca.ui.infos.InformationsActivity">
 
-            <LinearLayout
+            <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/constraintLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/logo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/fleaf_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/leaf_green"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/fleaf_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/leaf_blue"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:lineSpacingExtra="2sp"
+                    android:text="Le Festival national du film d’animation invite les publics et professionnels à parcourir et découvrir l'incroyable créativité et diversité de la production française contemporaine dans une ambiance festive à travers une programmation riche.
+"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
                 <Button
                     android:id="@+id/expandablePrice"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:background="#F6F6F6"
@@ -38,10 +160,11 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="left|center_vertical"
                     android:onClick="expandablePrice"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
                     android:text="BILLETTERIE &amp; TARIFS"
                     android:textColor="#000"
-                    android:textSize="16sp"
-                    style="?android:attr/borderlessButtonStyle" />
+                    android:textSize="16sp" />
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:id="@+id/expandableLayoutPrice"
@@ -64,18 +187,21 @@
 
                 <Button
                     android:id="@+id/expandableMove"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:layout_below="@+id/expandableLayoutMove"
-                    android:gravity="left|center_vertical"
                     android:background="#F6F6F6"
                     android:drawableRight="@drawable/arrow_expand"
-                    android:onClick="expandableMove"
                     android:fontFamily="@font/montserrat_bold"
+                    android:gravity="left|center_vertical"
+                    android:onClick="expandableMove"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="SE DÉPLACER"
-                    android:textSize="16sp"
                     android:textColor="#000"
-                    style="?android:attr/borderlessButtonStyle"/>
+                    android:textSize="16sp" />
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:id="@+id/expandableLayoutMove"
@@ -92,24 +218,27 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        android:text="Android Permission Model designed for preventing unauthorized access by third party application.Android applications must declare which permission they require after installation. At a time of android application installation android system display list of permissions which is required to install the current application. The user must decide to install an application or not." />
+                        android:text="Android Permission Model designed for preventing unauthorized access by third party application.Android applications must declare which permission they require after installation. At a time of android application installation android system display list of permissions which is required to install the current application. The user must decide to install an application or not."
+                        android:textColor="#000" />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <Button
                     android:id="@+id/expandableEat"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:layout_below="@+id/expandableLayoutMove"
-                    android:gravity="left|center_vertical"
                     android:background="#F6F6F6"
                     android:drawableRight="@drawable/arrow_expand"
-                    android:onClick="expandableEat"
                     android:fontFamily="@font/montserrat_bold"
+                    android:gravity="left|center_vertical"
+                    android:onClick="expandableEat"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="SE RESTAURER"
-                    android:textSize="16sp"
                     android:textColor="#000"
-                    style="?android:attr/borderlessButtonStyle"/>
+                    android:textSize="16sp" />
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:id="@+id/expandableLayoutEat"
@@ -126,24 +255,27 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        android:text="With the help of android debug bridge we can communicate with an emulator or connected physical android device because Android Debug Bridge is a command line tool. Android Debug Bridge is also known as ADB. ADB architecture is like client-server architecture with three components." />
+                        android:text="With the help of android debug bridge we can communicate with an emulator or connected physical android device because Android Debug Bridge is a command line tool. Android Debug Bridge is also known as ADB. ADB architecture is like client-server architecture with three components."
+                        android:textColor="#000" />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
-    @
+
                 <Button
                     android:id="@+id/expandablePartners"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:layout_below="@+id/expandableLayoutEat"
-                    android:gravity="left|center_vertical"
                     android:background="#F6F6F6"
                     android:drawableRight="@drawable/arrow_expand"
-                    android:onClick="expandablePartners"
                     android:fontFamily="@font/montserrat_bold"
+                    android:gravity="left|center_vertical"
+                    android:onClick="expandablePartners"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="PARTENAIRES"
-                    android:textSize="16sp"
                     android:textColor="#000"
-                    style="?android:attr/borderlessButtonStyle"/>
+                    android:textSize="16sp" />
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:id="@+id/expandableLayoutPartners"
@@ -160,8 +292,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        android:text="The Open Handset Alliance (OHA) was formed in November 2007. The OHA is a business alliance comprised of many of the largest and most successful mobile companies on the planet. Its members include chip makers, handset manufacturers, software developers, and service providers.The entire mobile supply chain is well represented." />
+                        android:text="The Open Handset Alliance (OHA) was formed in November 2007. The OHA is a business alliance comprised of many of the largest and most successful mobile companies on the planet. Its members include chip makers, handset manufacturers, software developers, and service providers.The entire mobile supply chain is well represented."
+                        android:textColor="#000" />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
             </LinearLayout>
