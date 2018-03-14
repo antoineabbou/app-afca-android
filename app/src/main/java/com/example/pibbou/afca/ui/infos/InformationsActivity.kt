@@ -44,10 +44,12 @@ import com.google.android.gms.maps.model.MapStyleOptions
 
 class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
-    private lateinit var expandableLayoutPrice: ExpandableLinearLayout
+    private lateinit var expandableLayoutPrice: ExpandableRelativeLayout
     private lateinit var expandableLayoutMove: ExpandableRelativeLayout
-    private lateinit var expandableLayoutEat: ExpandableRelativeLayout
-    private lateinit var expandableLayoutPartners: ExpandableRelativeLayout
+    private lateinit var expandableLayoutEat: ExpandableLinearLayout
+    private lateinit var expandableLayoutPartners: ExpandableLinearLayout
+
+    var isMoveOpen: Int = 2
 
     //private lateinit var recycler_view_price_list: RecyclerView
     private var priceAdapter: PriceListAdapter? = null
@@ -58,53 +60,48 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val w = window // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        }*/
-
         this.setupWindowAnimations()
         this.setNavBarActive()
         this.setExpandable()
         //this.setUpInfosLocation()
 
         this.setPrices()
+        this.setMove()
     }
 
 
     private fun setExpandable() {
-        expandableLayoutPrice = findViewById<View>(R.id.expandableLayoutPrice) as ExpandableLinearLayout
-/*        expandableLayoutMove = findViewById<View>(R.id.expandableLayoutMove) as ExpandableRelativeLayout
-        expandableLayoutEat = findViewById<View>(R.id.expandableLayoutEat) as ExpandableRelativeLayout
-        expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableRelativeLayout
+        expandableLayoutPrice = findViewById<View>(R.id.expandableLayoutPrice) as ExpandableRelativeLayout
+        expandableLayoutMove = findViewById<View>(R.id.expandableLayoutMove) as ExpandableRelativeLayout
+/*        expandableLayoutEat = findViewById<View>(R.id.expandableLayoutEat) as ExpandableLinearLayout
+        expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableLinearLayout
 
-        expandableLayoutPrice.collapse()
-        expandableLayoutMove.collapse()
+
         expandableLayoutEat.collapse()
         expandableLayoutPartners.collapse()*/
 
+        expandableLayoutPrice.collapse()
+        expandableLayoutMove.collapse()
     }
 
     fun expandablePrice(view: View) {
-        expandableLayoutPrice = findViewById<View>(R.id.expandableLayoutPrice) as ExpandableLinearLayout
         expandableLayoutPrice.toggle() // toggle expand and collapse
     }
 
- /*   fun expandableMove(view: View) {
-        expandableLayoutMove = findViewById<View>(R.id.expandableLayoutMove) as ExpandableRelativeLayout
-        expandableLayoutMove.toggle() // toggle expand and collapse
+    fun expandableMove(view: View) {
+        expandableLayoutMove.toggle()
     }
 
-    fun expandableEat(view: View) {
-        expandableLayoutEat = findViewById<View>(R.id.expandableLayoutEat) as ExpandableRelativeLayout
-        expandableLayoutEat.toggle() // toggle expand and collapse
-    }
+    /*    fun expandableEat(view: View) {
+           expandableLayoutEat = findViewById<View>(R.id.expandableLayoutEat) as ExpandableLinearLayout
+           expandableLayoutEat.toggle() // toggle expand and collapse
+       }
 
-    fun expandablePartners(view: View) {
-        expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableRelativeLayout
-        expandableLayoutPartners.toggle() // toggle expand and collapse
-    }
-*/
+       fun expandablePartners(view: View) {
+           expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableLinearLayout
+           expandableLayoutPartners.toggle() // toggle expand and collapse
+       }
+   */
 
 
     private fun setNavBarActive() {
@@ -141,7 +138,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onMapReady(googleMap: GoogleMap) {
-        // Add a marker_blue in Sydney, Australia,
+        // Add a marker in Sydney, Australia,
         // and move the map's camera to the same location.
 
         try {
@@ -159,36 +156,23 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         }
 
 
-        val center = LatLng(48.115186, -1.682684)
+        val home = LatLng(48.115186, -1.682684)
 
         val places = repository?.getPlaces()
-        var i = 0
 
         for (place in places!!) {
-            var marker : Int = 0
-            marker = i
             val lat = place.lat
             val long = place.long
             val latlng = LatLng(lat!!, long!!)
-
-            when(i) {
-                0 -> marker = R.drawable.marker_blue
-                1 -> marker = R.drawable.marker_green
-                2 -> marker = R.drawable.marker_yellow
-                3 -> marker = R.drawable.marker_blue
-                4 -> marker = R.drawable.marker_green
-                5 -> marker = R.drawable.marker_red
-            }
-
             googleMap.addMarker(MarkerOptions().position(latlng)
-                    .title(place.name)
-                    .icon(BitmapDescriptorFactory.fromResource(marker)))
-
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(center))
-            googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.0f));
-
-            i++
+                    .title(place.name))
         }
+
+        googleMap.addMarker(MarkerOptions().position(home)
+                .title("Marker in home"))
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(home))
+        googleMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) );
     }
 
 
@@ -268,7 +252,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
     }
 
 
-    private fun setUpInfosLocation() {
+    private fun setMove() {
         val city_1: TextView = findViewById(R.id.city_1)
         val content_city_1 = "Rennes"
         city_1.setText(content_city_1)
@@ -400,6 +384,10 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         val remark: TextView = findViewById(R.id.remark)
         val content_remark = "* Toutes les salles sont accessibles aux personnes à mobilité réduite."
         remark.setText(content_remark)
+    }
+
+    private fun setUpInfosLocation() {
+
 
 
 
@@ -480,7 +468,6 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         //////////////
         //////////////
 
-
         val list_price_item_1: TextView = findViewById(R.id.list_price_item_1)
         val content_list_price_item_1 = "Ouverture de la billetterie 30 minutes avant le début de chaque séance pour toutes les salles."
         list_price_item_1.setText(content_list_price_item_1)
@@ -492,79 +479,6 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         val list_price_item_3: TextView = findViewById(R.id.list_price_item_3)
         val content_list_price_item_3 = "Carte abonnée des salles partenaires (TNB, Arvor et Le Grand Logis) acceptée. "
         list_price_item_3.setText(content_list_price_item_3)
-
-        //////////////
-        //////////////
-
-        val price_title: TextView = findViewById(R.id.price_title)
-        val content_price_title = "Tarifs tout public"
-        price_title.setText(content_price_title)
-
-        val price_title_2: TextView = findViewById(R.id.price_title_2)
-        val content_price_title_2 = "Tarifs scolaires et structures"
-        price_title_2.setText(content_price_title_2)
-
-        //////////////
-        //////////////
-
-        val price_type_1: TextView = findViewById(R.id.price_type_1)
-        val content_price_type_1 = "Unique"
-        price_type_1.setText(content_price_type_1)
-
-        val price_type_2: TextView = findViewById(R.id.price_type_2)
-        val content_price_type_2 = "Ciné concert"
-        price_type_2.setText(content_price_type_2)
-
-        val price_type_3: TextView = findViewById(R.id.price_type_3)
-        val content_price_type_3 = "Carte sortir et groupe *"
-        price_type_3.setText(content_price_type_3)
-
-        val price_type_4: TextView = findViewById(R.id.price_type_4)
-        val content_price_type_4 = "Carte fidélité"
-        price_type_4.setText(content_price_type_4)
-
-        val price_type_5: TextView = findViewById(R.id.price_type_5)
-        val content_price_type_5 = "Projection"
-        price_type_5.setText(content_price_type_5)
-
-        val price_type_6: TextView = findViewById(R.id.price_type_6)
-        val content_price_type_6 = "Atelier"
-        price_type_6.setText(content_price_type_6)
-
-
-        //////////////
-        //////////////
-
-        val price_number_1: TextView = findViewById(R.id.price_number_1)
-        val content_price_number_1 = "3€"
-        price_number_1.setText(content_price_number_1)
-
-        val price_number_2: TextView = findViewById(R.id.price_number_2)
-        val content_price_number_2 = "8€"
-        price_number_2.setText(content_price_number_2)
-
-        val price_number_3: TextView = findViewById(R.id.price_number_3)
-        val content_price_number_3 = "6€"
-        price_number_3.setText(content_price_number_3)
-
-        val price_number_4: TextView = findViewById(R.id.price_number_4)
-        val content_price_number_4 = "25€"
-        price_number_4.setText(content_price_number_4)
-
-        val price_number_5: TextView = findViewById(R.id.price_number_5)
-        val content_price_number_5 = "3€"
-        price_number_5.setText(content_price_number_5)
-
-        val price_number_6: TextView = findViewById(R.id.price_number_6)
-        val content_price_number_6 = "4€"
-        price_number_6.setText(content_price_number_6)
-
-        //////////////
-        //////////////
-
-        val remark_price: TextView = findViewById(R.id.remark_price)
-        val content_remark_price = "* À partir de 10 personnes"
-        remark_price.setText(content_remark_price)
     }
 }
 
