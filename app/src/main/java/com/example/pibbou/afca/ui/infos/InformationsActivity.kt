@@ -29,7 +29,13 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
 import android.content.res.Resources.NotFoundException
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
+import android.support.annotation.RequiresApi
+import android.widget.TextView
 import com.example.pibbou.afca.ui.detail.DetailActivity
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MapStyleOptions
 
 
@@ -53,6 +59,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
         this.setupWindowAnimations()
         this.setNavBarActive()
+        this.setUpInfosLocation()
     }
 
     private fun setNavBarActive() {
@@ -95,6 +102,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         return findViewById<View>(R.id.parentPanel) as View
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onMapReady(googleMap: GoogleMap) {
         // Add a marker_blue in Sydney, Australia,
         // and move the map's camera to the same location.
@@ -114,23 +122,36 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         }
 
 
-        val home = LatLng(48.115186, -1.682684)
+        val center = LatLng(48.115186, -1.682684)
 
         val places = repository?.getPlaces()
+        var i = 0
 
         for (place in places!!) {
+            var marker : Int = 0
+            marker = i
             val lat = place.lat
             val long = place.long
             val latlng = LatLng(lat!!, long!!)
+
+            when(i) {
+                0 -> marker = R.drawable.marker_blue
+                1 -> marker = R.drawable.marker_green
+                2 -> marker = R.drawable.marker_yellow
+                3 -> marker = R.drawable.marker_blue
+                4 -> marker = R.drawable.marker_green
+                5 -> marker = R.drawable.marker_red
+            }
+
             googleMap.addMarker(MarkerOptions().position(latlng)
-                    .title(place.name))
+                    .title(place.name)
+                    .icon(BitmapDescriptorFactory.fromResource(marker)))
+
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(center))
+            googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.0f));
+
+            i++
         }
-
-        googleMap.addMarker(MarkerOptions().position(home)
-                .title("Marker in home"))
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(home))
-        googleMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) );
     }
 
     /*private fun setupPriceList() {
@@ -148,5 +169,184 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         // Set adapter
         recycler_view_price_list.adapter = priceAdapter
     }*/
+
+    private fun setUpInfosLocation() {
+        val city_1: TextView = findViewById(R.id.city_1)
+        val content_city_1 = "Rennes"
+        city_1.setText(content_city_1)
+
+        val city_2: TextView = findViewById(R.id.city_2)
+        val content_city_2 = "Bruz"
+        city_2.setText(content_city_2)
+
+        //////
+        val place_1: TextView = findViewById(R.id.place_1)
+        val content_place_1 = "TNB"
+        place_1.setText(content_place_1)
+        //////
+        val address_1: TextView = findViewById(R.id.address_1)
+        val content_address_1 = "1 Rue Saint-Hélier, 35040 Rennes"
+        address_1.setText(content_address_1)
+        //////
+        val phone_1: TextView = findViewById(R.id.phone_1)
+        val content_phone_1 = "02 99 31 55 33"
+        phone_1.setText(content_phone_1)
+        //////
+        val bus_1: TextView = findViewById(R.id.bus_1)
+        val content_bus_1 = "Arrêt : Liberté TNB / Métro Charles de Gaulle"
+        bus_1.setText(content_bus_1)
+
+        //////////////
+        /////////////
+
+        //////
+        val place_2: TextView = findViewById(R.id.place_2)
+        val content_place_2 = "Arvor"
+        place_2.setText(content_place_2)
+        //////
+        val address_2: TextView = findViewById(R.id.address_2)
+        val content_address_2 = "29 Rue d'Antrain, 35700 Rennes"
+        address_2.setText(content_address_2)
+        //////
+        val phone_2: TextView = findViewById(R.id.phone_2)
+        val content_phone_2 = "02 99 38 78 04"
+        phone_2.setText(content_phone_2)
+        //////
+        val bus_2: TextView = findViewById(R.id.bus_2)
+        val content_bus_2 = "Arrêt : Sainte-Anne ou Hôtel Dieu / Métro"
+        bus_2.setText(content_bus_2)
+
+        //////////////
+        /////////////
+
+        //////
+        val place_3: TextView = findViewById(R.id.place_3)
+        val content_place_3 = "ESRA"
+        place_3.setText(content_place_3)
+        //////
+        val address_3: TextView = findViewById(R.id.address_3)
+        val content_address_3 = "1 Rue Xavier Grall, 35700 Rennes"
+        address_3.setText(content_address_3)
+        //////
+        val phone_3: TextView = findViewById(R.id.phone_3)
+        val content_phone_3 = "02 99 31 55 33"
+        phone_3.setText(content_phone_3)
+        //////
+        val bus_3: TextView = findViewById(R.id.bus_3)
+        val content_bus_3 = "Arrêt : Liberté TNB / Métro Charles de Gaulle"
+        bus_3.setText(content_bus_3)
+
+        //////////////
+        /////////////
+
+        //////
+        val place_4: TextView = findViewById(R.id.place_4)
+        val content_place_4 = "Esplanade Charles de Gaulle"
+        place_4.setText(content_place_4)
+        //////
+        val address_4: TextView = findViewById(R.id.address_4)
+        val content_address_4 = "Esplanade Charles de Gaulle, 35000 Rennes"
+        address_4.setText(content_address_4)
+        //////
+        val phone_4: TextView = findViewById(R.id.phone_4)
+        val content_phone_4 = "02 99 31 55 33"
+        phone_4.setText(content_phone_4)
+        //////
+        val bus_4: TextView = findViewById(R.id.bus_4)
+        val content_bus_4 = "Arrêt : Liberté TNB / Métro Charles de Gaulle"
+        bus_4.setText(content_bus_4)
+
+
+        //////////////
+        /////////////
+
+        //////
+        val place_5: TextView = findViewById(R.id.place_5)
+        val content_place_5 = "France 3 Bretagne"
+        place_5.setText(content_place_5)
+        //////
+        val address_5: TextView = findViewById(R.id.address_5)
+        val content_address_5 = "9 Avenue Jean Janvier, 35000 Renness"
+        address_5.setText(content_address_5)
+        //////
+        val phone_5: TextView = findViewById(R.id.phone_5)
+        val content_phone_5 = "02 99 31 55 33"
+        phone_5.setText(content_phone_5)
+        //////
+        val bus_5: TextView = findViewById(R.id.bus_5)
+        val content_bus_5 = "Arrêt : Liberté TNB / Métro Charles de Gaulle"
+        bus_5.setText(content_bus_5)
+
+
+        //////////////
+        /////////////
+
+        //////
+        val place_6: TextView = findViewById(R.id.place_6)
+        val content_place_6 = "Grand Logis"
+        place_6.setText(content_place_6)
+        //////
+        val address_6: TextView = findViewById(R.id.address_6)
+        val content_address_6 = "10 Avenue du Général de Gaulle, 35170 Bruz"
+        address_6.setText(content_address_6)
+        //////
+        val phone_6: TextView = findViewById(R.id.phone_6)
+        val content_phone_6 = "02 99 05 30 62 / 02 99 05 30 60"
+        phone_6.setText(content_phone_6)
+        //////
+        val bus_6: TextView = findViewById(R.id.bus_6)
+        val content_bus_6 = "Arrêt : Bruz Centre"
+        bus_6.setText(content_bus_6)
+
+
+        val remark: TextView = findViewById(R.id.remark)
+        val content_remark = "* Toutes les salles sont accessibles aux personnes à mobilité réduite."
+        remark.setText(content_remark)
+
+
+
+        //////////////
+        /////////////
+        //////////////
+        /////////////
+        //////////////
+        /////////////
+
+        val organizer: TextView = findViewById(R.id.organizer)
+        val content_organizer = "Organisé par"
+        organizer.setText(content_organizer)
+
+        /////////////
+        /////////////
+
+        val partners: TextView = findViewById(R.id.partners)
+        val content_partners= "En partenariat avec"
+        partners.setText(content_partners)
+
+
+        /////////////
+        /////////////
+
+        val support: TextView = findViewById(R.id.support)
+        val content_support= "Avec le soutien de"
+        support.setText(content_support)
+
+
+        /////////////
+        /////////////
+
+        val copyright: TextView = findViewById(R.id.copyright)
+        val content_copyright = "Application réalisée par l’école des Gobelins en partenariat avec l’AFCA"
+        copyright.setText(content_copyright)
+
+
+
+        //////////////
+        //////////////
+
+
+
+
+    }
 
 }
