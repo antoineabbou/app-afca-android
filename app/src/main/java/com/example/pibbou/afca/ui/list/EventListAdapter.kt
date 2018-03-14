@@ -94,7 +94,6 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         // Get singleEvent
         val singleEvent = eventList?.get(i)
 
-        val place = dataRepository!!.findPlaceById(singleEvent?.id!!)
         // Set text to card title
         holder.eventCardTitle.setText(singleEvent?.name)
         if(singleEvent?.author.isNullOrEmpty()) {
@@ -129,7 +128,6 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
         setButton(holder.eventCardFavorite, singleEvent)
 
-        val category = dataRepository!!.findCategoryById(singleEvent?.id!!)
 
         Log.i("holderis", holder.cardViewBackground.toString())
         Log.i("categorycolor", singleEvent?.category?.color.toString())

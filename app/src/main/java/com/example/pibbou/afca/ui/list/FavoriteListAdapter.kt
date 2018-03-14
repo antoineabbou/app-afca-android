@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
@@ -80,10 +81,16 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         // Set text to card title
 
         holder?.favCardContainer?.setBackgroundColor(Color.parseColor(singleFav?.category?.color))
+        holder?.favCardBackground?.setBackgroundColor(Color.parseColor(singleFav?.category?.color))
+
 
         holder?.favCardTitle?.setText(singleFav?.name)
 
-        holder?.favCardAuthor?.setText(singleFav?.author)
+        if(singleFav?.author.isNullOrEmpty()) {
+            holder?.favCardAuthor?.setText("Auteur non communiqué")
+        } else {
+            holder?.favCardAuthor?.setText(singleFav?.author)
+        }
 
         val hour = android.text.format.DateFormat.format("HH:mm", singleFav?.startingDate) as String
         holder?.favCardHour?.setText(hour)
@@ -131,6 +138,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         var favCardHour: TextView
         var favCardPlace: TextView
         var favCardContainer: ConstraintLayout
+        var favCardBackground: LinearLayout
 
         init {
             // Get card title view
@@ -141,6 +149,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             this.favCardHour = view.findViewById(R.id.favCardHour)
             this.favCardPlace = view.findViewById(R.id.favCardPlace)
             this.favCardContainer = view.findViewById(R.id.favCardContainer)
+            this.favCardBackground = view.findViewById(R.id.cardViewBackground)
         }
     }
 }
