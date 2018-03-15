@@ -227,6 +227,8 @@ class MainActivity : BaseActivity() {
             currentFilters.add(event)
         }
 
+        currentFilters.sort()
+
         filterAdapter?.notifyDataSetChanged()
     }
 

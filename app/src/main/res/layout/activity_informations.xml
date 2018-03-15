@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/layout_fav" />
+            android:src="@drawable/layout_infos" />
 
         <View
             android:layout_width="match_parent"
