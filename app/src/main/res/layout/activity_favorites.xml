@@ -112,6 +112,18 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="8dp" />
 
+
+    <TextView
+        android:id="@+id/noFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Vous n'avez pas de favori :-("
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout4"
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="14sp"
+        android:textColor="#000000"/>
+
     <include
         android:id="@+id/base"
         layout="@layout/activity_base"

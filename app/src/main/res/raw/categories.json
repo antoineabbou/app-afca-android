@@ -2,41 +2,41 @@
   {
     "id": 1,
     "name": "Compétition et panorama",
-    "color": "#E94A27"
+    "color": "#28B2E8"
   },
   {
     "id": 2,
     "name": "Séance spéciale",
-    "color": "#FCB349"
+    "color": "#74D49F"
   },
   {
     "id": 3,
     "name": "Long métrage",
-    "color": "#667EBE"
+    "color": "#FCB249"
   },
   {
     "id": 4,
     "name": "Volet professionnel",
-    "color": "#FCB349"
+    "color": "#E31F26"
   },
   {
     "id": 5,
     "name": "Autour des films",
-    "color": "#FCB349"
+    "color": "#667EBE"
   },
   {
     "id": 6,
     "name": "Salon des nouvelles écritures",
-    "color": "#FCB349"
+    "color": "#F05B46"
   },
   {
     "id": 7,
     "name": "Cube animé",
-    "color": "#FCB349"
+    "color": "#EB80A9"
   },
   {
     "id": 8,
     "name": "Focus",
-    "color": "#FCB349"
+    "color": "#FFC023"
   }
 ]

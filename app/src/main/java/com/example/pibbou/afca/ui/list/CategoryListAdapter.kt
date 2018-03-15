@@ -1,6 +1,7 @@
 package com.example.pibbou.afca.ui.list
 
 import android.content.Context
+import android.graphics.Color
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,6 +13,13 @@ import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.entity.Category
 import com.example.pibbou.afca.repository.entity.Event
 import java.util.ArrayList
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
+import android.graphics.drawable.Drawable
+import android.support.v4.content.ContextCompat.getColor
+import android.support.v4.content.ContextCompat.getDrawable
+import android.widget.ImageView
+
 
 /**
  * Created by arnaudpinot on 07/01/2018.
@@ -29,6 +37,10 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
     }
 
     override fun onBindViewHolder(itemRowHolder: ItemRowHolder, i: Int) {
+
+        val bgShape = getDrawable(mContext, R.drawable.circle);
+        bgShape.colorFilter = PorterDuffColorFilter(0xffff00,PorterDuff.Mode.MULTIPLY);
+
 
         // Get section name (category name)
         val sectionName = filteredCategories[i].name
@@ -49,6 +61,9 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
 
         // Set Text for category Title
         itemRowHolder.categoryTitle.setText(sectionName + " (" + eventsByCategory.count() + ")")
+
+        itemRowHolder.categoryMarker.setColorFilter(Color.parseColor(filteredCategories[i].color), android.graphics.PorterDuff.Mode.SRC_IN);
+
 
         // Set fixed size to recycler_view_event_list
         itemRowHolder.recycler_view_event_list.setHasFixedSize(true)
@@ -80,11 +95,13 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
 
 
     inner class ItemRowHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var categoryMarker: ImageView
         var categoryTitle: TextView
         var recycler_view_event_list: RecyclerView
 
         init {
             // Get category title View
+            this.categoryMarker = view.findViewById(R.id.marker)
             this.categoryTitle = view.findViewById(R.id.categoryTitle)
             // Get recycler_view View
             this.recycler_view_event_list = view.findViewById(R.id.recycler_view_event_list)

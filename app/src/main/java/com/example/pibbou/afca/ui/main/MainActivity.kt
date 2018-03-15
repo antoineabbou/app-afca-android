@@ -125,6 +125,7 @@ class MainActivity : BaseActivity() {
                 1 -> view.custom_tab_date.text = "Jeudi 05 Avril"
                 2 -> view.custom_tab_date.text = "Vendredi 06 Avril"
                 3 -> view.custom_tab_date.text = "Samedi 07 Avril"
+                4 -> view.custom_tab_date.text = "Dimanche 08 Avril"
             }
 
             view
@@ -189,10 +190,7 @@ class MainActivity : BaseActivity() {
 
             // This method will be invoked when a new page becomes selected.
             override fun onPageSelected(day: Int) {
-
-                Toast.makeText(this@MainActivity,
-                        "Selected page position: " + mainPager.getCurrentItem(), Toast.LENGTH_SHORT).show()
-
+                
                 // Get Events By Day
                 getEventsAndSetFilters(day)
 

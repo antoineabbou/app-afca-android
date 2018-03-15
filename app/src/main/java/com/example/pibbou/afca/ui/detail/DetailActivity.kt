@@ -18,6 +18,7 @@ import android.content.SharedPreferences
 import android.media.Image
 import android.net.Uri
 import android.os.Build
+import android.support.annotation.RequiresApi
 import android.support.constraint.ConstraintLayout
 import android.util.Log
 import android.view.WindowManager
@@ -96,6 +97,7 @@ class DetailActivity : AppCompatActivity() {
 
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     fun showToast(event: Event) {
 
         val toast = SuperActivityToast.create(this@DetailActivity, Style.TYPE_BUTTON)
@@ -103,14 +105,14 @@ class DetailActivity : AppCompatActivity() {
         if (isInList) {
             favoriteManager?.removeFavorite(applicationContext, event)
             isInList = false
-            toast.setText("Evenement supprimé des favoris")
-            toast.setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED))
+            toast.setText("ÉVÈNEMENT SUPPRIMÉ DES FAVORIS")
+            toast.setColor(getColor(R.color.red))
 
         } else {
             favoriteManager?.addFavorite(applicationContext, event)
             isInList = true
-            toast.setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_BLUE))
-            toast.setText("Evenement ajouté favoris")
+            toast.setColor(getColor(R.color.green))
+            toast.setText("ÉVÈNEMENT AJOUTÉ AUX FAVORIS")
         }
 
 
@@ -225,7 +227,7 @@ class DetailActivity : AppCompatActivity() {
         })
 
         val image: ImageView = findViewById(R.id.eventImage)
-        image.setScaleType(ImageView.ScaleType.FIT_XY)
+        image.setScaleType(ImageView.ScaleType.CENTER_CROP)
 
         Picasso.with(applicationContext)
                 .load(event?.image)

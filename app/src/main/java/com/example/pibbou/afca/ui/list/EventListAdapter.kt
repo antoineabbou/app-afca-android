@@ -95,7 +95,7 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         val singleEvent = eventList?.get(i)
 
         // Set text to card title
-        holder.eventCardTitle.setText(singleEvent?.name)
+        holder.eventCardTitle.setText(singleEvent?.name?.toUpperCase())
         if(singleEvent?.author.isNullOrEmpty()) {
             holder.eventCardAuthor.setText("Auteur non communiqué")
         } else {

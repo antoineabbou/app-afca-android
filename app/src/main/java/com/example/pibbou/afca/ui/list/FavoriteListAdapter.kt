@@ -18,6 +18,7 @@ import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.NotificationManager
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.detail.DetailActivity
+import com.example.pibbou.afca.ui.favorites.FavoritesActivity
 import com.squareup.picasso.Picasso
 import java.util.*
 
@@ -30,6 +31,8 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
     private val mOnClickListener: View.OnClickListener
     private val bOnClickListener: View.OnClickListener
 
+    private var context: Context
+
 
     // Favorite manager call
     val favoriteManager = App.sInstance!!.getFavoriteManager()
@@ -38,8 +41,9 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
     val dataRepository = App.sInstance!!.getDataRepository()
 
 
-
     init {
+        context = mContext
+        checkLengthFavorites()
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
         mOnClickListener = View.OnClickListener { v ->
@@ -56,6 +60,10 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             val event = b.tag as Event
             favoriteManager?.removeFavorite(mContext, event)
             notifyDataSetChanged()
+
+            checkLengthFavorites()
+
+
         }
     }
 
@@ -74,6 +82,18 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
 
     }
 
+    private fun checkLengthFavorites() {
+        if (favoriteManager?.getFavorites(mContext)?.size!! <= 0) {
+            if (context is FavoritesActivity) {
+                (context as FavoritesActivity).toggleEmptyMessage(true)
+            }
+        } else {
+            if (context is FavoritesActivity) {
+                (context as FavoritesActivity).toggleEmptyMessage(false)
+            }
+        }
+    }
+
     override fun onBindViewHolder(holder: FavItemRowHolder?, position: Int) {
 
         // Get singleEvent
@@ -84,7 +104,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         holder?.favCardBackground?.setBackgroundColor(Color.parseColor(singleFav?.category?.color))
 
 
-        holder?.favCardTitle?.setText(singleFav?.name)
+        holder?.favCardTitle?.setText(singleFav?.name?.toUpperCase())
 
         if(singleFav?.author.isNullOrEmpty()) {
             holder?.favCardAuthor?.setText("Auteur non communiqué")
