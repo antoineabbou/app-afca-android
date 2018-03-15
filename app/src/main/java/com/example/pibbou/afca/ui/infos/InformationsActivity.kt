@@ -47,7 +47,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
     private lateinit var expandableLayoutPrice: ExpandableRelativeLayout
     private lateinit var expandableLayoutMove: ExpandableRelativeLayout
     private lateinit var expandableLayoutEat: ExpandableRelativeLayout
-    private lateinit var expandableLayoutPartners: ExpandableLinearLayout
+    private lateinit var expandableLayoutPartners: ExpandableRelativeLayout
 
     //private lateinit var recycler_view_price_list: RecyclerView
     private var priceAdapter: PriceListAdapter? = null
@@ -61,11 +61,11 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         this.setupWindowAnimations()
         this.setNavBarActive()
         this.setExpandable()
-        //this.setUpInfosLocation()
 
         this.setPrices()
         this.setMove()
         this.setEat()
+        this.setOrganizer()
     }
 
 
@@ -73,13 +73,12 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         expandableLayoutPrice = findViewById<View>(R.id.expandableLayoutPrice) as ExpandableRelativeLayout
         expandableLayoutMove = findViewById<View>(R.id.expandableLayoutMove) as ExpandableRelativeLayout
         expandableLayoutEat = findViewById<View>(R.id.expandableLayoutEat) as ExpandableRelativeLayout
-/*
-        expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableLinearLayout
-        expandableLayoutPartners.collapse()*/
+        expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableRelativeLayout
 
         expandableLayoutPrice.collapse()
         expandableLayoutMove.collapse()
         expandableLayoutEat.collapse()
+        expandableLayoutPartners.collapse()
     }
 
     fun expandablePrice(view: View) {
@@ -90,15 +89,14 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         expandableLayoutMove.toggle()
     }
 
-   fun expandableEat(view: View) {
-       expandableLayoutEat.toggle() // toggle expand and collapse
-   }
+    fun expandableEat(view: View) {
+        expandableLayoutEat.toggle() // toggle expand and collapse
+    }
 
-    /* fun expandablePartners(view: View) {
-        expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableLinearLayout
+    fun expandablePartners(view: View) {
         expandableLayoutPartners.toggle() // toggle expand and collapse
     }
-*/
+
 
 
     private fun setNavBarActive() {
@@ -467,15 +465,6 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         support.setText(content_support)
 
 
-        /////////////
-        /////////////
-
-        val copyright: TextView = findViewById(R.id.copyright)
-        val content_copyright = "Application réalisée par l’école des Gobelins en partenariat avec l’AFCA"
-        copyright.setText(content_copyright)
-
     }
-
-
 }
 

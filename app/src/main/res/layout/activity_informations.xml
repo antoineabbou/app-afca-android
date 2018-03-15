@@ -173,7 +173,7 @@
                     android:layout_below="@+id/expandablePrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="20dp"
+                    android:paddingBottom="30dp"
                     android:background="#F6F6F6"
                     app:ael_duration="400"
                     app:ael_expanded="true"
@@ -216,7 +216,7 @@
                     android:layout_below="@+id/expandableMove"
                     android:background="#F6F6F6"
                     android:orientation="vertical"
-                    android:paddingBottom="20dp"
+                    android:paddingBottom="30dp"
                     app:ael_duration="400"
                     app:ael_expanded="true"
                     app:ael_interpolator="accelerate"
@@ -257,7 +257,7 @@
                     android:layout_below="@+id/expandableEat"
                     android:background="#F6F6F6"
                     android:orientation="vertical"
-                    android:paddingBottom="20dp"
+                    android:paddingBottom="30dp"
                     app:ael_duration="400"
                     app:ael_expanded="true"
                     app:ael_interpolator="accelerate"
@@ -270,13 +270,16 @@
                         android:layout_height="wrap_content" />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-                <!--<Button
+
+                <!-- Partners -->
+                <Button
                     android:id="@+id/expandablePartners"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:layout_below="@+id/expandableLayoutEat"
                     android:layout_marginTop="16dp"
+
                     android:background="#F6F6F6"
                     android:drawableRight="@drawable/arrow_expand"
                     android:fontFamily="@font/montserrat_bold"
@@ -294,20 +297,39 @@
                     android:layout_height="match_parent"
                     android:layout_below="@+id/expandablePartners"
                     android:background="#F6F6F6"
-                    android:padding="16dp"
+                    android:orientation="vertical"
                     app:ael_duration="400"
-                    app:ael_expanded="false"
+                    app:ael_expanded="true"
                     app:ael_interpolator="accelerate"
                     app:ael_orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="The Open Handset Alliance (OHA) was formed in November 2007. The OHA is a business alliance comprised of many of the largest and most successful mobile companies on the planet. Its members include chip makers, handset manufacturers, software developers, and service providers.The entire mobile supply chain is well represented."
-                        android:textColor="#000" />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>-->
+                    <include
+                        android:id="@+id/infosPartners"
+                        layout="@layout/infos_partners"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/copyright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Application réalisée par l’école des Gobelins en partenariat avec l’AFCA"
+                android:textAlignment="center"
+                android:textColor="#28B2E8"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
 
         </android.support.constraint.ConstraintLayout>
 
