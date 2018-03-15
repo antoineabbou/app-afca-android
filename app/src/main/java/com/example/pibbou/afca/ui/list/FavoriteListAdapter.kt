@@ -113,11 +113,10 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         val hour = android.text.format.DateFormat.format("HH:mm", singleFav?.startingDate) as String
         holder?.favCardHour?.setText(hour)
 
-        val place = dataRepository!!.findPlaceById(singleFav?.id!!)
-        holder?.favCardPlace?.setText(place?.name)
+        holder.favCardPlace.setText(singleFav?.place?.name)
 
         Picasso.with(mContext)
-                .load(singleFav.image)
+                .load(singleFav?.image)
                 .into(holder?.favCardImage)
 
 
