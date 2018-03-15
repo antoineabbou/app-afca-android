@@ -200,6 +200,7 @@
             android:layout_below="@+id/list_item_3"
             android:layout_marginTop="16dp"
             android:adjustViewBounds="true"
+            android:cropToPadding="true"
             android:src="@drawable/support" />
 
     </RelativeLayout>
