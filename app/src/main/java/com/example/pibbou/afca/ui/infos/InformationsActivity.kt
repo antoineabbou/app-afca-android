@@ -151,7 +151,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         }
 
 
-        val home = LatLng(48.115186, -1.682684)
+        val center = LatLng(48.115186, -1.682684)
 
         val places = repository?.getPlaces()
 
@@ -163,10 +163,10 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
                     .title(place.name))
         }
 
-        googleMap.addMarker(MarkerOptions().position(home)
+        googleMap.addMarker(MarkerOptions().position(center)
                 .title("Marker in home"))
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(home))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(center))
         googleMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) );
     }
 
