@@ -111,11 +111,21 @@ class FavoritesActivity : BaseActivity() {
 
 
         // Prepare adapter
-        favoriteAdapter = FavoriteListAdapter(applicationContext, favoriteManager?.currentFavorites)
+        favoriteAdapter = FavoriteListAdapter(this, favoriteManager?.currentFavorites)
 
         recycler_view_favorite_list.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         // Set adapter
         recycler_view_favorite_list.adapter = favoriteAdapter
+    }
+
+    fun toggleEmptyMessage(show: Boolean) {
+        val emptyMessage = findViewById<View>(R.id.noFavorite) as View
+
+        if (show) {
+            emptyMessage.visibility = View.VISIBLE
+        } else {
+            emptyMessage.visibility = View.GONE
+        }
     }
 }
