@@ -229,13 +229,16 @@
                         android:layout_height="wrap_content" />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-                <!--<Button
+
+                <!-- Eat -->
+                <Button
                     android:id="@+id/expandableEat"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:layout_below="@+id/expandableLayoutMove"
                     android:layout_marginTop="16dp"
+
                     android:background="#F6F6F6"
                     android:drawableRight="@drawable/arrow_expand"
                     android:fontFamily="@font/montserrat_bold"
@@ -253,7 +256,8 @@
                     android:layout_height="match_parent"
                     android:layout_below="@+id/expandableEat"
                     android:background="#F6F6F6"
-                    android:padding="16dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp"
                     app:ael_duration="400"
                     app:ael_expanded="false"
                     app:ael_interpolator="accelerate"
@@ -264,7 +268,7 @@
                         android:layout_height="wrap_content"
                         android:text="With the help of android debug bridge we can communicate with an emulator or connected physical android device because Android Debug Bridge is a command line tool. Android Debug Bridge is also known as ADB. ADB architecture is like client-server architecture with three components."
                         android:textColor="#000" />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>-->
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <!--<Button
                     android:id="@+id/expandablePartners"

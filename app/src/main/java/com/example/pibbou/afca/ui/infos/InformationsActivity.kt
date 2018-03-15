@@ -180,6 +180,21 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         //////////////
         //////////////
 
+        val list_price_item_1: TextView = findViewById(R.id.list_price_item_1)
+        val content_list_price_item_1 = "Ouverture de la billetterie 30 minutes avant le début de chaque séance pour toutes les salles."
+        list_price_item_1.setText(content_list_price_item_1)
+
+        val list_price_item_2: TextView = findViewById(R.id.list_price_item_2)
+        val content_list_price_item_2 = "Pour les séances du TNB uniquement, réservation à partir du 4 avril sur toute la durée du Festival."
+        list_price_item_2.setText(content_list_price_item_2)
+
+        val list_price_item_3: TextView = findViewById(R.id.list_price_item_3)
+        val content_list_price_item_3 = "Carte abonnée des salles partenaires (TNB, Arvor et Le Grand Logis) acceptée. "
+        list_price_item_3.setText(content_list_price_item_3)
+
+        //////////////
+        //////////////
+
         val price_title: TextView = findViewById(R.id.price_title)
         val content_price_title = "Tarifs tout public"
         price_title.setText(content_price_title)
@@ -386,9 +401,11 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         remark.setText(content_remark)
     }
 
+    private fun setEat() {
+
+    }
+
     private fun setUpInfosLocation() {
-
-
 
 
         //////////////
@@ -406,7 +423,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         /////////////
 
         val partners: TextView = findViewById(R.id.partners)
-        val content_partners= "En partenariat avec"
+        val content_partners = "En partenariat avec"
         partners.setText(content_partners)
 
 
@@ -414,7 +431,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         /////////////
 
         val support: TextView = findViewById(R.id.support)
-        val content_support= "Avec le soutien de"
+        val content_support = "Avec le soutien de"
         support.setText(content_support)
 
 
@@ -429,7 +446,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         //////////////
 
         val opening_1: TextView = findViewById(R.id.opening_1)
-        val content_opening_1= "Ouvert les jeudis et vendredis de 12h à 14h le soir à partir de 18h."
+        val content_opening_1 = "Ouvert les jeudis et vendredis de 12h à 14h le soir à partir de 18h."
         opening_1.setText(content_opening_1)
 
         //////////////
@@ -464,21 +481,8 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         val price_content_2: TextView = findViewById(R.id.price_content_2)
         val content_price_content_2 = "Happy Hour Gastronomique "
         price_content_2.setText(content_price_content_2)
-
-        //////////////
-        //////////////
-
-        val list_price_item_1: TextView = findViewById(R.id.list_price_item_1)
-        val content_list_price_item_1 = "Ouverture de la billetterie 30 minutes avant le début de chaque séance pour toutes les salles."
-        list_price_item_1.setText(content_list_price_item_1)
-
-        val list_price_item_2: TextView = findViewById(R.id.list_price_item_2)
-        val content_list_price_item_2 = "Pour les séances du TNB uniquement, réservation à partir du 4 avril sur toute la durée du Festival."
-        list_price_item_2.setText(content_list_price_item_2)
-
-        val list_price_item_3: TextView = findViewById(R.id.list_price_item_3)
-        val content_list_price_item_3 = "Carte abonnée des salles partenaires (TNB, Arvor et Le Grand Logis) acceptée. "
-        list_price_item_3.setText(content_list_price_item_3)
     }
+
+
 }
 
