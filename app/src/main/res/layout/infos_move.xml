@@ -381,7 +381,7 @@
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginTop="4dp"
-                    android:src="@drawable/marker_blue" />
+                    android:src="@drawable/marker_purple" />
             </LinearLayout>
 
             <LinearLayout
@@ -401,7 +401,7 @@
                         android:layout_gravity="center_vertical"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="TextView"
-                        android:textColor="#28B2E8"
+                        android:textColor="@color/purple"
                         android:textSize="14sp" />
 
                     <TextView
@@ -471,7 +471,7 @@
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginTop="4dp"
-                    android:src="@drawable/marker_green" />
+                    android:src="@drawable/marker_pink" />
             </LinearLayout>
 
             <LinearLayout
@@ -491,7 +491,7 @@
                         android:layout_gravity="center_vertical"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="TextView"
-                        android:textColor="#74D49F"
+                        android:textColor="@color/pink"
                         android:textSize="14sp" />
 
                     <TextView
