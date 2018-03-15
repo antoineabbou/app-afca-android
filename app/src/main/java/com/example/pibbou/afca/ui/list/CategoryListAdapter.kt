@@ -8,15 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.entity.Category
 import com.example.pibbou.afca.repository.entity.Event
 import java.util.ArrayList
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
-import android.graphics.drawable.Drawable
-import android.support.v4.content.ContextCompat.getColor
 import android.support.v4.content.ContextCompat.getDrawable
 import android.widget.ImageView
 

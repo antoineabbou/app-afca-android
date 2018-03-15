@@ -9,12 +9,17 @@ import com.google.gson.Gson
 /**
  * Created by aabbou on 14/02/2018.
  */
+
+/**
+ * Favorite Manager
+ */
 class FavoriteManager {
 
-    val PREFS_NAME = "PRODUCT_APP"
-    val FAVORITES = "Product_Favorite"
+    val PREFS_NAME = "FNFA_AFCA"
+    val FAVORITES = "Favorites"
     var currentFavorites = ArrayList<Event>()
 
+    // keep favorites in SharedPreferences
     fun saveFavorites(context: Context, favorites: List<Event>) {
         val settings: SharedPreferences
         val editor: SharedPreferences.Editor
@@ -32,7 +37,7 @@ class FavoriteManager {
 
     }
 
-
+    // Add one event to the list
     fun addFavorite(context: Context, event: Event) {
 
         var isInList = currentFavorites.filter {
@@ -46,7 +51,7 @@ class FavoriteManager {
 
     }
 
-
+    // Remove one event from the list
     fun removeFavorite(context: Context, event: Event) {
 
         var selectedFavorite = currentFavorites.filter {
@@ -61,7 +66,7 @@ class FavoriteManager {
         }
     }
 
-
+    // Write and save favorites
     fun setFavorites(context: Context): ArrayList<Event>? {
         val settings: SharedPreferences
         val favorites: List<Event>
@@ -85,11 +90,11 @@ class FavoriteManager {
             currentFavorites.add(favorite)
         }
 
-        /*settings.edit().clear().apply()
-        settings.edit().commit()*/
         return currentFavorites
     }
 
+
+    // Get all favorites
     fun getFavorites(context: Context): List<Event>? {
         val settings: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val favorites: List<Event>

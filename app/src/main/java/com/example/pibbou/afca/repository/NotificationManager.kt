@@ -15,11 +15,10 @@ import com.example.pibbou.afca.ui.detail.DetailActivity
  */
  class NotificationManager (context: Context) {
 
-    val mNotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-    val CHANNEL_ID = "com.example.pibbou.afca.ui"
-    val CHANNEL_NAME = "PIBBOU"
-    val CHANNEL_DESCRIPTION = "A super interesting description"
-
+    private val mNotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    private val CHANNEL_ID = "com.example.pibbou.afca.ui"
+    private val CHANNEL_NAME = "FNFA_AFCA"
+    private val CHANNEL_DESCRIPTION = "Festival national du film d'animation AFCA"
 
     fun showNotification(context: Context, title: String, content: String, event: Event) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {

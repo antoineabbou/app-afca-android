@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.content.Intent
 import android.os.Build
-import android.view.WindowManager
-import android.widget.Button
 import android.widget.ImageButton
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.DataStore
@@ -21,14 +19,14 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // HIDE BAR
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val w = window // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        }*/
-
         setContentView(provideParentLayoutId())
 
+        setButtons()
+
+    }
+
+    // set navbar buttons
+    fun setButtons() {
         val programButton = findViewById<View>(R.id.navBarProg) as ImageButton
         val programIntent = Intent(this@BaseActivity, MainActivity::class.java)
         setButtonProgram(programIntent, 0, programButton)
@@ -45,7 +43,7 @@ abstract class BaseActivity : AppCompatActivity() {
     fun setButtonProgram(i: Intent, position: Int, button: ImageButton) {
 
         if (DataStore.intentPosition != position) {
-            button.setOnClickListener(View.OnClickListener {
+            button.setOnClickListener({
                 // Check if we're running on Android 5.0 or higher
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     val options = ActivityOptions.makeSceneTransitionAnimation(this)

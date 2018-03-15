@@ -1,15 +1,12 @@
 package com.example.pibbou.afca.ui.main
 
-import android.app.Activity
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
 
 /**
  * Created by arnaudpinot on 06/03/2018.
  */
 class DayPagerAdapter(fragmentManager: FragmentManager) : SmartFragmentStatePagerAdapter(fragmentManager) {
-
 
     // Returns total number of pages
     override fun getCount(): Int {
@@ -32,7 +29,6 @@ class DayPagerAdapter(fragmentManager: FragmentManager) : SmartFragmentStatePage
             else -> return null
         }
     }
-
 
     // Returns the page title for the top indicator
     override fun getPageTitle(position: Int): CharSequence {

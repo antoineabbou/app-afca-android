@@ -19,7 +19,6 @@ import android.widget.*
 import android.graphics.Point
 import android.support.constraint.ConstraintLayout
 import kotlinx.android.synthetic.main.custom_tab.view.*
-import android.view.WindowManager
 
 
 
@@ -44,13 +43,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
 
-        // HIDE BAR
-
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val w = window // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        }*/
-
         // Create view pager
         mainPager = findViewById<View>(R.id.mainPager) as ViewPager
         // Add a manager adapter
@@ -63,7 +55,7 @@ class MainActivity : BaseActivity() {
         // Custom styles tabbar
         this.setCustomTabView(viewPagerTab)
         // Disable swiper
-        viewPagerTab.setOnTouchListener(View.OnTouchListener { view, motionEvent ->  true})
+        viewPagerTab.setOnTouchListener(View.OnTouchListener { _, motionEvent ->  true})
         // Prepare tab event on page change
         viewPagerTab.setOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
             override fun onPageSelected(position: Int) {
@@ -106,7 +98,7 @@ class MainActivity : BaseActivity() {
 
     private fun setCustomTabView(viewPagerTab:SmartTabLayout) {
         val inflater = LayoutInflater.from(viewPagerTab.context)
-        viewPagerTab.setCustomTabView { container, position, adapter ->
+        viewPagerTab.setCustomTabView { container, position, _ ->
 
             val view = inflater.inflate(R.layout.custom_tab, container,
                     false) as ConstraintLayout
@@ -121,11 +113,11 @@ class MainActivity : BaseActivity() {
             view.custom_tab_day.text = mainPager.adapter.getPageTitle(position)
 
             when (position) {
-                0 -> view.custom_tab_date.text = "Mercredi 04 Avril"
-                1 -> view.custom_tab_date.text = "Jeudi 05 Avril"
-                2 -> view.custom_tab_date.text = "Vendredi 06 Avril"
-                3 -> view.custom_tab_date.text = "Samedi 07 Avril"
-                4 -> view.custom_tab_date.text = "Dimanche 08 Avril"
+                0 -> view.custom_tab_date.text = applicationContext.getString(R.string.day_1)
+                1 -> view.custom_tab_date.text = applicationContext.getString(R.string.day_2)
+                2 -> view.custom_tab_date.text = applicationContext.getString(R.string.day_3)
+                3 -> view.custom_tab_date.text = applicationContext.getString(R.string.day_4)
+                4 -> view.custom_tab_date.text = applicationContext.getString(R.string.day_5)
             }
 
             view

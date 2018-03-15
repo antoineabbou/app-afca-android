@@ -4,33 +4,21 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
-import java.text.SimpleDateFormat
 import android.view.View
 import android.graphics.Color
 import com.github.johnpersano.supertoasts.library.Style
 import com.github.johnpersano.supertoasts.library.SuperActivityToast
-import com.github.johnpersano.supertoasts.library.utils.PaletteUtils
-import com.example.pibbou.afca.repository.FavoriteManager
-import android.R.id.edit
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.media.Image
 import android.net.Uri
 import android.os.Build
 import android.support.annotation.RequiresApi
-import android.support.constraint.ConstraintLayout
-import android.util.Log
-import android.view.WindowManager
 import android.widget.*
-import com.example.pibbou.afca.repository.DataStore
+import android.widget.CompoundButton.OnCheckedChangeListener
 import com.example.pibbou.afca.repository.entity.Event
 import com.squareup.picasso.Picasso
-import org.w3c.dom.Text
-import java.text.DateFormat
-import java.util.ArrayList
 
 
+@RequiresApi(Build.VERSION_CODES.M)
 /**
  * Created by antoineabbou on 08/01/2018.
  */
@@ -38,13 +26,13 @@ class DetailActivity : AppCompatActivity() {
 
     var isInList: Boolean = false
 
-    private val onCheckedChanged: CompoundButton.OnCheckedChangeListener
+    private val onCheckedChanged: OnCheckedChangeListener
 
     // Favorite manager call
-    val favoriteManager = App.sInstance!!.getFavoriteManager()
+    val favoriteManager = App.sInstance.getFavoriteManager()
 
     init {
-        onCheckedChanged = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+        onCheckedChanged = OnCheckedChangeListener { buttonView, _ ->
             val event = buttonView.tag as Event
             showToast(event)
         }
@@ -53,38 +41,33 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val w = window // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        }*/
-
         setContentView(R.layout.activity_detail)
 
         val intent = intent
         val id = intent.getIntExtra("id", 0)
 
         // data repository call
-        val dataRepository = App.sInstance!!.getDataRepository()
-
-        /*****/
+        val dataRepository = App.sInstance.getDataRepository()
 
         // Find the event, the place and the category in the list
         val event = dataRepository!!.findEventById(id)
-        val toggle = findViewById<ToggleButton>(R.id.buttonFav)
-        toggle.setText(null)
-        toggle.setTextOn(null)
-        toggle.setTextOff(null)
 
-        setDatas()
+        setButtonFavorite()
+        setButtonBack()
 
         if (event != null) {
-            checkList(applicationContext, event)
+            setEventDatas(event)
+            setPlaceDatas(event)
+            setCategoryDatas(event)
+            setButtonDatas(event)
+
+            checkList(event)
         }
 
     }
 
 
-    fun checkList(context: Context, event: Event) {
+    fun checkList(event: Event) {
         val toggle = findViewById<ToggleButton>(R.id.buttonFav)
 
         isInList = favoriteManager?.currentFavorites!!.filter {
@@ -92,13 +75,13 @@ class DetailActivity : AppCompatActivity() {
         }.count() > 0
 
 
-        setButton(toggle, event)
+        setToggleButton(toggle, event)
     }
 
 
 
     @RequiresApi(Build.VERSION_CODES.M)
-    fun showToast(event: Event) {
+    private fun showToast(event: Event) {
 
         val toast = SuperActivityToast.create(this@DetailActivity, Style.TYPE_BUTTON)
 
@@ -123,22 +106,9 @@ class DetailActivity : AppCompatActivity() {
             .setAnimations(Style.ANIMATIONS_POP).show()
     }
 
+    private fun setToggleButton(toggle:ToggleButton, event: Event) {
 
-
-    fun setButton(toggle:ToggleButton, event: Event) {
-
-        if(isInList == false) {
-
-            // Init
-            toggle.isChecked = false
-
-
-        } else {
-
-            // Init
-            toggle.isChecked = true
-
-        }
+        toggle.isChecked = isInList != false
 
         with (toggle) {
             tag = event
@@ -146,103 +116,87 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-
-    fun setDatas() {
-        val intent = intent
-        val id = intent.getIntExtra("id", 0)
-
-        // data repository call
-        val dataRepository = App.sInstance!!.getDataRepository()
-
-
-        /*****/
-
-        // Find the event, the place and the category in the list
-        val event = dataRepository!!.findEventById(id)
-        val category = dataRepository!!.findCategoryById(id)
-
-
-        // Loading datas : Title, excerpt, start, end, place and category
-
-        ////////////////////
-        ////////////////////
-        ////////////// EVENT
-        ////////////////////
-        ////////////////////
-
-        val container: ConstraintLayout = findViewById(R.id.constraintLayout)
-
-        if (category != null) {
-            // container.setBackgroundColor(Color.parseColor(category.color))
-        }
-
-        // Title
-        val eventTitle: TextView = findViewById(R.id.eventTitle)
-        eventTitle.setText(event?.name?.toUpperCase())
-
-
-        // Date
-        val eventStart: TextView = findViewById(R.id.eventStart)
-        val dayOfTheWeek = android.text.format.DateFormat.format("EEEE", event?.startingDate) as String // Thursday
-        val day =  android.text.format.DateFormat.format("dd", event?.startingDate) as String // 20
-        val monthString =  android.text.format.DateFormat.format("MMM", event?.startingDate) as String // Jun
-        eventStart.setText(getString(R.string.dateEvent, dayOfTheWeek.toUpperCase(), day, monthString.toUpperCase()))
-
-        val eventHour: TextView = findViewById(R.id.hour)
-        val hour = android.text.format.DateFormat.format("HH:mm", event?.startingDate) as String
-        eventHour.setText(hour)
-
-        // Author
-        val author: TextView = findViewById(R.id.author)
-
-        if(event?.author.isNullOrEmpty()) {
-            author.setText("Auteur non communiqué")
-        } else {
-            author.setText(event?.author)
-        }
-
-        val duration: TextView = findViewById(R.id.duration)
-        duration.setText(event?.duration)
-
-
-        // PLACE
-        val placeText: TextView = findViewById(R.id.placeText)
-        placeText.setText(event?.place?.name)
-
-        val address: TextView = findViewById(R.id.address)
-        address.setText(event?.place?.address)
-
-
-        val categoryText: TextView = findViewById(R.id.categoryTitle)
-        categoryText.setText(event?.category?.name?.toUpperCase())
-        categoryText.setTextColor(Color.parseColor(event?.category?.color))
-
-        // BUTTON
-        val button: Button = findViewById(R.id.button)
-        button.setBackgroundColor(Color.parseColor(event?.category?.color))
-        button.setOnClickListener({ v ->
-            val uri = Uri.parse(event?.link)
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
-        })
-
-        val image: ImageView = findViewById(R.id.eventImage)
-        image.setScaleType(ImageView.ScaleType.CENTER_CROP)
-
-        Picasso.with(applicationContext)
-                .load(event?.image)
-                .into(image)
-
-
-        val colorCategory: View = findViewById(R.id.color_category)
-        colorCategory.setBackgroundColor(Color.parseColor(event?.category?.color))
-
-
+    private fun setButtonBack() {
         val back: ImageButton = findViewById(R.id.back_button)
         back.setOnClickListener {
             finish()
         }
-        // val toggle = findViewById<ToggleButton>(R.id.buttonFav)
-
     }
+
+    private fun setEventDatas(event: Event) {
+        val eventTitle: TextView = findViewById(R.id.eventTitle)
+        eventTitle.text = event.name?.toUpperCase()
+
+        // Date
+        val eventStart: TextView = findViewById(R.id.eventStart)
+        val eventHour: TextView = findViewById(R.id.hour)
+        val hour = android.text.format.DateFormat.format("HH:mm", event.startingDate) as String
+
+
+        val dayOfTheWeek = android.text.format.DateFormat.format("EEEE", event.startingDate) as String // Thursday
+        val day =  android.text.format.DateFormat.format("dd", event.startingDate) as String // 20
+        val monthString =  android.text.format.DateFormat.format("MMM", event.startingDate) as String // Jun
+
+        eventStart.text = getString(R.string.dateEvent, dayOfTheWeek.toUpperCase(), day, monthString.toUpperCase())
+        eventHour.text = hour
+
+        // Author
+        val author: TextView = findViewById(R.id.author)
+
+        if(event.author.isNullOrEmpty()) {
+            author.text = "Auteur non communiqué"
+        } else {
+            author.text = event.author
+        }
+
+        // Duration
+        val duration: TextView = findViewById(R.id.duration)
+        duration.text = event.duration
+
+
+        // Image
+        val image: ImageView = findViewById(R.id.eventImage)
+        image.setScaleType(ImageView.ScaleType.CENTER_CROP)
+
+        Picasso.with(applicationContext)
+                .load(event.image)
+                .into(image)
+    }
+
+    private fun setPlaceDatas(event: Event) {
+        // Place name
+        val placeText: TextView = findViewById(R.id.placeText)
+        placeText.setText(event.place?.name)
+
+        // Place address
+        val address: TextView = findViewById(R.id.address)
+        address.setText(event.place?.address)
+    }
+
+    private fun setCategoryDatas(event: Event) {
+        val categoryText: TextView = findViewById(R.id.categoryTitle)
+        categoryText.setText(event.category?.name?.toUpperCase())
+        categoryText.setTextColor(Color.parseColor(event.category?.color))
+
+        val colorCategory: View = findViewById(R.id.color_category)
+        colorCategory.setBackgroundColor(Color.parseColor(event.category?.color))
+    }
+
+    private fun setButtonDatas(event: Event) {
+        val button: Button = findViewById(R.id.button)
+        button.setBackgroundColor(Color.parseColor(event.category?.color))
+        button.setOnClickListener({ _ ->
+            val uri = Uri.parse(event.link)
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        })
+    }
+
+    fun setButtonFavorite() {
+        val toggle = findViewById<ToggleButton>(R.id.buttonFav)
+        toggle.text = null
+        toggle.textOn = null
+        toggle.textOff = null
+    }
+
 }

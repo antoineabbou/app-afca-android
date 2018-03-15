@@ -9,11 +9,7 @@ import android.support.v4.app.FragmentStatePagerAdapter
 /**
  * Created by arnaudpinot on 07/03/2018.
  */
-/*
-   Extension of FragmentStatePagerAdapter which intelligently caches
-   all active fragments and manages the fragment lifecycles.
-   Usage involves extending from SmartFragmentStatePagerAdapter as you would any other PagerAdapter.
-*/
+
 abstract class SmartFragmentStatePagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
     // Sparse array to keep track of registered fragments in memory
     private val registeredFragments = SparseArray<Fragment>()
