@@ -186,7 +186,7 @@ class DetailActivity : AppCompatActivity() {
         val dayOfTheWeek = android.text.format.DateFormat.format("EEEE", event?.startingDate) as String // Thursday
         val day =  android.text.format.DateFormat.format("dd", event?.startingDate) as String // 20
         val monthString =  android.text.format.DateFormat.format("MMM", event?.startingDate) as String // Jun
-        eventStart.setText(getString(R.string.dateEvent, dayOfTheWeek, day, monthString))
+        eventStart.setText(getString(R.string.dateEvent, dayOfTheWeek.toUpperCase(), day, monthString.toUpperCase()))
 
         val eventHour: TextView = findViewById(R.id.hour)
         val hour = android.text.format.DateFormat.format("HH:mm", event?.startingDate) as String

@@ -167,7 +167,7 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:paddingLeft="16dp">
+                                android:paddingLeft="30dp">
 
                                 <TextView
                                     android:id="@+id/eventStart"
@@ -219,7 +219,7 @@
                     android:id="@+id/view"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginStart="52dp"
+                    android:layout_marginStart="70dp"
                     android:layout_marginTop="24dp"
                     android:background="#BBBBBB"
                     app:layout_constraintStart_toStartOf="parent"
@@ -265,7 +265,7 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:paddingLeft="16dp">
+                                android:paddingLeft="30dp">
 
                                 <TextView
                                     android:id="@+id/placeText"
@@ -307,7 +307,7 @@
                     android:layout_height="75dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="32dp"
                     android:background="#000000"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="Plus d'informations"

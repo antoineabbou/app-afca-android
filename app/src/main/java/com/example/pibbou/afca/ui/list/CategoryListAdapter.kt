@@ -56,6 +56,8 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
             }
         }
 
+        eventsByCategory.sortBy{it.startingDate}
+
         // Set Event List Recycler View (horizontal recycler view)
         val itemListDataAdapter = EventListAdapter(mContext, eventsByCategory)
 

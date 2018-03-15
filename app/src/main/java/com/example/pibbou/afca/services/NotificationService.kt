@@ -91,7 +91,7 @@ class NotificationService : Service() {
 
                         // If date is before + 5 min, send notification
                         if (favorite.startingDate!!.before(datePlusFiveMinutes) && favorite.startingDate!!.after(currentTime) && notified === null) {
-                            notificationManager?.showNotification(applicationContext, "Un évenement près de chez vous dans $duration minutes :", favorite.name.toString(), favorite)
+                            notificationManager?.showNotification(applicationContext, "Un évenement sélectionné commence dans $duration minutes :", favorite.name.toString(), favorite)
                             notified = true
                         }
                     }

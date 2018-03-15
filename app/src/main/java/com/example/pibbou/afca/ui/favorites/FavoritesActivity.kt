@@ -104,9 +104,11 @@ class FavoritesActivity : BaseActivity() {
         // Set fixed size
         recycler_view_favorite_list.setHasFixedSize(true)
 
+        val favoriteDatas = favoriteManager?.currentFavorites
+        favoriteDatas?.sortBy { it.startingDate }
 
         // Prepare adapter
-        favoriteAdapter = FavoriteListAdapter(this, favoriteManager?.currentFavorites)
+        favoriteAdapter = FavoriteListAdapter(this, favoriteDatas)
 
         recycler_view_favorite_list.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 

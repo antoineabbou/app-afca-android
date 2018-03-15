@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.*
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
@@ -24,6 +25,8 @@ import java.util.ArrayList
 class EventListAdapter(private val mContext: Context, private val eventList: ArrayList<Event>?) : RecyclerView.Adapter<EventListAdapter.SingleItemRowHolder>() {
 
     private val mOnClickListener: View.OnClickListener
+
+    private var lastPosition = -1
 
     // Favorite manager call
     val favoriteManager = App.sInstance.getFavoriteManager()
@@ -94,6 +97,8 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         // Get singleEvent
         val singleEvent = eventList?.get(i)
 
+        setAnimation(holder?.itemView!!, i)
+
         // Set text to card title
         holder.eventCardTitle.setText(singleEvent?.name?.toUpperCase())
         if(singleEvent?.author.isNullOrEmpty()) {
@@ -141,6 +146,15 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
     // Get Item Count - need because of Interface
     override fun getItemCount(): Int {
         return eventList?.size ?: 0
+    }
+
+    private fun setAnimation(viewToAnimate: View, position: Int) {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition) {
+            val animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left)
+            viewToAnimate.startAnimation(animation)
+            lastPosition = position
+        }
     }
 
 

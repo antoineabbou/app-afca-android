@@ -21,6 +21,10 @@ import com.example.pibbou.afca.ui.detail.DetailActivity
 import com.example.pibbou.afca.ui.favorites.FavoritesActivity
 import com.squareup.picasso.Picasso
 import java.util.*
+import android.view.animation.AnimationUtils.loadAnimation
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+
 
 /**
  * Created by arnaudpinot on 07/01/2018.
@@ -29,9 +33,11 @@ import java.util.*
 class FavoriteListAdapter(private val mContext: Context, private val favoriteList: ArrayList<Event>?) : RecyclerView.Adapter<FavoriteListAdapter.FavItemRowHolder>() {
 
     private val mOnClickListener: View.OnClickListener
-    private val bOnClickListener: View.OnClickListener
+    private lateinit var bOnClickListener: View.OnClickListener
 
     private var context: Context
+
+    private var lastPosition = -1
 
 
     // Favorite manager call
@@ -43,7 +49,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
 
     init {
         context = mContext
-        checkLengthFavorites()
+
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
         mOnClickListener = View.OnClickListener { v ->
@@ -54,21 +60,11 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
                     .putExtra("id", item.id)
             mContext.startActivity(I)
         }
-
-        bOnClickListener = View.OnClickListener { b ->
-            Log.i("info", "i am clicking")
-            val event = b.tag as Event
-            favoriteManager?.removeFavorite(mContext, event)
-            notifyDataSetChanged()
-
-            checkLengthFavorites()
-
-
-        }
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): FavItemRowHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_fav_card, null)
+        checkLengthFavorites()
         return FavItemRowHolder(v)
     }
 
@@ -83,7 +79,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
     }
 
     private fun checkLengthFavorites() {
-        if (favoriteManager?.getFavorites(mContext)?.size!! <= 0) {
+        if (favoriteManager?.getFavorites(mContext)!!.isEmpty()) {
             if (context is FavoritesActivity) {
                 (context as FavoritesActivity).toggleEmptyMessage(true)
             }
@@ -100,6 +96,8 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         val singleFav = favoriteList?.get(position)
         // Set text to card title
 
+        setAnimation(holder?.itemView!!, position)
+
         holder?.favCardContainer?.setBackgroundColor(Color.parseColor(singleFav?.category?.color))
         holder?.favCardBackground?.setBackgroundColor(Color.parseColor(singleFav?.category?.color))
 
@@ -115,11 +113,10 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         val hour = android.text.format.DateFormat.format("HH:mm", singleFav?.startingDate) as String
         holder?.favCardHour?.setText(hour)
 
-        val place = dataRepository!!.findPlaceById(singleFav?.id!!)
-        holder?.favCardPlace?.setText(place?.name)
+        holder.favCardPlace.setText(singleFav?.place?.name)
 
         Picasso.with(mContext)
-                .load(singleFav.image)
+                .load(singleFav?.image)
                 .into(holder?.favCardImage)
 
 
@@ -137,15 +134,38 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             setOnClickListener(mOnClickListener)
         }
 
+        bOnClickListener = View.OnClickListener { b ->
+            Log.i("info", "i am clicking")
+            val event = b.tag as Event
+            favoriteManager?.removeFavorite(mContext, event)
+            // notifyDataSetChanged()
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, getItemCount());
+            holder.itemView.animate().alpha(0.toFloat()).setDuration(400)
+            checkLengthFavorites()
+
+        }
+
         if (holder != null) {
             if (singleFav != null) {
                 setButton(holder.favCardButton, singleFav)
             }
         }
+
+
     }
 
     override fun getItemCount(): Int {
         return favoriteList?.size ?: 0
+    }
+
+    private fun setAnimation(viewToAnimate: View, position: Int) {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition) {
+            val animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left)
+            viewToAnimate.startAnimation(animation)
+            lastPosition = position
+        }
     }
 
 
