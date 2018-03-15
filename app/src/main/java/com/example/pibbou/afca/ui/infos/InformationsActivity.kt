@@ -46,10 +46,8 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
     private lateinit var expandableLayoutPrice: ExpandableRelativeLayout
     private lateinit var expandableLayoutMove: ExpandableRelativeLayout
-    private lateinit var expandableLayoutEat: ExpandableLinearLayout
+    private lateinit var expandableLayoutEat: ExpandableRelativeLayout
     private lateinit var expandableLayoutPartners: ExpandableLinearLayout
-
-    var isMoveOpen: Int = 2
 
     //private lateinit var recycler_view_price_list: RecyclerView
     private var priceAdapter: PriceListAdapter? = null
@@ -67,21 +65,21 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
         this.setPrices()
         this.setMove()
+        this.setEat()
     }
 
 
     private fun setExpandable() {
         expandableLayoutPrice = findViewById<View>(R.id.expandableLayoutPrice) as ExpandableRelativeLayout
         expandableLayoutMove = findViewById<View>(R.id.expandableLayoutMove) as ExpandableRelativeLayout
-/*        expandableLayoutEat = findViewById<View>(R.id.expandableLayoutEat) as ExpandableLinearLayout
+        expandableLayoutEat = findViewById<View>(R.id.expandableLayoutEat) as ExpandableRelativeLayout
+/*
         expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableLinearLayout
-
-
-        expandableLayoutEat.collapse()
         expandableLayoutPartners.collapse()*/
 
         expandableLayoutPrice.collapse()
         expandableLayoutMove.collapse()
+        expandableLayoutEat.collapse()
     }
 
     fun expandablePrice(view: View) {
@@ -92,16 +90,15 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         expandableLayoutMove.toggle()
     }
 
-    /*    fun expandableEat(view: View) {
-           expandableLayoutEat = findViewById<View>(R.id.expandableLayoutEat) as ExpandableLinearLayout
-           expandableLayoutEat.toggle() // toggle expand and collapse
-       }
+   fun expandableEat(view: View) {
+       expandableLayoutEat.toggle() // toggle expand and collapse
+   }
 
-       fun expandablePartners(view: View) {
-           expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableLinearLayout
-           expandableLayoutPartners.toggle() // toggle expand and collapse
-       }
-   */
+    /* fun expandablePartners(view: View) {
+        expandableLayoutPartners = findViewById<View>(R.id.expandableLayoutPartners) as ExpandableLinearLayout
+        expandableLayoutPartners.toggle() // toggle expand and collapse
+    }
+*/
 
 
     private fun setNavBarActive() {
@@ -403,45 +400,6 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
     private fun setEat() {
 
-    }
-
-    private fun setUpInfosLocation() {
-
-
-        //////////////
-        /////////////
-        //////////////
-        /////////////
-        //////////////
-        /////////////
-
-        val organizer: TextView = findViewById(R.id.organizer)
-        val content_organizer = "Organisé par"
-        organizer.setText(content_organizer)
-
-        /////////////
-        /////////////
-
-        val partners: TextView = findViewById(R.id.partners)
-        val content_partners = "En partenariat avec"
-        partners.setText(content_partners)
-
-
-        /////////////
-        /////////////
-
-        val support: TextView = findViewById(R.id.support)
-        val content_support = "Avec le soutien de"
-        support.setText(content_support)
-
-
-        /////////////
-        /////////////
-
-        val copyright: TextView = findViewById(R.id.copyright)
-        val content_copyright = "Application réalisée par l’école des Gobelins en partenariat avec l’AFCA"
-        copyright.setText(content_copyright)
-
         //////////////
         //////////////
 
@@ -481,6 +439,41 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         val price_content_2: TextView = findViewById(R.id.price_content_2)
         val content_price_content_2 = "Happy Hour Gastronomique "
         price_content_2.setText(content_price_content_2)
+    }
+
+    private fun setOrganizer() {
+
+        /////////////
+        //////////////
+        /////////////
+
+        val organizer: TextView = findViewById(R.id.organizer)
+        val content_organizer = "Organisé par"
+        organizer.setText(content_organizer)
+
+        /////////////
+        /////////////
+
+        val partners: TextView = findViewById(R.id.partners)
+        val content_partners = "En partenariat avec"
+        partners.setText(content_partners)
+
+
+        /////////////
+        /////////////
+
+        val support: TextView = findViewById(R.id.support)
+        val content_support = "Avec le soutien de"
+        support.setText(content_support)
+
+
+        /////////////
+        /////////////
+
+        val copyright: TextView = findViewById(R.id.copyright)
+        val content_copyright = "Application réalisée par l’école des Gobelins en partenariat avec l’AFCA"
+        copyright.setText(content_copyright)
+
     }
 
 

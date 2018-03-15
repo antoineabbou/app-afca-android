@@ -190,7 +190,7 @@
 
 
                 <!-- Deplacement -->
-               <Button
+                <Button
                     android:id="@+id/expandableMove"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="fill_parent"
@@ -259,15 +259,15 @@
                     android:orientation="vertical"
                     android:paddingBottom="20dp"
                     app:ael_duration="400"
-                    app:ael_expanded="false"
+                    app:ael_expanded="true"
                     app:ael_interpolator="accelerate"
                     app:ael_orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="With the help of android debug bridge we can communicate with an emulator or connected physical android device because Android Debug Bridge is a command line tool. Android Debug Bridge is also known as ADB. ADB architecture is like client-server architecture with three components."
-                        android:textColor="#000" />
+                    <include
+                        android:id="@+id/infosEat"
+                        layout="@layout/infos_eat"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <!--<Button

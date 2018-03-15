@@ -14,7 +14,7 @@
         android:fontFamily="@font/montserrat"
         android:text="TextView"
         android:textColor="#2F2F2F"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/days_2" />
@@ -29,7 +29,7 @@
         android:fontFamily="@font/montserrat"
         android:text="TextView"
         android:textColor="#2F2F2F"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/list_price_item_1" />
@@ -45,7 +45,7 @@
         android:fontFamily="@font/montserrat"
         android:text="TextView"
         android:textColor="#2F2F2F"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/list_price_item_2" />
@@ -96,7 +96,7 @@
                         android:fontFamily="@font/montserrat_bold"
                         android:text="TextView"
                         android:textColor="#8D8D8D"
-                        android:textSize="13sp" />
+                        android:textSize="15sp" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -319,7 +319,7 @@
                         android:fontFamily="@font/montserrat_bold"
                         android:text="TextView"
                         android:textColor="#8D8D8D"
-                        android:textSize="13sp" />
+                        android:textSize="15sp" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
