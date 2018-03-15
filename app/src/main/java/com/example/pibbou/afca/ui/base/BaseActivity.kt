@@ -48,8 +48,8 @@ abstract class BaseActivity : AppCompatActivity() {
             button.setOnClickListener(View.OnClickListener {
                 // Check if we're running on Android 5.0 or higher
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    val options = ActivityOptions.makeSceneTransitionAnimation(this)
-                    startActivity(i, options.toBundle())
+                    startActivity(i)
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                 } else {
                     startActivity(i)
                 }

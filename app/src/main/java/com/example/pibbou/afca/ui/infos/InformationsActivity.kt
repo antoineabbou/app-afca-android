@@ -58,7 +58,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.setupWindowAnimations()
+        //this.setupWindowAnimations()
         this.setNavBarActive()
         this.setExpandable()
 

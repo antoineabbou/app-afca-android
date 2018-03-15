@@ -43,14 +43,6 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        // HIDE BAR
-
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val w = window // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        }*/
-
         // Create view pager
         mainPager = findViewById<View>(R.id.mainPager) as ViewPager
         // Add a manager adapter
@@ -84,7 +76,7 @@ class MainActivity : BaseActivity() {
         this.setPagerEvents()
 
         // Play transitions
-        this.setupWindowAnimations()
+        //this.setupWindowAnimations()
 
         // Navbar active
         this.setNavBarActive()
