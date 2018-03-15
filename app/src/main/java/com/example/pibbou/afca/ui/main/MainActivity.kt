@@ -93,12 +93,12 @@ class MainActivity : BaseActivity() {
     private fun setCurrentTabView(viewPagerTab:SmartTabLayout, position: Int) {
         val selectedTab = viewPagerTab.getTabAt(position)
         val selectedTabView = selectedTab.findViewById<View>(R.id.custom_tab_layout)
-        selectedTabView.alpha = 1f
+        selectedTabView.animate().alpha(1.toFloat()).setDuration(500)
 
         val oldSelectedTab = viewPagerTab.getTabAt(currentTab)
         if (oldSelectedTab != null) {
             val oldSelectedTabView = oldSelectedTab.findViewById<View>(R.id.custom_tab_layout)
-            oldSelectedTabView.alpha = .4f
+            oldSelectedTabView.animate().alpha(.4.toFloat()).setDuration(500)
         }
 
         currentTab = position

@@ -49,7 +49,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
 
     init {
         context = mContext
-        checkLengthFavorites()
+
         // Inspired by Jetbrains Kotlin Examples
         // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
         mOnClickListener = View.OnClickListener { v ->
@@ -60,11 +60,11 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
                     .putExtra("id", item.id)
             mContext.startActivity(I)
         }
-
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): FavItemRowHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_fav_card, null)
+        checkLengthFavorites()
         return FavItemRowHolder(v)
     }
 
@@ -79,7 +79,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
     }
 
     private fun checkLengthFavorites() {
-        if (favoriteManager?.getFavorites(mContext)?.size!! <= 0) {
+        if (favoriteManager?.getFavorites(mContext)!!.isEmpty()) {
             if (context is FavoritesActivity) {
                 (context as FavoritesActivity).toggleEmptyMessage(true)
             }
