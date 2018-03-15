@@ -1,5 +1,6 @@
 package com.example.pibbou.afca.ui.infos
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.transition.Fade
@@ -31,12 +32,14 @@ import android.widget.ImageButton
 import android.content.res.Resources.NotFoundException
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.support.annotation.RequiresApi
 import android.widget.TextView
 import com.example.pibbou.afca.ui.detail.DetailActivity
 import com.github.aakira.expandablelayout.ExpandableLinearLayout
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout
+import com.github.aakira.expandablelayout.Utils
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MapStyleOptions
 
@@ -66,6 +69,10 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         this.setMove()
         this.setEat()
         this.setOrganizer()
+
+        val mapFragment = supportFragmentManager
+                .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
 
 
@@ -133,7 +140,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onMapReady(googleMap: GoogleMap) {
-        // Add a marker in Sydney, Australia,
+        // Add a marker_blue in Sydney, Australia,
         // and move the map's camera to the same location.
 
         try {
@@ -154,20 +161,35 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         val center = LatLng(48.115186, -1.682684)
 
         val places = repository?.getPlaces()
+        var i = 0
 
         for (place in places!!) {
+            var marker : Int = 0
+            marker = i
             val lat = place.lat
             val long = place.long
             val latlng = LatLng(lat!!, long!!)
+
+            val test = BitmapFactory.decodeResource(resources, R.drawable.marker_green)
+
+            when(i) {
+                0 -> marker = R.drawable.markerblue;
+                1 -> marker = R.drawable.markergreen
+                2 -> marker = R.drawable.markeryellow
+                3 -> marker = R.drawable.markerpurple
+                4 -> marker = R.drawable.markerpink
+                5 -> marker = R.drawable.markerred
+            }
+
             googleMap.addMarker(MarkerOptions().position(latlng)
-                    .title(place.name))
+                    .title(place.name)
+                    .icon(BitmapDescriptorFactory.fromResource(marker)))
+
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(center))
+            googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.0f));
+
+            i++
         }
-
-        googleMap.addMarker(MarkerOptions().position(center)
-                .title("Marker in home"))
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(center))
-        googleMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) );
     }
 
 
@@ -464,7 +486,9 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         val content_support = "Avec le soutien de"
         support.setText(content_support)
 
-
     }
+
+
+
 }
 
