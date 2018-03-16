@@ -1,6 +1,5 @@
 package com.example.pibbou.afca.ui.main
 
-import android.os.Build
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -10,7 +9,6 @@ import com.example.pibbou.afca.ui.base.BaseActivity
 import com.example.pibbou.afca.ui.list.FilterListAdapter
 import android.support.v4.view.ViewPager
 import android.support.v4.view.ViewPager.OnPageChangeListener
-import android.transition.TransitionInflater
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.repository.entity.Event
 import com.ogaclejapan.smarttablayout.SmartTabLayout
@@ -39,6 +37,7 @@ class MainActivity : BaseActivity() {
     private var currentPublic : Int = 0
     private var activityAlreadyStarted : Boolean = false
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -54,7 +53,7 @@ class MainActivity : BaseActivity() {
         // Custom styles tabbar
         this.setCustomTabView(viewPagerTab)
         // Disable swiper
-        viewPagerTab.setOnTouchListener(View.OnTouchListener { _, motionEvent ->  true})
+        viewPagerTab.setOnTouchListener(View.OnTouchListener { _, _ ->  true})
         // Prepare tab event on page change
         viewPagerTab.setOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
             override fun onPageSelected(position: Int) {
@@ -62,38 +61,37 @@ class MainActivity : BaseActivity() {
             }
         })
 
+
         // Set viewpager
         viewPagerTab.setViewPager(mainPager)
 
         // Set opacity 1 to current tab
         this.setCurrentTabView(viewPagerTab, 0)
         // Get events and set filters lists
-        this.getEventsAndSetFilters(mainPager.getCurrentItem())
+        this.getEventsAndSetFilters(mainPager.currentItem)
         // set filter lists
         this.setupFilterList()
         // set events lists
         this.setPagerEvents()
-
-        // Play transitions
-        //this.setupWindowAnimations()
-
         // Navbar active
         this.setNavBarActive()
     }
 
+
     private fun setCurrentTabView(viewPagerTab:SmartTabLayout, position: Int) {
         val selectedTab = viewPagerTab.getTabAt(position)
         val selectedTabView = selectedTab.findViewById<View>(R.id.custom_tab_layout)
-        selectedTabView.animate().alpha(1.toFloat()).setDuration(500)
+        selectedTabView.animate().alpha(1.toFloat()).duration = 500
 
         val oldSelectedTab = viewPagerTab.getTabAt(currentTab)
         if (oldSelectedTab != null) {
             val oldSelectedTabView = oldSelectedTab.findViewById<View>(R.id.custom_tab_layout)
-            oldSelectedTabView.animate().alpha(.4.toFloat()).setDuration(500)
+            oldSelectedTabView.animate().alpha(.4.toFloat()).duration = 500
         }
 
         currentTab = position
     }
+
 
     private fun setCustomTabView(viewPagerTab:SmartTabLayout) {
         val inflater = LayoutInflater.from(viewPagerTab.context)
@@ -122,6 +120,7 @@ class MainActivity : BaseActivity() {
             view
         }
     }
+
 
     private fun setNavBarActive() {
         val button = findViewById<View>(R.id.navBarProg) as ImageButton
@@ -194,9 +193,7 @@ class MainActivity : BaseActivity() {
         val numbers: MutableList<Int> = mutableListOf<Int>()
         val numbersFiltered: List<Int>
 
-        for(event in eventsByDay!!){
-            numbers.add(event.public!!)
-        }
+        eventsByDay!!.mapTo(numbers) { it.public!! }
         numbersFiltered = numbers.distinct()
 
         for(event in numbersFiltered){
@@ -213,7 +210,7 @@ class MainActivity : BaseActivity() {
 
         currentPublic = public
 
-        val fragment = adapterViewPager!!.getRegisteredFragment(mainPager.getCurrentItem()) as DayFragment
+        val fragment = adapterViewPager!!.getRegisteredFragment(mainPager.currentItem) as DayFragment
 
         fragment.eventsByDay?.clear()
 

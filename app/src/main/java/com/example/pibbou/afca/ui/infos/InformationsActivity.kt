@@ -2,7 +2,6 @@ package com.example.pibbou.afca.ui.infos
 
 import android.os.Build
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.view.View
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
@@ -32,11 +31,9 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
     private val repository = App.sInstance.getDataRepository()
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //this.setupWindowAnimations()
         this.setNavBarActive()
         this.setExpandable()
 
@@ -63,22 +60,25 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         expandableLayoutPartners.collapse()
     }
 
+
     fun expandablePrice(view: View) {
         expandableLayoutPrice.toggle() // toggle expand and collapse
     }
+
 
     fun expandableMove(view: View) {
         expandableLayoutMove.toggle()
     }
 
+
     fun expandableEat(view: View) {
         expandableLayoutEat.toggle() // toggle expand and collapse
     }
 
+
     fun expandablePartners(view: View) {
         expandableLayoutPartners.toggle() // toggle expand and collapse
     }
-
 
 
     private fun setNavBarActive() {
@@ -86,32 +86,16 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         button.isSelected = true
     }
 
-    private fun setupWindowAnimations() {
-        // Check if we're running on Android 5.0 or higher
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val fade = TransitionInflater.from(this).inflateTransition(R.transition.fade)
-            fade.duration = 500
-            fade.excludeTarget(R.id.navBar, true)
-            // set an exit transition
-            window.enterTransition = fade
-            window.exitTransition = fade
-            window.returnTransition = fade
-        } else {
-            return
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
 
     override fun provideParentLayoutId(): Int {
         return R.layout.activity_informations
     }
 
+
     override fun setParentLayout(): View {
         return findViewById<View>(R.id.parentPanel) as View
     }
+
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onMapReady(googleMap: GoogleMap) {
@@ -132,11 +116,9 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         val center = LatLng(48.115186, -1.682684)
 
         val places = repository?.getPlaces()
-        var i = 0
 
-        for (place in places!!) {
-            var marker : Int = 0
-            marker = i
+        for ((i, place) in places!!.withIndex()) {
+            var marker = i
             val lat = place.lat
             val long = place.long
             val latlng = LatLng(lat!!, long!!)
@@ -158,14 +140,11 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(center))
             googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.0f));
 
-            i++
         }
     }
 
 
     private fun setPrices() {
-        //////////////
-        //////////////
 
         val list_price_item_1: TextView = findViewById(R.id.list_price_item_1)
         val content_list_price_item_1 = "Ouverture de la billetterie 30 minutes avant le début de chaque séance pour toutes les salles."
@@ -263,15 +242,23 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         val content_city_2 = "Bruz"
         city_2.setText(content_city_2)
 
-        //////
+        //////////////
+        /////////////
+
         val place_1: TextView = findViewById(R.id.place_1)
         val content_place_1 = "TNB"
         place_1.setText(content_place_1)
-        //////
+
+        //////////////
+        /////////////
+
         val address_1: TextView = findViewById(R.id.address_1)
         val content_address_1 = "1 Rue Saint-Hélier, 35040 Rennes"
         address_1.setText(content_address_1)
-        //////
+
+        //////////////
+        /////////////
+
         val phone_1: TextView = findViewById(R.id.phone_1)
         val content_phone_1 = "02 99 31 55 33"
         phone_1.setText(content_phone_1)
@@ -283,19 +270,27 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         //////////////
         /////////////
 
-        //////
         val place_2: TextView = findViewById(R.id.place_2)
         val content_place_2 = "Arvor"
         place_2.setText(content_place_2)
-        //////
+
+        //////////////
+        /////////////
+
         val address_2: TextView = findViewById(R.id.address_2)
         val content_address_2 = "29 Rue d'Antrain, 35700 Rennes"
         address_2.setText(content_address_2)
-        //////
+
+        //////////////
+        /////////////
+
         val phone_2: TextView = findViewById(R.id.phone_2)
         val content_phone_2 = "02 99 38 78 04"
         phone_2.setText(content_phone_2)
-        //////
+
+        //////////////
+        /////////////
+
         val bus_2: TextView = findViewById(R.id.bus_2)
         val content_bus_2 = "Arrêt : Sainte-Anne ou Hôtel Dieu / Métro"
         bus_2.setText(content_bus_2)
@@ -303,19 +298,27 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         //////////////
         /////////////
 
-        //////
         val place_3: TextView = findViewById(R.id.place_3)
         val content_place_3 = "ESRA"
         place_3.setText(content_place_3)
-        //////
+
+        //////////////
+        /////////////
+
         val address_3: TextView = findViewById(R.id.address_3)
         val content_address_3 = "1 Rue Xavier Grall, 35700 Rennes"
         address_3.setText(content_address_3)
-        //////
+
+        //////////////
+        /////////////
+
         val phone_3: TextView = findViewById(R.id.phone_3)
         val content_phone_3 = "02 99 31 55 33"
         phone_3.setText(content_phone_3)
-        //////
+
+        //////////////
+        /////////////
+
         val bus_3: TextView = findViewById(R.id.bus_3)
         val content_bus_3 = "Arrêt : Liberté TNB / Métro Charles de Gaulle"
         bus_3.setText(content_bus_3)
@@ -323,19 +326,27 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         //////////////
         /////////////
 
-        //////
         val place_4: TextView = findViewById(R.id.place_4)
         val content_place_4 = "Esplanade Charles de Gaulle"
         place_4.setText(content_place_4)
-        //////
+
+        //////////////
+        /////////////
+
         val address_4: TextView = findViewById(R.id.address_4)
         val content_address_4 = "Esplanade Charles de Gaulle, 35000 Rennes"
         address_4.setText(content_address_4)
-        //////
+
+        //////////////
+        /////////////
+
         val phone_4: TextView = findViewById(R.id.phone_4)
         val content_phone_4 = "02 99 31 55 33"
         phone_4.setText(content_phone_4)
-        //////
+
+        //////////////
+        /////////////
+
         val bus_4: TextView = findViewById(R.id.bus_4)
         val content_bus_4 = "Arrêt : Liberté TNB / Métro Charles de Gaulle"
         bus_4.setText(content_bus_4)
@@ -344,19 +355,27 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         //////////////
         /////////////
 
-        //////
         val place_5: TextView = findViewById(R.id.place_5)
         val content_place_5 = "France 3 Bretagne"
         place_5.setText(content_place_5)
-        //////
+
+        //////////////
+        /////////////
+
         val address_5: TextView = findViewById(R.id.address_5)
         val content_address_5 = "9 Avenue Jean Janvier, 35000 Renness"
         address_5.setText(content_address_5)
-        //////
+
+        //////////////
+        /////////////
+
         val phone_5: TextView = findViewById(R.id.phone_5)
         val content_phone_5 = "02 99 31 55 33"
         phone_5.setText(content_phone_5)
-        //////
+
+        //////////////
+        /////////////
+
         val bus_5: TextView = findViewById(R.id.bus_5)
         val content_bus_5 = "Arrêt : Liberté TNB / Métro Charles de Gaulle"
         bus_5.setText(content_bus_5)
@@ -365,33 +384,41 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         //////////////
         /////////////
 
-        //////
         val place_6: TextView = findViewById(R.id.place_6)
         val content_place_6 = "Grand Logis"
         place_6.setText(content_place_6)
-        //////
+
+        //////////////
+        /////////////
+
         val address_6: TextView = findViewById(R.id.address_6)
         val content_address_6 = "10 Avenue du Général de Gaulle, 35170 Bruz"
         address_6.setText(content_address_6)
-        //////
+
+        //////////////
+        /////////////
+
         val phone_6: TextView = findViewById(R.id.phone_6)
         val content_phone_6 = "02 99 05 30 62 / 02 99 05 30 60"
         phone_6.setText(content_phone_6)
-        //////
+
+        //////////////
+        /////////////
+
         val bus_6: TextView = findViewById(R.id.bus_6)
         val content_bus_6 = "Arrêt : Bruz Centre"
         bus_6.setText(content_bus_6)
 
+        //////////////
+        /////////////
 
         val remark: TextView = findViewById(R.id.remark)
         val content_remark = "* Toutes les salles sont accessibles aux personnes à mobilité réduite."
         remark.setText(content_remark)
     }
 
-    private fun setEat() {
 
-        //////////////
-        //////////////
+    private fun setEat() {
 
         val opening_1: TextView = findViewById(R.id.opening_1)
         val content_opening_1 = "Ouvert les jeudis et vendredis de 12h à 14h le soir à partir de 18h."
@@ -431,11 +458,8 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         price_content_2.setText(content_price_content_2)
     }
 
-    private fun setOrganizer() {
 
-        /////////////
-        //////////////
-        /////////////
+    private fun setOrganizer() {
 
         val organizer: TextView = findViewById(R.id.organizer)
         val content_organizer = "Organisé par"
@@ -457,8 +481,6 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         support.setText(content_support)
 
     }
-
-
 
 }
 

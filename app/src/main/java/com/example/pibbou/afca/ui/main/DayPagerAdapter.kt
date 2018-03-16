@@ -13,27 +13,30 @@ class DayPagerAdapter(fragmentManager: FragmentManager) : SmartFragmentStatePage
         return NUM_ITEMS
     }
 
+
     // Returns the fragment to display for that page
     override fun getItem(position: Int): Fragment? {
-        when (position) {
+        return when (position) {
             0
-            -> return DayFragment.newInstance(0)
+            -> DayFragment.newInstance(0)
             1
-            -> return DayFragment.newInstance(1)
+            -> DayFragment.newInstance(1)
             2
-            -> return DayFragment.newInstance(2)
+            -> DayFragment.newInstance(2)
             3
-            -> return DayFragment.newInstance(3)
+            -> DayFragment.newInstance(3)
             4
-            -> return DayFragment.newInstance(4)
-            else -> return null
+            -> DayFragment.newInstance(4)
+            else -> null
         }
     }
+
 
     // Returns the page title for the top indicator
     override fun getPageTitle(position: Int): CharSequence {
         return "Jour " + (position + 1)
     }
+
 
     companion object {
         private val NUM_ITEMS = 5

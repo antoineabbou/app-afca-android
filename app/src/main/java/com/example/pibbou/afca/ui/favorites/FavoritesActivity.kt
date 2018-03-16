@@ -1,14 +1,11 @@
 package com.example.pibbou.afca.ui.favorites
 
-import android.os.Build
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.transition.TransitionInflater
-import android.util.Log
 import android.view.View
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
@@ -31,10 +28,9 @@ class FavoritesActivity : BaseActivity() {
     // Notification autorisation
     var notificationAutho: Boolean = false
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //this.setupWindowAnimations()
 
         // Setup List
         this.setupFavoriteList()
@@ -44,7 +40,7 @@ class FavoritesActivity : BaseActivity() {
 
         toggle.setOnCheckedChangeListener { buttonView, isChecked ->
             notificationAutho = isChecked
-            Log.i("state", notificationAutho.toString())
+
             if (isChecked) {
 
                 buttonView.setTextColor(Color.parseColor("#68DF9D"))
@@ -63,24 +59,10 @@ class FavoritesActivity : BaseActivity() {
         this.setNavBarActive()
     }
 
+
     private fun setNavBarActive() {
         val button = findViewById<View>(R.id.navBarFavs) as ImageButton
         button.isSelected = true
-    }
-
-    private fun setupWindowAnimations() {
-        // Check if we're running on Android 5.0 or higher
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val fade = TransitionInflater.from(this).inflateTransition(R.transition.fade)
-            fade.duration = 500
-            fade.excludeTarget(R.id.navBar, true)
-            // set an exit transition
-            window.enterTransition = fade
-            window.exitTransition = fade
-            window.returnTransition = fade
-        } else {
-            return
-        }
     }
 
 
@@ -89,13 +71,16 @@ class FavoritesActivity : BaseActivity() {
         favoriteAdapter?.notifyDataSetChanged()
     }
 
+
     override fun provideParentLayoutId(): Int {
         return R.layout.activity_favorites
     }
 
+
     override fun setParentLayout(): View {
         return findViewById<View>(R.id.parentPanel) as View
     }
+
 
     private fun setupFavoriteList() {
         // Get recyclerview View
@@ -115,6 +100,7 @@ class FavoritesActivity : BaseActivity() {
         // Set adapter
         recycler_view_favorite_list.adapter = favoriteAdapter
     }
+
 
     fun toggleEmptyMessage(show: Boolean) {
         val emptyMessage = findViewById<View>(R.id.noFavorite) as View

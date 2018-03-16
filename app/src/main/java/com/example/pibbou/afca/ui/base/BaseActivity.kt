@@ -1,6 +1,5 @@
 package com.example.pibbou.afca.ui.base
 
-import android.app.ActivityOptions
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,8 +21,8 @@ abstract class BaseActivity : AppCompatActivity() {
         setContentView(provideParentLayoutId())
 
         setButtons()
-
     }
+
 
     // set navbar buttons
     fun setButtons() {
@@ -39,6 +38,7 @@ abstract class BaseActivity : AppCompatActivity() {
         val favoriteIntent = Intent(this@BaseActivity, FavoritesActivity::class.java)
         setButtonProgram(favoriteIntent, 2, favoriteButton)
     }
+
 
     fun setButtonProgram(i: Intent, position: Int, button: ImageButton) {
 

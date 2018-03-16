@@ -65,10 +65,10 @@ class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) 
 
     override fun onBindViewHolder(holder: FilterItemRowHolder, i: Int) {
         // Get singleEvent
-        val publicInt = filterList!!.get(i)
+        val publicInt = filterList!![i]
         var filterTitle = ""
 
-        when (filterList.get(i)) {
+        when (filterList[i]) {
             0 -> filterTitle = "Tous"
             1 -> filterTitle = "Tout public"
             2 -> filterTitle = "Professionnel"
@@ -98,11 +98,6 @@ class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) 
 
 
     inner class FilterItemRowHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var filterButton: ToggleButton
-
-        init {
-            // Get category title View
-            this.filterButton = view.findViewById(R.id.filterButton)
-        }
+        var filterButton: ToggleButton = view.findViewById(R.id.filterButton)
     }
 }

@@ -1,7 +1,6 @@
 package com.example.pibbou.afca.repository
 
 import android.content.Context
-import android.util.Log
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.repository.entity.Category
 import com.example.pibbou.afca.repository.entity.Event
@@ -10,7 +9,6 @@ import com.example.pibbou.afca.repository.entity.Price
 import com.google.gson.Gson
 import java.io.IOException
 import com.google.gson.GsonBuilder
-
 
 
 /**
@@ -25,6 +23,7 @@ class DataRepository constructor(contextArg: Context) {
     private var events: ArrayList<Event> = ArrayList()
     private var prices: ArrayList<Price> = ArrayList()
 
+
     /**
      *  Load all datas
      */
@@ -34,7 +33,6 @@ class DataRepository constructor(contextArg: Context) {
         deserializeEvents()
         deserializePrices()
     }
-
 
 
     /**
@@ -52,6 +50,7 @@ class DataRepository constructor(contextArg: Context) {
             places.add(place)
         }
     }
+
 
     // Categories
     private fun deserializeCategories() {
@@ -83,6 +82,7 @@ class DataRepository constructor(contextArg: Context) {
         }
     }
 
+
     // Prices
     private fun deserializePrices() {
         val jsonDatas = jsonToString(R.raw.prices, context)
@@ -96,13 +96,12 @@ class DataRepository constructor(contextArg: Context) {
     }
 
 
-
     /**
      * Json to string
      */
     private fun jsonToString(path: Int?, context: Context): String? {
         // Var to return
-        var json: String?
+        val json: String?
 
         try {
             // Get file from ressources
@@ -134,11 +133,9 @@ class DataRepository constructor(contextArg: Context) {
     }
 
 
-
     /**
      * Methods
      */
-
     // Return all places
     fun getPlaces(): ArrayList<Place>? {
         if(places.isNotEmpty()) {
@@ -146,6 +143,7 @@ class DataRepository constructor(contextArg: Context) {
         }
         return null
     }
+
 
     // Function to save places into each events
     private fun findPlaceById(id:Int): Place? {
@@ -157,6 +155,7 @@ class DataRepository constructor(contextArg: Context) {
 
         return null
     }
+
 
     // Function to save category into each events
     private fun findCategoryById(id:Int): Category? {
@@ -180,6 +179,7 @@ class DataRepository constructor(contextArg: Context) {
 
         return null
     }
+
 
     // Find event by ID
     fun findEventById(id:Int): Event? {

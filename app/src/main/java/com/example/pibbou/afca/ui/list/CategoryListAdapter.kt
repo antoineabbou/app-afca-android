@@ -59,7 +59,7 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
         val itemListDataAdapter = EventListAdapter(mContext, eventsByCategory)
 
         // Set Text for category Title
-        itemRowHolder.categoryTitle.setText(sectionName + " (" + eventsByCategory.count() + ")")
+        itemRowHolder.categoryTitle.text = sectionName + " (" + eventsByCategory.count() + ")"
 
         itemRowHolder.categoryMarker.setColorFilter(Color.parseColor(filteredCategories[i].color), android.graphics.PorterDuff.Mode.SRC_IN);
 
@@ -94,15 +94,11 @@ class CategoryListAdapter(private val mContext: Context, private val eventList: 
 
 
     inner class ItemRowHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var categoryMarker: ImageView
-        var categoryTitle: TextView
+        var categoryMarker: ImageView = view.findViewById(R.id.marker)
+        var categoryTitle: TextView = view.findViewById(R.id.categoryTitle)
         var recycler_view_event_list: RecyclerView
 
         init {
-            // Get category title View
-            this.categoryMarker = view.findViewById(R.id.marker)
-            this.categoryTitle = view.findViewById(R.id.categoryTitle)
-            // Get recycler_view View
             this.recycler_view_event_list = view.findViewById(R.id.recycler_view_event_list)
         }
     }

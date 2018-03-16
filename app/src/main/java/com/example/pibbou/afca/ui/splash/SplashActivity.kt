@@ -18,7 +18,6 @@ class SplashActivity : AppCompatActivity() {
     private var mDelayHandler: Handler? = null
     private val SPLASH_DELAY: Long = 1000 //1 seconds
     private lateinit var mContext : Context
-
     private val mRunnable: Runnable = Runnable {
         if (!isFinishing) {
             val intent = Intent(mContext, MainActivity::class.java)
@@ -27,6 +26,7 @@ class SplashActivity : AppCompatActivity() {
             finish()
         }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +46,7 @@ class SplashActivity : AppCompatActivity() {
         //Navigate with delay
         mDelayHandler!!.postDelayed(mRunnable, SPLASH_DELAY)
     }
+
 
     public override fun onDestroy() {
 

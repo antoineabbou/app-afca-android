@@ -56,6 +56,7 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         }
     }
 
+
     private fun setButton(toggle:ToggleButton, event: Event?) {
         toggle.isChecked = isInList != false
 
@@ -65,6 +66,7 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         }
 
     }
+
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): SingleItemRowHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_event_card, null)
@@ -81,17 +83,17 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
         // Set event title
         holder.eventCardTitle.text = singleEvent?.name?.toUpperCase()
         if(singleEvent?.author.isNullOrEmpty()) {
-            holder.eventCardAuthor.setText("Auteur non communiqué")
+            holder.eventCardAuthor.text = "Auteur non communiqué"
         } else {
-            holder.eventCardAuthor.setText(singleEvent?.author)
+            holder.eventCardAuthor.text = singleEvent?.author
         }
 
         // Set event hour
         val hour = android.text.format.DateFormat.format("HH:mm", singleEvent?.startingDate) as String
-        holder.eventCardHour.setText(hour)
+        holder.eventCardHour.text = hour
 
         // Set event place
-        holder.eventCardPlace.setText(singleEvent?.place?.name)
+        holder.eventCardPlace.text = singleEvent?.place?.name
 
         // set event image
         Picasso.with(mContext)
@@ -114,10 +116,12 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
     }
 
+
     // Get Item Count - need because of Interface
     override fun getItemCount(): Int {
         return eventList?.size ?: 0
     }
+
 
     private fun setAnimation(viewToAnimate: View, position: Int) {
         // If the bound view wasn't previously displayed on screen, it's animated
@@ -130,23 +134,12 @@ class EventListAdapter(private val mContext: Context, private val eventList: Arr
 
 
     inner class SingleItemRowHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-        var eventCardTitle: TextView
-        var eventCardImage: ImageView
-        var eventCardAuthor: TextView
-        var eventCardHour: TextView
-        var eventCardPlace: TextView
-        var eventCardFavorite: ToggleButton
-        var cardViewBackground: LinearLayout
-
-        init {
-            this.eventCardTitle = view.findViewById(R.id.eventCardTitle)
-            this.eventCardImage = view.findViewById(R.id.eventCardImage)
-            this.eventCardAuthor = view.findViewById(R.id.eventCardAuthor)
-            this.eventCardHour = view.findViewById(R.id.eventCardHour)
-            this.eventCardPlace = view.findViewById(R.id.eventCardPlace)
-            this.eventCardFavorite = view.findViewById(R.id.button_favorite)
-            this.cardViewBackground = view.findViewById(R.id.cardViewBackground)
-        }
+        var eventCardTitle: TextView = view.findViewById(R.id.eventCardTitle)
+        var eventCardImage: ImageView = view.findViewById(R.id.eventCardImage)
+        var eventCardAuthor: TextView = view.findViewById(R.id.eventCardAuthor)
+        var eventCardHour: TextView = view.findViewById(R.id.eventCardHour)
+        var eventCardPlace: TextView = view.findViewById(R.id.eventCardPlace)
+        var eventCardFavorite: ToggleButton = view.findViewById(R.id.button_favorite)
+        var cardViewBackground: LinearLayout = view.findViewById(R.id.cardViewBackground)
     }
 }

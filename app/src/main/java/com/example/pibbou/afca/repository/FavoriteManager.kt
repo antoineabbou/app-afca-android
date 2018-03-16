@@ -1,14 +1,15 @@
 package com.example.pibbou.afca.repository
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import com.example.pibbou.afca.repository.entity.Event
 import com.google.gson.Gson
 
 /**
  * Created by aabbou on 14/02/2018.
  */
+
 
 /**
  * Favorite Manager
@@ -19,13 +20,13 @@ class FavoriteManager {
     val FAVORITES = "Favorites"
     var currentFavorites = ArrayList<Event>()
 
+    @SuppressLint("ApplySharedPref")
     // keep favorites in SharedPreferences
     fun saveFavorites(context: Context, favorites: List<Event>) {
-        val settings: SharedPreferences
+        val settings: SharedPreferences = context.getSharedPreferences(PREFS_NAME,
+                Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor
 
-        settings = context.getSharedPreferences(PREFS_NAME,
-                Context.MODE_PRIVATE)
         editor = settings.edit()
 
         val gson = Gson()
@@ -34,45 +35,45 @@ class FavoriteManager {
         editor.putString(FAVORITES, jsonFavorites)
 
         editor.commit()
-
     }
+
 
     // Add one event to the list
     fun addFavorite(context: Context, event: Event) {
 
-        var isInList = currentFavorites.filter {
+        val isInList = currentFavorites.filter {
             it.id === event.id
         }.count() > 0
 
-        if(isInList == false) {
+        if(!isInList) {
             currentFavorites.add(event)
             saveFavorites(context, currentFavorites)
         }
-
     }
+
 
     // Remove one event from the list
     fun removeFavorite(context: Context, event: Event) {
 
-        var selectedFavorite = currentFavorites.filter {
+        val selectedFavorite = currentFavorites.filter {
             it.id === event.id
         }
 
-        var isInList = selectedFavorite.count() > 0
+        val isInList = selectedFavorite.count() > 0
 
-        if(isInList == true) {
+        if(isInList) {
             currentFavorites.remove(selectedFavorite.first())
             saveFavorites(context, currentFavorites)
         }
     }
 
+
     // Write and save favorites
     fun setFavorites(context: Context): ArrayList<Event>? {
-        val settings: SharedPreferences
-        val favorites: List<Event>
-
-        settings = context.getSharedPreferences(PREFS_NAME,
+        val settings: SharedPreferences = context.getSharedPreferences(PREFS_NAME,
                 Context.MODE_PRIVATE)
+
+        val favorites: List<Event>
 
         if (settings.contains(FAVORITES)) {
             val jsonFavorites = settings.getString(FAVORITES, null)

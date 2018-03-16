@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso
 
 
 @RequiresApi(Build.VERSION_CODES.M)
+
 /**
  * Created by antoineabbou on 08/01/2018.
  */
@@ -31,12 +32,14 @@ class DetailActivity : AppCompatActivity() {
     // Favorite manager call
     val favoriteManager = App.sInstance.getFavoriteManager()
 
+
     init {
         onCheckedChanged = OnCheckedChangeListener { buttonView, _ ->
             val event = buttonView.tag as Event
             showToast(event)
         }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,11 +66,10 @@ class DetailActivity : AppCompatActivity() {
 
             checkList(event)
         }
-
     }
 
 
-    fun checkList(event: Event) {
+    private fun checkList(event: Event) {
         val toggle = findViewById<ToggleButton>(R.id.buttonFav)
 
         isInList = favoriteManager?.currentFavorites!!.filter {
@@ -79,7 +81,6 @@ class DetailActivity : AppCompatActivity() {
     }
 
 
-
     @RequiresApi(Build.VERSION_CODES.M)
     private fun showToast(event: Event) {
 
@@ -88,14 +89,14 @@ class DetailActivity : AppCompatActivity() {
         if (isInList) {
             favoriteManager?.removeFavorite(applicationContext, event)
             isInList = false
-            toast.setText("ÉVÈNEMENT SUPPRIMÉ DES FAVORIS")
-            toast.setColor(getColor(R.color.red))
+            toast.text = "ÉVÈNEMENT SUPPRIMÉ DES FAVORIS"
+            toast.color = getColor(R.color.red)
 
         } else {
             favoriteManager?.addFavorite(applicationContext, event)
             isInList = true
-            toast.setColor(getColor(R.color.green))
-            toast.setText("ÉVÈNEMENT AJOUTÉ AUX FAVORIS")
+            toast.color = getColor(R.color.green)
+            toast.text = "ÉVÈNEMENT AJOUTÉ AUX FAVORIS"
         }
 
 
@@ -105,6 +106,7 @@ class DetailActivity : AppCompatActivity() {
             .setFrame(Style.FRAME_LOLLIPOP)
             .setAnimations(Style.ANIMATIONS_POP).show()
     }
+
 
     private fun setToggleButton(toggle:ToggleButton, event: Event) {
 
@@ -116,12 +118,14 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+
     private fun setButtonBack() {
         val back: ImageButton = findViewById(R.id.back_button)
         back.setOnClickListener {
             finish()
         }
     }
+
 
     private fun setEventDatas(event: Event) {
         val eventTitle: TextView = findViewById(R.id.eventTitle)
@@ -156,31 +160,34 @@ class DetailActivity : AppCompatActivity() {
 
         // Image
         val image: ImageView = findViewById(R.id.eventImage)
-        image.setScaleType(ImageView.ScaleType.CENTER_CROP)
+        image.scaleType = ImageView.ScaleType.CENTER_CROP
 
         Picasso.with(applicationContext)
                 .load(event.image)
                 .into(image)
     }
 
+
     private fun setPlaceDatas(event: Event) {
         // Place name
         val placeText: TextView = findViewById(R.id.placeText)
-        placeText.setText(event.place?.name)
+        placeText.text = event.place?.name
 
         // Place address
         val address: TextView = findViewById(R.id.address)
-        address.setText(event.place?.address)
+        address.text = event.place?.address
     }
+
 
     private fun setCategoryDatas(event: Event) {
         val categoryText: TextView = findViewById(R.id.categoryTitle)
-        categoryText.setText(event.category?.name?.toUpperCase())
+        categoryText.text = event.category?.name?.toUpperCase()
         categoryText.setTextColor(Color.parseColor(event.category?.color))
 
         val colorCategory: View = findViewById(R.id.color_category)
         colorCategory.setBackgroundColor(Color.parseColor(event.category?.color))
     }
+
 
     private fun setButtonDatas(event: Event) {
         val button: Button = findViewById(R.id.button)
@@ -192,11 +199,11 @@ class DetailActivity : AppCompatActivity() {
         })
     }
 
+
     fun setButtonFavorite() {
         val toggle = findViewById<ToggleButton>(R.id.buttonFav)
         toggle.text = null
         toggle.textOn = null
         toggle.textOff = null
     }
-
 }

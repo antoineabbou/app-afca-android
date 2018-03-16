@@ -322,7 +322,7 @@
                 android:layout_marginStart="64dp"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Application réalisée par l’école des Gobelins en partenariat avec l’AFCA"
+                android:text="Application réalisée par le bachelor BDDI Gobelins - L'école de l'image, en partenariat avec l’AFCA"
                 android:textAlignment="center"
                 android:textColor="#28B2E8"
                 android:textSize="14sp"

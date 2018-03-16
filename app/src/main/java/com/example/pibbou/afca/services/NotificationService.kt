@@ -20,12 +20,10 @@ class NotificationService : Service() {
     private var favoriteManager: FavoriteManager = FavoriteManager()
     private var notificationManager: com.example.pibbou.afca.repository.NotificationManager? = null
 
+
     // Handler that receives messages from the thread
     private inner class ServiceHandler(looper: Looper) : Handler(looper) {
         override fun handleMessage(msg: Message) {
-            // Normally we would do some work here, like download a file.
-            // For our sample, we just sleep for 5 seconds.
-
             try {
                 notificationManager = com.example.pibbou.afca.repository.NotificationManager(applicationContext)
                 compareToDeviceTime()
@@ -40,6 +38,7 @@ class NotificationService : Service() {
         }
     }
 
+
     override fun onCreate() {
         // Start up the thread running the service.
         // Set background priority so CPU-intensive work will not disrupt our UI.
@@ -52,6 +51,7 @@ class NotificationService : Service() {
         mServiceHandler = ServiceHandler(mServiceLooper)
     }
 
+
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         // For each start request, send a message to start a job and deliver the
         // start ID so we know which request we're stopping when we finish the job
@@ -63,15 +63,18 @@ class NotificationService : Service() {
         return START_STICKY
     }
 
+
     override fun onBind(intent: Intent): IBinder? {
         // We don't provide binding, so return null
         return null
     }
 
+
     override fun onDestroy() {
     }
 
-    // check every minute event time and device time
+
+    // check every two minutes event time and device time
     private fun compareToDeviceTime() {
 
         var currentTime: Date
@@ -80,7 +83,7 @@ class NotificationService : Service() {
         val favorites: List<Event>? = favoriteManager.getFavorites(applicationContext)
 
         if (favorites!!.isNotEmpty()) {
-            for (favorite in favorites) {
+            favorites.forEach { favorite ->
                 var notified: Boolean? = null
                 Timer().scheduleAtFixedRate(object : TimerTask() {
                     override fun run() {
@@ -97,12 +100,12 @@ class NotificationService : Service() {
                             notified = true
                         }
                     }
-                }, 0, 60000)
+                }, 0, 120000)
             }
             currentTime = Calendar.getInstance().getTime()
         }
-
     }
+
 
     // Return period between starting date and device date
     private fun printDifference(startDate: Date, endDate: Date): Long {

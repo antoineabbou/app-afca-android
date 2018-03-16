@@ -25,6 +25,7 @@ class DayFragment : android.support.v4.app.Fragment() {
     lateinit var categoriesAdapter: CategoryListAdapter
     var eventsByDay : ArrayList<Event>? = ArrayList()
 
+
     // Store instance variables based on arguments passed
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,7 @@ class DayFragment : android.support.v4.app.Fragment() {
         eventsByDay = repository!!.getEventsByDay(day)
     }
 
+
     // Inflate the view for the fragment based on layout XML
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         view1 = inflater!!.inflate(R.layout.fragment_day, container, false)
@@ -44,6 +46,7 @@ class DayFragment : android.support.v4.app.Fragment() {
 
         return view1
     }
+
 
     private fun setupEventsList() {
 
@@ -62,6 +65,7 @@ class DayFragment : android.support.v4.app.Fragment() {
         recycler_view_category_list.adapter = categoriesAdapter
     }
 
+
     companion object {
 
         // newInstance constructor for creating fragment with arguments
@@ -69,7 +73,7 @@ class DayFragment : android.support.v4.app.Fragment() {
             val fragmentFirst = DayFragment()
             val args = Bundle()
             args.putInt("day", day)
-            fragmentFirst.setArguments(args)
+            fragmentFirst.arguments = args
             return fragmentFirst
         }
     }

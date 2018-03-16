@@ -36,7 +36,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
     private var lastPosition = -1
 
     // Favorite manager call
-    private val favoriteManager = App.sInstance!!.getFavoriteManager()
+    private val favoriteManager = App.sInstance.getFavoriteManager()
 
     init {
         mOnClickListener = View.OnClickListener { v ->
@@ -46,6 +46,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             mContext.startActivity(I)
         }
     }
+
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): FavItemRowHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_fav_card, null)
@@ -61,6 +62,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         }
     }
 
+
     private fun checkLengthFavorites() {
         if (favoriteManager?.getFavorites(mContext)!!.isEmpty()) {
             if (context is FavoritesActivity) {
@@ -72,6 +74,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             }
         }
     }
+
 
     override fun onBindViewHolder(holder: FavItemRowHolder?, position: Int) {
         setAnimation(holder?.itemView!!, position)
@@ -119,7 +122,7 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             favoriteManager.removeFavorite(mContext, event)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, itemCount);
-            holder.itemView.animate().alpha(0.toFloat()).setDuration(400)
+            holder.itemView.animate().alpha(0.toFloat()).duration = 400
             checkLengthFavorites()
 
         }
@@ -128,12 +131,13 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
             setButton(holder.favCardButton, singleFav)
         }
 
-
     }
+
 
     override fun getItemCount(): Int {
         return favoriteList?.size ?: 0
     }
+
 
     private fun setAnimation(viewToAnimate: View, position: Int) {
         // If the bound view wasn't previously displayed on screen, it's animated
@@ -147,24 +151,14 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
 
     inner class FavItemRowHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        var favCardTitle: TextView
-        var favCardImage: ImageView
-        var favCardButton: Button
-        var favCardAuthor: TextView
-        var favCardHour: TextView
-        var favCardPlace: TextView
-        var favCardContainer: ConstraintLayout
-        var favCardBackground: LinearLayout
+        var favCardTitle: TextView = view.findViewById(R.id.favCardTitle)
+        var favCardImage: ImageView = view.findViewById(R.id.favCardImage)
+        var favCardButton: Button = view.findViewById(R.id.button_favorite)
+        var favCardAuthor: TextView = view.findViewById(R.id.favCardAuthor)
+        var favCardHour: TextView = view.findViewById(R.id.favCardHour)
+        var favCardPlace: TextView = view.findViewById(R.id.favCardPlace)
+        var favCardContainer: ConstraintLayout = view.findViewById(R.id.favCardContainer)
+        var favCardBackground: LinearLayout = view.findViewById(R.id.cardViewBackground)
 
-        init {
-            this.favCardImage = view.findViewById(R.id.favCardImage)
-            this.favCardTitle = view.findViewById(R.id.favCardTitle)
-            this.favCardButton = view.findViewById(R.id.button_favorite)
-            this.favCardAuthor = view.findViewById(R.id.favCardAuthor)
-            this.favCardHour = view.findViewById(R.id.favCardHour)
-            this.favCardPlace = view.findViewById(R.id.favCardPlace)
-            this.favCardContainer = view.findViewById(R.id.favCardContainer)
-            this.favCardBackground = view.findViewById(R.id.cardViewBackground)
-        }
     }
 }

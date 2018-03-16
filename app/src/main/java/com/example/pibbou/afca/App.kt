@@ -2,13 +2,8 @@ package com.example.pibbou.afca
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import com.example.pibbou.afca.repository.DataRepository
 import com.example.pibbou.afca.repository.FavoriteManager
-import com.example.pibbou.afca.repository.entity.Event
-import com.example.pibbou.afca.ui.main.MainActivity
-import java.util.*
-import kotlin.collections.ArrayList
 
 
 /**
@@ -18,14 +13,15 @@ import kotlin.collections.ArrayList
 class App : Application() {
 
     // Singleton instance
-    var dataManager: DataRepository? = null
-    var favoritesManager: FavoriteManager? = null
-    var notificationManager: com.example.pibbou.afca.repository.NotificationManager? = null
+    private var dataManager: DataRepository? = null
+    private var favoritesManager: FavoriteManager? = null
+    private var notificationManager: com.example.pibbou.afca.repository.NotificationManager? = null
 
     // https://stackoverflow.com/questions/21818905/get-application-context-from-non-activity-singleton-class
-    fun getContext(): Context {
+    private fun getContext(): Context {
         return this.applicationContext
     }
+
 
     //////////////
     // On Create
@@ -45,17 +41,6 @@ class App : Application() {
 
         this.notificationManager = com.example.pibbou.afca.repository.NotificationManager(this.getContext())
 
-        // favoritesList = this.favoritesManager!!.getFavorites(this.getContext())
-
-        /*if (favoritesList?.size !== null) {
-            for (favorite in favoritesList) {
-                compareToDeviceTime(favorite)
-            }
-        }*/
-        val favoritesList = this.favoritesManager?.getFavorites(this.getContext())
-        Log.i("favoritesList", favoritesList.toString())
-        // compareToDeviceTime(favoritesList as ArrayList<Event>)
-
     }
 
 
@@ -71,6 +56,7 @@ class App : Application() {
     fun getDataRepository(): DataRepository? {
         return this.dataManager
     }
+
 
     fun getFavoriteManager(): FavoriteManager? {
         return this.favoritesManager
