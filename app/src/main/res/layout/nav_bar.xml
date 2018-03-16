@@ -17,10 +17,10 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#ffffff"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
         android:src="@drawable/button_programme"
-        android:contentDescription="button prog" />
+        android:contentDescription="navbar programmation" />
 
     <ImageButton
         android:id="@+id/navBarInfos"
@@ -28,10 +28,10 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#ffffff"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
         android:src="@drawable/button_information"
-        android:contentDescription="button infos" />
+        android:contentDescription="navbar infos" />
 
     <ImageButton
         android:id="@+id/navBarFavs"
@@ -39,10 +39,10 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#ffffff"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
         android:src="@drawable/button_heart"
-        android:contentDescription="button favs" />
+        android:contentDescription="navbar favs" />
 </LinearLayout>
 
 
