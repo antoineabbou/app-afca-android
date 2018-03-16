@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.pibbou.afca.ui.infos.InformationsActivity">
+    tools:context="com.pibbou.afca.ui.infos.InformationsActivity">
 
     <RelativeLayout
         android:id="@+id/relativeLayout5"
@@ -79,7 +79,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context="com.example.pibbou.afca.ui.infos.InformationsActivity">
+            tools:context="com.pibbou.afca.ui.infos.InformationsActivity">
 
             <android.support.constraint.ConstraintLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"

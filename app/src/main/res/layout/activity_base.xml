@@ -6,7 +6,7 @@
     android:id="@+id/parentPanel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.pibbou.afca.ui.base.BaseActivity">
+    tools:context="com.pibbou.afca.ui.base.BaseActivity">
 
     <include
         layout="@layout/nav_bar"
