@@ -13,7 +13,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat"
-        android:text="TextView"
         android:textColor="#2F2F2F"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,8 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/montserrat"
-                android:text="TextView"/>
+                android:fontFamily="@font/montserrat" />
 
 
         </LinearLayout>
@@ -71,7 +69,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/montserrat"
-        android:text="TextView"
         android:textColor="#28B2E8"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +98,6 @@
                 android:id="@+id/price_value_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4€"
                 android:textSize="22sp"
                 android:fontFamily="@font/montserrat_bold"
                 android:textColor="@color/white"/>
@@ -110,10 +106,8 @@
                 android:id="@+id/price_content_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/montserrat "
-                android:text="TextView"/>
+                android:fontFamily="@font/montserrat " />
 
 
         </LinearLayout>

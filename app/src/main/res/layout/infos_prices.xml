@@ -1,6 +1,7 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,7 +13,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat"
-        android:text="TextView"
         android:textColor="#2F2F2F"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8sp"
         android:fontFamily="@font/montserrat"
-        android:text="TextView"
         android:textColor="#2F2F2F"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +42,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8sp"
         android:fontFamily="@font/montserrat"
-        android:text="TextView"
         android:textColor="#2F2F2F"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,14 +78,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="4dp">
+                    android:paddingLeft="4dp"
+                    android:paddingStart="4dp"
+                    tools:ignore="RtlSymmetry">
 
                     <TextView
                         android:id="@+id/price_title"
@@ -96,9 +96,9 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="2dp"
                         android:fontFamily="@font/montserrat_bold"
-                        android:text="TextView"
                         android:textColor="#8D8D8D"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:layout_marginStart="2dp" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -129,7 +129,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/layout_blue_bg"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:layout_marginEnd="8dp">
 
 
                 <TextView
@@ -150,9 +151,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="TextView"
                     android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:layout_marginStart="10dp" />
 
 
             </LinearLayout>
@@ -165,7 +166,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/layout_blue_bg"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:layout_marginStart="8dp">
 
 
                 <TextView
@@ -186,9 +188,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="TextView"
                     android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:layout_marginStart="10dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -206,7 +208,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/layout_blue_bg"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:layout_marginEnd="8dp">
 
                 <TextView
                     android:id="@+id/price_number_3"
@@ -225,9 +228,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="TextView"
                     android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:layout_marginStart="10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -237,7 +240,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/layout_blue_bg"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:layout_marginStart="8dp">
 
 
                 <TextView
@@ -258,9 +262,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="TextView"
                     android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:layout_marginStart="10dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -271,7 +275,6 @@
             android:layout_below="@id/line_2"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat"
-            android:text="TextView"
             android:textColor="#616161"
             android:textSize="12sp" />
     </RelativeLayout>
@@ -305,14 +308,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="4dp">
+                    android:paddingLeft="4dp"
+                    android:paddingStart="4dp"
+                    tools:ignore="RtlSymmetry">
 
                     <TextView
                         android:id="@+id/price_title_2"
@@ -321,9 +326,9 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="2dp"
                         android:fontFamily="@font/montserrat_bold"
-                        android:text="TextView"
                         android:textColor="#8D8D8D"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:layout_marginStart="2dp" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -339,7 +344,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prices_2">
+        app:layout_constraintTop_toBottomOf="@+id/prices_2"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="16dp">
 
         <LinearLayout
             android:id="@+id/line_3"
@@ -354,7 +361,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/layout_green_bg"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:layout_marginEnd="8dp">
 
 
                 <TextView
@@ -363,7 +371,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="3$"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -375,9 +382,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="TextView"
                     android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:layout_marginStart="10dp" />
 
 
             </LinearLayout>
@@ -390,7 +397,8 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/layout_green_bg"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:layout_marginStart="8dp">
 
 
                 <TextView
@@ -399,7 +407,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="3$"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -411,9 +418,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="TextView"
                     android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:layout_marginStart="10dp" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -12,8 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/remarkContainer">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/list_item_1"
@@ -34,14 +34,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="150dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.8">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="4dp">
+                    android:paddingLeft="4dp"
+                    android:paddingStart="4dp">
 
                     <TextView
                         android:id="@+id/organizer"
@@ -49,9 +50,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:fontFamily="@font/montserrat_bold"
-                        android:text="TextView"
                         android:textColor="#8D8D8D"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -66,7 +66,8 @@
             android:layout_below="@+id/list_item_1"
             android:layout_marginTop="16dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/afca_logo" />
+            android:src="@drawable/afca_logo"
+            android:contentDescription="afca_logo" />
 
     </RelativeLayout>
 
@@ -101,14 +102,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="150dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.8">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="4dp">
+                    android:paddingLeft="4dp"
+                    android:paddingStart="4dp">
 
                     <TextView
                         android:id="@+id/partners"
@@ -116,9 +118,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:fontFamily="@font/montserrat_bold"
-                        android:text="TextView"
                         android:textColor="#8D8D8D"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -133,7 +134,8 @@
             android:layout_below="@+id/list_item_2"
             android:layout_marginTop="16dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/partners" />
+            android:src="@drawable/partners"
+            android:contentDescription="partners" />
 
     </RelativeLayout>
 
@@ -168,14 +170,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="150dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.8">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="4dp">
+                    android:paddingLeft="4dp"
+                    android:paddingStart="4dp"
+                    tools:ignore="RtlSymmetry">
 
                     <TextView
                         android:id="@+id/support"
@@ -183,9 +187,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:fontFamily="@font/montserrat_bold"
-                        android:text="TextView"
                         android:textColor="#8D8D8D"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -201,7 +204,8 @@
             android:layout_marginTop="16dp"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
-            android:src="@drawable/support" />
+            android:src="@drawable/support"
+            android:contentDescription="support" />
 
     </RelativeLayout>
 

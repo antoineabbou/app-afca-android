@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.pibbou.afca.ui.infos.InformationsActivity">
+    tools:context="com.pibbou.afca.ui.infos.InformationsActivity">
 
     <RelativeLayout
         android:id="@+id/relativeLayout5"
@@ -16,7 +16,8 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/layout_infos" />
+            android:src="@drawable/layout_infos"
+            android:contentDescription="layout_infos" />
 
         <View
             android:layout_width="match_parent"
@@ -79,7 +80,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context="com.example.pibbou.afca.ui.infos.InformationsActivity">
+            tools:context="com.pibbou.afca.ui.infos.InformationsActivity">
 
             <android.support.constraint.ConstraintLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"
@@ -96,7 +97,8 @@
                     android:layout_marginStart="8dp"
                     android:src="@drawable/logo"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:contentDescription="logo" />
 
                 <ImageView
                     android:id="@+id/fleaf_left"
@@ -105,7 +107,8 @@
                     android:layout_marginBottom="8dp"
                     android:src="@drawable/leaf_green"
                     app:layout_constraintBottom_toBottomOf="@+id/textView"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:contentDescription="leaf_green" />
 
 
                 <ImageView
@@ -114,7 +117,8 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/leaf_blue"
                     app:layout_constraintBottom_toBottomOf="@+id/textView"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:contentDescription="leaf_blue" />
 
                 <TextView
                     android:id="@+id/textView"
@@ -166,11 +170,12 @@
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
                     android:textColor="#000"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:drawableEnd="@drawable/arrow_expand"
+                    tools:ignore="RtlHardcoded" />
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:id="@+id/expandableLayoutPrice"
-                    android:layout_below="@+id/expandablePrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="30dp"
@@ -195,7 +200,6 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
-                    android:layout_below="@+id/expandableLayoutMove"
                     android:layout_marginTop="16dp"
 
                     android:background="#F6F6F6"
@@ -213,7 +217,6 @@
                     android:id="@+id/expandableLayoutMove"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/expandableMove"
                     android:background="#F6F6F6"
                     android:orientation="vertical"
                     android:paddingBottom="30dp"
@@ -236,7 +239,6 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
-                    android:layout_below="@+id/expandableLayoutMove"
                     android:layout_marginTop="16dp"
 
                     android:background="#F6F6F6"
@@ -248,13 +250,13 @@
                     android:paddingRight="16dp"
                     android:text="SE RESTAURER"
                     android:textColor="#000"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    tools:ignore="RtlHardcoded" />
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:id="@+id/expandableLayoutEat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/expandableEat"
                     android:background="#F6F6F6"
                     android:orientation="vertical"
                     android:paddingBottom="30dp"
@@ -277,7 +279,6 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
-                    android:layout_below="@+id/expandableLayoutEat"
                     android:layout_marginTop="16dp"
 
                     android:background="#F6F6F6"
@@ -289,13 +290,13 @@
                     android:paddingRight="16dp"
                     android:text="PARTENAIRES"
                     android:textColor="#000"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    tools:ignore="RtlHardcoded" />
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:id="@+id/expandableLayoutPartners"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/expandablePartners"
                     android:paddingBottom="30dp"
                     android:background="#F6F6F6"
                     android:orientation="vertical"

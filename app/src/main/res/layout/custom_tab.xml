@@ -9,7 +9,7 @@
     android:background="?attr/selectableItemBackground"
     android:paddingBottom="10dp"
     android:paddingTop="10dp"
-    tools:context="com.example.pibbou.afca.ui.main.MainActivity">
+    tools:context="com.pibbou.afca.ui.main.MainActivity">
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/custom_tab_day"
@@ -22,7 +22,7 @@
         android:text="Day"
         android:textColor="#ffffff"
         android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/custom_tab_date"
@@ -36,6 +36,6 @@
         android:text="Date"
         android:textColor="#ffffff"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/custom_tab_day"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/custom_tab_day" />
 
 </android.support.constraint.ConstraintLayout>

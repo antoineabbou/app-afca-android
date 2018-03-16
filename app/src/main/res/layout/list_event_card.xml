@@ -21,7 +21,6 @@
             android:id="@+id/button_favorite"
             android:layout_width="38dp"
             android:layout_height="38dp"
-            android:layout_centerInParent="true"
             android:background="@drawable/button_fav"
             android:checked="false"
             android:text=""
@@ -69,7 +68,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:contentDescription="eventCardImage" />
 
 
                 <LinearLayout
@@ -83,9 +83,10 @@
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/containerInfos"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_weight=".50"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        tools:ignore="NestedWeights">
 
 
                         <TextView
@@ -97,13 +98,13 @@
                             android:fontFamily="@font/montserrat_bold"
                             android:gravity="center"
                             android:padding="0dp"
-                            android:text="Event"
                             android:textAlignment="viewStart"
                             android:textColor="@android:color/white"
                             android:textSize="12sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="RtlCompat" />
 
                         <TextView
                             android:id="@+id/eventCardAuthor"
@@ -114,13 +115,13 @@
                             android:fontFamily="@font/montserrat"
                             android:gravity="center"
                             android:padding="0dp"
-                            android:text="Johanna Huck"
                             android:textAlignment="viewStart"
                             android:textColor="@android:color/white"
                             android:textSize="12sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/eventCardTitle" />
+                            app:layout_constraintTop_toBottomOf="@+id/eventCardTitle"
+                            tools:ignore="RtlCompat" />
 
                         <TextView
                             android:id="@+id/eventCardHour"
@@ -132,13 +133,13 @@
                             android:fontFamily="@font/montserrat_bold"
                             android:gravity="center"
                             android:padding="0dp"
-                            android:text="10:00"
                             android:textAlignment="viewStart"
                             android:textColor="@android:color/white"
                             android:textSize="12sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/eventCardAuthor" />
+                            app:layout_constraintTop_toBottomOf="@+id/eventCardAuthor"
+                            tools:ignore="RtlCompat" />
 
                         <TextView
                             android:id="@+id/eventCardPlace"
@@ -149,13 +150,13 @@
                             android:fontFamily="@font/montserrat"
                             android:gravity="center"
                             android:padding="0dp"
-                            android:text="Cinéma le TNB"
                             android:textAlignment="viewStart"
                             android:textColor="@android:color/white"
                             android:textSize="12sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/eventCardHour" />
+                            app:layout_constraintTop_toBottomOf="@+id/eventCardHour"
+                            tools:ignore="HardcodedText,RtlCompat" />
 
 
                     </android.support.constraint.ConstraintLayout>

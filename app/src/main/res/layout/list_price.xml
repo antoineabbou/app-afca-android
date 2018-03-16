@@ -14,11 +14,11 @@
         android:fontFamily="@font/montserrat"
         android:gravity="left"
         android:padding="5dp"
-        android:text="Price"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/priceValue"
@@ -29,13 +29,13 @@
         android:fontFamily="@font/montserrat"
         android:gravity="left"
         android:padding="5dp"
-        android:text="Price value"
         android:textAlignment="textEnd"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/priceTitle"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat,RtlHardcoded" />
 
     <TextView
         android:id="@+id/priceCondition"
@@ -46,10 +46,10 @@
         android:fontFamily="@font/montserrat"
         android:gravity="left"
         android:padding="5dp"
-        android:text="Price condition"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priceTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/priceTitle"
+        tools:ignore="RtlHardcoded" />
 
 </android.support.constraint.ConstraintLayout>

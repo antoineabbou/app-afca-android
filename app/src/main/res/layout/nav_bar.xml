@@ -19,7 +19,8 @@
         android:background="#ffffff"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:src="@drawable/button_programme" />
+        android:src="@drawable/button_programme"
+        android:contentDescription="button prog" />
 
     <ImageButton
         android:id="@+id/navBarInfos"
@@ -29,7 +30,8 @@
         android:background="#ffffff"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:src="@drawable/button_information" />
+        android:src="@drawable/button_information"
+        android:contentDescription="button infos" />
 
     <ImageButton
         android:id="@+id/navBarFavs"
@@ -39,7 +41,8 @@
         android:background="#ffffff"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:src="@drawable/button_heart" />
+        android:src="@drawable/button_heart"
+        android:contentDescription="button favs" />
 </LinearLayout>
 
 

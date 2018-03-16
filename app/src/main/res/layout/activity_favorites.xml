@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.pibbou.afca.ui.favorites.FavoritesActivity">
+    tools:context="com.pibbou.afca.ui.favorites.FavoritesActivity">
 
     <RelativeLayout
         android:id="@+id/relativeLayout5"
@@ -16,7 +16,8 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/layout_fav" />
+            android:src="@drawable/layout_fav"
+            android:contentDescription="layout fav" />
 
         <View
             android:layout_width="match_parent"
@@ -45,7 +46,7 @@
         android:text="Favoris"
         android:textColor="#ffffff"
         android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/custom_tab_date"
@@ -59,7 +60,7 @@
         android:text="Faites votre sélection"
         android:textColor="#ffffff"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/fav_title"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/fav_title" />
 
 
     <RelativeLayout
@@ -82,7 +83,8 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="RAPPEL D'ÉVÉNEMENTS :"
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_alignParentStart="true" />
 
         <ToggleButton
             android:id="@+id/notification_button"
@@ -93,9 +95,10 @@
             android:background="@android:color/transparent"
             android:checked="false"
             android:fontFamily="@font/montserrat"
-            android:text="ToggleButton"
             android:textColor="#D8D8D8"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@+id/notification_label" />
 
     </RelativeLayout>
 
@@ -129,7 +132,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/heart_big" />
+            android:src="@drawable/heart_big"
+            android:contentDescription="fav_heart" />
 
         <TextView
             android:layout_width="match_parent"
