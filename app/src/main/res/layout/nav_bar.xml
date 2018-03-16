@@ -17,8 +17,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#ffffff"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
         android:src="@drawable/button_programme" />
 
     <ImageButton
@@ -27,8 +27,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#ffffff"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
         android:src="@drawable/button_information" />
 
     <ImageButton
@@ -37,8 +37,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#ffffff"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
         android:src="@drawable/button_heart" />
 </LinearLayout>
 
