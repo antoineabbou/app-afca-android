@@ -1,6 +1,5 @@
 package com.example.pibbou.afca.ui.main
 
-import android.widget.TextView
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -9,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
-import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.list.CategoryListAdapter
 
@@ -24,7 +22,6 @@ class DayFragment : android.support.v4.app.Fragment() {
     private val repository = App.sInstance.getDataRepository()
     private lateinit var view1: View
     private lateinit var recycler_view_category_list: RecyclerView
-
     lateinit var categoriesAdapter: CategoryListAdapter
     var eventsByDay : ArrayList<Event>? = ArrayList()
 
@@ -33,7 +30,7 @@ class DayFragment : android.support.v4.app.Fragment() {
         super.onCreate(savedInstanceState)
 
         // Get day
-        day = getArguments().getInt("day", 0)
+        day = arguments.getInt("day", 0)
 
         // Get Events By Day
         eventsByDay = repository!!.getEventsByDay(day)
@@ -41,7 +38,6 @@ class DayFragment : android.support.v4.app.Fragment() {
 
     // Inflate the view for the fragment based on layout XML
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-
         view1 = inflater!!.inflate(R.layout.fragment_day, container, false)
 
         setupEventsList()

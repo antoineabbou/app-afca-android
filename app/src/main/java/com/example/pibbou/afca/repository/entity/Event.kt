@@ -10,7 +10,6 @@ import java.util.*
 class Event {
     internal var id: Int? = null
     internal var name: String? = null
-    internal var excerpt: String? = null
     internal var placeId: Int? = null
     internal var place: Place? = null
     internal var categoryId: Int? = null
@@ -18,11 +17,8 @@ class Event {
     internal var day: Int? = null
     internal var public: Int? = null
     internal var startingDate: Date? = null
-    internal var endingDate: Date? = null
     internal var image: String? = null
     internal var link: String? = null
     internal var author: String? = null
     internal var duration: String? = null
-    internal var productor: String? = null
-
 }

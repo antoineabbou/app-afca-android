@@ -19,19 +19,11 @@ import com.google.gson.GsonBuilder
  */
 class DataRepository constructor(contextArg: Context) {
 
-    private var context: Context
+    private var context: Context = contextArg
     private var places: ArrayList<Place> = ArrayList()
     private var categories: ArrayList<Category> = ArrayList()
     private var events: ArrayList<Event> = ArrayList()
     private var prices: ArrayList<Price> = ArrayList()
-
-    /**
-     * Initialization
-     */
-    init {
-        context = contextArg
-    }
-
 
     /**
      *  Load all datas
@@ -41,7 +33,6 @@ class DataRepository constructor(contextArg: Context) {
         deserializeCategories()
         deserializeEvents()
         deserializePrices()
-        Log.d("GSON deserialize", "END")
     }
 
 
@@ -60,8 +51,6 @@ class DataRepository constructor(contextArg: Context) {
         for(place in jsonPlaces){
             places.add(place)
         }
-
-        Log.d("GSON deserialize", jsonDatas)
     }
 
     // Categories
@@ -74,8 +63,6 @@ class DataRepository constructor(contextArg: Context) {
         for(category in jsonCategories){
             categories.add(category)
         }
-
-        Log.d("GSON deserialize", jsonDatas)
     }
 
 
@@ -94,11 +81,9 @@ class DataRepository constructor(contextArg: Context) {
             event.category = this@DataRepository.findCategoryById(categoryId)
             events.add(event)
         }
-        
-        Log.d("GSON deserialize", jsonDatas)
     }
 
-    // Events
+    // Prices
     private fun deserializePrices() {
         val jsonDatas = jsonToString(R.raw.prices, context)
 
@@ -108,8 +93,6 @@ class DataRepository constructor(contextArg: Context) {
         for(price in jsonPrices){
             prices.add(price)
         }
-
-        Log.d("GSON deserialize", jsonDatas)
     }
 
 
@@ -117,10 +100,9 @@ class DataRepository constructor(contextArg: Context) {
     /**
      * Json to string
      */
-    // https://stackoverflow.com/questions/13814503/reading-a-json-file-in-android
     private fun jsonToString(path: Int?, context: Context): String? {
         // Var to return
-        var json: String? = null
+        var json: String?
 
         try {
             // Get file from ressources
@@ -157,11 +139,17 @@ class DataRepository constructor(contextArg: Context) {
      * Methods
      */
 
+    // Return all places
+    fun getPlaces(): ArrayList<Place>? {
+        if(places.isNotEmpty()) {
+            return places
+        }
+        return null
+    }
+
     // Function to save places into each events
-    fun findPlaceById(id:Int): Place? {
-
+    private fun findPlaceById(id:Int): Place? {
         val result = places.filter { it.id == id + 1 }
-
 
         if (result.isNotEmpty()) {
             return result.first()
@@ -171,7 +159,7 @@ class DataRepository constructor(contextArg: Context) {
     }
 
     // Function to save category into each events
-    fun findCategoryById(id:Int): Category? {
+    private fun findCategoryById(id:Int): Category? {
         val result = categories.filter { it.id == id }
 
         if (result.isNotEmpty()) {
@@ -181,33 +169,9 @@ class DataRepository constructor(contextArg: Context) {
         return null
     }
 
-    // Return all events
-    fun getEvents(): ArrayList<Event>? {
-
-        if (events.isNotEmpty()) {
-            return events
-        }
-
-        return null
-    }
-
-    fun getPrices(): ArrayList<Price>? {
-        if(prices.isNotEmpty()) {
-            return prices
-        }
-        return null
-    }
-
-    fun getPlaces(): ArrayList<Place>? {
-        if(places.isNotEmpty()) {
-            return places
-        }
-        return null
-    }
 
     // Return events by day
     fun getEventsByDay(day:Int): ArrayList<Event>? {
-
         val result = events.filter { it.day == day + 1 }
 
         if (result.isNotEmpty()) {

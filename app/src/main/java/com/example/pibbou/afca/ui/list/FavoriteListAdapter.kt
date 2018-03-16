@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,14 +14,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
-import com.example.pibbou.afca.repository.NotificationManager
 import com.example.pibbou.afca.repository.entity.Event
 import com.example.pibbou.afca.ui.detail.DetailActivity
 import com.example.pibbou.afca.ui.favorites.FavoritesActivity
 import com.squareup.picasso.Picasso
 import java.util.*
-import android.view.animation.AnimationUtils.loadAnimation
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 
 
@@ -35,27 +31,16 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
     private val mOnClickListener: View.OnClickListener
     private lateinit var bOnClickListener: View.OnClickListener
 
-    private var context: Context
-
+    private var context: Context = mContext
+    var isInList: Boolean = false
     private var lastPosition = -1
 
-
     // Favorite manager call
-    val favoriteManager = App.sInstance!!.getFavoriteManager()
-    var isInList: Boolean = false
-    val notificationManager = NotificationManager(mContext)
-    val dataRepository = App.sInstance!!.getDataRepository()
-
+    private val favoriteManager = App.sInstance!!.getFavoriteManager()
 
     init {
-        context = mContext
-
-        // Inspired by Jetbrains Kotlin Examples
-        // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
         mOnClickListener = View.OnClickListener { v ->
             val item = v.tag as Event
-            // Toast.makeText(mContext, item.name, Toast.LENGTH_SHORT).show()
-
             val I = Intent(mContext, DetailActivity::class.java)
                     .putExtra("id", item.id)
             mContext.startActivity(I)
@@ -69,13 +54,11 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
     }
 
 
-    fun setButton(button: Button, event: Event) {
-
+    private fun setButton(button: Button, event: Event) {
         with (button) {
             tag = event
             setOnClickListener(bOnClickListener)
         }
-
     }
 
     private fun checkLengthFavorites() {
@@ -91,65 +74,58 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
     }
 
     override fun onBindViewHolder(holder: FavItemRowHolder?, position: Int) {
+        setAnimation(holder?.itemView!!, position)
 
         // Get singleEvent
         val singleFav = favoriteList?.get(position)
-        // Set text to card title
 
-        setAnimation(holder?.itemView!!, position)
+        // background color
+        holder.favCardContainer.setBackgroundColor(Color.parseColor(singleFav?.category?.color))
+        holder.favCardBackground.setBackgroundColor(Color.parseColor(singleFav?.category?.color))
 
-        holder?.favCardContainer?.setBackgroundColor(Color.parseColor(singleFav?.category?.color))
-        holder?.favCardBackground?.setBackgroundColor(Color.parseColor(singleFav?.category?.color))
+        // fav title
+        holder.favCardTitle.text = singleFav?.name?.toUpperCase()
 
-
-        holder?.favCardTitle?.setText(singleFav?.name?.toUpperCase())
-
+        // fav author
         if(singleFav?.author.isNullOrEmpty()) {
-            holder?.favCardAuthor?.setText("Auteur non communiqué")
+            holder.favCardAuthor.text = "Auteur non communiqué"
         } else {
-            holder?.favCardAuthor?.setText(singleFav?.author)
+            holder.favCardAuthor.text = singleFav?.author
         }
 
+        // fav hour
         val hour = android.text.format.DateFormat.format("HH:mm", singleFav?.startingDate) as String
-        holder?.favCardHour?.setText(hour)
+        holder.favCardHour.text = hour
 
-        holder.favCardPlace.setText(singleFav?.place?.name)
+        // fav place
+        holder.favCardPlace.text = singleFav?.place?.name
 
+        // fav image
         Picasso.with(mContext)
                 .load(singleFav?.image)
-                .into(holder?.favCardImage)
+                .into(holder.favCardImage)
 
-
-        // Set text to card title
         isInList = favoriteManager?.currentFavorites!!.filter {
             it.id === singleFav?.id
         }.count() > 0
 
-        // if (singleFav != null) compareToDeviceTime(singleFav)
-
-        // Inspired by Jetbrains Kotlin Examples
-        // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
-        with (holder?.itemView) {
+        with (holder.itemView) {
             this!!.tag = singleFav
             setOnClickListener(mOnClickListener)
         }
 
         bOnClickListener = View.OnClickListener { b ->
-            Log.i("info", "i am clicking")
             val event = b.tag as Event
-            favoriteManager?.removeFavorite(mContext, event)
-            // notifyDataSetChanged()
+            favoriteManager.removeFavorite(mContext, event)
             notifyItemRemoved(position)
-            notifyItemRangeChanged(position, getItemCount());
+            notifyItemRangeChanged(position, itemCount);
             holder.itemView.animate().alpha(0.toFloat()).setDuration(400)
             checkLengthFavorites()
 
         }
 
-        if (holder != null) {
-            if (singleFav != null) {
-                setButton(holder.favCardButton, singleFav)
-            }
+        if (singleFav != null) {
+            setButton(holder.favCardButton, singleFav)
         }
 
 
@@ -181,7 +157,6 @@ class FavoriteListAdapter(private val mContext: Context, private val favoriteLis
         var favCardBackground: LinearLayout
 
         init {
-            // Get card title view
             this.favCardImage = view.findViewById(R.id.favCardImage)
             this.favCardTitle = view.findViewById(R.id.favCardTitle)
             this.favCardButton = view.findViewById(R.id.button_favorite)

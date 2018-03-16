@@ -6,15 +6,9 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
-import android.transition.Fade
-import android.view.Window
-import com.example.pibbou.afca.App
 import android.view.WindowManager
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.ui.main.MainActivity
-import android.app.ActivityOptions
-
-
 
 /**
  * Created by antoine on 28/02/2018.
@@ -25,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
     private val SPLASH_DELAY: Long = 1000 //1 seconds
     private lateinit var mContext : Context
 
-    internal val mRunnable: Runnable = Runnable {
+    private val mRunnable: Runnable = Runnable {
         if (!isFinishing) {
             val intent = Intent(mContext, MainActivity::class.java)
             startActivity(intent)

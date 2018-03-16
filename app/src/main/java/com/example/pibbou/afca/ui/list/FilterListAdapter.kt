@@ -1,9 +1,9 @@
 package com.example.pibbou.afca.ui.list
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
-import android.os.Build
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +11,7 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.ToggleButton
 import com.example.pibbou.afca.R
-import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.ui.main.MainActivity
-import org.w3c.dom.Text
 
 
 /**
@@ -21,16 +19,12 @@ import org.w3c.dom.Text
  */
 class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) : RecyclerView.Adapter<FilterListAdapter.FilterItemRowHolder>() {
 
-    private var context: Context
+    private var context: Context = mContext
     private val onCheckedChanged: CompoundButton.OnCheckedChangeListener
-    private var buttonsArr: MutableList<ToggleButton> = mutableListOf<ToggleButton>()
+    private var buttonsArr: MutableList<ToggleButton> = mutableListOf()
 
 
     init {
-        context = mContext
-
-        // Inspired by Jetbrains Kotlin Examples
-        // https://github.com/JetBrains/kotlin-examples/blob/master/gradle/android-dbflow/app/src/main/java/mobi/porquenao/poc/kotlin/ui/MainAdapter.kt
         onCheckedChanged = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             val item = buttonView.tag
 
@@ -55,16 +49,14 @@ class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) 
 
     fun removeIsChecked(ignoreInt: Int) {
 
-        for (button in buttonsArr) {
-
-            if ( button.tag.toString().toInt() != ignoreInt) {
-                button.isChecked = false
-            }
-        }
+        buttonsArr
+                .filter { it.tag.toString().toInt() != ignoreInt }
+                .forEach { it.isChecked = false }
 
     }
 
 
+    @SuppressLint("InflateParams")
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): FilterItemRowHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_filter, null)
         return FilterItemRowHolder(v)
@@ -86,9 +78,9 @@ class FilterListAdapter(mContext: Context, private val filterList: List<Int?>?) 
         buttonsArr.add(holder.filterButton)
 
         // Set text to card title
-        holder.filterButton.setText(filterTitle)
-        holder.filterButton.setTextOff(filterTitle)
-        holder.filterButton.setTextOn(filterTitle)
+        holder.filterButton.text = filterTitle
+        holder.filterButton.textOff = filterTitle
+        holder.filterButton.textOn = filterTitle
         holder.filterButton.isChecked = false
 
         // Inspired by Jetbrains Kotlin Examples

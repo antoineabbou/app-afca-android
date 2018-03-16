@@ -19,7 +19,6 @@ import android.widget.*
 import android.graphics.Point
 import android.support.constraint.ConstraintLayout
 import kotlinx.android.synthetic.main.custom_tab.view.*
-import android.view.WindowManager
 
 
 
@@ -55,7 +54,7 @@ class MainActivity : BaseActivity() {
         // Custom styles tabbar
         this.setCustomTabView(viewPagerTab)
         // Disable swiper
-        viewPagerTab.setOnTouchListener(View.OnTouchListener { view, motionEvent ->  true})
+        viewPagerTab.setOnTouchListener(View.OnTouchListener { _, motionEvent ->  true})
         // Prepare tab event on page change
         viewPagerTab.setOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
             override fun onPageSelected(position: Int) {
@@ -98,7 +97,7 @@ class MainActivity : BaseActivity() {
 
     private fun setCustomTabView(viewPagerTab:SmartTabLayout) {
         val inflater = LayoutInflater.from(viewPagerTab.context)
-        viewPagerTab.setCustomTabView { container, position, adapter ->
+        viewPagerTab.setCustomTabView { container, position, _ ->
 
             val view = inflater.inflate(R.layout.custom_tab, container,
                     false) as ConstraintLayout
@@ -113,11 +112,11 @@ class MainActivity : BaseActivity() {
             view.custom_tab_day.text = mainPager.adapter.getPageTitle(position)
 
             when (position) {
-                0 -> view.custom_tab_date.text = "Mercredi 04 Avril"
-                1 -> view.custom_tab_date.text = "Jeudi 05 Avril"
-                2 -> view.custom_tab_date.text = "Vendredi 06 Avril"
-                3 -> view.custom_tab_date.text = "Samedi 07 Avril"
-                4 -> view.custom_tab_date.text = "Dimanche 08 Avril"
+                0 -> view.custom_tab_date.text = applicationContext.getString(R.string.day_1)
+                1 -> view.custom_tab_date.text = applicationContext.getString(R.string.day_2)
+                2 -> view.custom_tab_date.text = applicationContext.getString(R.string.day_3)
+                3 -> view.custom_tab_date.text = applicationContext.getString(R.string.day_4)
+                4 -> view.custom_tab_date.text = applicationContext.getString(R.string.day_5)
             }
 
             view
@@ -127,21 +126,6 @@ class MainActivity : BaseActivity() {
     private fun setNavBarActive() {
         val button = findViewById<View>(R.id.navBarProg) as ImageButton
         button.isSelected = true
-    }
-
-    private fun setupWindowAnimations() {
-        // Check if we're running on Android 5.0 or higher
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val fade = TransitionInflater.from(this).inflateTransition(R.transition.fade)
-            fade.duration = 500
-            fade.excludeTarget(R.id.navBar, true)
-            // set an exit transition
-            window.enterTransition = fade
-            window.exitTransition = fade
-            window.returnTransition = fade
-        } else {
-            return
-        }
     }
 
 

@@ -7,17 +7,13 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.transition.Fade
-import android.transition.Slide
 import android.transition.TransitionInflater
 import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
 import com.example.pibbou.afca.ui.base.BaseActivity
 import com.example.pibbou.afca.ui.list.FavoriteListAdapter
-import android.widget.CompoundButton
 import android.widget.ImageButton
 import android.widget.ToggleButton
 import com.example.pibbou.afca.services.NotificationService
@@ -49,14 +45,18 @@ class FavoritesActivity : BaseActivity() {
         toggle.setOnCheckedChangeListener { buttonView, isChecked ->
             notificationAutho = isChecked
             Log.i("state", notificationAutho.toString())
-            if (isChecked === true) {
+            if (isChecked) {
+
                 buttonView.setTextColor(Color.parseColor("#68DF9D"))
                 buttonView.setTypeface(null, Typeface.BOLD)
                 startService(intent)
-            } else if (isChecked === false){
+
+            } else if (!isChecked) {
+
                 buttonView.setTextColor(Color.parseColor("#D8D8D8"))
                 buttonView.setTypeface(null, Typeface.NORMAL)
                 stopService(intent)
+                
             }
         }
 

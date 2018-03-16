@@ -12,8 +12,10 @@ import java.util.*
  * Created by antoine on 08/03/2018.
  */
 
+/**
+ * External service to push notifications
+ */
 class NotificationService : Service() {
-    // private var mServiceLooper: Looper? = null
     private var mServiceHandler: ServiceHandler? = null
     private var favoriteManager: FavoriteManager = FavoriteManager()
     private var notificationManager: com.example.pibbou.afca.repository.NotificationManager? = null
@@ -39,10 +41,8 @@ class NotificationService : Service() {
     }
 
     override fun onCreate() {
-        // Start up the thread running the service.  Note that we create a
-        // separate thread because the service normally runs in the process's
-        // main thread, which we don't want to block.  We also make it
-        // background priority so CPU-intensive work will not disrupt our UI.
+        // Start up the thread running the service.
+        // Set background priority so CPU-intensive work will not disrupt our UI.
         val thread = HandlerThread("ServiceStartArguments",
                 Process.THREAD_PRIORITY_BACKGROUND)
         thread.start()
@@ -71,37 +71,40 @@ class NotificationService : Service() {
     override fun onDestroy() {
     }
 
+    // check every minute event time and device time
     private fun compareToDeviceTime() {
 
         var currentTime: Date
-        var datePlusFiveMinutes: Date
+        var datePlusTenMinutes: Date
 
         val favorites: List<Event>? = favoriteManager.getFavorites(applicationContext)
 
         if (favorites!!.isNotEmpty()) {
-            for (favorite in favorites!!) {
+            for (favorite in favorites) {
                 var notified: Boolean? = null
                 Timer().scheduleAtFixedRate(object : TimerTask() {
                     override fun run() {
                         currentTime = Calendar.getInstance().time
 
-                        datePlusFiveMinutes = Date(System.currentTimeMillis() + 5 * 60 * 1000)
+                        datePlusTenMinutes = Date(System.currentTimeMillis() + 10 * 60 * 1000)
 
                         val duration = printDifference(currentTime, favorite.startingDate!!)
 
                         // If date is before + 5 min, send notification
-                        if (favorite.startingDate!!.before(datePlusFiveMinutes) && favorite.startingDate!!.after(currentTime) && notified === null) {
-                            notificationManager?.showNotification(applicationContext, "Un évenement sélectionné commence dans $duration minutes :", favorite.name.toString(), favorite)
+                        if (favorite.startingDate!!.before(datePlusTenMinutes) && favorite.startingDate!!.after(currentTime) && notified === null) {
+                            notificationManager?.showNotification(applicationContext, "Un évenement va commencer dans $duration minutes :", favorite.name.toString(), favorite)
+                            // we set a notified variable to cancel sending of multiples notifications for same event
                             notified = true
                         }
                     }
-                }, 0, 10000)
+                }, 0, 60000)
             }
             currentTime = Calendar.getInstance().getTime()
         }
+
     }
 
-
+    // Return period between starting date and device date
     private fun printDifference(startDate: Date, endDate: Date): Long {
         var different = endDate.time - startDate.time
 

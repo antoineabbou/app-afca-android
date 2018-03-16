@@ -4,4 +4,10 @@
     <string name="dateEvent">
         <xliff:g id="dayoftheweek" example="Lundi">%s</xliff:g> <xliff:g id="dayofthemonth" example="5">%s</xliff:g> <xliff:g id="month" example="Avril">%s</xliff:g>
     </string>
+
+    <string name="day_1">Mercredi 04 Avril</string>
+    <string name="day_2">Jeudi 05 Avril</string>
+    <string name="day_3">Vendredi 06 Avril</string>
+    <string name="day_4">Samedi 07 Avril</string>
+    <string name="day_5">Dimanche 08 Avril</string>
 </resources>

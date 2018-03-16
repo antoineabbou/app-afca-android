@@ -1,45 +1,23 @@
 package com.example.pibbou.afca.ui.infos
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.transition.Fade
-import android.transition.Slide
 import android.transition.TransitionInflater
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.example.pibbou.afca.App
 import com.example.pibbou.afca.R
-import com.example.pibbou.afca.repository.DataRepository
-import com.example.pibbou.afca.repository.DataStore
 import com.example.pibbou.afca.ui.base.BaseActivity
-import com.example.pibbou.afca.ui.list.FavoriteListAdapter
-import com.example.pibbou.afca.ui.list.PriceListAdapter
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import android.content.Intent
 import android.content.res.Resources
-import android.net.Uri
-import android.util.Log
-import android.view.WindowManager
-import android.widget.Button
 import android.widget.ImageButton
-import android.content.res.Resources.NotFoundException
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.drawable.Drawable
 import android.support.annotation.RequiresApi
 import android.widget.TextView
-import com.example.pibbou.afca.ui.detail.DetailActivity
-import com.github.aakira.expandablelayout.ExpandableLinearLayout
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout
-import com.github.aakira.expandablelayout.Utils
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MapStyleOptions
 
@@ -51,9 +29,6 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
     private lateinit var expandableLayoutMove: ExpandableRelativeLayout
     private lateinit var expandableLayoutEat: ExpandableRelativeLayout
     private lateinit var expandableLayoutPartners: ExpandableRelativeLayout
-
-    //private lateinit var recycler_view_price_list: RecyclerView
-    private var priceAdapter: PriceListAdapter? = null
     private val repository = App.sInstance.getDataRepository()
 
 
@@ -140,8 +115,6 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onMapReady(googleMap: GoogleMap) {
-        // Add a marker_blue in Sydney, Australia,
-        // and move the map's camera to the same location.
 
         try {
             // Customise the styling of the base map using a JSON object defined
@@ -151,13 +124,11 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
                             this, R.raw.style_json))
 
             if (!success) {
-                // TODO : Implement error
             }
         } catch (e: Resources.NotFoundException) {
-            // Log.e(DetailActivity.TAG, "Can't find style. Error: ", e)
         }
 
-
+        // Rennes center
         val center = LatLng(48.115186, -1.682684)
 
         val places = repository?.getPlaces()
@@ -170,8 +141,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
             val long = place.long
             val latlng = LatLng(lat!!, long!!)
 
-            val test = BitmapFactory.decodeResource(resources, R.drawable.marker_green)
-
+            // set markers for each place
             when(i) {
                 0 -> marker = R.drawable.markerblue;
                 1 -> marker = R.drawable.markergreen
