@@ -120,7 +120,7 @@ class DetailActivity : AppCompatActivity() {
 
 
     private fun setButtonBack() {
-        val back: ImageButton = findViewById(R.id.back_button)
+        val back: Button = findViewById(R.id.back_button)
         back.setOnClickListener {
             finish()
         }
