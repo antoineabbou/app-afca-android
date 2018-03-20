@@ -147,7 +147,7 @@ class DataRepository constructor(contextArg: Context) {
 
     // Function to save places into each events
     private fun findPlaceById(id:Int): Place? {
-        val result = places.filter { it.id == id + 1 }
+        val result = places.filter { it.id == id }
 
         if (result.isNotEmpty()) {
             return result.first()
