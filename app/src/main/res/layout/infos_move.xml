@@ -164,6 +164,30 @@
                         android:textColor="#1a1a1a"
                         android:textSize="14sp" />
 
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/bus_1">
+
+                        <TextView
+                            android:id="@+id/bus_label_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text='Bus:'
+                            android:textColor="#1a1a1a"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/bus_label_1"
+                            android:layout_marginStart="10dp"
+                            android:src="@drawable/tnb_bus" />
+
+                    </RelativeLayout>
+
+
 
                 </RelativeLayout>
 
@@ -252,6 +276,29 @@
                         android:textColor="#1a1a1a"
                         android:textSize="14sp" />
 
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/bus_2">
+
+                        <TextView
+                            android:id="@+id/bus_label_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text='Bus:'
+                            android:textColor="#1a1a1a"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/bus_label_2"
+                            android:layout_marginStart="10dp"
+                            android:src="@drawable/arvor_bus" />
+
+                    </RelativeLayout>
+
 
                 </RelativeLayout>
 
@@ -339,6 +386,29 @@
                         android:fontFamily="@font/montserrat"
                         android:textColor="#1a1a1a"
                         android:textSize="14sp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/bus_3">
+
+                        <TextView
+                            android:id="@+id/bus_label_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text='Bus:'
+                            android:textColor="#1a1a1a"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/bus_label_3"
+                            android:layout_marginStart="10dp"
+                            android:src="@drawable/esra_bus" />
+
+                    </RelativeLayout>
 
 
                 </RelativeLayout>
@@ -664,6 +734,49 @@
                         android:fontFamily="@font/montserrat"
                         android:text="TextView"
                         android:textColor="#1a1a1a"
+                        android:textSize="14sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/bus_6_wrapper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/bus_6">
+
+                        <TextView
+                            android:id="@+id/bus_label_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text='Bus :'
+                            android:textColor="#1a1a1a"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/bus_label_6"
+                            android:layout_marginStart="10dp"
+                            android:src="@drawable/bruz_bus" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/bus_desc_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_below="@+id/bus_6_wrapper"
+                        android:text='* 30 minutes depuis Rennes'
+                        android:textColor="#A86E21"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_below="@+id/bus_desc_6"
+                        android:text='* Direction Bruz - Arrêt : Bruz Centre'
+                        android:textColor="#EF849D"
                         android:textSize="14sp" />
 
 
