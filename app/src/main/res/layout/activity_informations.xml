@@ -248,7 +248,7 @@
                     android:onClick="expandableEat"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:text="SE RESTAURER"
+                    android:text="SE RESTAURER AU TNB"
                     android:textColor="#000"
                     android:textSize="16sp"
                     tools:ignore="RtlHardcoded" />

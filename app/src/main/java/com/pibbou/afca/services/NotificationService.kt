@@ -78,7 +78,7 @@ class NotificationService : Service() {
     private fun compareToDeviceTime() {
 
         var currentTime: Date
-        var datePlusTenMinutes: Date
+        var datePlusFifteenMinutes: Date
 
         val favorites: List<Event>? = favoriteManager.getFavorites(applicationContext)
 
@@ -89,12 +89,12 @@ class NotificationService : Service() {
                     override fun run() {
                         currentTime = Calendar.getInstance().time
 
-                        datePlusTenMinutes = Date(System.currentTimeMillis() + 10 * 60 * 1000)
+                        datePlusFifteenMinutes = Date(System.currentTimeMillis() + 10 * 60 * 1000)
 
                         val duration = printDifference(currentTime, favorite.startingDate!!)
 
                         // If date is before + 5 min, send notification
-                        if (favorite.startingDate!!.before(datePlusTenMinutes) && favorite.startingDate!!.after(currentTime) && notified === null) {
+                        if (favorite.startingDate!!.before(datePlusFifteenMinutes) && favorite.startingDate!!.after(currentTime) && notified === null) {
                             notificationManager?.showNotification(applicationContext, "Un évenement va commencer dans $duration minutes :", favorite.name.toString(), favorite)
                             // we set a notified variable to cancel sending of multiples notifications for same event
                             notified = true

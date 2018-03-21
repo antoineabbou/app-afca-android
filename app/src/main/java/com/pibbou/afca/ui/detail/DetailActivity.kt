@@ -130,6 +130,18 @@ class DetailActivity : AppCompatActivity() {
     private fun setEventDatas(event: Event) {
         val eventTitle: TextView = findViewById(R.id.eventTitle)
         eventTitle.text = event.name?.toUpperCase()
+        val eventExcerpt: TextView = findViewById(R.id.eventExcerpt)
+        eventExcerpt.text = event.excerpt
+        val eventAge: TextView = findViewById(R.id.eventAge)
+        eventAge.text = event.age
+
+        if (event.excerpt.isNullOrBlank()) {
+            eventExcerpt.visibility = View.GONE
+        }
+
+        if (event.age.isNullOrBlank()) {
+            eventAge.visibility = View.GONE
+        }
 
         // Date
         val eventStart: TextView = findViewById(R.id.eventStart)

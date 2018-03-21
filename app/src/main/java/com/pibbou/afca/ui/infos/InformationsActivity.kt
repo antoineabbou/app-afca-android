@@ -151,11 +151,11 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         list_price_item_1.setText(content_list_price_item_1)
 
         val list_price_item_2: TextView = findViewById(R.id.list_price_item_2)
-        val content_list_price_item_2 = "Pour les séances du TNB uniquement, réservation à partir du 4 avril sur toute la durée du Festival."
+        val content_list_price_item_2 = "Pour les séances du TNB uniquement, pré-vente à partir du 4 avril sur toute la durée du Festival."
         list_price_item_2.setText(content_list_price_item_2)
 
         val list_price_item_3: TextView = findViewById(R.id.list_price_item_3)
-        val content_list_price_item_3 = "Carte abonnée des salles partenaires (TNB, Arvor et Le Grand Logis) acceptée. "
+        val content_list_price_item_3 = "Carte abonnée des salles partenaires (TNB, Arvor et Le Grand Logis) acceptée hors ciné concert. "
         list_price_item_3.setText(content_list_price_item_3)
 
         //////////////
@@ -173,19 +173,19 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         //////////////
 
         val price_type_1: TextView = findViewById(R.id.price_type_1)
-        val content_price_type_1 = "Unique"
+        val content_price_type_1 = "Tarif unique"
         price_type_1.setText(content_price_type_1)
 
         val price_type_2: TextView = findViewById(R.id.price_type_2)
-        val content_price_type_2 = "Ciné concert"
+        val content_price_type_2 = "Ciné concert*"
         price_type_2.setText(content_price_type_2)
 
         val price_type_3: TextView = findViewById(R.id.price_type_3)
-        val content_price_type_3 = "Carte sortir et groupe *"
+        val content_price_type_3 = "Carte sortir et groupe**"
         price_type_3.setText(content_price_type_3)
 
         val price_type_4: TextView = findViewById(R.id.price_type_4)
-        val content_price_type_4 = "Carte fidélité"
+        val content_price_type_4 = "Carnet de fidélité***"
         price_type_4.setText(content_price_type_4)
 
         val price_type_5: TextView = findViewById(R.id.price_type_5)
@@ -201,7 +201,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         //////////////
 
         val price_number_1: TextView = findViewById(R.id.price_number_1)
-        val content_price_number_1 = "3€"
+        val content_price_number_1 = "6€"
         price_number_1.setText(content_price_number_1)
 
         val price_number_2: TextView = findViewById(R.id.price_number_2)
@@ -209,7 +209,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         price_number_2.setText(content_price_number_2)
 
         val price_number_3: TextView = findViewById(R.id.price_number_3)
-        val content_price_number_3 = "6€"
+        val content_price_number_3 = "3€"
         price_number_3.setText(content_price_number_3)
 
         val price_number_4: TextView = findViewById(R.id.price_number_4)
@@ -228,8 +228,16 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         //////////////
 
         val remark_price: TextView = findViewById(R.id.remark_price)
-        val content_remark_price = "* À partir de 10 personnes"
+        val content_remark_price = "* Carnet de fidélité, tarif de groupe et carte abonné non acceptés"
         remark_price.setText(content_remark_price)
+
+        val remark_price_2: TextView = findViewById(R.id.remark_price_2)
+        val content_remark_price_2 = "** À partir de 10 personnes"
+        remark_price_2.setText(content_remark_price_2)
+
+        val remark_price_3: TextView = findViewById(R.id.remark_price_3)
+        val content_remark_price_3 = "*** 5 places"
+        remark_price_3.setText(content_remark_price_3)
     }
 
 
