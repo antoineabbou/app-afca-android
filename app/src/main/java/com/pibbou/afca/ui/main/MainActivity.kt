@@ -16,6 +16,7 @@ import android.view.LayoutInflater
 import android.widget.*
 import android.graphics.Point
 import android.support.constraint.ConstraintLayout
+import android.util.Log
 import kotlinx.android.synthetic.main.custom_tab.view.*
 
 
@@ -217,10 +218,14 @@ class MainActivity : BaseActivity() {
         val eventsByDay = eventsByDay
         val eventList : List<Event>
 
-        if (public != 0) {
-            eventList = eventsByDay!!.filter { it.public == public }
-        } else {
-            eventList = eventsByDay as List<Event>
+        when (public) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+            0 -> eventList = eventsByDay as List<Event>
+            1 ->{
+                eventList = eventsByDay!!.filter { it.public != 2 }
+            }
+            else -> {
+                eventList = eventsByDay!!.filter { it.public == public }
+            }
         }
 
         for(event in eventList){
