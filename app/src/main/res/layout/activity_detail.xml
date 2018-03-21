@@ -119,6 +119,20 @@
                     android:layout_marginRight="64dp" />
 
                 <TextView
+                    android:id="@+id/eventExcerpt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="#1a1a1a"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/eventTitle" />
+
+                <TextView
                     android:id="@+id/author"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -130,8 +144,27 @@
                     android:textColor="#BBBBBB"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.166"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/eventTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/eventExcerpt"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="16dp" />
+
+                <TextView
+                    android:id="@+id/eventAge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="#1A1A1A"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.166"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/author"
                     android:layout_marginRight="8dp"
                     android:layout_marginLeft="16dp" />
 
@@ -142,10 +175,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/author">
+                    app:layout_constraintTop_toBottomOf="@+id/eventAge">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -202,12 +236,12 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/eventStart"
                                     android:layout_marginLeft="32dp"
+                                    android:layout_marginStart="32dp"
+                                    android:layout_toEndOf="@+id/hour"
                                     android:layout_toRightOf="@+id/hour"
                                     android:fontFamily="@font/montserrat"
                                     android:textColor="#BBBBBB"
-                                    android:textSize="16sp"
-                                    android:layout_marginStart="32dp"
-                                    android:layout_toEndOf="@+id/hour" />
+                                    android:textSize="16sp" />
 
 
                             </RelativeLayout>
