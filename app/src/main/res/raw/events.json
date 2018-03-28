@@ -10,7 +10,7 @@
     "duration": "6h",
     "image": "http://afca.arnaudpinot.fr/1.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/salon-des-nouvelles-ecritures.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 3,
     "age": "5 ans"
@@ -24,9 +24,9 @@
     "day": 1,
     "startingDate": "2018-04-04 10:00:00",
     "duration": "3h",
-    "image": "https://image.noelshack.com/fichiers/2018/11/4/1521079586-pattern.jpg",
+    "image": "http://afca.arnaudpinot.fr/2.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/mercredi-4-avril.html",
-    "author": "",
+    "author": "AFCA",
     "productor": "",
     "public": 2,
     "age": ""
@@ -42,7 +42,7 @@
     "duration": "3h",
     "image": "http://afca.arnaudpinot.fr/3.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/mercredi-4-avril.html",
-    "author": "",
+    "author": "La Ménagerie",
     "productor": "",
     "public": 2,
     "age": ""
@@ -54,13 +54,13 @@
     "placeId": 1,
     "categoryId": 5,
     "day": 1,
-    "startingDate": "2018-04-04 18:00:00",
+    "startingDate": "2018-04-04 14:00:00",
     "duration": "4h",
     "image": "http://afca.arnaudpinot.fr/4.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/atelier-jeux-optiques.html",
-    "author": "",
+    "author": "LISAA",
     "productor": "",
-    "public": 1,
+    "public": 3,
     "age": "6 ans"
   },
   {
@@ -70,14 +70,14 @@
     "placeId": 4,
     "categoryId": 1,
     "day": 1,
-    "startingDate": "2018-04-04  10:15:00",
+    "startingDate": "2018-04-04  18:00:00",
     "duration": "1h",
-    "image": "https://image.noelshack.com/fichiers/2018/11/4/1521079586-pattern.jpg",
+    "image": "http://afca.arnaudpinot.fr/5.jpg",
     "link": "http://www.festival-film-animation.fr/programme/panorama/series.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 1,
-    "age": ""
+    "age": "15 ans"
   },
   {
     "id": 6,
@@ -86,12 +86,12 @@
     "placeId": 1,
     "categoryId": 7,
     "day": 1,
-    "startingDate": "2018-04-04 10:00:00",
+    "startingDate": "2018-04-04 13:00:00",
     "duration": "6h",
     "image": "http://afca.arnaudpinot.fr/6.jpg",
     "link": "http://www.festival-film-animation.fr/programme/panorama/films-bricoles.html",
     "author": "",
-    "productor": "",
+    "productor": "Collectif",
     "public": 3,
     "age": "8 ans"
   },
@@ -106,7 +106,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/7.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 3,
     "age": "6 ans"
@@ -138,7 +138,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/9.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 3,
     "age": "6 ans"
@@ -170,7 +170,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/11.jpg",
     "link": "http://www.festival-film-animation.fr/programme/panorama/pour-les-tout-petits.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 3,
     "age": "3 ans"
@@ -186,10 +186,10 @@
     "duration": "1h15",
     "image": "http://afca.arnaudpinot.fr/12.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/les-secrets-de-fabrication/dans-les-coulisses-de.html",
-    "author": "",
+    "author": "Pierre Coré",
     "productor": "",
-    "public": 1,
-    "age": ""
+    "public": 3,
+    "age": "8 ans"
   },
   {
     "id": 13,
@@ -202,15 +202,15 @@
     "duration": "1h30",
     "image": "http://afca.arnaudpinot.fr/13.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-3.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 3,
-    "age": ""
+    "age": "11 ans"
   },
   {
     "id": 14,
     "name": "L'Île aux chiens",
-    "excerpt": "Film d'ouverture en avant-première nationale",
+    "excerpt": "Film d'ouverture en avant-première. VF",
     "placeId": 1,
     "categoryId": 2,
     "day": 1,
@@ -220,8 +220,8 @@
     "link": "http://www.festival-film-animation.fr/programme/seances-speciales/film-ouverture.html",
     "author": "Wes Anderson",
     "productor": "American Empirical c/o United Talent Agency",
-    "public": 1,
-    "age": ""
+    "public": 3,
+    "age": "10 ans"
   },
   {
     "id": 15,
@@ -234,15 +234,15 @@
     "duration": "1h30",
     "image": "http://afca.arnaudpinot.fr/15.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/jeudi-5-avril.html",
-    "author": "",
+    "author": "Modéré par Denis Walgenwitz",
     "productor": "",
     "public": 2,
     "age": ""
   },
   {
     "id": 16,
-    "name": "Stand Démo Wacom/TVPaint",
-    "excerpt": "En accès libre",
+    "name": "Stand Démo Wacom / TVPaint",
+    "excerpt": "En accès libre. Accessible dès 10h pour les professionnels accrédités",
     "placeId": 1,
     "categoryId": 5,
     "day": 2,
@@ -250,7 +250,7 @@
     "duration": "6h",
     "image": "http://afca.arnaudpinot.fr/16.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/stand-wacom-tvpaint.html",
-    "author": "",
+    "author": "Wacom / TVPaint",
     "productor": "",
     "public": 1,
     "age": ""
@@ -262,7 +262,7 @@
     "placeId": 1,
     "categoryId": 4,
     "day": 2,
-    "startingDate": "2018-04-05 10:00:00",
+    "startingDate": "2018-04-05 12:00:00",
     "duration": "45min",
     "image": "http://afca.arnaudpinot.fr/17.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/jeudi-5-avril.html",
@@ -282,7 +282,7 @@
     "duration": "6h",
     "image": "http://afca.arnaudpinot.fr/18.jpg",
     "link": "http://www.festival-film-animation.fr/programme/panorama/zapping-anime.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 3,
     "age": "10 ans"
@@ -298,7 +298,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/19.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 3,
     "age": "6 ans"
@@ -314,7 +314,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/20.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-2.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 3,
     "age": "9 ans"
@@ -330,10 +330,10 @@
     "duration": "1h30",
     "image": "http://afca.arnaudpinot.fr/21.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-4.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 1,
-    "age": ""
+    "age": "15 ans"
   },
   {
     "id": 22,
@@ -346,10 +346,10 @@
     "duration": "1h30",
     "image": "http://afca.arnaudpinot.fr/22.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-8.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 1,
-    "age": ""
+    "age": "15 ans"
   },
   {
     "id": 23,
@@ -360,12 +360,12 @@
     "day": 2,
     "startingDate": "2018-04-05 16:30:00",
     "duration": "1h",
-    "image": "https://image.noelshack.com/fichiers/2018/11/4/1521079586-pattern.jpg",
+    "image": "http://afca.arnaudpinot.fr/23.jpg",
     "link": "http://www.festival-film-animation.fr/programme/panorama/series.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 1,
-    "age": ""
+    "age": "15 ans"
   },
   {
     "id": 24,
@@ -376,12 +376,12 @@
     "day": 2,
     "startingDate": "2018-04-05 18:30:00",
     "duration": "1h30",
-    "image": "http://afca.arnaudpinot.fr/24jpg",
+    "image": "http://afca.arnaudpinot.fr/24.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-5.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 1,
-    "age": ""
+    "age": "15 ans"
   },
   {
     "id": 25,
@@ -394,7 +394,7 @@
     "duration": "6h",
     "image": "http://afca.arnaudpinot.fr/25.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/salon-des-nouvelles-ecritures.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 3,
     "age": "5 ans"
@@ -410,7 +410,7 @@
     "duration": "2h",
     "image": "http://afca.arnaudpinot.fr/26.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/jeudi-5-avril.html",
-    "author": "",
+    "author": "AGRAF",
     "productor": "",
     "public": 2,
     "age": ""
@@ -426,7 +426,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/27.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/jeudi-5-avril.html",
-    "author": "",
+    "author": "Modéré par Grégory Baranès",
     "productor": "",
     "public": 2,
     "age": ""
@@ -444,8 +444,8 @@
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/les-secrets-de-fabrication/dans-les-coulisses-de.html",
     "author": "Nicolas Deveaux",
     "productor": "Cube créative productions, Arte france",
-    "public": 1,
-    "age": ""
+    "public": 3,
+    "age": "12 ans"
   },
   {
     "id": 29,
@@ -458,7 +458,7 @@
     "duration": "1h30",
     "image": "http://afca.arnaudpinot.fr/29.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-6.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 1,
     "age": ""
@@ -476,7 +476,7 @@
     "link": "http://festival-film-animation.fr/programme/seances-speciales/longs-metrages.html",
     "author": "\"RUN\" alias Guillaume Renard et Shojirou Nishim",
     "productor": "Ankama Animations",
-    "public": 1,
+    "public": 3,
     "age": "12 ans"
   },
   {
@@ -490,7 +490,7 @@
     "duration": "2h",
     "image": "http://afca.arnaudpinot.fr/31.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/les-pitchs/pitchs-des-series-et-webseries.html",
-    "author": "",
+    "author": "Modéré par Christel Gonnard",
     "productor": "",
     "public": 2,
     "age": ""
@@ -506,7 +506,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/32.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/les-secrets-de-fabrication/dans-les-coulisses-de.html",
-    "author": "",
+    "author": "David Alaux",
     "productor": "",
     "public": 1,
     "age": ""
@@ -538,7 +538,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/34.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 3,
     "age": "6 ans"
@@ -554,7 +554,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/35.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-2.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 3,
     "age": "9 ans"
@@ -570,7 +570,7 @@
     "duration": "2h",
     "image": "http://afca.arnaudpinot.fr/36.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/les-pitchs/pitchs-des-courts-metrages.html",
-    "author": "",
+    "author": "Modéré par Marcel Villoing",
     "productor": "",
     "public": 2,
     "age": ""
@@ -602,7 +602,7 @@
     "duration": "1h30",
     "image": "http://afca.arnaudpinot.fr/38.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-7.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 1,
     "age": ""
@@ -616,17 +616,17 @@
     "day": 3,
     "startingDate": "2018-04-06 21:00:00",
     "duration": "1h30",
-    "image": "https://image.noelshack.com/fichiers/2018/11/4/1521079586-pattern.jpg",
+    "image": "http://afca.arnaudpinot.fr/39.jpg",
     "link": "http://www.festival-film-animation.fr/programme/seances-speciales/soiree-ecrans-rythmiques.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 1,
-    "age": ""
+    "age": "15 ans"
   },
   {
     "id": 40,
     "name": "Stand Wacom/TVPaint",
-    "excerpt": "En accès libre",
+    "excerpt": "En accès libre. Accessible dès 10h pour les professionnels accrédités",
     "placeId": 1,
     "categoryId": 5,
     "day": 3,
@@ -634,7 +634,7 @@
     "duration": "5h",
     "image": "http://afca.arnaudpinot.fr/40.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/stand-wacom-tvpaint.html",
-    "author": "",
+    "author": "Wacom / TVPaint",
     "productor": "",
     "public": 1,
     "age": ""
@@ -650,7 +650,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/41.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/vendredi-6-avril.html",
-    "author": "",
+    "author": "Wacom",
     "productor": "",
     "public": 2,
     "age": ""
@@ -666,7 +666,7 @@
     "duration": "30min",
     "image": "http://afca.arnaudpinot.fr/42.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/vendredi-6-avril.html",
-    "author": "",
+    "author": "AFCA",
     "productor": "",
     "public": 2,
     "age": ""
@@ -682,7 +682,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/43.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/vendredi-6-avril.html",
-    "author": "",
+    "author": "Arte, Canal +, Benshi Studio et France Télévisions",
     "productor": "",
     "public": 2,
     "age": ""
@@ -698,7 +698,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/44.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/vendredi-6-avril.html",
-    "author": "",
+    "author": "par Guillaume Jobbé Duval et Jean-Philippe Robin",
     "productor": "",
     "public": 2,
     "age": ""
@@ -714,10 +714,10 @@
     "duration": "3h",
     "image": "http://afca.arnaudpinot.fr/45.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/salon-des-nouvelles-ecritures.html",
-    "author": "",
+    "author": "Par 3 Hit Combo",
     "productor": "",
     "public": 1,
-    "age": ""
+    "age": "16 ans"
   },
   {
     "id": 46,
@@ -730,10 +730,10 @@
     "duration": "6h",
     "image": "http://afca.arnaudpinot.fr/46.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/salon-des-nouvelles-ecritures.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
-    "public": 1,
-    "age": ""
+    "public": 3,
+    "age": "5 ans"
   },
   {
     "id": 47,
@@ -746,7 +746,7 @@
     "duration": "2h",
     "image": "http://afca.arnaudpinot.fr/47.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/vendredi-6-avril.html",
-    "author": "",
+    "author": "TVPaint",
     "productor": "",
     "public": 2,
     "age": ""
@@ -760,9 +760,9 @@
     "day": 3,
     "startingDate": "2018-04-06 11:00:00",
     "duration": "1h",
-    "image": "https://image.noelshack.com/fichiers/2018/11/4/1521079586-pattern.jpg",
+    "image": "http://afca.arnaudpinot.fr/48.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/vendredi-6-avril.html",
-    "author": "",
+    "author": "Alice Lepetit et Caroline Cherrier",
     "productor": "",
     "public": 2,
     "age": ""
@@ -774,11 +774,11 @@
     "placeId": 1,
     "categoryId": 4,
     "day": 3,
-    "startingDate": "2018-04-06 14:00:00",
-    "duration": "30min",
+    "startingDate": "2018-04-06 19:00:00",
+    "duration": "2h30",
     "image": "http://afca.arnaudpinot.fr/49.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/vendredi-6-avril.html",
-    "author": "",
+    "author": "Bruno Canard et Philippe Daniel",
     "productor": "",
     "public": 2,
     "age": ""
@@ -794,7 +794,7 @@
     "duration": "2h",
     "image": "http://afca.arnaudpinot.fr/50.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/les-secrets-de-fabrication/rencontre-des-realisateurs.html",
-    "author": "",
+    "author": "Par Alexis Hunot",
     "productor": "",
     "public": 1,
     "age": ""
@@ -810,7 +810,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/51.jpg",
     "link": "http://www.festival-film-animation.fr/programme/panorama/pour-les-tout-petits.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 3,
     "age": "3 ans"
@@ -828,8 +828,8 @@
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/les-secrets-de-fabrication/le-film-pachamama-en-chantier.html",
     "author": "Juan Antin",
     "productor": "Folivari",
-    "public": 1,
-    "age": ""
+    "public": 3,
+    "age": "8 ans"
   },
   {
     "id": 53,
@@ -842,10 +842,10 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/53.jpg",
     "link": "http://www.festival-film-animation.fr/programme/panorama/cube-anime-special-famille.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 3,
-    "age": "10 ans"
+    "age": "5 ans"
   },
   {
     "id": 54,
@@ -858,7 +858,7 @@
     "duration": "6h",
     "image": "http://afca.arnaudpinot.fr/54.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/salon-des-nouvelles-ecritures.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 3,
     "age": "5 ans"
@@ -866,7 +866,7 @@
   {
     "id": 55,
     "name": "Zombillénium",
-    "excerpt": "En présence du réalisateur Arthur de Pins",
+    "excerpt": "En présence du réalisateur Arthur de Pins, suivi d'une dédicace",
     "placeId": 1,
     "categoryId": 3,
     "day": 4,
@@ -890,10 +890,10 @@
     "duration": "2h",
     "image": "http://afca.arnaudpinot.fr/56.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/les-secrets-de-fabrication/musique-a-limage.html",
-    "author": "",
+    "author": "Bruno Coulais",
     "productor": "",
     "public": 3,
-    "age": ""
+    "age": "8 ans"
   },
   {
     "id": 57,
@@ -906,7 +906,7 @@
     "duration": "1h30",
     "image": "http://afca.arnaudpinot.fr/57.jpg",
     "link": "http://www.festival-film-animation.fr/programme/panorama/series-jeunesse.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 3,
     "age": "6 ans"
@@ -954,7 +954,7 @@
     "duration": "1h30",
     "image": "http://afca.arnaudpinot.fr/60.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-5.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 1,
     "age": ""
@@ -970,7 +970,7 @@
     "duration": "2h",
     "image": "http://afca.arnaudpinot.fr/61.jpg",
     "link": "http://festival-film-animation.fr/programme/seances-speciales/soiree-de-remise-des-prix.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 1,
     "age": ""
@@ -986,7 +986,7 @@
     "duration": "2h",
     "image": "http://afca.arnaudpinot.fr/62.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/les-secrets-de-fabrication/rencontre-des-realisateurs.html",
-    "author": "",
+    "author": "Par Alexis Hunot",
     "productor": "",
     "public": 1,
     "age": ""
@@ -1000,9 +1000,9 @@
     "day": 4,
     "startingDate": "2018-04-07 14:00:00",
     "duration": "5h",
-    "image": "https://image.noelshack.com/fichiers/2018/11/4/1521079586-pattern.jpg",
+    "image": "http://afca.arnaudpinot.fr/63.jpg",
     "link": "http://www.festival-film-animation.fr/programme/comp%C3%A9tition/competition-1.html",
-    "author": "",
+    "author": "Agnès Lecreux",
     "productor": "",
     "public": 1,
     "age": ""
@@ -1016,9 +1016,9 @@
     "day": 4,
     "startingDate": "2018-04-07 14:00:00",
     "duration": "2h",
-    "image": "https://image.noelshack.com/fichiers/2018/11/4/1521079586-pattern.jpg",
+    "image": "http://afca.arnaudpinot.fr/64.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/les-secrets-de-fabrication/musique-a-limage.html",
-    "author": "",
+    "author": "Christine Ott",
     "productor": "",
     "public": 3,
     "age": ""
@@ -1034,7 +1034,7 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/65.jpg",
     "link": "http://www.festival-film-animation.fr/programme/seances-speciales/soiree-de-remise-des-prix.html?highlight=YToxOntpOjA7czo4OiJwYWxtYXJlcyI7fQ==",
-    "author": "",
+    "author": "AFCA",
     "productor": "",
     "public": 1,
     "age": ""
@@ -1050,9 +1050,9 @@
     "duration": "1h30",
     "image": "http://afca.arnaudpinot.fr/66.jpg",
     "link": "http://www.festival-film-animation.fr/programme/focus/la-serie-dans-tous-ses-etats.html?highlight=YTo2OntpOjA7czo1OiJjYXJ0ZSI7aToxO3M6NzoiYmxhbmNoZSI7aToyO3M6NDoiYXJ0ZSI7aTozO3M6MTM6ImNhcnRlIGJsYW5jaGUiO2k6NDtzOjE4OiJjYXJ0ZSBibGFuY2hlIGFydGUiO2k6NTtzOjEyOiJibGFuY2hlIGFydGUiO30=",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
-    "public": 1,
+    "public": 3,
     "age": "10 ans"
   },
   {
@@ -1066,7 +1066,7 @@
     "duration": "1h30",
     "image": "http://afca.arnaudpinot.fr/67.jpg",
     "link": "http://www.festival-film-animation.fr/programme/panorama/series-jeunesse.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 3,
     "age": "6 ans"
@@ -1082,7 +1082,7 @@
     "duration": "1h15",
     "image": "http://afca.arnaudpinot.fr/68.jpg",
     "link": "http://festival-film-animation.fr/programme/seances-speciales/soiree-de-remise-des-prix.html",
-    "author": "",
+    "author": "Courts métrages",
     "productor": "",
     "public": 1,
     "age": ""
@@ -1098,10 +1098,10 @@
     "duration": "6h",
     "image": "http://afca.arnaudpinot.fr/69.jpg",
     "link": "http://www.festival-film-animation.fr/programme/panorama/cube-anime-special-famille.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 3,
-    "age": "10 ans"
+    "age": "5 ans"
   },
   {
     "id": 70,
@@ -1114,7 +1114,7 @@
     "duration": "6h",
     "image": "http://afca.arnaudpinot.fr/70.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/salon-des-nouvelles-ecritures.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
     "public": 3,
     "age": "5 ans"
@@ -1128,7 +1128,7 @@
     "day": 5,
     "startingDate": "2018-04-08 14:00:00",
     "duration": "1h30",
-    "image": "https://image.noelshack.com/fichiers/2018/11/4/1521079586-pattern.jpg",
+    "image": "http://afca.arnaudpinot.fr/71.jpg",
     "link": "http://www.festival-film-animation.fr/programme/seances-speciales/longs-metrages.html",
     "author": "Arnaud Bouron et Antoon Krings",
     "productor": "On entertainment",
@@ -1146,15 +1146,15 @@
     "duration": "1h",
     "image": "http://afca.arnaudpinot.fr/72.jpg",
     "link": "http://www.festival-film-animation.fr/programme/focus/les-20-ans-de-vivement-lundi.html",
-    "author": "",
+    "author": "Collectif",
     "productor": "",
-    "public": 1,
-    "age": ""
+    "public": 3,
+    "age": "10 ans"
   },
   {
     "id": 73,
     "name": "Ciné concert - Lotte, mon amour",
-    "excerpt": "Par Christine Ott et et Anne-Irène Kempf",
+    "excerpt": "Interprêtés par Christine Ott et Anne-Irène Kempf",
     "placeId": 1,
     "categoryId": 2,
     "day": 5,
@@ -1162,7 +1162,7 @@
     "duration": "1h30",
     "image": "http://afca.arnaudpinot.fr/73.jpg",
     "link": "http://www.festival-film-animation.fr/programme/seances-speciales/cine-concert.html",
-    "author": "Par Lotte Reininger et avec Christine Ott & Anne-Irène Kempf",
+    "author": "Lotte Reiniger",
     "productor": "Production Mimiladoré",
     "public": 3,
     "age": "3 ans"
@@ -1170,15 +1170,15 @@
   {
     "id": 74,
     "name": "Atelier jeux optiques",
-    "excerpt": "En partenariat avec LISAA, en accès libre",
+    "excerpt": "En accès libre",
     "placeId": 1,
     "categoryId": 5,
     "day": 5,
     "startingDate": "2018-04-08 14:00:00",
     "duration": "4h",
-    "image": "https://image.noelshack.com/fichiers/2018/11/4/1521079586-pattern.jpg",
+    "image": "http://afca.arnaudpinot.fr/74.jpg",
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/atelier-jeux-optiques.html",
-    "author": "",
+    "author": "LISAA",
     "productor": "",
     "public": 3,
     "age": "6 ans"
@@ -1186,7 +1186,7 @@
   {
     "id": 75,
     "name": "Table ronde \"Comment adapter une oeuvre littéraire en production cinématographique ou audiovisuelle ?\"",
-    "excerpt": "Organisé par Livre et lecture en Bretagne, En partenariat avec Vivement Lundi !",
+    "excerpt": "En partenariat avec Vivement Lundi !",
     "placeId": 6,
     "categoryId": 4,
     "day": 1,
@@ -1194,7 +1194,7 @@
     "duration": "2h30",
     "image": "http://afca.arnaudpinot.fr/75.jpg",
     "link": "http://www.festival-film-animation.fr/volet-pro-2018/mercredi-4-avril.html",
-    "author": "",
+    "author": "Livre et Lecture en Bretagne",
     "productor": "",
     "public": 2,
     "age": ""
@@ -1202,7 +1202,7 @@
   {
     "id": 76,
     "name": "Docs en stock - \"Gauguin, je suis un sauvage\"",
-    "excerpt": "En accès libre, en présence de la réalisatrice Marie-Christine Courtès",
+    "excerpt": "En partenariat avec Le Musée de Bretagne et Comptoir du Doc. En accès libre, en présence de la réalisatrice Marie-Christine Courtès",
     "placeId": 7,
     "categoryId": 5,
     "day": 5,
@@ -1212,7 +1212,7 @@
     "link": "http://www.festival-film-animation.fr/autour-des-films-2018/hors-les-murs/chez-nos-amis.html ",
     "author": "Marie-Christine Courtès",
     "productor": "Arte Edition",
-    "public": 1,
-    "age": ""
+    "public": 3,
+    "age": "12 ans"
   }
 ]

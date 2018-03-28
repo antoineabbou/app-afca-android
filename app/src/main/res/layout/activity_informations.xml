@@ -129,7 +129,7 @@
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:lineSpacingExtra="2sp"
-                    android:text="Le Festival national du film d’animation invite les publics et professionnels à parcourir et découvrir l'incroyable créativité et diversité de la production française contemporaine dans une ambiance festive à travers une programmation riche.
+                    android:text="Le Festival national du film d’animation invite les publics de tous âges à découvrir l’incroyable créativité et diversité de l’animation française et à rencontrer de nombreux réalisateurs, dans une ambiance festive, à travers une programmation riche.
 "
                     android:textAlignment="center"
                     android:textColor="#000"
