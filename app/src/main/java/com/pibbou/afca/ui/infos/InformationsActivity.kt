@@ -131,6 +131,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
                 3 -> marker = R.drawable.markerpurple
                 4 -> marker = R.drawable.markerpink
                 5 -> marker = R.drawable.markerred
+                6 -> marker = R.drawable.markerviolet
             }
 
             googleMap.addMarker(MarkerOptions().position(latlng)
@@ -371,7 +372,7 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         /////////////
 
         val address_5: TextView = findViewById(R.id.address_5)
-        val content_address_5 = "9 Avenue Jean Janvier, 35000 Renness"
+        val content_address_5 = "9 Avenue Jean Janvier, 35000 Rennes"
         address_5.setText(content_address_5)
 
         //////////////
@@ -416,6 +417,34 @@ class InformationsActivity : BaseActivity(), OnMapReadyCallback {
         val bus_6: TextView = findViewById(R.id.bus_6)
         val content_bus_6 = "Arrêt : Bruz Centre"
         bus_6.setText(content_bus_6)
+
+        //////////////
+        /////////////
+
+        val place_7: TextView = findViewById(R.id.place_7)
+        val content_place_7 = "Musée de Bretagne"
+        place_7.setText(content_place_7)
+
+        //////////////
+        /////////////
+
+        val address_7: TextView = findViewById(R.id.address_7)
+        val content_address_7 = "10 Cours des Alliés, 35000 Rennes"
+        address_7.setText(content_address_7)
+
+        //////////////
+        /////////////
+
+        val phone_7: TextView = findViewById(R.id.phone_7)
+        val content_phone_7 = "02 23 40 66 00"
+        phone_7.setText(content_phone_7)
+
+        //////////////
+        /////////////
+
+        val bus_7: TextView = findViewById(R.id.bus_7)
+        val content_bus_7 = "Arrêts : Charles de Gaulle, Magenta ou Gare"
+        bus_7.setText(content_bus_7)
 
         //////////////
         /////////////
