@@ -602,7 +602,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/cityLayout_2"
+        android:id="@+id/museeBretagneLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -611,6 +611,96 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/esplanadeLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="top">
+
+                <ImageView
+                    android:id="@+id/marker_7"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/marker_violet" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="16dp">
+
+                    <TextView
+                        android:id="@+id/place_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="TextView"
+                        android:textColor="@color/violet"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/address_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/place_7"
+                        android:fontFamily="@font/montserrat"
+                        android:text="TextView"
+                        android:textColor="#1a1a1a"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/phone_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/address_7"
+                        android:fontFamily="@font/montserrat"
+                        android:text="TextView"
+                        android:textColor="#1a1a1a"
+                        android:textSize="14sp" />
+
+
+                    <TextView
+                        android:id="@+id/bus_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/phone_7"
+                        android:fontFamily="@font/montserrat"
+                        android:text="TextView"
+                        android:textColor="#1a1a1a"
+                        android:textSize="14sp" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/cityLayout_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/museeBretagneLayout">
 
         <LinearLayout
             android:layout_width="match_parent"

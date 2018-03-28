@@ -46,5 +46,13 @@
     "lat": "48.108728" ,
     "long": "-1.673121",
     "address": "9 Avenue Jean Janvier, 35000 Rennes"
+  },
+  {
+    "id": 7,
+    "name": "Musée de Bretagne",
+    "seats": -1,
+    "lat": "48.105261",
+    "long": "-1.674586",
+    "address": "10 Cours des Alliés, 35000 Rennes"
   }
 ]
