@@ -31,7 +31,7 @@ Sync Gradle File
 
 ## Download the application
 
-The application was published recently in closed beta on the Play Store. You will find it out soon ! 
+You can find the application on the Google Play Store :
 
 _Download link here : [FNFA][fnfa]_
 
